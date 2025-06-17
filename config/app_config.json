@@ -1,0 +1,68 @@
+{
+  "application": {
+    "name": "银河麒麟智能问答助手",
+    "version": "1.0.0",
+    "window": {
+      "width": 1200,
+      "height": 800,
+      "min_width": 800,
+      "min_height": 600
+    },
+    "language": "zh_CN"
+  },
+  "ai": {
+    "api_endpoint": "https://api.siliconflow.cn/v1/chat/completions",
+    "model": "deepseek-ai/DeepSeek-V3",
+    "api_key": "sk-owsayozifrzvaxuxvyvywmyzcceokwatdbolevdnfnbwlurp",
+    "max_tokens": 2048,
+    "temperature": 0.7,
+    "timeout": 30
+  },
+  "rag": {
+    "chunk_size": 500,
+    "chunk_overlap": 100,
+    "top_k": 5,
+    "similarity_threshold": 0.7,
+    "vector_dimension": 768
+  },
+  "vector_store": {
+    "type": "chroma",
+    "path": "./data/vector_db",
+    "collection_name": "kylin_documents"
+  },
+  "kylin_ai": {
+    "speech_recognition": {
+      "enabled": true,
+      "language": "zh-CN",
+      "sample_rate": 16000
+    },
+    "text_to_speech": {
+      "enabled": true,
+      "voice": "zh-CN-XiaoxiaoNeural",
+      "speed": 1.0,
+      "pitch": 1.0
+    },
+    "text_embedding": {
+      "enabled": true,
+      "model": "text-embedding-ada-002"
+    }
+  },
+  "document": {
+    "supported_formats": [".pdf", ".md", ".txt"],
+    "max_file_size": 52428800,
+    "encoding": "utf-8",
+    "temp_dir": "./temp"
+  },
+  "logging": {
+    "level": "info",
+    "file": "./logs/kylin_qa.log",
+    "max_size": 10485760,
+    "max_files": 5,
+    "console": true
+  },
+  "performance": {
+    "max_concurrent_queries": 3,
+    "cache_size": 100,
+    "response_timeout": 10
+  }
+}
