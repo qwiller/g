@@ -109,44 +109,152 @@ install_build_tools() {
     log_success "基础开发工具安装完成"
 }
 
-# 安装Qt6开发包
-install_qt6() {
+# 检测Qt版本并安装相应开发包
+detect_and_install_qt() {
     local pm=$1
-    log_info "安装Qt6开发包..."
-    
+    log_info "检测Qt版本并安装开发包..."
+
+    # 首先尝试检测系统中可用的Qt版本
+    local qt_version=""
+
+    if pkg-config --exists Qt6Core 2>/dev/null; then
+        qt_version="6"
+        log_info "检测到Qt6已安装"
+    elif pkg-config --exists Qt5Core 2>/dev/null; then
+        qt_version="5"
+        log_info "检测到Qt5，将安装Qt5开发包"
+    else
+        # 检查包管理器中可用的Qt版本
+        case $pm in
+            apt)
+                if apt-cache search qt6-base-dev | grep -q qt6-base-dev; then
+                    qt_version="6"
+                elif apt-cache search qtbase5-dev | grep -q qtbase5-dev; then
+                    qt_version="5"
+                elif apt-cache search qt5-default | grep -q qt5-default; then
+                    qt_version="5"
+                fi
+                ;;
+        esac
+    fi
+
+    if [ -z "$qt_version" ]; then
+        log_warning "无法检测Qt版本，尝试安装Qt5作为备选方案"
+        qt_version="5"
+    fi
+
+    install_qt_packages "$pm" "$qt_version"
+}
+
+# 安装Qt开发包
+install_qt_packages() {
+    local pm=$1
+    local qt_version=$2
+
+    log_info "安装Qt${qt_version}开发包..."
+
     case $pm in
         apt)
-            apt install -y \
-                qt6-base-dev \
-                qt6-base-dev-tools \
-                qt6-declarative-dev \
-                qt6-tools-dev \
-                qt6-tools-dev-tools \
-                qt6-multimedia-dev \
-                libqt6texttospeech6-dev \
-                qml6-module-qtquick \
-                qml6-module-qtquick-controls2 \
-                qml6-module-qtquick-layouts
+            if [ "$qt_version" = "6" ]; then
+                # 尝试安装Qt6包，如果失败则回退到Qt5
+                if ! apt install -y \
+                    qt6-base-dev \
+                    qt6-base-dev-tools \
+                    qt6-declarative-dev \
+                    qt6-tools-dev \
+                    qt6-multimedia-dev 2>/dev/null; then
+
+                    log_warning "Qt6包安装失败，回退到Qt5"
+                    install_qt5_packages "$pm"
+                    return
+                fi
+
+                # 尝试安装可选的Qt6包
+                apt install -y \
+                    libqt6texttospeech6-dev \
+                    qml6-module-qtquick \
+                    qml6-module-qtquick-controls2 \
+                    qml6-module-qtquick-layouts 2>/dev/null || log_warning "部分Qt6模块安装失败，但不影响核心功能"
+            else
+                install_qt5_packages "$pm"
+            fi
             ;;
         yum)
-            yum install -y \
-                qt6-qtbase-devel \
-                qt6-qtdeclarative-devel \
-                qt6-qttools-devel \
-                qt6-qtmultimedia-devel \
-                qt6-qtspeech-devel
+            if [ "$qt_version" = "6" ]; then
+                yum install -y \
+                    qt6-qtbase-devel \
+                    qt6-qtdeclarative-devel \
+                    qt6-qttools-devel \
+                    qt6-qtmultimedia-devel \
+                    qt6-qtspeech-devel 2>/dev/null || install_qt5_packages_yum
+            else
+                install_qt5_packages_yum
+            fi
             ;;
         dnf)
-            dnf install -y \
-                qt6-qtbase-devel \
-                qt6-qtdeclarative-devel \
-                qt6-qttools-devel \
-                qt6-qtmultimedia-devel \
-                qt6-qtspeech-devel
+            if [ "$qt_version" = "6" ]; then
+                dnf install -y \
+                    qt6-qtbase-devel \
+                    qt6-qtdeclarative-devel \
+                    qt6-qttools-devel \
+                    qt6-qtmultimedia-devel \
+                    qt6-qtspeech-devel 2>/dev/null || install_qt5_packages_dnf
+            else
+                install_qt5_packages_dnf
+            fi
             ;;
     esac
-    
-    log_success "Qt6开发包安装完成"
+
+    log_success "Qt${qt_version}开发包安装完成"
+}
+
+# 安装Qt5包（APT）
+install_qt5_packages() {
+    local pm=$1
+    log_info "安装Qt5开发包..."
+
+    apt install -y \
+        qtbase5-dev \
+        qtbase5-dev-tools \
+        qtdeclarative5-dev \
+        qttools5-dev \
+        qttools5-dev-tools \
+        qtmultimedia5-dev \
+        qml-module-qtquick2 \
+        qml-module-qtquick-controls2 \
+        qml-module-qtquick-layouts \
+        libqt5texttospeech5-dev || {
+
+        # 如果上述包也不可用，尝试更基础的包
+        log_warning "标准Qt5包不可用，尝试安装基础包"
+        apt install -y \
+            qt5-default \
+            qtbase5-dev \
+            qtdeclarative5-dev \
+            qttools5-dev 2>/dev/null || {
+
+            log_error "无法安装Qt开发包，请手动安装"
+            return 1
+        }
+    }
+}
+
+# 安装Qt5包（YUM）
+install_qt5_packages_yum() {
+    yum install -y \
+        qt5-qtbase-devel \
+        qt5-qtdeclarative-devel \
+        qt5-qttools-devel \
+        qt5-qtmultimedia-devel
+}
+
+# 安装Qt5包（DNF）
+install_qt5_packages_dnf() {
+    dnf install -y \
+        qt5-qtbase-devel \
+        qt5-qtdeclarative-devel \
+        qt5-qttools-devel \
+        qt5-qtmultimedia-devel
 }
 
 # 安装PDF处理库
@@ -326,28 +434,53 @@ install_python_deps() {
 # 验证安装
 verify_installation() {
     log_info "验证安装..."
-    
+
     local missing_tools=()
-    
+    local warnings=()
+
     # 检查编译工具
     command -v gcc >/dev/null || missing_tools+=("gcc")
     command -v g++ >/dev/null || missing_tools+=("g++")
     command -v cmake >/dev/null || missing_tools+=("cmake")
     command -v make >/dev/null || missing_tools+=("make")
-    
-    # 检查Qt6
-    pkg-config --exists Qt6Core || missing_tools+=("Qt6Core")
-    pkg-config --exists Qt6Widgets || missing_tools+=("Qt6Widgets")
-    pkg-config --exists Qt6Qml || missing_tools+=("Qt6Qml")
-    
+
+    # 检查Qt（优先Qt6，备选Qt5）
+    if pkg-config --exists Qt6Core 2>/dev/null; then
+        log_info "Qt6 Core: ✓"
+        pkg-config --exists Qt6Widgets || warnings+=("Qt6Widgets")
+        pkg-config --exists Qt6Qml || warnings+=("Qt6Qml")
+    elif pkg-config --exists Qt5Core 2>/dev/null; then
+        log_info "Qt5 Core: ✓ (备选方案)"
+        pkg-config --exists Qt5Widgets || warnings+=("Qt5Widgets")
+        pkg-config --exists Qt5Qml || warnings+=("Qt5Qml")
+    else
+        missing_tools+=("Qt开发包")
+    fi
+
     # 检查其他库
-    pkg-config --exists poppler-cpp || missing_tools+=("poppler-cpp")
-    
+    if pkg-config --exists poppler-cpp 2>/dev/null; then
+        log_info "Poppler: ✓"
+    else
+        missing_tools+=("poppler-cpp")
+    fi
+
+    # 检查可选依赖
+    command -v python3 >/dev/null || warnings+=("python3")
+
+    # 输出结果
     if [ ${#missing_tools[@]} -eq 0 ]; then
-        log_success "所有依赖验证通过"
+        log_success "核心依赖验证通过"
+
+        if [ ${#warnings[@]} -gt 0 ]; then
+            log_warning "以下可选组件缺失，但不影响基本功能:"
+            for warning in "${warnings[@]}"; do
+                echo "  - $warning"
+            done
+        fi
+
         return 0
     else
-        log_error "以下工具/库验证失败:"
+        log_error "以下核心依赖缺失:"
         for tool in "${missing_tools[@]}"; do
             echo "  - $tool"
         done
@@ -366,7 +499,7 @@ main() {
     
     update_package_index "$pm"
     install_build_tools "$pm"
-    install_qt6 "$pm"
+    detect_and_install_qt "$pm"
     install_pdf_libs "$pm"
     install_json_libs "$pm"
     install_logging_libs "$pm"

@@ -21,8 +21,20 @@ endif()
 
 message(STATUS "检测到麒麟系统架构: ${KYLIN_ARCH}")
 
-# 查找Qt6
-find_package(Qt6 REQUIRED COMPONENTS Core Widgets Qml Quick QuickControls2 TextToSpeech)
+# 查找Qt（优先Qt6，备选Qt5）
+find_package(Qt6 COMPONENTS Core Widgets Qml Quick QuickControls2 TextToSpeech)
+
+if(NOT Qt6_FOUND)
+    message(STATUS "Qt6未找到，尝试使用Qt5")
+    find_package(Qt5 REQUIRED COMPONENTS Core Widgets Qml Quick QuickControls2 TextToSpeech)
+    set(QT_VERSION_MAJOR 5)
+    set(QT_LIBRARIES Qt5::Core Qt5::Widgets Qt5::Qml Qt5::Quick Qt5::QuickControls2 Qt5::TextToSpeech)
+else()
+    set(QT_VERSION_MAJOR 6)
+    set(QT_LIBRARIES Qt6::Core Qt6::Widgets Qt6::Qml Qt6::Quick Qt6::QuickControls2 Qt6::TextToSpeech)
+endif()
+
+message(STATUS "使用Qt${QT_VERSION_MAJOR}")
 
 # 查找其他依赖
 find_package(PkgConfig REQUIRED)
@@ -40,6 +52,12 @@ link_directories(${POPPLER_LIBRARY_DIRS})
 
 # 添加子目录
 add_subdirectory(src)
+
+# 添加测试（可选）
+option(BUILD_TESTS "Build tests" ON)
+if(BUILD_TESTS)
+    add_subdirectory(tests)
+endif()
 
 # 设置安装目录
 set(CMAKE_INSTALL_PREFIX "/opt/kylin-qa-assistant")

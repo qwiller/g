@@ -43,32 +43,37 @@ set(HEADERS
     ../include/ui/voice_controller.h
 )
 
-# QML资源文件
-qt6_add_resources(QML_RESOURCES
-    ../resources/qml.qrc
-)
-
-# 创建可执行文件
-qt6_add_executable(KylinQAAssistant
-    ${SOURCES}
-    ${HEADERS}
-    ${QML_RESOURCES}
-)
+# QML资源文件（根据Qt版本选择函数）
+if(QT_VERSION_MAJOR EQUAL 6)
+    qt6_add_resources(QML_RESOURCES ../resources/qml.qrc)
+    qt6_add_executable(KylinQAAssistant ${SOURCES} ${HEADERS} ${QML_RESOURCES})
+else()
+    qt5_add_resources(QML_RESOURCES ../resources/qml.qrc)
+    add_executable(KylinQAAssistant ${SOURCES} ${HEADERS} ${QML_RESOURCES})
+endif()
 
 # 链接库
 target_link_libraries(KylinQAAssistant
-    Qt6::Core
-    Qt6::Widgets
-    Qt6::Qml
-    Qt6::Quick
-    Qt6::QuickControls2
-    Qt6::TextToSpeech
+    ${QT_LIBRARIES}
     ${POPPLER_LIBRARIES}
     curl
     jsoncpp
-    spdlog::spdlog
     pthread
 )
+
+# 尝试链接spdlog
+find_package(spdlog QUIET)
+if(spdlog_FOUND)
+    target_link_libraries(KylinQAAssistant spdlog::spdlog)
+else()
+    # 如果找不到spdlog包，尝试直接链接库文件
+    find_library(SPDLOG_LIB spdlog)
+    if(SPDLOG_LIB)
+        target_link_libraries(KylinQAAssistant ${SPDLOG_LIB})
+    else()
+        message(WARNING "spdlog库未找到，将使用内置日志功能")
+    endif()
+endif()
 
 # 设置编译定义
 target_compile_definitions(KylinQAAssistant PRIVATE

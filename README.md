@@ -36,30 +36,54 @@
 - **磁盘空间**: 至少500MB可用空间
 - **编译器**: GCC 8+ 或 Clang 10+
 
-### 一键安装
+### 一键安装（推荐）
 
 ```bash
 # 1. 克隆项目
-git clone https://github.com/your-username/kylin-qa-assistant.git
-cd kylin-qa-assistant
+git clone https://github.com/qwiller/g.git
+cd g
+
+# 2. 给脚本添加执行权限
+chmod +x scripts/*.sh
+
+# 3. 快速安装（自动检测麒麟版本并安装）
+sudo ./scripts/quick_install_kylin.sh
+```
+
+### 分步安装
+
+如果快速安装遇到问题，可以使用分步安装：
+
+```bash
+# 1. 故障排除（可选，用于诊断问题）
+./scripts/troubleshoot_kylin.sh
 
 # 2. 安装依赖
 sudo ./scripts/install_dependencies_kylin.sh
 
-# 3. 编译和安装
+# 3. 编译项目
 ./scripts/build_kylin.sh --all
 
-# 4. 安装应用程序（可选）
+# 4. 安装应用程序
 sudo ./scripts/build_kylin.sh --install
 ```
 
 ### 手动编译
 
+#### 麒麟V10系统（基于Ubuntu/Debian）
+
 ```bash
 # 1. 安装依赖
 sudo apt update
-sudo apt install -y build-essential cmake qt6-base-dev qt6-declarative-dev \
-    libpoppler-cpp-dev libjsoncpp-dev libspdlog-dev libcurl4-openssl-dev
+sudo apt install -y build-essential cmake git pkg-config
+
+# 安装Qt5（麒麟V10通常使用Qt5）
+sudo apt install -y qtbase5-dev qtdeclarative5-dev qttools5-dev \
+    qtmultimedia5-dev qml-module-qtquick2 qml-module-qtquick-controls2
+
+# 安装其他依赖
+sudo apt install -y libpoppler-cpp-dev libcurl4-openssl-dev \
+    python3 python3-pip
 
 # 2. 创建构建目录
 mkdir build && cd build
@@ -72,6 +96,24 @@ make -j$(nproc)
 
 # 5. 安装
 sudo make install
+```
+
+#### 麒麟V4系统（基于CentOS/RHEL）
+
+```bash
+# 1. 安装依赖
+sudo yum groupinstall -y "Development Tools"
+sudo yum install -y cmake git pkgconfig
+
+# 安装Qt5
+sudo yum install -y qt5-qtbase-devel qt5-qtdeclarative-devel \
+    qt5-qttools-devel qt5-qtmultimedia-devel
+
+# 安装其他依赖
+sudo yum install -y poppler-cpp-devel libcurl-devel openssl-devel \
+    python3 python3-pip
+
+# 2-5. 编译步骤同上
 ```
 
 ## 📖 使用指南
@@ -229,12 +271,87 @@ cpack -G RPM
 
 ## 🐛 故障排除
 
-### 常见问题
+### 自动诊断工具
 
-1. **编译错误**: 检查依赖是否完整安装
-2. **运行时崩溃**: 查看日志文件 `logs/kylin_qa.log`
-3. **语音功能不可用**: 确认麒麟AI SDK是否正确安装
-4. **文档解析失败**: 检查文件格式和编码
+```bash
+# 运行故障排除脚本，自动检测系统环境和依赖
+./scripts/troubleshoot_kylin.sh
+```
+
+### 常见问题及解决方案
+
+#### 1. Qt包无法找到
+
+**问题**: `E: 无法定位软件包 qt6-base-dev`
+
+**解决方案**:
+```bash
+# 使用快速安装脚本，会自动检测并安装合适的Qt版本
+sudo ./scripts/quick_install_kylin.sh
+
+# 或手动安装Qt5（麒麟系统通常使用Qt5）
+sudo apt install qtbase5-dev qtdeclarative5-dev
+```
+
+#### 2. 编译错误
+
+**问题**: CMake配置失败或编译错误
+
+**解决方案**:
+```bash
+# 1. 清理构建目录
+rm -rf build
+
+# 2. 检查依赖
+./scripts/troubleshoot_kylin.sh
+
+# 3. 重新安装依赖
+sudo ./scripts/install_dependencies_kylin.sh
+
+# 4. 重新编译
+./scripts/build_kylin.sh --all
+```
+
+#### 3. 运行时崩溃
+
+**问题**: 应用程序启动后崩溃
+
+**解决方案**:
+```bash
+# 查看详细日志
+tail -f logs/kylin_qa.log
+
+# 检查配置文件
+cat config/app_config.json
+
+# 在终端中运行以查看错误信息
+./build/src/KylinQAAssistant
+```
+
+#### 4. 语音功能不可用
+
+**问题**: 语音识别或合成功能无法使用
+
+**解决方案**:
+- 检查麒麟AI SDK是否安装
+- 确认音频设备权限
+- 查看配置文件中的语音设置
+
+#### 5. 网络连接问题
+
+**问题**: 无法连接AI服务
+
+**解决方案**:
+```bash
+# 检查网络连接
+ping 8.8.8.8
+
+# 检查API配置
+grep "api_endpoint" config/app_config.json
+
+# 测试HTTPS连接
+curl -I https://api.siliconflow.cn
+```
 
 ### 日志级别
 
@@ -246,9 +363,25 @@ cpack -G RPM
 
 ### 获取帮助
 
-- 查看日志: `tail -f logs/kylin_qa.log`
-- 检查配置: 验证 `config/app_config.json`
-- 系统信息: 运行 `./scripts/system_info.sh`
+```bash
+# 查看实时日志
+tail -f logs/kylin_qa.log
+
+# 检查系统信息
+./scripts/troubleshoot_kylin.sh
+
+# 验证安装
+./scripts/build_kylin.sh --test
+```
+
+### 技术支持
+
+如果问题仍未解决：
+
+1. 运行 `./scripts/troubleshoot_kylin.sh` 收集系统信息
+2. 查看 `logs/kylin_qa.log` 获取详细错误信息
+3. 在GitHub Issues中提交问题报告
+4. 联系技术支持: support@kylinos.cn
 
 ## 🤝 贡献指南
 
