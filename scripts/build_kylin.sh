@@ -94,17 +94,17 @@ check_dependencies() {
         missing_deps+=("make")
     fi
     
-    # 检查Qt6
-    if ! pkg-config --exists Qt6Core; then
-        missing_deps+=("qt6-base-dev")
+    # 检查Qt5（麒麟系统标准）
+    if ! pkg-config --exists Qt5Core; then
+        missing_deps+=("qtbase5-dev")
     fi
-    
-    if ! pkg-config --exists Qt6Widgets; then
-        missing_deps+=("qt6-base-dev")
+
+    if ! pkg-config --exists Qt5Widgets; then
+        missing_deps+=("qtbase5-dev")
     fi
-    
-    if ! pkg-config --exists Qt6Qml; then
-        missing_deps+=("qt6-declarative-dev")
+
+    if ! pkg-config --exists Qt5Qml; then
+        missing_deps+=("qtdeclarative5-dev")
     fi
     
     # 检查其他依赖

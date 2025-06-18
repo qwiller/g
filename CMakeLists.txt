@@ -21,20 +21,52 @@ endif()
 
 message(STATUS "检测到麒麟系统架构: ${KYLIN_ARCH}")
 
-# 查找Qt（优先Qt6，备选Qt5）
-find_package(Qt6 COMPONENTS Core Widgets Qml Quick QuickControls2 TextToSpeech)
+# 查找Qt5（专为麒麟系统优化）
+message(STATUS "配置Qt5开发环境（麒麟系统专用）")
 
-if(NOT Qt6_FOUND)
-    message(STATUS "Qt6未找到，尝试使用Qt5")
-    find_package(Qt5 REQUIRED COMPONENTS Core Widgets Qml Quick QuickControls2 TextToSpeech)
-    set(QT_VERSION_MAJOR 5)
-    set(QT_LIBRARIES Qt5::Core Qt5::Widgets Qt5::Qml Qt5::Quick Qt5::QuickControls2 Qt5::TextToSpeech)
+# 查找Qt5核心组件
+find_package(Qt5 REQUIRED COMPONENTS Core Widgets)
+
+# 查找Qt5可选组件
+find_package(Qt5 COMPONENTS Qml Quick QuickControls2 TextToSpeech QUIET)
+
+# 设置Qt版本
+set(QT_VERSION_MAJOR 5)
+
+# 设置Qt5库列表
+set(QT_LIBRARIES Qt5::Core Qt5::Widgets)
+
+# 添加可选组件
+if(Qt5Qml_FOUND)
+    list(APPEND QT_LIBRARIES Qt5::Qml)
+    message(STATUS "Qt5 Qml: 已找到")
 else()
-    set(QT_VERSION_MAJOR 6)
-    set(QT_LIBRARIES Qt6::Core Qt6::Widgets Qt6::Qml Qt6::Quick Qt6::QuickControls2 Qt6::TextToSpeech)
+    message(WARNING "Qt5 Qml: 未找到，QML功能将被禁用")
 endif()
 
-message(STATUS "使用Qt${QT_VERSION_MAJOR}")
+if(Qt5Quick_FOUND)
+    list(APPEND QT_LIBRARIES Qt5::Quick)
+    message(STATUS "Qt5 Quick: 已找到")
+else()
+    message(WARNING "Qt5 Quick: 未找到，Quick功能将被禁用")
+endif()
+
+if(Qt5QuickControls2_FOUND)
+    list(APPEND QT_LIBRARIES Qt5::QuickControls2)
+    message(STATUS "Qt5 QuickControls2: 已找到")
+else()
+    message(WARNING "Qt5 QuickControls2: 未找到，部分UI功能可能受限")
+endif()
+
+if(Qt5TextToSpeech_FOUND)
+    list(APPEND QT_LIBRARIES Qt5::TextToSpeech)
+    message(STATUS "Qt5 TextToSpeech: 已找到")
+else()
+    message(WARNING "Qt5 TextToSpeech: 未找到，语音功能将被禁用")
+endif()
+
+message(STATUS "使用Qt5 (版本: ${Qt5Core_VERSION})")
+message(STATUS "Qt5安装路径: ${Qt5Core_DIR}")
 
 # 查找其他依赖
 find_package(PkgConfig REQUIRED)
@@ -76,15 +108,19 @@ install(FILES config/app_config.json
 )
 
 # 创建桌面文件
-configure_file(
-    ${CMAKE_CURRENT_SOURCE_DIR}/resources/kylin-qa-assistant.desktop.in
-    ${CMAKE_CURRENT_BINARY_DIR}/kylin-qa-assistant.desktop
-    @ONLY
-)
+if(EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/resources/kylin-qa-assistant.desktop.in)
+    configure_file(
+        ${CMAKE_CURRENT_SOURCE_DIR}/resources/kylin-qa-assistant.desktop.in
+        ${CMAKE_CURRENT_BINARY_DIR}/kylin-qa-assistant.desktop
+        @ONLY
+    )
 
-install(FILES ${CMAKE_CURRENT_BINARY_DIR}/kylin-qa-assistant.desktop
-    DESTINATION share/applications
-)
+    install(FILES ${CMAKE_CURRENT_BINARY_DIR}/kylin-qa-assistant.desktop
+        DESTINATION share/applications
+    )
+else()
+    message(WARNING "桌面文件模板不存在，跳过桌面文件创建")
+endif()
 
 # CPack配置
 set(CPACK_PACKAGE_NAME "kylin-qa-assistant")

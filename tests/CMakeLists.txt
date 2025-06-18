@@ -5,8 +5,8 @@ cmake_minimum_required(VERSION 3.16)
 # 启用测试
 enable_testing()
 
-# 查找测试框架
-find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Test)
+# 查找Qt5测试框架
+find_package(Qt5 REQUIRED COMPONENTS Test)
 
 # 包含目录
 include_directories(
@@ -52,9 +52,9 @@ add_executable(test_runner
 
 # 链接库
 target_link_libraries(test_runner
-    Qt${QT_VERSION_MAJOR}::Test
-    Qt${QT_VERSION_MAJOR}::Core
-    Qt${QT_VERSION_MAJOR}::Widgets
+    Qt5::Test
+    Qt5::Core
+    Qt5::Widgets
     ${POPPLER_LIBRARIES}
     curl
     pthread

@@ -77,26 +77,31 @@ install_deps_v10() {
         wget \
         curl
     
-    # 安装Qt5（麒麟V10通常使用Qt5）
-    apt install -y \
-        qtbase5-dev \
-        qtdeclarative5-dev \
-        qttools5-dev \
-        qtmultimedia5-dev \
-        qml-module-qtquick2 \
-        qml-module-qtquick-controls2 \
-        libqt5texttospeech5-dev || {
-        
-        # 如果上述包不可用，尝试更基础的包
-        log_warning "尝试安装基础Qt5包..."
+    # 安装Qt5（麒麟V10专用配置）
+    log_info "安装Qt5开发包（麒麟V10优化版本）..."
+
+    # 优先安装核心Qt5包
+    if apt install -y qtbase5-dev qtbase5-dev-tools; then
+        log_success "Qt5核心包安装成功"
+
+        # 尝试安装扩展包
         apt install -y \
-            qt5-default \
-            qtbase5-dev \
-            qtdeclarative5-dev || {
+            qtdeclarative5-dev \
+            qttools5-dev \
+            qtmultimedia5-dev \
+            qml-module-qtquick2 \
+            qml-module-qtquick-controls2 2>/dev/null || log_warning "部分Qt5扩展包安装失败"
+
+    else
+        # 回退方案
+        log_warning "尝试安装基础Qt5包..."
+        if apt install -y qt5-default qtbase5-dev 2>/dev/null; then
+            log_success "Qt5基础包安装成功"
+        else
             log_error "Qt5安装失败"
             return 1
-        }
-    }
+        fi
+    fi
     
     # 安装其他依赖
     apt install -y \

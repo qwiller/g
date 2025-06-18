@@ -89,9 +89,10 @@ sudo apt install -y git wget curl
 # 安装编译工具
 sudo apt install -y build-essential cmake pkg-config
 
-# 安装Qt5开发包
+# 安装Qt5开发包（麒麟系统标准配置）
 sudo apt install -y \
     qtbase5-dev \
+    qtbase5-dev-tools \
     qtdeclarative5-dev \
     qttools5-dev \
     qtmultimedia5-dev \

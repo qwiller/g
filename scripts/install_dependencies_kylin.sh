@@ -109,41 +109,19 @@ install_build_tools() {
     log_success "基础开发工具安装完成"
 }
 
-# 检测Qt版本并安装相应开发包
-detect_and_install_qt() {
+# 安装Qt5开发包（麒麟系统专用）
+install_qt5_for_kylin() {
     local pm=$1
-    log_info "检测Qt版本并安装开发包..."
+    log_info "为麒麟系统安装Qt5开发包..."
 
-    # 首先尝试检测系统中可用的Qt版本
-    local qt_version=""
-
-    if pkg-config --exists Qt6Core 2>/dev/null; then
-        qt_version="6"
-        log_info "检测到Qt6已安装"
-    elif pkg-config --exists Qt5Core 2>/dev/null; then
-        qt_version="5"
-        log_info "检测到Qt5，将安装Qt5开发包"
-    else
-        # 检查包管理器中可用的Qt版本
-        case $pm in
-            apt)
-                if apt-cache search qt6-base-dev | grep -q qt6-base-dev; then
-                    qt_version="6"
-                elif apt-cache search qtbase5-dev | grep -q qtbase5-dev; then
-                    qt_version="5"
-                elif apt-cache search qt5-default | grep -q qt5-default; then
-                    qt_version="5"
-                fi
-                ;;
-        esac
+    # 检查是否已安装Qt5
+    if pkg-config --exists Qt5Core 2>/dev/null; then
+        local qt5_version=$(pkg-config --modversion Qt5Core)
+        log_success "Qt5已安装，版本: $qt5_version"
+        return 0
     fi
 
-    if [ -z "$qt_version" ]; then
-        log_warning "无法检测Qt版本，尝试安装Qt5作为备选方案"
-        qt_version="5"
-    fi
-
-    install_qt_packages "$pm" "$qt_version"
+    install_qt5_packages "$pm"
 }
 
 # 安装Qt开发包
@@ -208,53 +186,69 @@ install_qt_packages() {
     log_success "Qt${qt_version}开发包安装完成"
 }
 
-# 安装Qt5包（APT）
+# 安装Qt5包（APT - 麒麟系统优化版）
 install_qt5_packages() {
     local pm=$1
-    log_info "安装Qt5开发包..."
+    log_info "安装Qt5开发包（麒麟系统优化）..."
 
-    apt install -y \
-        qtbase5-dev \
-        qtbase5-dev-tools \
-        qtdeclarative5-dev \
-        qttools5-dev \
-        qttools5-dev-tools \
-        qtmultimedia5-dev \
-        qml-module-qtquick2 \
-        qml-module-qtquick-controls2 \
-        qml-module-qtquick-layouts \
-        libqt5texttospeech5-dev || {
+    case $pm in
+        apt)
+            # 优先尝试标准Qt5包
+            if apt install -y \
+                qtbase5-dev \
+                qtbase5-dev-tools \
+                qtdeclarative5-dev \
+                qttools5-dev \
+                qtmultimedia5-dev 2>/dev/null; then
 
-        # 如果上述包也不可用，尝试更基础的包
-        log_warning "标准Qt5包不可用，尝试安装基础包"
-        apt install -y \
-            qt5-default \
-            qtbase5-dev \
-            qtdeclarative5-dev \
-            qttools5-dev 2>/dev/null || {
+                log_success "Qt5核心包安装成功"
 
-            log_error "无法安装Qt开发包，请手动安装"
-            return 1
-        }
-    }
+                # 尝试安装可选包
+                apt install -y \
+                    qttools5-dev-tools \
+                    qml-module-qtquick2 \
+                    qml-module-qtquick-controls2 \
+                    qml-module-qtquick-layouts \
+                    libqt5texttospeech5-dev 2>/dev/null || log_warning "部分Qt5可选包安装失败"
+
+            else
+                # 回退到基础包
+                log_warning "标准Qt5包不可用，尝试安装基础包"
+                if apt install -y qt5-default qtbase5-dev 2>/dev/null; then
+                    log_success "Qt5基础包安装成功"
+                else
+                    log_error "无法安装Qt5开发包"
+                    return 1
+                fi
+            fi
+            ;;
+        *)
+            install_qt5_packages_yum_dnf "$pm"
+            ;;
+    esac
 }
 
-# 安装Qt5包（YUM）
-install_qt5_packages_yum() {
-    yum install -y \
-        qt5-qtbase-devel \
-        qt5-qtdeclarative-devel \
-        qt5-qttools-devel \
-        qt5-qtmultimedia-devel
-}
+# 安装Qt5包（YUM/DNF）
+install_qt5_packages_yum_dnf() {
+    local pm=$1
+    log_info "使用${pm}安装Qt5开发包..."
 
-# 安装Qt5包（DNF）
-install_qt5_packages_dnf() {
-    dnf install -y \
-        qt5-qtbase-devel \
-        qt5-qtdeclarative-devel \
-        qt5-qttools-devel \
-        qt5-qtmultimedia-devel
+    case $pm in
+        yum)
+            yum install -y \
+                qt5-qtbase-devel \
+                qt5-qtdeclarative-devel \
+                qt5-qttools-devel \
+                qt5-qtmultimedia-devel
+            ;;
+        dnf)
+            dnf install -y \
+                qt5-qtbase-devel \
+                qt5-qtdeclarative-devel \
+                qt5-qttools-devel \
+                qt5-qtmultimedia-devel
+            ;;
+    esac
 }
 
 # 安装PDF处理库
@@ -444,17 +438,17 @@ verify_installation() {
     command -v cmake >/dev/null || missing_tools+=("cmake")
     command -v make >/dev/null || missing_tools+=("make")
 
-    # 检查Qt（优先Qt6，备选Qt5）
-    if pkg-config --exists Qt6Core 2>/dev/null; then
-        log_info "Qt6 Core: ✓"
-        pkg-config --exists Qt6Widgets || warnings+=("Qt6Widgets")
-        pkg-config --exists Qt6Qml || warnings+=("Qt6Qml")
-    elif pkg-config --exists Qt5Core 2>/dev/null; then
-        log_info "Qt5 Core: ✓ (备选方案)"
-        pkg-config --exists Qt5Widgets || warnings+=("Qt5Widgets")
-        pkg-config --exists Qt5Qml || warnings+=("Qt5Qml")
+    # 检查Qt5（麒麟系统标准配置）
+    if pkg-config --exists Qt5Core 2>/dev/null; then
+        local qt5_version=$(pkg-config --modversion Qt5Core)
+        log_success "Qt5 Core: ✓ (版本: $qt5_version)"
+
+        # 检查Qt5组件
+        pkg-config --exists Qt5Widgets && log_info "Qt5 Widgets: ✓" || warnings+=("Qt5Widgets")
+        pkg-config --exists Qt5Qml && log_info "Qt5 Qml: ✓" || warnings+=("Qt5Qml")
+        pkg-config --exists Qt5Quick && log_info "Qt5 Quick: ✓" || warnings+=("Qt5Quick")
     else
-        missing_tools+=("Qt开发包")
+        missing_tools+=("Qt5开发包")
     fi
 
     # 检查其他库
@@ -499,7 +493,7 @@ main() {
     
     update_package_index "$pm"
     install_build_tools "$pm"
-    detect_and_install_qt "$pm"
+    install_qt5_for_kylin "$pm"
     install_pdf_libs "$pm"
     install_json_libs "$pm"
     install_logging_libs "$pm"

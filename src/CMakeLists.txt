@@ -43,13 +43,14 @@ set(HEADERS
     ../include/ui/voice_controller.h
 )
 
-# QML资源文件（根据Qt版本选择函数）
-if(QT_VERSION_MAJOR EQUAL 6)
-    qt6_add_resources(QML_RESOURCES ../resources/qml.qrc)
-    qt6_add_executable(KylinQAAssistant ${SOURCES} ${HEADERS} ${QML_RESOURCES})
-else()
+# QML资源文件（使用Qt5）
+if(EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/../resources/qml.qrc)
     qt5_add_resources(QML_RESOURCES ../resources/qml.qrc)
     add_executable(KylinQAAssistant ${SOURCES} ${HEADERS} ${QML_RESOURCES})
+    message(STATUS "包含QML资源文件")
+else()
+    add_executable(KylinQAAssistant ${SOURCES} ${HEADERS})
+    message(STATUS "未找到QML资源文件，使用基础配置")
 endif()
 
 # 链接库
