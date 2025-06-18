@@ -1,4 +1,4 @@
-# 源文件列表
+# 源文件列表（仅包含已存在的文件）
 set(SOURCES
     main.cpp
     core/application.cpp
@@ -11,14 +11,7 @@ set(SOURCES
     document/chunk_manager.cpp
     rag/vector_store.cpp
     rag/retriever.cpp
-    rag/generator.cpp
     rag/rag_engine.cpp
-    ai/kylin_ai_client.cpp
-    ui/main_window.cpp
-    ui/chat_widget.cpp
-    ui/document_manager_widget.cpp
-    ui/settings_dialog.cpp
-    ui/voice_controller.cpp
 )
 
 # 头文件列表
