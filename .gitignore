@@ -1,0 +1,71 @@
+# 忽略日志文件
+*.log
+app.log
+
+# 忽略进程ID文件
+*.pid
+app.pid
+
+# 忽略上传的文件
+uploads/
+rag-assistant/uploads/
+
+# 忽略虚拟环境
+venv/
+rag-assistant/venv/
+env/
+.env
+
+# 忽略Python缓存
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# 忽略IDE文件
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# 忽略系统文件
+.DS_Store
+Thumbs.db
+
+# 忽略临时文件
+*.tmp
+*.temp
+.cache/
+
+# 忽略配置文件中的敏感信息
+config/secrets.json
+.env.local
+.env.production
+
+# 忽略测试覆盖率报告
+htmlcov/
+.coverage
+.pytest_cache/
+
+# 忽略Jupyter Notebook检查点
+.ipynb_checkpoints/
+
+# 忽略重复的g目录
+g/
