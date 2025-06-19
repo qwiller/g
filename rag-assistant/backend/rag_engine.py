@@ -7,27 +7,55 @@ RAG引擎 - 检索增强生成
 import logging
 import requests
 import json
+import os
 from typing import List, Dict, Any
 from vector_store import VectorStore
+
+# 导入银河麒麟SDK
+try:
+    from .kylin_sdk_wrapper import get_kylin_sdk, FileType, FileSize, FileTime
+    KYLIN_SDK_AVAILABLE = True
+except ImportError:
+    KYLIN_SDK_AVAILABLE = False
+    logging.warning("银河麒麟SDK不可用，本地搜索功能将受限")
 
 logger = logging.getLogger(__name__)
 
 class RAGEngine:
     """RAG引擎，结合检索和生成"""
     
-    def __init__(self, vector_store: VectorStore):
+    def __init__(self, vector_store: VectorStore, enable_local_search: bool = True):
         """
         初始化RAG引擎
 
         Args:
             vector_store: 向量存储实例
+            enable_local_search: 是否启用本地搜索功能
         """
         self.vector_store = vector_store
+        self.enable_local_search = enable_local_search and KYLIN_SDK_AVAILABLE
 
         # 硅基流动API配置
         self.api_key = "sk-owsayozifrzvaxuxvyvywmyzcceokwatdbolevdnfnbwlurp"
         self.api_base = "https://api.siliconflow.cn/v1"
         self.model = "deepseek-ai/DeepSeek-V3"
+
+        # 本地搜索配置
+        self.search_directories = [
+            "/home",  # 用户主目录
+            "/opt",   # 应用程序目录
+            "/usr/share/doc",  # 文档目录
+        ]
+
+        if self.enable_local_search:
+            try:
+                self.kylin_sdk = get_kylin_sdk()
+                logger.info("银河麒麟本地搜索功能已启用")
+            except Exception as e:
+                logger.warning(f"银河麒麟SDK初始化失败: {e}")
+                self.enable_local_search = False
+        else:
+            logger.info("本地搜索功能未启用")
         
         # 提示词模板
         self.system_prompt = """你是银河麒麟操作系统的智能助手，专门回答与麒麟系统相关的问题。
@@ -60,8 +88,8 @@ class RAGEngine:
         try:
             logger.info(f"开始处理问题: {question}")
             
-            # 1. 检索相关文档
-            search_results = self.vector_store.search(question, k=max_results)
+            # 1. 检索相关文档（结合向量搜索和本地搜索）
+            search_results = self._enhanced_search(question, max_results)
             
             if not search_results:
                 return {
@@ -221,3 +249,179 @@ class RAGEngine:
             sources.append(source_info)
         
         return sources
+
+    def _enhanced_search(self, question: str, max_results: int) -> List[Dict[str, Any]]:
+        """
+        增强搜索：结合向量搜索和本地文件搜索
+
+        Args:
+            question: 搜索问题
+            max_results: 最大结果数
+
+        Returns:
+            搜索结果列表
+        """
+        # 1. 向量搜索（主要方法）
+        vector_results = self.vector_store.search(question, k=max_results)
+
+        # 2. 本地文件搜索（补充方法）
+        local_results = []
+        if self.enable_local_search:
+            local_results = self._local_file_search(question, max_results // 2)
+
+        # 3. 合并和排序结果
+        all_results = vector_results + local_results
+
+        # 按分数排序并限制数量
+        all_results.sort(key=lambda x: x.get('score', 0.0), reverse=True)
+
+        return all_results[:max_results]
+
+    def _local_file_search(self, question: str, max_results: int) -> List[Dict[str, Any]]:
+        """
+        使用银河麒麟SDK进行本地文件搜索
+
+        Args:
+            question: 搜索问题
+            max_results: 最大结果数
+
+        Returns:
+            本地搜索结果列表
+        """
+        if not self.enable_local_search:
+            return []
+
+        try:
+            logger.info(f"开始本地文件搜索: {question}")
+
+            # 提取搜索关键词
+            keywords = self._extract_keywords(question)
+
+            local_results = []
+
+            for directory in self.search_directories:
+                if not os.path.exists(directory):
+                    continue
+
+                for keyword in keywords:
+                    try:
+                        # 使用SDK搜索文件
+                        file_paths = self.kylin_sdk.search.search_with_filter(
+                            directory=directory,
+                            term=keyword,
+                            file_type=FileType.DOCUMENT,  # 主要搜索文档类型
+                            file_size=FileSize.ALL,
+                            file_time=FileTime.ALL
+                        )
+
+                        # 处理搜索结果
+                        for file_path in file_paths[:5]:  # 限制每个关键词的结果数
+                            try:
+                                # 读取文件内容片段
+                                content_preview = self._read_file_preview(file_path)
+
+                                if content_preview:
+                                    result = {
+                                        'text': content_preview,
+                                        'score': 0.6,  # 本地搜索给予中等分数
+                                        'metadata': {
+                                            'source': os.path.basename(file_path),
+                                            'source_name': os.path.basename(file_path),
+                                            'chunk_id': 0,
+                                            'file_path': file_path,
+                                            'search_type': 'local_file',
+                                            'keyword': keyword
+                                        }
+                                    }
+                                    local_results.append(result)
+
+                            except Exception as file_error:
+                                logger.warning(f"读取文件失败 {file_path}: {file_error}")
+                                continue
+
+                    except Exception as search_error:
+                        logger.warning(f"搜索目录失败 {directory}: {search_error}")
+                        continue
+
+                # 限制总结果数
+                if len(local_results) >= max_results:
+                    break
+
+            logger.info(f"本地搜索完成，找到 {len(local_results)} 个结果")
+            return local_results[:max_results]
+
+        except Exception as e:
+            logger.error(f"本地文件搜索失败: {e}")
+            return []
+
+    def _extract_keywords(self, question: str) -> List[str]:
+        """
+        从问题中提取关键词
+
+        Args:
+            question: 用户问题
+
+        Returns:
+            关键词列表
+        """
+        # 简单的关键词提取
+        import re
+
+        # 移除标点符号，分割单词
+        words = re.findall(r'\b\w+\b', question.lower())
+
+        # 过滤停用词和短词
+        stop_words = {'的', '是', '在', '有', '和', '与', '或', '但', '如何', '什么', '怎么', '为什么'}
+        keywords = [word for word in words if len(word) > 1 and word not in stop_words]
+
+        # 返回前5个关键词
+        return keywords[:5]
+
+    def _read_file_preview(self, file_path: str, max_length: int = 500) -> str:
+        """
+        读取文件内容预览
+
+        Args:
+            file_path: 文件路径
+            max_length: 最大长度
+
+        Returns:
+            文件内容预览
+        """
+        try:
+            # 检查文件大小，避免读取过大文件
+            file_size = os.path.getsize(file_path)
+            if file_size > 10 * 1024 * 1024:  # 10MB
+                return ""
+
+            # 根据文件扩展名选择读取方式
+            ext = os.path.splitext(file_path)[1].lower()
+
+            if ext in ['.txt', '.md', '.log']:
+                # 文本文件
+                encodings = ['utf-8', 'gbk', 'gb2312', 'latin-1']
+                for encoding in encodings:
+                    try:
+                        with open(file_path, 'r', encoding=encoding) as f:
+                            content = f.read(max_length)
+                            return content
+                    except UnicodeDecodeError:
+                        continue
+
+            elif ext == '.pdf':
+                # PDF文件（简单处理）
+                try:
+                    from pypdf import PdfReader
+                    with open(file_path, 'rb') as f:
+                        reader = PdfReader(f)
+                        if len(reader.pages) > 0:
+                            text = reader.pages[0].extract_text()
+                            return text[:max_length]
+                except:
+                    pass
+
+            return ""
+
+        except Exception as e:
+            logger.warning(f"读取文件预览失败 {file_path}: {e}")
+            return ""

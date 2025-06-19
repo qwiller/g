@@ -19,6 +19,14 @@ from document_processor import DocumentProcessor
 from vector_store import VectorStore
 from rag_engine import RAGEngine
 
+# 导入银河麒麟SDK
+try:
+    from kylin_sdk_wrapper import get_kylin_sdk, KylinSDKError, SoundType
+    KYLIN_SDK_AVAILABLE = True
+except ImportError:
+    KYLIN_SDK_AVAILABLE = False
+    logging.warning("银河麒麟SDK不可用，部分功能将受限")
+
 # 配置日志
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -64,6 +72,30 @@ class ClearDataResponse(BaseModel):
     message: str
     cleared_files: int
     cleared_vectors: int
+
+class SDKInfoResponse(BaseModel):
+    sdk_available: bool
+    sdk_info: Dict[str, Any]
+    modules: Dict[str, bool]
+
+class OCRRequest(BaseModel):
+    image_path: str
+
+class OCRResponse(BaseModel):
+    success: bool
+    text: str
+    error: str = None
+
+class LocalSearchRequest(BaseModel):
+    query: str
+    directory: str = "/home"
+    max_results: int = 10
+
+class LocalSearchResponse(BaseModel):
+    success: bool
+    results: List[str]
+    count: int
+    error: str = None
 
 
 
@@ -160,7 +192,9 @@ async def get_status():
                 "python_version": "3.8+",
                 "platform": "银河麒麟操作系统",
                 "loaded_documents": loaded_documents,
-                "documents_summary": f"{len(loaded_documents)}个文档" if loaded_documents else "暂无文档"
+                "documents_summary": f"{len(loaded_documents)}个文档" if loaded_documents else "暂无文档",
+                "kylin_sdk_available": KYLIN_SDK_AVAILABLE,
+                "sdk_modules": _get_sdk_modules_status() if KYLIN_SDK_AVAILABLE else {}
             }
         )
         
@@ -199,6 +233,146 @@ async def clear_all_data():
     except Exception as e:
         logger.error(f"数据清空失败: {str(e)}")
         raise HTTPException(status_code=500, detail=f"数据清空失败: {str(e)}")
+
+def _get_sdk_modules_status() -> Dict[str, bool]:
+    """获取SDK模块状态"""
+    if not KYLIN_SDK_AVAILABLE:
+        return {}
+
+    try:
+        sdk = get_kylin_sdk()
+        return sdk.is_available()
+    except Exception as e:
+        logger.error(f"获取SDK状态失败: {e}")
+        return {}
+
+@app.get("/sdk-info", response_model=SDKInfoResponse)
+async def get_sdk_info():
+    """获取银河麒麟SDK信息"""
+    try:
+        if not KYLIN_SDK_AVAILABLE:
+            return SDKInfoResponse(
+                sdk_available=False,
+                sdk_info={"message": "银河麒麟SDK不可用"},
+                modules={}
+            )
+
+        sdk = get_kylin_sdk()
+        sdk_info = sdk.get_sdk_info()
+        modules_status = sdk.is_available()
+
+        return SDKInfoResponse(
+            sdk_available=True,
+            sdk_info=sdk_info,
+            modules=modules_status
+        )
+
+    except Exception as e:
+        logger.error(f"获取SDK信息失败: {str(e)}")
+        raise HTTPException(status_code=500, detail=f"获取SDK信息失败: {str(e)}")
+
+@app.post("/ocr", response_model=OCRResponse)
+async def ocr_extract_text(request: OCRRequest):
+    """OCR文字识别接口"""
+    try:
+        if not KYLIN_SDK_AVAILABLE:
+            return OCRResponse(
+                success=False,
+                text="",
+                error="银河麒麟SDK不可用"
+            )
+
+        if not os.path.exists(request.image_path):
+            return OCRResponse(
+                success=False,
+                text="",
+                error=f"图片文件不存在: {request.image_path}"
+            )
+
+        sdk = get_kylin_sdk()
+        text = sdk.ocr.extract_text_from_image(request.image_path)
+
+        return OCRResponse(
+            success=True,
+            text=text,
+            error=None
+        )
+
+    except Exception as e:
+        logger.error(f"OCR识别失败: {str(e)}")
+        return OCRResponse(
+            success=False,
+            text="",
+            error=str(e)
+        )
+
+@app.post("/local-search", response_model=LocalSearchResponse)
+async def local_file_search(request: LocalSearchRequest):
+    """本地文件搜索接口"""
+    try:
+        if not KYLIN_SDK_AVAILABLE:
+            return LocalSearchResponse(
+                success=False,
+                results=[],
+                count=0,
+                error="银河麒麟SDK不可用"
+            )
+
+        sdk = get_kylin_sdk()
+        results = sdk.search.search_by_term(
+            directory=request.directory,
+            term=request.query,
+            fuzzy=True
+        )
+
+        # 限制结果数量
+        limited_results = results[:request.max_results]
+
+        return LocalSearchResponse(
+            success=True,
+            results=limited_results,
+            count=len(limited_results),
+            error=None
+        )
+
+    except Exception as e:
+        logger.error(f"本地搜索失败: {str(e)}")
+        return LocalSearchResponse(
+            success=False,
+            results=[],
+            count=0,
+            error=str(e)
+        )
+
+@app.post("/play-sound/{sound_type}")
+async def play_system_sound(sound_type: str):
+    """播放系统音效接口"""
+    try:
+        if not KYLIN_SDK_AVAILABLE:
+            raise HTTPException(status_code=503, detail="银河麒麟SDK不可用")
+
+        # 音效类型映射
+        sound_map = {
+            "volume_change": SoundType.AUDIO_VOLUME_CHANGE,
+            "battery_low": SoundType.BATTERY_LOW,
+            "device_added": SoundType.DEVICE_ADDED,
+            "device_removed": SoundType.DEVICE_REMOVED,
+            "window_attention": SoundType.WINDOW_ATTENTION
+        }
+
+        if sound_type not in sound_map:
+            raise HTTPException(status_code=400, detail=f"不支持的音效类型: {sound_type}")
+
+        sdk = get_kylin_sdk()
+        sdk.sound.play_sound(sound_map[sound_type])
+
+        return {"message": f"音效播放成功: {sound_type}"}
+
+    except HTTPException:
+        raise
+    except Exception as e:
+        logger.error(f"音效播放失败: {str(e)}")
+        raise HTTPException(status_code=500, detail=f"音效播放失败: {str(e)}")
 
 if __name__ == "__main__":
     import uvicorn

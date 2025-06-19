@@ -1,0 +1,115 @@
+{
+  "服务器连接测试": {
+    "status": "PASS",
+    "details": {
+      "success": true
+    }
+  },
+  "SDK状态检查": {
+    "status": "PASS",
+    "details": {
+      "sdk_available": true,
+      "sdk_info": {
+        "name": "银河麒麟AI SDK",
+        "version": "1.0.0",
+        "modules": {
+          "ocr": {
+            "available": false,
+            "description": "OCR文字识别功能"
+          },
+          "search": {
+            "available": false,
+            "description": "本地文件搜索功能"
+          },
+          "sound": {
+            "available": false,
+            "description": "系统音效播放功能"
+          }
+        }
+      },
+      "modules": {
+        "ocr": false,
+        "search": false,
+        "sound": false
+      }
+    }
+  },
+  "系统状态API测试": {
+    "status": "PASS",
+    "details": {
+      "status": {
+        "status": "运行中",
+        "documents_count": 0,
+        "vector_count": 0,
+        "system_info": {
+          "python_version": "3.8+",
+          "platform": "银河麒麟操作系统",
+          "loaded_documents": [],
+          "documents_summary": "暂无文档",
+          "kylin_sdk_available": true,
+          "sdk_modules": {
+            "ocr": false,
+            "search": false,
+            "sound": false
+          }
+        }
+      },
+      "has_sdk_info": true,
+      "success": true
+    }
+  },
+  "OCR功能测试": {
+    "status": "PASS",
+    "details": {
+      "success": false,
+      "text_length": 0,
+      "has_text": false
+    }
+  },
+  "本地搜索功能测试": {
+    "status": "PASS",
+    "details": {
+      "success": false,
+      "results_count": 0,
+      "has_results": false
+    }
+  },
+  "文档上传测试": {
+    "status": "PASS",
+    "details": {
+      "success": true,
+      "filename": "test_doc.txt",
+      "chunks_count": 1
+    }
+  },
+  "增强问答测试": {
+    "status": "PASS",
+    "details": {
+      "success": true,
+      "answer_length": 424,
+      "sources_count": 1,
+      "confidence": 1.0,
+      "has_answer": true
+    }
+  },
+  "音效播放测试": {
+    "status": "PASS",
+    "details": {
+      "success": true,
+      "sound_results": {
+        "volume_change": true,
+        "device_added": true,
+        "window_attention": true
+      },
+      "successful_sounds": 3
+    }
+  },
+  "配置管理测试": {
+    "status": "PASS",
+    "details": {
+      "success": true,
+      "has_sdk_config": true,
+      "config_fields_present": true
+    }
+  }
+}

@@ -10,22 +10,47 @@ import logging
 from typing import List, Dict, Any
 from pypdf import PdfReader
 import markdown
+import mimetypes
+from PIL import Image
+
+# 导入银河麒麟SDK
+try:
+    from .kylin_sdk_wrapper import get_kylin_sdk, KylinSDKError
+    KYLIN_SDK_AVAILABLE = True
+except ImportError:
+    KYLIN_SDK_AVAILABLE = False
+    logging.warning("银河麒麟SDK不可用，将使用基础功能")
 
 logger = logging.getLogger(__name__)
 
 class DocumentProcessor:
-    """文档处理器"""
-    
-    def __init__(self, chunk_size: int = 500, chunk_overlap: int = 50):
+    """文档处理器 - 支持PDF、Markdown、文本文档和图片OCR"""
+
+    def __init__(self, chunk_size: int = 500, chunk_overlap: int = 50, enable_ocr: bool = True):
         """
         初始化文档处理器
-        
+
         Args:
             chunk_size: 文档块大小（字符数）
             chunk_overlap: 块之间的重叠字符数
+            enable_ocr: 是否启用OCR功能
         """
         self.chunk_size = chunk_size
         self.chunk_overlap = chunk_overlap
+        self.enable_ocr = enable_ocr and KYLIN_SDK_AVAILABLE
+
+        # 支持的图片格式
+        self.image_extensions = {'.jpg', '.jpeg', '.png', '.gif', '.bmp', '.tiff', '.webp'}
+
+        if self.enable_ocr:
+            try:
+                self.kylin_sdk = get_kylin_sdk()
+                logger.info("银河麒麟SDK OCR功能已启用")
+            except Exception as e:
+                logger.warning(f"银河麒麟SDK初始化失败: {e}")
+                self.enable_ocr = False
+        else:
+            logger.info("OCR功能未启用")
         
     def process_document(self, file_path: str) -> List[Dict[str, Any]]:
         """
@@ -40,16 +65,18 @@ class DocumentProcessor:
         try:
             # 根据文件扩展名选择处理方法
             ext = os.path.splitext(file_path)[1].lower()
-            
+
             if ext == '.pdf':
                 text = self._extract_pdf_text(file_path)
             elif ext in ['.md', '.markdown']:
                 text = self._extract_markdown_text(file_path)
             elif ext == '.txt':
                 text = self._extract_text_file(file_path)
+            elif ext in self.image_extensions:
+                text = self._extract_image_text(file_path)
             else:
                 raise ValueError(f"不支持的文件格式: {ext}")
-            
+
             # 清洗文本
             cleaned_text = self._clean_text(text)
             
@@ -156,6 +183,80 @@ class DocumentProcessor:
         except Exception as e:
             logger.error(f"文本文件读取失败: {str(e)}")
             raise
+
+    def _extract_image_text(self, file_path: str) -> str:
+        """使用OCR提取图片中的文字"""
+        if not self.enable_ocr:
+            logger.warning("OCR功能未启用，无法处理图片文件")
+            raise ValueError("OCR功能未启用，无法处理图片文件")
+
+        try:
+            # 检查文件是否存在
+            if not os.path.exists(file_path):
+                raise FileNotFoundError(f"图片文件不存在: {file_path}")
+
+            # 检查文件是否为有效图片
+            try:
+                with Image.open(file_path) as img:
+                    # 验证图片可以正常打开
+                    img.verify()
+            except Exception as img_error:
+                raise ValueError(f"无效的图片文件: {img_error}")
+
+            logger.info(f"开始OCR文字识别: {file_path}")
+
+            # 使用银河麒麟SDK进行OCR识别
+            text = self.kylin_sdk.ocr.extract_text_from_image(file_path)
+
+            if not text.strip():
+                logger.warning(f"图片中未识别到文字: {file_path}")
+                return "图片中未识别到文字内容"
+
+            logger.info(f"OCR识别成功，提取文字 {len(text)} 个字符")
+            return text
+
+        except KylinSDKError as sdk_error:
+            logger.error(f"OCR识别失败: {sdk_error}")
+            raise ValueError(f"OCR识别失败: {sdk_error}")
+        except Exception as e:
+            logger.error(f"图片文字提取失败: {str(e)}")
+            raise
+
+    def get_supported_formats(self) -> Dict[str, List[str]]:
+        """
+        获取支持的文件格式
+
+        Returns:
+            Dict: 按类型分组的支持格式列表
+        """
+        formats = {
+            'text': ['.txt'],
+            'markdown': ['.md', '.markdown'],
+            'pdf': ['.pdf']
+        }
+
+        if self.enable_ocr:
+            formats['image'] = list(self.image_extensions)
+
+        return formats
+
+    def is_supported_format(self, file_path: str) -> bool:
+        """
+        检查文件格式是否支持
+
+        Args:
+            file_path: 文件路径
+
+        Returns:
+            bool: 是否支持该格式
+        """
+        ext = os.path.splitext(file_path)[1].lower()
+
+        supported_exts = {'.pdf', '.md', '.markdown', '.txt'}
+        if self.enable_ocr:
+            supported_exts.update(self.image_extensions)
+
+        return ext in supported_exts
     
     def _clean_text(self, text: str) -> str:
         """清洗文本"""

@@ -477,6 +477,92 @@
 
 
 
+        /* SDK功能样式 */
+        .sdk-controls {
+            margin-bottom: 20px;
+        }
+
+        .sdk-status {
+            padding: 10px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            border-left: 4px solid #007bff;
+        }
+
+        .sdk-status.available {
+            border-left-color: #28a745;
+            background: #d4edda;
+        }
+
+        .sdk-status.unavailable {
+            border-left-color: #dc3545;
+            background: #f8d7da;
+        }
+
+        .local-search-section {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+
+        .local-search-section h4 {
+            margin: 0 0 10px 0;
+            color: #495057;
+        }
+
+        .search-controls {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .search-input {
+            flex: 1;
+            padding: 8px 12px;
+            border: 1px solid #ced4da;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        .search-btn {
+            padding: 8px 16px;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .search-btn:hover {
+            background: #0056b3;
+        }
+
+        .search-results {
+            max-height: 200px;
+            overflow-y: auto;
+            border: 1px solid #dee2e6;
+            border-radius: 4px;
+            background: white;
+        }
+
+        .search-result-item {
+            padding: 8px 12px;
+            border-bottom: 1px solid #dee2e6;
+            cursor: pointer;
+            font-size: 13px;
+        }
+
+        .search-result-item:hover {
+            background: #f8f9fa;
+        }
+
+        .search-result-item:last-child {
+            border-bottom: none;
+        }
+
         @media (max-width: 768px) {
             .main-content {
                 grid-template-columns: 1fr;
@@ -487,6 +573,14 @@
             }
 
             .question-input {
+                margin-bottom: 10px;
+            }
+
+            .search-controls {
+                flex-direction: column;
+            }
+
+            .search-input {
                 margin-bottom: 10px;
             }
         }
@@ -507,13 +601,31 @@
                 <div class="upload-area" id="uploadArea">
                     <div>
                         <p><span class="icon-fallback">📄</span> 拖拽文件到此处或点击上传</p>
-                        <p style="font-size: 0.9em; color: #666; margin-top: 10px;">
+                        <p style="font-size: 0.9em; color: #666; margin-top: 10px;" id="supportedFormats">
                             支持 PDF、Markdown、文本文件
                         </p>
                         <button class="upload-btn" onclick="document.getElementById('fileInput').click()">
                             选择文件
                         </button>
                         <input type="file" id="fileInput" class="file-input" accept=".pdf,.md,.txt" multiple>
+                    </div>
+                </div>
+
+                <!-- SDK功能区域 -->
+                <div class="section-title"><span class="icon-fallback">🔧</span> AI功能</div>
+                <div class="sdk-controls" id="sdkControls">
+                    <div class="sdk-status" id="sdkStatus">
+                        <p>正在检查SDK状态...</p>
+                    </div>
+
+                    <!-- 本地搜索功能 -->
+                    <div class="local-search-section" id="localSearchSection" style="display: none;">
+                        <h4><span class="icon-fallback">🔍</span> 本地文件搜索</h4>
+                        <div class="search-controls">
+                            <input type="text" id="localSearchInput" placeholder="输入搜索关键词..." class="search-input">
+                            <button onclick="performLocalSearch()" class="search-btn">搜索</button>
+                        </div>
+                        <div class="search-results" id="localSearchResults"></div>
                     </div>
                 </div>
 
@@ -584,6 +696,7 @@
         function initializeApp() {
             setupEventListeners();
             loadSystemStatus();
+            loadSDKInfo();
 
             // 检查浏览器支持
             if (!('speechSynthesis' in window)) {
@@ -1044,6 +1157,131 @@
 
 
 
+
+        // SDK功能相关函数
+        async function loadSDKInfo() {
+            try {
+                const response = await fetch('/sdk-info');
+                const sdkInfo = await response.json();
+
+                updateSDKStatus(sdkInfo);
+                updateSupportedFormats(sdkInfo);
+
+            } catch (error) {
+                console.error('加载SDK信息失败:', error);
+                updateSDKStatus({ sdk_available: false, modules: {} });
+            }
+        }
+
+        function updateSDKStatus(sdkInfo) {
+            const statusDiv = document.getElementById('sdkStatus');
+            const localSearchSection = document.getElementById('localSearchSection');
+
+            if (sdkInfo.sdk_available) {
+                statusDiv.className = 'sdk-status available';
+                statusDiv.innerHTML = `
+                    <p><strong>✅ 银河麒麟AI SDK已启用</strong></p>
+                    <p style="font-size: 0.9em; margin: 5px 0 0 0;">
+                        OCR: ${sdkInfo.modules.ocr ? '✅' : '❌'} |
+                        搜索: ${sdkInfo.modules.search ? '✅' : '❌'} |
+                        音效: ${sdkInfo.modules.sound ? '✅' : '❌'}
+                    </p>
+                `;
+
+                // 显示本地搜索功能
+                if (sdkInfo.modules.search) {
+                    localSearchSection.style.display = 'block';
+                }
+            } else {
+                statusDiv.className = 'sdk-status unavailable';
+                statusDiv.innerHTML = `
+                    <p><strong>❌ 银河麒麟AI SDK不可用</strong></p>
+                    <p style="font-size: 0.9em; margin: 5px 0 0 0;">使用基础功能模式</p>
+                `;
+                localSearchSection.style.display = 'none';
+            }
+        }
+
+        function updateSupportedFormats(sdkInfo) {
+            const formatsElement = document.getElementById('supportedFormats');
+            const fileInput = document.getElementById('fileInput');
+
+            let formats = 'PDF、Markdown、文本文件';
+            let accept = '.pdf,.md,.txt';
+
+            if (sdkInfo.sdk_available && sdkInfo.modules.ocr) {
+                formats += '、图片文件';
+                accept += ',.jpg,.jpeg,.png,.gif,.bmp,.tiff,.webp';
+            }
+
+            formatsElement.textContent = `支持 ${formats}`;
+            fileInput.setAttribute('accept', accept);
+        }
+
+        async function performLocalSearch() {
+            const searchInput = document.getElementById('localSearchInput');
+            const resultsDiv = document.getElementById('localSearchResults');
+            const query = searchInput.value.trim();
+
+            if (!query) {
+                alert('请输入搜索关键词');
+                return;
+            }
+
+            resultsDiv.innerHTML = '<div class="search-result-item">搜索中...</div>';
+
+            try {
+                const response = await fetch('/local-search', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        query: query,
+                        directory: '/home',
+                        max_results: 20
+                    })
+                });
+
+                const result = await response.json();
+
+                if (result.success && result.results.length > 0) {
+                    resultsDiv.innerHTML = result.results.map(filePath => `
+                        <div class="search-result-item" onclick="selectSearchResult('${filePath}')">
+                            ${filePath}
+                        </div>
+                    `).join('');
+                } else {
+                    resultsDiv.innerHTML = `
+                        <div class="search-result-item">
+                            ${result.error || '未找到相关文件'}
+                        </div>
+                    `;
+                }
+
+            } catch (error) {
+                console.error('本地搜索失败:', error);
+                resultsDiv.innerHTML = '<div class="search-result-item">搜索失败</div>';
+            }
+        }
+
+        function selectSearchResult(filePath) {
+            // 可以在这里添加选择文件后的处理逻辑
+            console.log('选择文件:', filePath);
+            addMessage('system', `选择了本地文件: ${filePath}`);
+        }
+
+        // 本地搜索输入框回车事件
+        document.addEventListener('DOMContentLoaded', function () {
+            const searchInput = document.getElementById('localSearchInput');
+            if (searchInput) {
+                searchInput.addEventListener('keypress', function (e) {
+                    if (e.key === 'Enter') {
+                        performLocalSearch();
+                    }
+                });
+            }
+        });
 
         // 定期更新系统状态
         setInterval(loadSystemStatus, 30000);
