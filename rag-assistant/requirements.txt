@@ -1,0 +1,9 @@
+fastapi
+uvicorn
+python-multipart
+pypdf
+pycryptodome
+markdown
+numpy
+requests
+python-dotenv

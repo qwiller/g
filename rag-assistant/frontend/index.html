@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>银河麒麟智能问答助手</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Microsoft YaHei', Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 30px;
+            padding: 30px;
+        }
+
+        .sidebar {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 25px;
+        }
+
+        .chat-area {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            border: 1px solid #e9ecef;
+        }
+
+        .section-title {
+            font-size: 1.3em;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #2c3e50;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+
+        .upload-area {
+            border: 2px dashed #3498db;
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+            margin-bottom: 25px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .upload-area:hover {
+            border-color: #2980b9;
+            background: rgba(52, 152, 219, 0.05);
+        }
+
+        .upload-area.dragover {
+            border-color: #27ae60;
+            background: rgba(39, 174, 96, 0.1);
+        }
+
+        .file-input {
+            display: none;
+        }
+
+        .upload-btn {
+            background: #3498db;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: all 0.3s ease;
+        }
+
+        .upload-btn:hover {
+            background: #2980b9;
+            transform: translateY(-2px);
+        }
+
+        .status-info {
+            background: #e8f5e8;
+            border: 1px solid #27ae60;
+            border-radius: 8px;
+            padding: 15px;
+            margin-top: 20px;
+        }
+
+        .chat-history {
+            height: 400px;
+            overflow-y: auto;
+            border: 1px solid #dee2e6;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            background: #fafafa;
+        }
+
+        .message {
+            margin-bottom: 20px;
+            padding: 15px;
+            border-radius: 10px;
+            position: relative;
+        }
+
+        .message.user {
+            background: #e3f2fd;
+            border-left: 4px solid #2196f3;
+        }
+
+        .message.assistant {
+            background: #f3e5f5;
+            border-left: 4px solid #9c27b0;
+        }
+
+        .message.system {
+            background: #fff3e0;
+            border-left: 4px solid #ff9800;
+        }
+
+        .message-header {
+            font-weight: bold;
+            margin-bottom: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .message-content {
+            line-height: 1.6;
+            white-space: pre-wrap;
+        }
+
+        .voice-controls {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .voice-btn {
+            background: #4caf50;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.9em;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .voice-btn:hover {
+            background: #45a049;
+            transform: translateY(-1px);
+        }
+
+        .voice-btn:disabled {
+            background: #cccccc;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .voice-btn.pause {
+            background: #ff9800;
+        }
+
+        .voice-btn.pause:hover {
+            background: #f57c00;
+        }
+
+        .voice-btn.resume {
+            background: #2196f3;
+        }
+
+        .voice-btn.resume:hover {
+            background: #1976d2;
+        }
+
+        .input-area {
+            display: flex;
+            gap: 15px;
+            align-items: flex-end;
+        }
+
+        .question-input {
+            flex: 1;
+            padding: 15px;
+            border: 2px solid #dee2e6;
+            border-radius: 10px;
+            font-size: 1em;
+            resize: vertical;
+            min-height: 50px;
+            max-height: 150px;
+        }
+
+        .question-input:focus {
+            outline: none;
+            border-color: #3498db;
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+        }
+
+        .send-btn {
+            background: #27ae60;
+            color: white;
+            border: none;
+            padding: 15px 25px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .send-btn:hover {
+            background: #229954;
+            transform: translateY(-2px);
+        }
+
+        .send-btn:disabled {
+            background: #95a5a6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .voice-input-btn {
+            background: #e74c3c;
+            color: white;
+            border: none;
+            padding: 15px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 1.2em;
+            transition: all 0.3s ease;
+        }
+
+        .voice-input-btn:hover {
+            background: #c0392b;
+        }
+
+        .voice-input-btn.recording {
+            background: #e74c3c;
+            animation: pulse 1s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .sources {
+            margin-top: 15px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-left: 4px solid #6c757d;
+        }
+
+        .sources h4 {
+            margin-bottom: 10px;
+            color: #495057;
+        }
+
+        .source-item {
+            margin-bottom: 8px;
+            padding: 8px;
+            background: white;
+            border-radius: 5px;
+            font-size: 0.9em;
+        }
+
+        .confidence {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.8em;
+            font-weight: bold;
+            margin-left: 10px;
+        }
+
+        .confidence.high { background: #d4edda; color: #155724; }
+        .confidence.medium { background: #fff3cd; color: #856404; }
+        .confidence.low { background: #f8d7da; color: #721c24; }
+
+        @media (max-width: 768px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .input-area {
+                flex-direction: column;
+            }
+            
+            .question-input {
+                margin-bottom: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🤖 银河麒麟智能问答助手</h1>
+            <p>基于RAG技术的智能文档问答系统</p>
+        </div>
+
+        <div class="main-content">
+            <div class="sidebar">
+                <div class="section-title">📁 文档管理</div>
+                
+                <div class="upload-area" id="uploadArea">
+                    <div>
+                        <p>📄 拖拽文件到此处或点击上传</p>
+                        <p style="font-size: 0.9em; color: #666; margin-top: 10px;">
+                            支持 PDF、Markdown、文本文件
+                        </p>
+                        <button class="upload-btn" onclick="document.getElementById('fileInput').click()">
+                            选择文件
+                        </button>
+                        <input type="file" id="fileInput" class="file-input" accept=".pdf,.md,.txt" multiple>
+                    </div>
+                </div>
+
+                <div class="section-title">📊 系统状态</div>
+                <div class="status-info" id="statusInfo">
+                    <p>正在加载状态...</p>
+                </div>
+            </div>
+
+            <div class="chat-area">
+                <div class="section-title">💬 智能问答</div>
+                
+                <div class="chat-history" id="chatHistory">
+                    <div class="message system">
+                        <div class="message-header">
+                            <span>🤖 系统</span>
+                        </div>
+                        <div class="message-content">欢迎使用银河麒麟智能问答助手！请先上传相关文档，然后我就可以基于文档内容回答您的问题了。</div>
+                    </div>
+                </div>
+
+                <div class="input-area">
+                    <textarea 
+                        id="questionInput" 
+                        class="question-input" 
+                        placeholder="请输入您的问题..."
+                        rows="2"
+                    ></textarea>
+                    <button id="voiceInputBtn" class="voice-input-btn" title="语音输入">🎤</button>
+                    <button id="sendBtn" class="send-btn">发送</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 全局变量
+        let currentSpeech = null;
+        let speechState = 'stopped'; // 'stopped', 'playing', 'paused'
+        let isRecording = false;
+        let recognition = null;
+
+        // 初始化
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeApp();
+        });
+
+        function initializeApp() {
+            setupEventListeners();
+            loadSystemStatus();
+            
+            // 检查浏览器支持
+            if (!('speechSynthesis' in window)) {
+                console.warn('浏览器不支持语音合成');
+            }
+            
+            if (!('webkitSpeechRecognition' in window) && !('SpeechRecognition' in window)) {
+                document.getElementById('voiceInputBtn').style.display = 'none';
+                console.warn('浏览器不支持语音识别');
+            }
+        }
+
+        function setupEventListeners() {
+            // 文件上传
+            const fileInput = document.getElementById('fileInput');
+            const uploadArea = document.getElementById('uploadArea');
+            
+            fileInput.addEventListener('change', handleFileUpload);
+            
+            // 拖拽上传
+            uploadArea.addEventListener('dragover', handleDragOver);
+            uploadArea.addEventListener('dragleave', handleDragLeave);
+            uploadArea.addEventListener('drop', handleFileDrop);
+            
+            // 问答
+            const sendBtn = document.getElementById('sendBtn');
+            const questionInput = document.getElementById('questionInput');
+            
+            sendBtn.addEventListener('click', sendQuestion);
+            questionInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter' && !e.shiftKey) {
+                    e.preventDefault();
+                    sendQuestion();
+                }
+            });
+            
+            // 语音输入
+            const voiceInputBtn = document.getElementById('voiceInputBtn');
+            voiceInputBtn.addEventListener('click', toggleVoiceInput);
+        }
+
+        // 文件上传处理
+        function handleFileUpload(event) {
+            const files = event.target.files;
+            for (let file of files) {
+                uploadFile(file);
+            }
+        }
+
+        function handleDragOver(event) {
+            event.preventDefault();
+            event.currentTarget.classList.add('dragover');
+        }
+
+        function handleDragLeave(event) {
+            event.currentTarget.classList.remove('dragover');
+        }
+
+        function handleFileDrop(event) {
+            event.preventDefault();
+            event.currentTarget.classList.remove('dragover');
+            
+            const files = event.dataTransfer.files;
+            for (let file of files) {
+                uploadFile(file);
+            }
+        }
+
+        async function uploadFile(file) {
+            const formData = new FormData();
+            formData.append('file', file);
+            
+            addMessage('system', `正在上传文件: ${file.name}...`);
+            
+            try {
+                const response = await fetch('/upload', {
+                    method: 'POST',
+                    body: formData
+                });
+                
+                const result = await response.json();
+                
+                if (response.ok) {
+                    addMessage('system', `✅ 文件上传成功！\n文件名: ${result.filename}\n分块数量: ${result.chunks_count}\n文件大小: ${result.file_size} 字节`);
+                    loadSystemStatus();
+                } else {
+                    addMessage('system', `❌ 文件上传失败: ${result.detail}`);
+                }
+            } catch (error) {
+                addMessage('system', `❌ 上传异常: ${error.message}`);
+            }
+        }
+
+        // 系统状态
+        async function loadSystemStatus() {
+            try {
+                const response = await fetch('/status');
+                const status = await response.json();
+                
+                const statusInfo = document.getElementById('statusInfo');
+                statusInfo.innerHTML = `
+                    <p><strong>状态:</strong> ${status.status}</p>
+                    <p><strong>文档数量:</strong> ${status.documents_count}</p>
+                    <p><strong>向量数量:</strong> ${status.vector_count}</p>
+                    <p><strong>平台:</strong> ${status.system_info.platform}</p>
+                    <p><strong>AI SDK:</strong> ${status.system_info.ai_sdk}</p>
+                `;
+            } catch (error) {
+                const statusInfo = document.getElementById('statusInfo');
+                statusInfo.innerHTML = `<p style="color: red;">❌ 无法获取系统状态</p>`;
+            }
+        }
+
+        // 问答功能
+        async function sendQuestion() {
+            const questionInput = document.getElementById('questionInput');
+            const question = questionInput.value.trim();
+            
+            if (!question) return;
+            
+            questionInput.value = '';
+            addMessage('user', question);
+            
+            const sendBtn = document.getElementById('sendBtn');
+            sendBtn.disabled = true;
+            sendBtn.textContent = '思考中...';
+            
+            try {
+                const response = await fetch('/ask', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ question: question })
+                });
+                
+                const result = await response.json();
+                
+                if (response.ok) {
+                    addMessage('assistant', result.answer, result.sources, result.confidence);
+                } else {
+                    addMessage('system', `❌ 问答失败: ${result.detail}`);
+                }
+            } catch (error) {
+                addMessage('system', `❌ 问答异常: ${error.message}`);
+            } finally {
+                sendBtn.disabled = false;
+                sendBtn.textContent = '发送';
+            }
+        }
+
+        // 消息显示
+        function addMessage(type, content, sources = null, confidence = null) {
+            const chatHistory = document.getElementById('chatHistory');
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${type}`;
+            
+            let icon = '';
+            let title = '';
+            switch (type) {
+                case 'user': icon = '🤔'; title = '用户'; break;
+                case 'assistant': icon = '🤖'; title = '助手'; break;
+                case 'system': icon = '📢'; title = '系统'; break;
+            }
+            
+            let confidenceHtml = '';
+            if (confidence !== null) {
+                const confidenceClass = confidence >= 0.7 ? 'high' : confidence >= 0.4 ? 'medium' : 'low';
+                confidenceHtml = `<span class="confidence ${confidenceClass}">置信度: ${(confidence * 100).toFixed(1)}%</span>`;
+            }
+            
+            let sourcesHtml = '';
+            if (sources && sources.length > 0) {
+                sourcesHtml = `
+                    <div class="sources">
+                        <h4>📚 参考来源 (${sources.length}个):</h4>
+                        ${sources.map((source, index) => `
+                            <div class="source-item">
+                                <strong>来源 ${index + 1}:</strong> ${source.source_name} 
+                                <span style="color: #666;">(相似度: ${(source.score * 33.33).toFixed(1)}%)</span>
+                                <br>
+                                <span style="font-size: 0.85em; color: #666;">${source.text_preview}</span>
+                            </div>
+                        `).join('')}
+                    </div>
+                `;
+            }
+            
+            // 语音控制按钮（仅对助手回答显示）
+            let voiceControlsHtml = '';
+            if (type === 'assistant') {
+                const messageId = 'msg_' + Date.now();
+                voiceControlsHtml = `
+                    <div class="voice-controls">
+                        <button class="voice-btn" onclick="speakText('${messageId}', this)">
+                            🔊 播放语音
+                        </button>
+                        <button class="voice-btn pause" id="pauseBtn_${messageId}" onclick="pauseSpeech('${messageId}')" style="display: none;">
+                            ⏸️ 暂停
+                        </button>
+                        <button class="voice-btn resume" id="resumeBtn_${messageId}" onclick="resumeSpeech('${messageId}')" style="display: none;">
+                            ▶️ 继续
+                        </button>
+                    </div>
+                `;
+                messageDiv.setAttribute('data-message-id', messageId);
+            }
+            
+            messageDiv.innerHTML = `
+                <div class="message-header">
+                    <span>${icon} ${title}</span>
+                    ${confidenceHtml}
+                </div>
+                <div class="message-content" id="${type === 'assistant' ? 'msg_' + Date.now() : ''}">${content}</div>
+                ${sourcesHtml}
+                ${voiceControlsHtml}
+            `;
+            
+            chatHistory.appendChild(messageDiv);
+            chatHistory.scrollTop = chatHistory.scrollHeight;
+        }
+
+        // 语音播放功能
+        function speakText(messageId, button) {
+            // 停止当前播放的语音
+            if (currentSpeech) {
+                speechSynthesis.cancel();
+                resetAllVoiceButtons();
+            }
+            
+            const messageElement = document.querySelector(`[data-message-id="${messageId}"] .message-content`);
+            if (!messageElement) return;
+            
+            const text = messageElement.textContent;
+            
+            if ('speechSynthesis' in window) {
+                currentSpeech = new SpeechSynthesisUtterance(text);
+                
+                // 设置语音参数
+                currentSpeech.lang = 'zh-CN';
+                currentSpeech.rate = 0.9;
+                currentSpeech.pitch = 1;
+                currentSpeech.volume = 1;
+                
+                // 语音事件处理
+                currentSpeech.onstart = function() {
+                    speechState = 'playing';
+                    button.style.display = 'none';
+                    document.getElementById(`pauseBtn_${messageId}`).style.display = 'inline-flex';
+                    document.getElementById(`resumeBtn_${messageId}`).style.display = 'none';
+                };
+                
+                currentSpeech.onend = function() {
+                    speechState = 'stopped';
+                    resetVoiceButtons(messageId);
+                    currentSpeech = null;
+                };
+                
+                currentSpeech.onerror = function(event) {
+                    console.error('语音播放错误:', event.error);
+                    speechState = 'stopped';
+                    resetVoiceButtons(messageId);
+                    currentSpeech = null;
+                };
+                
+                // 开始播放
+                speechSynthesis.speak(currentSpeech);
+            } else {
+                alert('您的浏览器不支持语音播放功能');
+            }
+        }
+
+        function pauseSpeech(messageId) {
+            if (speechSynthesis.speaking && !speechSynthesis.paused) {
+                speechSynthesis.pause();
+                speechState = 'paused';
+                
+                document.getElementById(`pauseBtn_${messageId}`).style.display = 'none';
+                document.getElementById(`resumeBtn_${messageId}`).style.display = 'inline-flex';
+            }
+        }
+
+        function resumeSpeech(messageId) {
+            if (speechSynthesis.paused) {
+                speechSynthesis.resume();
+                speechState = 'playing';
+                
+                document.getElementById(`pauseBtn_${messageId}`).style.display = 'inline-flex';
+                document.getElementById(`resumeBtn_${messageId}`).style.display = 'none';
+            }
+        }
+
+        function resetVoiceButtons(messageId) {
+            const playBtn = document.querySelector(`[data-message-id="${messageId}"] .voice-btn:not(.pause):not(.resume)`);
+            const pauseBtn = document.getElementById(`pauseBtn_${messageId}`);
+            const resumeBtn = document.getElementById(`resumeBtn_${messageId}`);
+            
+            if (playBtn) playBtn.style.display = 'inline-flex';
+            if (pauseBtn) pauseBtn.style.display = 'none';
+            if (resumeBtn) resumeBtn.style.display = 'none';
+        }
+
+        function resetAllVoiceButtons() {
+            document.querySelectorAll('.voice-btn:not(.pause):not(.resume)').forEach(btn => {
+                btn.style.display = 'inline-flex';
+            });
+            document.querySelectorAll('.voice-btn.pause, .voice-btn.resume').forEach(btn => {
+                btn.style.display = 'none';
+            });
+        }
+
+        // 语音输入功能
+        function toggleVoiceInput() {
+            if (!isRecording) {
+                startVoiceInput();
+            } else {
+                stopVoiceInput();
+            }
+        }
+
+        function startVoiceInput() {
+            if (!('webkitSpeechRecognition' in window) && !('SpeechRecognition' in window)) {
+                alert('您的浏览器不支持语音识别功能');
+                return;
+            }
+            
+            const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+            recognition = new SpeechRecognition();
+            
+            recognition.lang = 'zh-CN';
+            recognition.continuous = false;
+            recognition.interimResults = false;
+            
+            recognition.onstart = function() {
+                isRecording = true;
+                const voiceBtn = document.getElementById('voiceInputBtn');
+                voiceBtn.classList.add('recording');
+                voiceBtn.title = '点击停止录音';
+            };
+            
+            recognition.onresult = function(event) {
+                const transcript = event.results[0][0].transcript;
+                document.getElementById('questionInput').value = transcript;
+            };
+            
+            recognition.onerror = function(event) {
+                console.error('语音识别错误:', event.error);
+                stopVoiceInput();
+            };
+            
+            recognition.onend = function() {
+                stopVoiceInput();
+            };
+            
+            recognition.start();
+        }
+
+        function stopVoiceInput() {
+            if (recognition) {
+                recognition.stop();
+            }
+            
+            isRecording = false;
+            const voiceBtn = document.getElementById('voiceInputBtn');
+            voiceBtn.classList.remove('recording');
+            voiceBtn.title = '语音输入';
+        }
+
+        // 定期更新系统状态
+        setInterval(loadSystemStatus, 30000);
+    </script>
+</body>
+</html>

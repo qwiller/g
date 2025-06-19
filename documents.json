@@ -1,0 +1,1118 @@
+[
+  {
+    "text": "银河麒麟操作系统简介 概述 银河麒麟操作系统是中国自主研发的操作系统基于Linux内核开发专为国产化信息系统设计该系统具有高安全性高可靠性和良好的兼容性广泛应用于政府军队金融电信等重要领域 主要特点 1. 安全性 强制访问控制采用多级安全策略确保系统资源的安全访问 安全审计完整的操作日志记录和审计功能 入侵检测实时监控系统异常行为 病毒防护内置防病毒引擎提供实时保护 2. 稳定性 内核优化针对国产硬件平台进行深度优化 容错机制完善的错误处理和恢复机制 负载均衡智能的资源调度和负载分配 高可用性支持集群部署和故障转移 3. 兼容性 硬件兼容支持多种国产CPU架构 龙芯Loongson 飞腾Phytium 海光Hygon 兆芯Zhaoxin 软件兼容兼容主流Linux应用程序 标准支持遵循国际和国内相关标准 系统架构 内核层 基于Linux内核版本4.",
+    "metadata": {
+      "source": "kylin_system_intro.md",
+      "chunk_id": 0,
+      "total_chunks": 5,
+      "file_type": ".md",
+      "chunk_size": 379,
+      "source_name": "kylin_system_intro.md",
+      "doc_id": 0
+    }
+  },
+  {
+    "text": "程序接口 开发工具链 运行时环境 应用层 办公软件套件 开发工具 系统管理工具 第三方应用 安装要求 最低硬件要求 CPU1GHz以上处理器 内存2GB RAM 存储20GB可用磁盘空间 显卡支持1024x768分辨率 推荐硬件配置 CPU双核2GHz以上处理器 内存4GB RAM或更多 存储50GB可用磁盘空间 显卡独立显卡支持硬件加速 安装步骤 1. 准备安装介质 下载官方ISO镜像文件 制作启动U盘或刻录安装光盘 验证镜像文件完整性 2. 系统安装 从安装介质启动计算机 选择安装语言和键盘布局 配置网络连接可选 分区和格式化硬盘 选择安装组件 设置用户账户和密码 完成安装并重启 3.",
+    "metadata": {
+      "source": "kylin_system_intro.md",
+      "chunk_id": 1,
+      "total_chunks": 5,
+      "file_type": ".md",
+      "chunk_size": 298,
+      "source_name": "kylin_system_intro.md",
+      "doc_id": 1
+    }
+  },
+  {
+    "text": "sudo apt update 安装软件包 sudo apt install package-name 卸载软件包 sudo apt remove package-name 系统升级 sudo apt upgrade  服务管理 bash 启动服务 sudo systemctl start service-name 停止服务 sudo systemctl stop service-name 重启服务 sudo systemctl restart service-name 查看服务状态 sudo systemctl status service-name  网络配置 有线网络 打开网络设置 选择有线连接 配置IP地址自动或手动 设置DNS服务器 应用配置 无线网络 启用无线网卡 扫描可用网络 选择目标网络 输入密码 连接网络 安全配置 防火墙设置 bash 启用防火墙 sudo ufw enable 允许特定端口 sudo ufw allow 22tcp 拒绝特定端口 sudo ufw deny 23tcp 查看防火墙状态 sudo ufw status  用户权限管理 使用sudo进",
+    "metadata": {
+      "source": "kylin_system_intro.md",
+      "chunk_id": 2,
+      "total_chunks": 5,
+      "file_type": ".md",
+      "chunk_size": 499,
+      "source_name": "kylin_system_intro.md",
+      "doc_id": 2
+    }
+  },
+  {
+    "text": "行权限提升 配置用户组权限 设置文件和目录权限 定期审查用户权限 常见问题 Q: 如何重置root密码 A: 在GRUB启动菜单中选择恢复模式进入单用户模式后使用passwd命令重置密码 Q: 系统启动缓慢怎么办 A: 检查启动服务禁用不必要的自启动程序清理系统缓存 Q: 如何安装第三方软件 A: 可以通过软件包管理器源码编译或使用AppImage等方式安装 Q: 网络连接不稳定如何解决 A: 检查网络驱动程序更新网卡固件调整网络配置参数 技术支持 官方资源 官方网站http:www.kylinos.cn 技术文档http:docs.kylinos.cn 社区论坛http:forum.kylinos.cn 联系方式 技术支持热线400-xxx-xxxx 邮箱支持supportkylinos.cn 在线客服工作日9:00-18:00 版本历史 V10.0 (最新版本) 内核升级至5.4 LTS 增强安全特性 改进硬件兼容性 优化用户界面 V4.0.2 修复已知安全漏洞 提升系统稳定性 增加新硬件支持 V4.",
+    "metadata": {
+      "source": "kylin_system_intro.md",
+      "chunk_id": 3,
+      "total_chunks": 5,
+      "file_type": ".md",
+      "chunk_size": 459,
+      "source_name": "kylin_system_intro.md",
+      "doc_id": 3
+    }
+  },
+  {
+    "text": "0 全新的桌面环境 增强的安全机制 改进的软件包管理 银河麒麟操作系统致力于为用户提供安全稳定易用的国产操作系统解决方案",
+    "metadata": {
+      "source": "kylin_system_intro.md",
+      "chunk_id": 4,
+      "total_chunks": 5,
+      "file_type": ".md",
+      "chunk_size": 60,
+      "source_name": "kylin_system_intro.md",
+      "doc_id": 4
+    }
+  },
+  {
+    "text": "银河麒麟操作系统简介 概述 银河麒麟操作系统是中国自主研发的操作系统基于Linux内核开发专为国产化信息系统设计该系统具有高安全性高可靠性和良好的兼容性广泛应用于政府军队金融电信等重要领域 主要特点 1. 安全性 强制访问控制采用多级安全策略确保系统资源的安全访问 安全审计完整的操作日志记录和审计功能 入侵检测实时监控系统异常行为 病毒防护内置防病毒引擎提供实时保护 2. 稳定性 内核优化针对国产硬件平台进行深度优化 容错机制完善的错误处理和恢复机制 负载均衡智能的资源调度和负载分配 高可用性支持集群部署和故障转移 3. 兼容性 硬件兼容支持多种国产CPU架构 龙芯Loongson 飞腾Phytium 海光Hygon 兆芯Zhaoxin 软件兼容兼容主流Linux应用程序 标准支持遵循国际和国内相关标准 系统架构 内核层 基于Linux内核版本4.",
+    "metadata": {
+      "source": "kylin_system_intro.md",
+      "chunk_id": 0,
+      "total_chunks": 5,
+      "file_type": ".md",
+      "chunk_size": 379,
+      "source_name": "kylin_system_intro.md",
+      "doc_id": 5
+    }
+  },
+  {
+    "text": "程序接口 开发工具链 运行时环境 应用层 办公软件套件 开发工具 系统管理工具 第三方应用 安装要求 最低硬件要求 CPU1GHz以上处理器 内存2GB RAM 存储20GB可用磁盘空间 显卡支持1024x768分辨率 推荐硬件配置 CPU双核2GHz以上处理器 内存4GB RAM或更多 存储50GB可用磁盘空间 显卡独立显卡支持硬件加速 安装步骤 1. 准备安装介质 下载官方ISO镜像文件 制作启动U盘或刻录安装光盘 验证镜像文件完整性 2. 系统安装 从安装介质启动计算机 选择安装语言和键盘布局 配置网络连接可选 分区和格式化硬盘 选择安装组件 设置用户账户和密码 完成安装并重启 3.",
+    "metadata": {
+      "source": "kylin_system_intro.md",
+      "chunk_id": 1,
+      "total_chunks": 5,
+      "file_type": ".md",
+      "chunk_size": 298,
+      "source_name": "kylin_system_intro.md",
+      "doc_id": 6
+    }
+  },
+  {
+    "text": "sudo apt update 安装软件包 sudo apt install package-name 卸载软件包 sudo apt remove package-name 系统升级 sudo apt upgrade  服务管理 bash 启动服务 sudo systemctl start service-name 停止服务 sudo systemctl stop service-name 重启服务 sudo systemctl restart service-name 查看服务状态 sudo systemctl status service-name  网络配置 有线网络 打开网络设置 选择有线连接 配置IP地址自动或手动 设置DNS服务器 应用配置 无线网络 启用无线网卡 扫描可用网络 选择目标网络 输入密码 连接网络 安全配置 防火墙设置 bash 启用防火墙 sudo ufw enable 允许特定端口 sudo ufw allow 22tcp 拒绝特定端口 sudo ufw deny 23tcp 查看防火墙状态 sudo ufw status  用户权限管理 使用sudo进",
+    "metadata": {
+      "source": "kylin_system_intro.md",
+      "chunk_id": 2,
+      "total_chunks": 5,
+      "file_type": ".md",
+      "chunk_size": 499,
+      "source_name": "kylin_system_intro.md",
+      "doc_id": 7
+    }
+  },
+  {
+    "text": "行权限提升 配置用户组权限 设置文件和目录权限 定期审查用户权限 常见问题 Q: 如何重置root密码 A: 在GRUB启动菜单中选择恢复模式进入单用户模式后使用passwd命令重置密码 Q: 系统启动缓慢怎么办 A: 检查启动服务禁用不必要的自启动程序清理系统缓存 Q: 如何安装第三方软件 A: 可以通过软件包管理器源码编译或使用AppImage等方式安装 Q: 网络连接不稳定如何解决 A: 检查网络驱动程序更新网卡固件调整网络配置参数 技术支持 官方资源 官方网站http:www.kylinos.cn 技术文档http:docs.kylinos.cn 社区论坛http:forum.kylinos.cn 联系方式 技术支持热线400-xxx-xxxx 邮箱支持supportkylinos.cn 在线客服工作日9:00-18:00 版本历史 V10.0 (最新版本) 内核升级至5.4 LTS 增强安全特性 改进硬件兼容性 优化用户界面 V4.0.2 修复已知安全漏洞 提升系统稳定性 增加新硬件支持 V4.",
+    "metadata": {
+      "source": "kylin_system_intro.md",
+      "chunk_id": 3,
+      "total_chunks": 5,
+      "file_type": ".md",
+      "chunk_size": 459,
+      "source_name": "kylin_system_intro.md",
+      "doc_id": 8
+    }
+  },
+  {
+    "text": "0 全新的桌面环境 增强的安全机制 改进的软件包管理 银河麒麟操作系统致力于为用户提供安全稳定易用的国产操作系统解决方案",
+    "metadata": {
+      "source": "kylin_system_intro.md",
+      "chunk_id": 4,
+      "total_chunks": 5,
+      "file_type": ".md",
+      "chunk_size": 60,
+      "source_name": "kylin_system_intro.md",
+      "doc_id": 9
+    }
+  },
+  {
+    "text": "银河麒麟操作系统简介 概述 银河麒麟操作系统是中国自主研发的操作系统基于Linux内核开发专为国产化信息系统设计该系统具有高安全性高可靠性和良好的兼容性广泛应用于政府军队金融电信等重要领域 主要特点 1. 安全性 强制访问控制采用多级安全策略确保系统资源的安全访问 安全审计完整的操作日志记录和审计功能 入侵检测实时监控系统异常行为 病毒防护内置防病毒引擎提供实时保护 2. 稳定性 内核优化针对国产硬件平台进行深度优化 容错机制完善的错误处理和恢复机制 负载均衡智能的资源调度和负载分配 高可用性支持集群部署和故障转移 3. 兼容性 硬件兼容支持多种国产CPU架构 龙芯Loongson 飞腾Phytium 海光Hygon 兆芯Zhaoxin 软件兼容兼容主流Linux应用程序 标准支持遵循国际和国内相关标准 系统架构 内核层 基于Linux内核版本4.",
+    "metadata": {
+      "source": "kylin_system_intro.md",
+      "chunk_id": 0,
+      "total_chunks": 5,
+      "file_type": ".md",
+      "chunk_size": 379,
+      "source_name": "kylin_system_intro.md",
+      "doc_id": 10
+    }
+  },
+  {
+    "text": "程序接口 开发工具链 运行时环境 应用层 办公软件套件 开发工具 系统管理工具 第三方应用 安装要求 最低硬件要求 CPU1GHz以上处理器 内存2GB RAM 存储20GB可用磁盘空间 显卡支持1024x768分辨率 推荐硬件配置 CPU双核2GHz以上处理器 内存4GB RAM或更多 存储50GB可用磁盘空间 显卡独立显卡支持硬件加速 安装步骤 1. 准备安装介质 下载官方ISO镜像文件 制作启动U盘或刻录安装光盘 验证镜像文件完整性 2. 系统安装 从安装介质启动计算机 选择安装语言和键盘布局 配置网络连接可选 分区和格式化硬盘 选择安装组件 设置用户账户和密码 完成安装并重启 3.",
+    "metadata": {
+      "source": "kylin_system_intro.md",
+      "chunk_id": 1,
+      "total_chunks": 5,
+      "file_type": ".md",
+      "chunk_size": 298,
+      "source_name": "kylin_system_intro.md",
+      "doc_id": 11
+    }
+  },
+  {
+    "text": "sudo apt update 安装软件包 sudo apt install package-name 卸载软件包 sudo apt remove package-name 系统升级 sudo apt upgrade  服务管理 bash 启动服务 sudo systemctl start service-name 停止服务 sudo systemctl stop service-name 重启服务 sudo systemctl restart service-name 查看服务状态 sudo systemctl status service-name  网络配置 有线网络 打开网络设置 选择有线连接 配置IP地址自动或手动 设置DNS服务器 应用配置 无线网络 启用无线网卡 扫描可用网络 选择目标网络 输入密码 连接网络 安全配置 防火墙设置 bash 启用防火墙 sudo ufw enable 允许特定端口 sudo ufw allow 22tcp 拒绝特定端口 sudo ufw deny 23tcp 查看防火墙状态 sudo ufw status  用户权限管理 使用sudo进",
+    "metadata": {
+      "source": "kylin_system_intro.md",
+      "chunk_id": 2,
+      "total_chunks": 5,
+      "file_type": ".md",
+      "chunk_size": 499,
+      "source_name": "kylin_system_intro.md",
+      "doc_id": 12
+    }
+  },
+  {
+    "text": "行权限提升 配置用户组权限 设置文件和目录权限 定期审查用户权限 常见问题 Q: 如何重置root密码 A: 在GRUB启动菜单中选择恢复模式进入单用户模式后使用passwd命令重置密码 Q: 系统启动缓慢怎么办 A: 检查启动服务禁用不必要的自启动程序清理系统缓存 Q: 如何安装第三方软件 A: 可以通过软件包管理器源码编译或使用AppImage等方式安装 Q: 网络连接不稳定如何解决 A: 检查网络驱动程序更新网卡固件调整网络配置参数 技术支持 官方资源 官方网站http:www.kylinos.cn 技术文档http:docs.kylinos.cn 社区论坛http:forum.kylinos.cn 联系方式 技术支持热线400-xxx-xxxx 邮箱支持supportkylinos.cn 在线客服工作日9:00-18:00 版本历史 V10.0 (最新版本) 内核升级至5.4 LTS 增强安全特性 改进硬件兼容性 优化用户界面 V4.0.2 修复已知安全漏洞 提升系统稳定性 增加新硬件支持 V4.",
+    "metadata": {
+      "source": "kylin_system_intro.md",
+      "chunk_id": 3,
+      "total_chunks": 5,
+      "file_type": ".md",
+      "chunk_size": 459,
+      "source_name": "kylin_system_intro.md",
+      "doc_id": 13
+    }
+  },
+  {
+    "text": "0 全新的桌面环境 增强的安全机制 改进的软件包管理 银河麒麟操作系统致力于为用户提供安全稳定易用的国产操作系统解决方案",
+    "metadata": {
+      "source": "kylin_system_intro.md",
+      "chunk_id": 4,
+      "total_chunks": 5,
+      "file_type": ".md",
+      "chunk_size": 60,
+      "source_name": "kylin_system_intro.md",
+      "doc_id": 14
+    }
+  },
+  {
+    "text": "银河麒麟操作系统简介 概述 银河麒麟操作系统是中国自主研发的操作系统基于Linux内核开发专为国产化信息系统设计该系统具有高安全性高可靠性和良好的兼容性广泛应用于政府军队金融电信等重要领域 主要特点 1. 安全性 强制访问控制采用多级安全策略确保系统资源的安全访问 安全审计完整的操作日志记录和审计功能 入侵检测实时监控系统异常行为 病毒防护内置防病毒引擎提供实时保护 2. 稳定性 内核优化针对国产硬件平台进行深度优化 容错机制完善的错误处理和恢复机制 负载均衡智能的资源调度和负载分配 高可用性支持集群部署和故障转移 3. 兼容性 硬件兼容支持多种国产CPU架构 龙芯Loongson 飞腾Phytium 海光Hygon 兆芯Zhaoxin 软件兼容兼容主流Linux应用程序 标准支持遵循国际和国内相关标准 系统架构 内核层 基于Linux内核版本4.",
+    "metadata": {
+      "source": "kylin_system_intro.md",
+      "chunk_id": 0,
+      "total_chunks": 5,
+      "file_type": ".md",
+      "chunk_size": 379,
+      "source_name": "kylin_system_intro.md",
+      "doc_id": 15
+    }
+  },
+  {
+    "text": "程序接口 开发工具链 运行时环境 应用层 办公软件套件 开发工具 系统管理工具 第三方应用 安装要求 最低硬件要求 CPU1GHz以上处理器 内存2GB RAM 存储20GB可用磁盘空间 显卡支持1024x768分辨率 推荐硬件配置 CPU双核2GHz以上处理器 内存4GB RAM或更多 存储50GB可用磁盘空间 显卡独立显卡支持硬件加速 安装步骤 1. 准备安装介质 下载官方ISO镜像文件 制作启动U盘或刻录安装光盘 验证镜像文件完整性 2. 系统安装 从安装介质启动计算机 选择安装语言和键盘布局 配置网络连接可选 分区和格式化硬盘 选择安装组件 设置用户账户和密码 完成安装并重启 3.",
+    "metadata": {
+      "source": "kylin_system_intro.md",
+      "chunk_id": 1,
+      "total_chunks": 5,
+      "file_type": ".md",
+      "chunk_size": 298,
+      "source_name": "kylin_system_intro.md",
+      "doc_id": 16
+    }
+  },
+  {
+    "text": "sudo apt update 安装软件包 sudo apt install package-name 卸载软件包 sudo apt remove package-name 系统升级 sudo apt upgrade  服务管理 bash 启动服务 sudo systemctl start service-name 停止服务 sudo systemctl stop service-name 重启服务 sudo systemctl restart service-name 查看服务状态 sudo systemctl status service-name  网络配置 有线网络 打开网络设置 选择有线连接 配置IP地址自动或手动 设置DNS服务器 应用配置 无线网络 启用无线网卡 扫描可用网络 选择目标网络 输入密码 连接网络 安全配置 防火墙设置 bash 启用防火墙 sudo ufw enable 允许特定端口 sudo ufw allow 22tcp 拒绝特定端口 sudo ufw deny 23tcp 查看防火墙状态 sudo ufw status  用户权限管理 使用sudo进",
+    "metadata": {
+      "source": "kylin_system_intro.md",
+      "chunk_id": 2,
+      "total_chunks": 5,
+      "file_type": ".md",
+      "chunk_size": 499,
+      "source_name": "kylin_system_intro.md",
+      "doc_id": 17
+    }
+  },
+  {
+    "text": "行权限提升 配置用户组权限 设置文件和目录权限 定期审查用户权限 常见问题 Q: 如何重置root密码 A: 在GRUB启动菜单中选择恢复模式进入单用户模式后使用passwd命令重置密码 Q: 系统启动缓慢怎么办 A: 检查启动服务禁用不必要的自启动程序清理系统缓存 Q: 如何安装第三方软件 A: 可以通过软件包管理器源码编译或使用AppImage等方式安装 Q: 网络连接不稳定如何解决 A: 检查网络驱动程序更新网卡固件调整网络配置参数 技术支持 官方资源 官方网站http:www.kylinos.cn 技术文档http:docs.kylinos.cn 社区论坛http:forum.kylinos.cn 联系方式 技术支持热线400-xxx-xxxx 邮箱支持supportkylinos.cn 在线客服工作日9:00-18:00 版本历史 V10.0 (最新版本) 内核升级至5.4 LTS 增强安全特性 改进硬件兼容性 优化用户界面 V4.0.2 修复已知安全漏洞 提升系统稳定性 增加新硬件支持 V4.",
+    "metadata": {
+      "source": "kylin_system_intro.md",
+      "chunk_id": 3,
+      "total_chunks": 5,
+      "file_type": ".md",
+      "chunk_size": 459,
+      "source_name": "kylin_system_intro.md",
+      "doc_id": 18
+    }
+  },
+  {
+    "text": "0 全新的桌面环境 增强的安全机制 改进的软件包管理 银河麒麟操作系统致力于为用户提供安全稳定易用的国产操作系统解决方案",
+    "metadata": {
+      "source": "kylin_system_intro.md",
+      "chunk_id": 4,
+      "total_chunks": 5,
+      "file_type": ".md",
+      "chunk_size": 60,
+      "source_name": "kylin_system_intro.md",
+      "doc_id": 19
+    }
+  },
+  {
+    "text": "银河麒麟操作系统简介 概述 银河麒麟操作系统是中国自主研发的操作系统基于Linux内核开发专为国产化信息系统设计该系统具有高安全性高可靠性和良好的兼容性广泛应用于政府军队金融电信等重要领域 主要特点 1. 安全性 强制访问控制采用多级安全策略确保系统资源的安全访问 安全审计完整的操作日志记录和审计功能 入侵检测实时监控系统异常行为 病毒防护内置防病毒引擎提供实时保护 2. 稳定性 内核优化针对国产硬件平台进行深度优化 容错机制完善的错误处理和恢复机制 负载均衡智能的资源调度和负载分配 高可用性支持集群部署和故障转移 3. 兼容性 硬件兼容支持多种国产CPU架构 龙芯Loongson 飞腾Phytium 海光Hygon 兆芯Zhaoxin 软件兼容兼容主流Linux应用程序 标准支持遵循国际和国内相关标准 系统架构 内核层 基于Linux内核版本4.",
+    "metadata": {
+      "source": "kylin_system_intro.md",
+      "chunk_id": 0,
+      "total_chunks": 5,
+      "file_type": ".md",
+      "chunk_size": 379,
+      "source_name": "kylin_system_intro.md",
+      "doc_id": 20
+    }
+  },
+  {
+    "text": "程序接口 开发工具链 运行时环境 应用层 办公软件套件 开发工具 系统管理工具 第三方应用 安装要求 最低硬件要求 CPU1GHz以上处理器 内存2GB RAM 存储20GB可用磁盘空间 显卡支持1024x768分辨率 推荐硬件配置 CPU双核2GHz以上处理器 内存4GB RAM或更多 存储50GB可用磁盘空间 显卡独立显卡支持硬件加速 安装步骤 1. 准备安装介质 下载官方ISO镜像文件 制作启动U盘或刻录安装光盘 验证镜像文件完整性 2. 系统安装 从安装介质启动计算机 选择安装语言和键盘布局 配置网络连接可选 分区和格式化硬盘 选择安装组件 设置用户账户和密码 完成安装并重启 3.",
+    "metadata": {
+      "source": "kylin_system_intro.md",
+      "chunk_id": 1,
+      "total_chunks": 5,
+      "file_type": ".md",
+      "chunk_size": 298,
+      "source_name": "kylin_system_intro.md",
+      "doc_id": 21
+    }
+  },
+  {
+    "text": "sudo apt update 安装软件包 sudo apt install package-name 卸载软件包 sudo apt remove package-name 系统升级 sudo apt upgrade  服务管理 bash 启动服务 sudo systemctl start service-name 停止服务 sudo systemctl stop service-name 重启服务 sudo systemctl restart service-name 查看服务状态 sudo systemctl status service-name  网络配置 有线网络 打开网络设置 选择有线连接 配置IP地址自动或手动 设置DNS服务器 应用配置 无线网络 启用无线网卡 扫描可用网络 选择目标网络 输入密码 连接网络 安全配置 防火墙设置 bash 启用防火墙 sudo ufw enable 允许特定端口 sudo ufw allow 22tcp 拒绝特定端口 sudo ufw deny 23tcp 查看防火墙状态 sudo ufw status  用户权限管理 使用sudo进",
+    "metadata": {
+      "source": "kylin_system_intro.md",
+      "chunk_id": 2,
+      "total_chunks": 5,
+      "file_type": ".md",
+      "chunk_size": 499,
+      "source_name": "kylin_system_intro.md",
+      "doc_id": 22
+    }
+  },
+  {
+    "text": "行权限提升 配置用户组权限 设置文件和目录权限 定期审查用户权限 常见问题 Q: 如何重置root密码 A: 在GRUB启动菜单中选择恢复模式进入单用户模式后使用passwd命令重置密码 Q: 系统启动缓慢怎么办 A: 检查启动服务禁用不必要的自启动程序清理系统缓存 Q: 如何安装第三方软件 A: 可以通过软件包管理器源码编译或使用AppImage等方式安装 Q: 网络连接不稳定如何解决 A: 检查网络驱动程序更新网卡固件调整网络配置参数 技术支持 官方资源 官方网站http:www.kylinos.cn 技术文档http:docs.kylinos.cn 社区论坛http:forum.kylinos.cn 联系方式 技术支持热线400-xxx-xxxx 邮箱支持supportkylinos.cn 在线客服工作日9:00-18:00 版本历史 V10.0 (最新版本) 内核升级至5.4 LTS 增强安全特性 改进硬件兼容性 优化用户界面 V4.0.2 修复已知安全漏洞 提升系统稳定性 增加新硬件支持 V4.",
+    "metadata": {
+      "source": "kylin_system_intro.md",
+      "chunk_id": 3,
+      "total_chunks": 5,
+      "file_type": ".md",
+      "chunk_size": 459,
+      "source_name": "kylin_system_intro.md",
+      "doc_id": 23
+    }
+  },
+  {
+    "text": "0 全新的桌面环境 增强的安全机制 改进的软件包管理 银河麒麟操作系统致力于为用户提供安全稳定易用的国产操作系统解决方案",
+    "metadata": {
+      "source": "kylin_system_intro.md",
+      "chunk_id": 4,
+      "total_chunks": 5,
+      "file_type": ".md",
+      "chunk_size": 60,
+      "source_name": "kylin_system_intro.md",
+      "doc_id": 24
+    }
+  },
+  {
+    "text": "银河麒麟操作系统简介 概述 银河麒麟操作系统是中国自主研发的操作系统基于Linux内核开发专为国产化信息系统设计该系统具有高安全性高可靠性和良好的兼容性广泛应用于政府军队金融电信等重要领域 主要特点 1. 安全性 强制访问控制采用多级安全策略确保系统资源的安全访问 安全审计完整的操作日志记录和审计功能 入侵检测实时监控系统异常行为 病毒防护内置防病毒引擎提供实时保护 2. 稳定性 内核优化针对国产硬件平台进行深度优化 容错机制完善的错误处理和恢复机制 负载均衡智能的资源调度和负载分配 高可用性支持集群部署和故障转移 3. 兼容性 硬件兼容支持多种国产CPU架构 龙芯Loongson 飞腾Phytium 海光Hygon 兆芯Zhaoxin 软件兼容兼容主流Linux应用程序 标准支持遵循国际和国内相关标准 系统架构 内核层 基于Linux内核版本4.",
+    "metadata": {
+      "source": "kylin_system_intro.md",
+      "chunk_id": 0,
+      "total_chunks": 5,
+      "file_type": ".md",
+      "chunk_size": 379,
+      "source_name": "kylin_system_intro.md",
+      "doc_id": 25
+    }
+  },
+  {
+    "text": "程序接口 开发工具链 运行时环境 应用层 办公软件套件 开发工具 系统管理工具 第三方应用 安装要求 最低硬件要求 CPU1GHz以上处理器 内存2GB RAM 存储20GB可用磁盘空间 显卡支持1024x768分辨率 推荐硬件配置 CPU双核2GHz以上处理器 内存4GB RAM或更多 存储50GB可用磁盘空间 显卡独立显卡支持硬件加速 安装步骤 1. 准备安装介质 下载官方ISO镜像文件 制作启动U盘或刻录安装光盘 验证镜像文件完整性 2. 系统安装 从安装介质启动计算机 选择安装语言和键盘布局 配置网络连接可选 分区和格式化硬盘 选择安装组件 设置用户账户和密码 完成安装并重启 3.",
+    "metadata": {
+      "source": "kylin_system_intro.md",
+      "chunk_id": 1,
+      "total_chunks": 5,
+      "file_type": ".md",
+      "chunk_size": 298,
+      "source_name": "kylin_system_intro.md",
+      "doc_id": 26
+    }
+  },
+  {
+    "text": "sudo apt update 安装软件包 sudo apt install package-name 卸载软件包 sudo apt remove package-name 系统升级 sudo apt upgrade  服务管理 bash 启动服务 sudo systemctl start service-name 停止服务 sudo systemctl stop service-name 重启服务 sudo systemctl restart service-name 查看服务状态 sudo systemctl status service-name  网络配置 有线网络 打开网络设置 选择有线连接 配置IP地址自动或手动 设置DNS服务器 应用配置 无线网络 启用无线网卡 扫描可用网络 选择目标网络 输入密码 连接网络 安全配置 防火墙设置 bash 启用防火墙 sudo ufw enable 允许特定端口 sudo ufw allow 22tcp 拒绝特定端口 sudo ufw deny 23tcp 查看防火墙状态 sudo ufw status  用户权限管理 使用sudo进",
+    "metadata": {
+      "source": "kylin_system_intro.md",
+      "chunk_id": 2,
+      "total_chunks": 5,
+      "file_type": ".md",
+      "chunk_size": 499,
+      "source_name": "kylin_system_intro.md",
+      "doc_id": 27
+    }
+  },
+  {
+    "text": "行权限提升 配置用户组权限 设置文件和目录权限 定期审查用户权限 常见问题 Q: 如何重置root密码 A: 在GRUB启动菜单中选择恢复模式进入单用户模式后使用passwd命令重置密码 Q: 系统启动缓慢怎么办 A: 检查启动服务禁用不必要的自启动程序清理系统缓存 Q: 如何安装第三方软件 A: 可以通过软件包管理器源码编译或使用AppImage等方式安装 Q: 网络连接不稳定如何解决 A: 检查网络驱动程序更新网卡固件调整网络配置参数 技术支持 官方资源 官方网站http:www.kylinos.cn 技术文档http:docs.kylinos.cn 社区论坛http:forum.kylinos.cn 联系方式 技术支持热线400-xxx-xxxx 邮箱支持supportkylinos.cn 在线客服工作日9:00-18:00 版本历史 V10.0 (最新版本) 内核升级至5.4 LTS 增强安全特性 改进硬件兼容性 优化用户界面 V4.0.2 修复已知安全漏洞 提升系统稳定性 增加新硬件支持 V4.",
+    "metadata": {
+      "source": "kylin_system_intro.md",
+      "chunk_id": 3,
+      "total_chunks": 5,
+      "file_type": ".md",
+      "chunk_size": 459,
+      "source_name": "kylin_system_intro.md",
+      "doc_id": 28
+    }
+  },
+  {
+    "text": "0 全新的桌面环境 增强的安全机制 改进的软件包管理 银河麒麟操作系统致力于为用户提供安全稳定易用的国产操作系统解决方案",
+    "metadata": {
+      "source": "kylin_system_intro.md",
+      "chunk_id": 4,
+      "total_chunks": 5,
+      "file_type": ".md",
+      "chunk_size": 60,
+      "source_name": "kylin_system_intro.md",
+      "doc_id": 29
+    }
+  },
+  {
+    "text": "银河麒麟操作系统简介 概述 银河麒麟操作系统是中国自主研发的操作系统基于Linux内核开发专为国产化信息系统设计该系统具有高安全性高可靠性和良好的兼容性广泛应用于政府军队金融电信等重要领域 主要特点 1. 安全性 强制访问控制采用多级安全策略确保系统资源的安全访问 安全审计完整的操作日志记录和审计功能 入侵检测实时监控系统异常行为 病毒防护内置防病毒引擎提供实时保护 2. 稳定性 内核优化针对国产硬件平台进行深度优化 容错机制完善的错误处理和恢复机制 负载均衡智能的资源调度和负载分配 高可用性支持集群部署和故障转移 3. 兼容性 硬件兼容支持多种国产CPU架构 龙芯Loongson 飞腾Phytium 海光Hygon 兆芯Zhaoxin 软件兼容兼容主流Linux应用程序 标准支持遵循国际和国内相关标准 系统架构 内核层 基于Linux内核版本4.",
+    "metadata": {
+      "source": "kylin_system_intro.md",
+      "chunk_id": 0,
+      "total_chunks": 5,
+      "file_type": ".md",
+      "chunk_size": 379,
+      "source_name": "kylin_system_intro.md",
+      "doc_id": 30
+    }
+  },
+  {
+    "text": "程序接口 开发工具链 运行时环境 应用层 办公软件套件 开发工具 系统管理工具 第三方应用 安装要求 最低硬件要求 CPU1GHz以上处理器 内存2GB RAM 存储20GB可用磁盘空间 显卡支持1024x768分辨率 推荐硬件配置 CPU双核2GHz以上处理器 内存4GB RAM或更多 存储50GB可用磁盘空间 显卡独立显卡支持硬件加速 安装步骤 1. 准备安装介质 下载官方ISO镜像文件 制作启动U盘或刻录安装光盘 验证镜像文件完整性 2. 系统安装 从安装介质启动计算机 选择安装语言和键盘布局 配置网络连接可选 分区和格式化硬盘 选择安装组件 设置用户账户和密码 完成安装并重启 3.",
+    "metadata": {
+      "source": "kylin_system_intro.md",
+      "chunk_id": 1,
+      "total_chunks": 5,
+      "file_type": ".md",
+      "chunk_size": 298,
+      "source_name": "kylin_system_intro.md",
+      "doc_id": 31
+    }
+  },
+  {
+    "text": "sudo apt update 安装软件包 sudo apt install package-name 卸载软件包 sudo apt remove package-name 系统升级 sudo apt upgrade  服务管理 bash 启动服务 sudo systemctl start service-name 停止服务 sudo systemctl stop service-name 重启服务 sudo systemctl restart service-name 查看服务状态 sudo systemctl status service-name  网络配置 有线网络 打开网络设置 选择有线连接 配置IP地址自动或手动 设置DNS服务器 应用配置 无线网络 启用无线网卡 扫描可用网络 选择目标网络 输入密码 连接网络 安全配置 防火墙设置 bash 启用防火墙 sudo ufw enable 允许特定端口 sudo ufw allow 22tcp 拒绝特定端口 sudo ufw deny 23tcp 查看防火墙状态 sudo ufw status  用户权限管理 使用sudo进",
+    "metadata": {
+      "source": "kylin_system_intro.md",
+      "chunk_id": 2,
+      "total_chunks": 5,
+      "file_type": ".md",
+      "chunk_size": 499,
+      "source_name": "kylin_system_intro.md",
+      "doc_id": 32
+    }
+  },
+  {
+    "text": "行权限提升 配置用户组权限 设置文件和目录权限 定期审查用户权限 常见问题 Q: 如何重置root密码 A: 在GRUB启动菜单中选择恢复模式进入单用户模式后使用passwd命令重置密码 Q: 系统启动缓慢怎么办 A: 检查启动服务禁用不必要的自启动程序清理系统缓存 Q: 如何安装第三方软件 A: 可以通过软件包管理器源码编译或使用AppImage等方式安装 Q: 网络连接不稳定如何解决 A: 检查网络驱动程序更新网卡固件调整网络配置参数 技术支持 官方资源 官方网站http:www.kylinos.cn 技术文档http:docs.kylinos.cn 社区论坛http:forum.kylinos.cn 联系方式 技术支持热线400-xxx-xxxx 邮箱支持supportkylinos.cn 在线客服工作日9:00-18:00 版本历史 V10.0 (最新版本) 内核升级至5.4 LTS 增强安全特性 改进硬件兼容性 优化用户界面 V4.0.2 修复已知安全漏洞 提升系统稳定性 增加新硬件支持 V4.",
+    "metadata": {
+      "source": "kylin_system_intro.md",
+      "chunk_id": 3,
+      "total_chunks": 5,
+      "file_type": ".md",
+      "chunk_size": 459,
+      "source_name": "kylin_system_intro.md",
+      "doc_id": 33
+    }
+  },
+  {
+    "text": "0 全新的桌面环境 增强的安全机制 改进的软件包管理 银河麒麟操作系统致力于为用户提供安全稳定易用的国产操作系统解决方案",
+    "metadata": {
+      "source": "kylin_system_intro.md",
+      "chunk_id": 4,
+      "total_chunks": 5,
+      "file_type": ".md",
+      "chunk_size": 60,
+      "source_name": "kylin_system_intro.md",
+      "doc_id": 34
+    }
+  },
+  {
+    "text": "--- 第1页 --- 银河麒麟智能问答助 v2.5 银河麒麟智能问答助 v2.5 基于 DeepSeek-R1 API 和麒麟 SDK2.5 的智能问答系统专为银河麒麟操作系统设计  功能特性 智能问答: 基于 RAG( 检索增强成 ) 技术结合本地档知识库和 AI 模型 档处理: 持 PDF  Markdown 本等多种格式档 系统集成: 深度集成麒麟 SDK2.5 获取系统信息和硬件状态 图形界: 友好的 GUI 界持档管理和实时问答 多架构持: 持 x86_64 和 ARM64 架构  系统要求 推荐环境 操作系统: 银河麒麟 V10 SP1SP2SP3 或更版本 Python 版本: Python 3.7 ( 推荐 Python 3.8) 内存: 4GB 以上 ( 推荐 8GB) 存储: 2GB 可空间 络: 需要互联连接访问 DeepSeek API 必需依赖 麒麟 SDK2.5 开发库 DeepSeek API 访问权限 Python 第三库 requirements.txt   快速安装指南 法键安装推荐 1.",
+    "metadata": {
+      "source": "银河麒麟智能问答助手 v2.5.pdf",
+      "chunk_id": 0,
+      "total_chunks": 14,
+      "file_type": ".pdf",
+      "chunk_size": 470,
+      "source_name": "银河麒麟智能问答助手 v2.5.pdf",
+      "doc_id": 35
+    }
+  },
+  {
+    "text": "下载项  使用git克隆推荐 git clone https:github.comyour-usernamekylin-qa-assistant.git cd kylin-qa-assistant  或者下载ZIP包并解压 wget https:github.comyour-usernamekylin-qa-assistantarchivemain.zip --- 第2页 --- unzip main.zip cd kylin-qa-assistant-main 2. 运安装脚本  给安装脚本执行权限 chmod x install.sh  运行安装脚本需要sudo权限 sudo .install.sh 安装脚本将动完成以下操作  检查系统兼容性  安装 Python 依赖包  配置系统服务  创建桌快捷式  设置命令快捷式 3. 配置 API 密钥  编辑配置文件 sudo nano optkylin-qa-assistantconfig.",
+    "metadata": {
+      "source": "银河麒麟智能问答助手 v2.5.pdf",
+      "chunk_id": 1,
+      "total_chunks": 14,
+      "file_type": ".pdf",
+      "chunk_size": 427,
+      "source_name": "银河麒麟智能问答助手 v2.5.pdf",
+      "doc_id": 36
+    }
+  },
+  {
+    "text": "API密钥 DEEPSEEK_API_KEY  \"your-actual-api-key-here\" 4. 启动程序  方法1使用桌面快捷方式  双击桌面上的\"银河麒麟智能问答助手\"图标  方法2使用命令行 kylin-qa  方法3启动系统服务 sudo systemctl start kylin-qa 法动安装 1. 环境准备  更新系统包 sudo apt update sudo apt upgrade -y  安装Python和pip如果未安装 --- 第3页 --- sudo apt install python3 python3-pip python3-venv -y  安装系统依赖 sudo apt install python3-tk python3-dev build-essential -y  安装麒麟SDK开发包如果可用 sudo apt install libkysdk-dev -y 2. 下载项 git clone https:github.comyour-usernamekylin-qa-assistant.",
+    "metadata": {
+      "source": "银河麒麟智能问答助手 v2.5.pdf",
+      "chunk_id": 2,
+      "total_chunks": 14,
+      "file_type": ".pdf",
+      "chunk_size": 475,
+      "source_name": "银河麒麟智能问答助手 v2.5.pdf",
+      "doc_id": 37
+    }
+  },
+  {
+    "text": "git cd kylin-qa-assistant 3. 创建虚拟环境推荐  创建虚拟环境 python3 -m venv venv  激活虚拟环境 source venvbinactivate 4. 安装 Python 依赖  升级pip pip install --upgrade pip  安装项目依赖 pip install -r requirements.txt 5. 配置程序  复制配置文件 cp config.py config.py.bak  编辑配置文件 nano config.py  修改API密钥  DEEPSEEK_API_KEY  \"your-actual-api-key-here\" 6. 创建必要录 mkdir -p data docs logs assets 7. 运程序  启动图形界面 python3 main.py --- 第4页 ---  或使用启动脚本 .run.sh  获取 DeepSeek API 密钥 1. 访问 DeepSeek 官 2. 注册账号并登录 3. 进 API 管理 4. 创建新的 API 密钥 5.",
+    "metadata": {
+      "source": "银河麒麟智能问答助手 v2.5.pdf",
+      "chunk_id": 3,
+      "total_chunks": 14,
+      "file_type": ".pdf",
+      "chunk_size": 485,
+      "source_name": "银河麒麟智能问答助手 v2.5.pdf",
+      "doc_id": 38
+    }
+  },
+  {
+    "text": "复制密钥并填配置件 注意: 请妥善保管您的 API 密钥不要泄露给他  使指南 次使 1. 启动程序  命令行启动 kylin-qa  或双击桌面图标 2. 添加档 点击 \" 添加档 \" 按钮 选择您要添加的档件 持格式 PDF  Markdown  TXT  Word 等 等待档处理完成 3. 开始问答 在问题输框中输您的问题 可选择是否包含系统信息 点击 \" 提问 \" 或按回键 查看 AI 成的回答 常功能 档管理 添加档: 持批量添加多个档 查看状态: 实时显知识库中的档数量 清空知识库: 键清空所有档谨慎操作 --- 第5页 --- 智能问答 普通问答: 基于档内容回答问题 系统问答: 结合当前系统信息回答 相关档: 显回答所参考的档来源 系统信息 查看系统状态: 点击 \" 系统信息 \" 按钮 硬件信息: CPU 内存磁盘等信息 络状态: 络配置和连接状态 进程信息: 系统负载和进程统计  级配置 配置件说明 主要配置项位于 config.",
+    "metadata": {
+      "source": "银河麒麟智能问答助手 v2.5.pdf",
+      "chunk_id": 4,
+      "total_chunks": 14,
+      "file_type": ".pdf",
+      "chunk_size": 430,
+      "source_name": "银河麒麟智能问答助手 v2.5.pdf",
+      "doc_id": 39
+    }
+  },
+  {
+    "text": "EK_API_KEY  \"your-api-key\"  必须配置 DEEPSEEK_API_ENDPOINT  \"https:api.deepseek.comv1chatcompletions\"  文档路径 DOCUMENT_PATH  \".docs\"  文档存储路径 VECTOR_DB_PATH  \".datavector_db\"  向量数据库路径  RAG配置 RAG_CONFIG  { \"top_k\": 5,  检索文档数量 \"similarity_threshold\": 0.7,  相似度阈值 \"max_context_length\": 2000,  最大上下文长度 \"temperature\": 0.",
+    "metadata": {
+      "source": "银河麒麟智能问答助手 v2.5.pdf",
+      "chunk_id": 5,
+      "total_chunks": 14,
+      "file_type": ".pdf",
+      "chunk_size": 308,
+      "source_name": "银河麒麟智能问答助手 v2.5.pdf",
+      "doc_id": 40
+    }
+  },
+  {
+    "text": "atch_size\": 32  批处理大小 } 系统服务管理 --- 第6页 ---  查看服务状态 sudo systemctl status kylin-qa  启动服务 sudo systemctl start kylin-qa  停止服务 sudo systemctl stop kylin-qa  重启服务 sudo systemctl restart kylin-qa  开机自启 sudo systemctl enable kylin-qa  禁用自启 sudo systemctl disable kylin-qa  查看服务日志 journalctl -u kylin-qa -f  项结构 kylin-qa-assistant  main.py  主程序入口  config.py  配置文件  requirements.txt  Python依赖  README.md  项目说明  run.sh  Linux启动脚本  install.sh  安装脚本  uninstall.sh  卸载脚本  kylin-qa.",
+    "metadata": {
+      "source": "银河麒麟智能问答助手 v2.5.pdf",
+      "chunk_id": 6,
+      "total_chunks": 14,
+      "file_type": ".pdf",
+      "chunk_size": 469,
+      "source_name": "银河麒麟智能问答助手 v2.5.pdf",
+      "doc_id": 41
+    }
+  },
+  {
+    "text": "service  系统服务配置  src  源代码目录   ai_models.py  AI模型接口   vector_store.py  向量存储   rag_engine.py  RAG引擎   gui.py  图形界面   document_processor.py  文档处理   system_info_helper.py  系统信息  data  数据目录   vector_db  向量数据库  docs  文档目录  logs  日志目录 --- 第7页 ---   app.log  应用日志  assets  资源目录  持的档格式 格式 扩展名 说明 PDF 档 .pdf 持本提取和 OCR Markdown .md 完整的 Markdown 语法持 本档 .txt 纯本件 reStructuredText .rst 技术档格式 Word 档 .doc, .docx Microsoft Word 档 HTML 档 .html, .htm 档  故障排除 常问题及解决案 1.",
+    "metadata": {
+      "source": "银河麒麟智能问答助手 v2.5.pdf",
+      "chunk_id": 7,
+      "total_chunks": 14,
+      "file_type": ".pdf",
+      "chunk_size": 451,
+      "source_name": "银河麒麟智能问答助手 v2.5.pdf",
+      "doc_id": 42
+    }
+  },
+  {
+    "text": "程序法启动 问题: 运程序时出现错误 解决案:  检查Python版本 python3 --version  检查依赖是否安装完整 pip3 list  grep -E \"numpyscikit-learnrequests\"  重新安装依赖 pip3 install -r requirements.txt --force-reinstall  查看详细错误信息 python3 main.py --debug 2. API 调失败 问题: DeepSeek API 调失败 解决案:  检查网络连接 ping api.deepseek.com --- 第8页 ---  验证API密钥 curl -H \"Authorization: Bearer your-api-key\"  https:api.deepseek.comv1models  检查API额度  登录DeepSeek控制台查看使用情况 3. 麒麟 SDK 库加载失败 问题: 系统信息功能不可 解决案:  检查SDK库是否存在 ls -la usrliblibkysysinfo.",
+    "metadata": {
+      "source": "银河麒麟智能问答助手 v2.5.pdf",
+      "chunk_id": 8,
+      "total_chunks": 14,
+      "file_type": ".pdf",
+      "chunk_size": 473,
+      "source_name": "银河麒麟智能问答助手 v2.5.pdf",
+      "doc_id": 43
+    }
+  },
+  {
+    "text": "so  安装麒麟SDK开发包 sudo apt install libkysdk-dev  检查库文件权限 sudo chmod 755 usrliblibkysysinfo.so 4. 档处理失败 问题: 法处理某些档格式 解决案:  安装额外的文档处理库 pip3 install pdfplumber python-docx  检查文件权限 ls -la your-document.pdf  尝试转换文档格式  PDF - TXT: pdftotext document.pdf 5. GUI 界问题 问题: 图形界法显 解决案:  检查显示环境 echo DISPLAY  安装tkinter --- 第9页 --- sudo apt install python3-tk  使用X11转发SSH连接时 ssh -X usernamehostname 志查看  查看应用日志 tail -f logsapp.log  查看系统服务日志 journalctl -u kylin-qa -f  查看详细调试信息 python3 main.py --debug 性能优化建议 1.",
+    "metadata": {
+      "source": "银河麒麟智能问答助手 v2.5.pdf",
+      "chunk_id": 9,
+      "total_chunks": 14,
+      "file_type": ".pdf",
+      "chunk_size": 492,
+      "source_name": "银河麒麟智能问答助手 v2.5.pdf",
+      "doc_id": 44
+    }
+  },
+  {
+    "text": "内存优化 适当调整 PERFORMANCE_CONFIG 中的参数 定期清理向量数据库 限制同时处理的档数量 2. 络优化 使国内 API 镜像如果可 调整 API 请求超时时间 启请求缓存 3. 存储优化 定期清理志件 压缩型档 使 SSD 存储提升性能  更新升级 检查更新  检查远程更新 git fetch origin git status  查看更新内容 git log HEAD..originmain --oneline 升级程序 --- 第10页 ---  备份配置 cp config.py config.py.backup  拉取最新代码 git pull origin main  更新依赖 pip3 install -r requirements.txt --upgrade  重启服务 sudo systemctl restart kylin-qa 版本回退  查看版本历史 git log --oneline  回退到指定版本 git checkout commit-hash  恢复配置 cp config.py.backup config.",
+    "metadata": {
+      "source": "银河麒麟智能问答助手 v2.5.pdf",
+      "chunk_id": 10,
+      "total_chunks": 14,
+      "file_type": ".pdf",
+      "chunk_size": 487,
+      "source_name": "银河麒麟智能问答助手 v2.5.pdf",
+      "doc_id": 45
+    }
+  },
+  {
+    "text": "py  卸载程序  运行卸载脚本 sudo .uninstall.sh  手动清理如果需要 sudo rm -rf optkylin-qa-assistant sudo rm -f etcsystemdsystemkylin-qa.service sudo rm -f usrlocalbinkylin-qa rm -f Desktopkylin-qa.desktop  许可证 本项采 MIT 许可证 - 查看 LICENSE 件了解详情  贡献 欢迎提交 Issue 和 Pull Request 来改进项 贡献指南 1. Fork 项 2. 创建特性分 (git checkout -b featureAmazingFeature) --- 第11页 --- 3. 提交更改 (git commit -m 'Add some AmazingFeature') 4. 推送到分 (git push origin featureAmazingFeature) 5. 开启 Pull Request 开发环境搭建  克隆开发版本 git clone https:github.",
+    "metadata": {
+      "source": "银河麒麟智能问答助手 v2.5.pdf",
+      "chunk_id": 11,
+      "total_chunks": 14,
+      "file_type": ".pdf",
+      "chunk_size": 488,
+      "source_name": "银河麒麟智能问答助手 v2.5.pdf",
+      "doc_id": 46
+    }
+  },
+  {
+    "text": "comyour-usernamekylin-qa-assistant.git cd kylin-qa-assistant  创建开发环境 python3 -m venv dev-env source dev-envbinactivate  安装开发依赖 pip install -r requirements.txt pip install pytest black flake8  开发工具  运行测试 pytest tests  代码格式化 black src  代码检查 flake8 src  持与反馈 如果您在使过程中遇到问题请 1. 查看档: 先查看本 README 和相关档 2. 搜索问题: 在 Issues 搜索类似问题 3. 提交 Issue: 如果没有找到解决案请提交新的 Issue 4. 联系开发者: 通过邮件或其他式联系项维护者 Issue 提交模板 提交 Issue 时请包含以下信息 环境信息 - 操作系统: 银河麒麟 V10 SP3 - Python版本: 3.8.10 - 程序版本: v2.5.",
+    "metadata": {
+      "source": "银河麒麟智能问答助手 v2.5.pdf",
+      "chunk_id": 12,
+      "total_chunks": 14,
+      "file_type": ".pdf",
+      "chunk_size": 466,
+      "source_name": "银河麒麟智能问答助手 v2.5.pdf",
+      "doc_id": 47
+    }
+  },
+  {
+    "text": "0 --- 第12页 --- 问题描述 简要描述遇到的问题 复现步骤 1. 执行了什么操作 2. 期望的结果 3. 实际的结果 错误信息 粘贴完整的错误信息或志 截图 如果有GUI相关问题请提供截图  更新志 v2.5.0 ( 当前版本 )  集成 DeepSeek-R1 API  持麒麟 SDK2.5  优化 RAG 检索算法  改进 GUI 界体验  增强系统兼容性  添加键安装脚本  完善档和使指南  修复档处理 bug  优化内存使  改进错误处理 未来计划  持更多 AI 模型  添加语交互功能  持多语界  增加插件系统  优化性能和稳定性 银河麒麟智能问答助 - 让 AI 助您的麒麟系统使体验  如果这个项对您有帮助请给我们个 Star",
+    "metadata": {
+      "source": "银河麒麟智能问答助手 v2.5.pdf",
+      "chunk_id": 13,
+      "total_chunks": 14,
+      "file_type": ".pdf",
+      "chunk_size": 329,
+      "source_name": "银河麒麟智能问答助手 v2.5.pdf",
+      "doc_id": 48
+    }
+  },
+  {
+    "text": "银河麒麟操作系统简介 概述 银河麒麟操作系统是中国自主研发的操作系统基于Linux内核开发专为国产化信息系统设计该系统具有高安全性高可靠性和良好的兼容性广泛应用于政府军队金融电信等重要领域 主要特点 1. 安全性 强制访问控制采用多级安全策略确保系统资源的安全访问 安全审计完整的操作日志记录和审计功能 入侵检测实时监控系统异常行为 病毒防护内置防病毒引擎提供实时保护 2. 稳定性 内核优化针对国产硬件平台进行深度优化 容错机制完善的错误处理和恢复机制 负载均衡智能的资源调度和负载分配 高可用性支持集群部署和故障转移 3. 兼容性 硬件兼容支持多种国产CPU架构 龙芯Loongson 飞腾Phytium 海光Hygon 兆芯Zhaoxin 软件兼容兼容主流Linux应用程序 标准支持遵循国际和国内相关标准 系统架构 内核层 基于Linux内核版本4.",
+    "metadata": {
+      "source": "kylin_system_intro.md",
+      "chunk_id": 0,
+      "total_chunks": 5,
+      "file_type": ".md",
+      "chunk_size": 379,
+      "source_name": "kylin_system_intro.md",
+      "doc_id": 49
+    }
+  },
+  {
+    "text": "程序接口 开发工具链 运行时环境 应用层 办公软件套件 开发工具 系统管理工具 第三方应用 安装要求 最低硬件要求 CPU1GHz以上处理器 内存2GB RAM 存储20GB可用磁盘空间 显卡支持1024x768分辨率 推荐硬件配置 CPU双核2GHz以上处理器 内存4GB RAM或更多 存储50GB可用磁盘空间 显卡独立显卡支持硬件加速 安装步骤 1. 准备安装介质 下载官方ISO镜像文件 制作启动U盘或刻录安装光盘 验证镜像文件完整性 2. 系统安装 从安装介质启动计算机 选择安装语言和键盘布局 配置网络连接可选 分区和格式化硬盘 选择安装组件 设置用户账户和密码 完成安装并重启 3.",
+    "metadata": {
+      "source": "kylin_system_intro.md",
+      "chunk_id": 1,
+      "total_chunks": 5,
+      "file_type": ".md",
+      "chunk_size": 298,
+      "source_name": "kylin_system_intro.md",
+      "doc_id": 50
+    }
+  },
+  {
+    "text": "sudo apt update 安装软件包 sudo apt install package-name 卸载软件包 sudo apt remove package-name 系统升级 sudo apt upgrade  服务管理 bash 启动服务 sudo systemctl start service-name 停止服务 sudo systemctl stop service-name 重启服务 sudo systemctl restart service-name 查看服务状态 sudo systemctl status service-name  网络配置 有线网络 打开网络设置 选择有线连接 配置IP地址自动或手动 设置DNS服务器 应用配置 无线网络 启用无线网卡 扫描可用网络 选择目标网络 输入密码 连接网络 安全配置 防火墙设置 bash 启用防火墙 sudo ufw enable 允许特定端口 sudo ufw allow 22tcp 拒绝特定端口 sudo ufw deny 23tcp 查看防火墙状态 sudo ufw status  用户权限管理 使用sudo进",
+    "metadata": {
+      "source": "kylin_system_intro.md",
+      "chunk_id": 2,
+      "total_chunks": 5,
+      "file_type": ".md",
+      "chunk_size": 499,
+      "source_name": "kylin_system_intro.md",
+      "doc_id": 51
+    }
+  },
+  {
+    "text": "行权限提升 配置用户组权限 设置文件和目录权限 定期审查用户权限 常见问题 Q: 如何重置root密码 A: 在GRUB启动菜单中选择恢复模式进入单用户模式后使用passwd命令重置密码 Q: 系统启动缓慢怎么办 A: 检查启动服务禁用不必要的自启动程序清理系统缓存 Q: 如何安装第三方软件 A: 可以通过软件包管理器源码编译或使用AppImage等方式安装 Q: 网络连接不稳定如何解决 A: 检查网络驱动程序更新网卡固件调整网络配置参数 技术支持 官方资源 官方网站http:www.kylinos.cn 技术文档http:docs.kylinos.cn 社区论坛http:forum.kylinos.cn 联系方式 技术支持热线400-xxx-xxxx 邮箱支持supportkylinos.cn 在线客服工作日9:00-18:00 版本历史 V10.0 (最新版本) 内核升级至5.4 LTS 增强安全特性 改进硬件兼容性 优化用户界面 V4.0.2 修复已知安全漏洞 提升系统稳定性 增加新硬件支持 V4.",
+    "metadata": {
+      "source": "kylin_system_intro.md",
+      "chunk_id": 3,
+      "total_chunks": 5,
+      "file_type": ".md",
+      "chunk_size": 459,
+      "source_name": "kylin_system_intro.md",
+      "doc_id": 52
+    }
+  },
+  {
+    "text": "0 全新的桌面环境 增强的安全机制 改进的软件包管理 银河麒麟操作系统致力于为用户提供安全稳定易用的国产操作系统解决方案",
+    "metadata": {
+      "source": "kylin_system_intro.md",
+      "chunk_id": 4,
+      "total_chunks": 5,
+      "file_type": ".md",
+      "chunk_size": 60,
+      "source_name": "kylin_system_intro.md",
+      "doc_id": 53
+    }
+  },
+  {
+    "text": "--- 第1页 --- 全国高校计算机教育研究会 全国大学生计算机系统能力大赛组委会 2025年全国大学生计算机系统能力大赛 操作系统设计赛章程 一竞赛总则 全国大学生计算机系统能力大赛是由系统能力培养研究专家组发起全国高等学校计 算机教育研究会系统能力培养研究专家组系统能力培养研究项目发起高校主办的面向 高校大学生的全国性大赛其目标是以学科竞赛推动专业建设和计算机领域创新人才培养 体系改革培育我国高端芯片关键基础软件后备人才大赛遵循国家人才培养战略以 赛促学以赛促教鼓励学生设计实现综合性的计算机系统培养学生系统级的设计 分析优化与应用能力提升学生的技术创新工程实践团队协作能力并为高水平计 算机人才成长搭建交流与合作的开放平台 全国大学生计算机系统能力大赛操作系统设计赛以下简称操作系统设计赛以 培养操作系统领域创新型人才推动高校操作系统相关课程改革加强操作系统领域产学 研合作为宗旨倡导开源办赛理念为我国操作系统产业发展贡献力量 2025年操作系统设计赛设全国赛和区域赛参加全国赛无须经过区域赛选拔二者相 对独立参赛者可同时报名区域赛和全国赛2024年获各区域赛一等奖的队伍由各区域 赛技术",
+    "metadata": {
+      "source": "2025-OS全国赛-章程-终-盖章.pdf",
+      "chunk_id": 0,
+      "total_chunks": 11,
+      "file_type": ".pdf",
+      "chunk_size": 500,
+      "source_name": "2025-OS全国赛-章程-终-盖章.pdf",
+      "doc_id": 54
+    }
+  },
+  {
+    "text": "委员会推荐经全国赛技术委员会审核批准后可获得全国赛决赛入围资格获得 全国赛决赛入围资格的参赛队需报名全国赛并参加从初赛到决赛各阶段比赛和答辩 本章程为操作系统设计赛全国赛章程区域赛章程将在举办时另行发布 二比赛组织 主办单位全国高等学校计算机教育研究会 系统能力培养研究专家组 系统能力培养研究项目发起高校 承办单位华中科技大学 协办单位中国计算机学会系统软件专委会 --- 第2页 --- 北京市计算机学会 101计划操作系统课程虚拟教研室 机械工业出版社 为保证操作系统设计赛顺利进行在机械工业出版社设立秘书处由操作系统设计赛技 术委员会负责推进各项工作 三赛道设置与参赛对象 3.1 赛道设置 操作系统设计赛设内核实现和功能挑战两个赛道 3.2 参赛对象 1.内核实现赛道的参赛对象为普通高等学校含本科院校高职专科院校的 全日制在校本科生和专科生 2.功能挑战赛道的参赛对象为普通高等学校含本科院校高职专科院校的 全日制在校本科生专科生和研究生含硕士博士生 3.",
+    "metadata": {
+      "source": "2025-OS全国赛-章程-终-盖章.pdf",
+      "chunk_id": 1,
+      "total_chunks": 11,
+      "file_type": ".pdf",
+      "chunk_size": 434,
+      "source_name": "2025-OS全国赛-章程-终-盖章.pdf",
+      "doc_id": 55
+    }
+  },
+  {
+    "text": "为准 四比赛流程 操作系统设计赛内核实现和功能挑战两个赛道均设报名初赛和决赛三个阶段 内核实现赛道还有现场赛总体时间表如下所示 重要时间点 比赛流程 2025年2月28日 参赛报名启动内核实现赛道初赛测例和评测指 标发布功能挑战赛道题目发布启动 2025年4月28日 功能挑战赛道题目发布截止 2025年5月1日 内核实现赛道决赛测例和评测指标发布 2025年5月28日 参赛报名截止 2025年6月30日 两个赛道的初赛作品提交截止 2025年7月12日 两个赛道的决赛入围名单公布 2025年8月12日 两个赛道的阶段性决赛作品提交截止 决赛作品提交截止日 两个赛道决赛作品提交截止 内核实现赛道现场赛题目发布日 内核实现赛道现场赛测例和评测指标发布 内核实现赛道现场赛截止日 内核实现赛道决赛现场赛作品提交截止 --- 第3页 --- 内核实现赛道现场答辩日 内核实现赛道决赛作品现场答辩 功能挑战赛道现场答辩日 功能挑战赛道决赛作品现场答辩 颁奖典礼日 两个赛道的获奖名单公布 注8月12日之后的决赛期间赛道各环节以及颁奖典礼的具体时间和安排以操作系统设计 赛技术委员会发布的通知为准 4.",
+    "metadata": {
+      "source": "2025-OS全国赛-章程-终-盖章.pdf",
+      "chunk_id": 2,
+      "total_chunks": 11,
+      "file_type": ".pdf",
+      "chunk_size": 499,
+      "source_name": "2025-OS全国赛-章程-终-盖章.pdf",
+      "doc_id": 56
+    }
+  },
+  {
+    "text": "1 报名时间和报名要求 1.报名时间 报名启动日期2025年2月28日 报名截止日期2025年5月28日 2.报名名额 1参赛队是报名参赛的基本单位,每支参赛队的人数为13人同一所高校的参赛队 数量没有限制但来自不同高校的学生不能联合组队参赛 2报名时参赛队只可选择内核实现或功能挑战其中一个赛道参赛并选定参 赛题目每位参赛学生也只能参加一支参赛队不可跨队重复报名 3每支参赛队最多可有两位指导教师在初赛阶段可没有指导教师但在决赛阶段要 求至少有一位指导教师指导教师可以是高校教师或企业技术专家每位指导教师可同 时指导本校或外校多支参赛队指导教师负责指导参赛队选题组织学生参加赛前技术 培训并鼓励学生根据选定的赛题进行作品的创新设计与实现同时负责在操作系统设 计赛期间与学校及组委会之间的信息沟通 4在2025年5月28日报名截止前每支参赛队均有机会调整人数可增加或减少和 更换队员在2025年6月30日初赛作品提交截止前每支参赛队均有机会调整人数只可 减少不可增加和更换队员不可更换所有参赛队员初赛作品提交截止后不能再调 整人数和更换队员 5每支参赛队在报名截止和初赛提交截止日之前调整的人数和更换",
+    "metadata": {
+      "source": "2025-OS全国赛-章程-终-盖章.pdf",
+      "chunk_id": 3,
+      "total_chunks": 11,
+      "file_type": ".pdf",
+      "chunk_size": 500,
+      "source_name": "2025-OS全国赛-章程-终-盖章.pdf",
+      "doc_id": 57
+    }
+  },
+  {
+    "text": "队员名单须经指 导教师审核后发送队员调整申请邮件至比赛邮箱秘书处对调整申请进行审核后更 新相应赛队在比赛网站的队员名单最终以比赛网站系统中的队员名单为准 3. 报名方法 1登录操作系统设计赛网站https:os.educg.net填写相关信息并按要求提供相 关材料进行在线报名 --- 第4页 --- 2每支参赛队的报名者需提供能证明本人身份的学生证指导教师工作证或其他证明 在校身份和所在单位信息的材料将上述报名材料扫描打包为单个文件上传至在线报 名页面收到秘书处邮件或短信确认后报名工作完成 4.2 初赛阶段 1. 初赛赛题发布 内核实现赛道2025年2月28日前发布初赛测例和初赛阶段评测技术指标 功能挑战赛道分批次发布赛题2025年4月28日前完成全部赛题的发布 2. 初赛作品提交 内核实现赛道和功能挑战赛道的初赛作品提交截止日2025年6月30日 初赛作品应包括源代码设计方案文档进展汇报幻灯片和作品演示视频参赛队应根 据2025年操作系统设计赛技术方案以下简称技术方案中的比赛要求对实现的 初赛作品迭代改进并及时将历次改进版本提交到本赛指定托管平台需展现出完整的 开发过程 3.",
+    "metadata": {
+      "source": "2025-OS全国赛-章程-终-盖章.pdf",
+      "chunk_id": 4,
+      "total_chunks": 11,
+      "file_type": ".pdf",
+      "chunk_size": 496,
+      "source_name": "2025-OS全国赛-章程-终-盖章.pdf",
+      "doc_id": 58
+    }
+  },
+  {
+    "text": "初赛评审与成绩公布 2025年7月1日  7月11日两个赛道进行初赛作品评审初赛成绩按比例计入决赛总 成绩对于功能挑战赛道评委按照专本研学位等级进行综合打分 2025年7月12日公布两个赛道的决赛入围名单 4. 技术培训 初赛期间操作系统设计赛技术委员会将安排相关技术培训 4.3 决赛阶段和颁奖典礼 1. 内核实现赛道 1决赛赛题发布 2025年5月1日前发布决赛测例和评测技术指标 2决赛作品提交 阶段性决赛作品提交截止日2025年8月12日 参赛队按技术方案的要求完成并提交该阶段作品应包括源代码设计方案文档 进展汇报幻灯片和演示视频到本赛指定托管平台 --- 第5页 --- 评委不对该阶段作品进行评分提交的作品用于评委有充足时间熟悉了解决赛作 品的过程性推进情况参赛队可在这之后继续对作品进行完善和提交 决赛作品提交截止日 参赛队按技术方案的要求完成并提交决赛作品到本赛指定托管平台提交内容应 包括源代码设计方案文档进展汇报幻灯片和演示视频自动评测系统对提交到 指定托管平台的决赛作品进行自动评测,对应成绩按比例计入决赛总成绩参赛队可 在此之后继续对作品进行完善和提交 3现场赛和现场答辩",
+    "metadata": {
+      "source": "2025-OS全国赛-章程-终-盖章.pdf",
+      "chunk_id": 5,
+      "total_chunks": 11,
+      "file_type": ".pdf",
+      "chunk_size": 499,
+      "source_name": "2025-OS全国赛-章程-终-盖章.pdf",
+      "doc_id": 59
+    }
+  },
+  {
+    "text": "现场赛题目发布日发布现场赛测例和评测指标 现场赛的比赛日参赛队按技术方案的要求和决赛通知的安排参加现场比赛 参赛队在规定截止时间内提交现场赛作品到本赛指定托管平台提交内容应包括源代 码和设计方案文档 现场答辩日参赛队参加现场答辩 2.功能挑战赛道 1决赛作品提交 阶段性决赛作品提交截止日2025年8月12日 参赛队按技术方案的要求完成并提交该阶段作品到本赛指定托管平台提交内容 应包括源代码设计方案文档进展汇报幻灯片和演示视频 评委不对该阶段作品进行评分提交的作品用于评委有充足时间熟悉了解决赛作 品的过程性推进情况参赛队可在此之后继续对作品进行完善和提交 决赛作品提交截止日 参赛队按技术方案的要求完成并提交该阶段作品到本赛指定托管平台提交内容 应包括源代码设计方案文档进展汇报幻灯片和演示视频该作品是比赛最终作 品参赛队在此之后的提交不计入评委的评审范围 2现场答辩 现场答辩日参赛队参加现场答辩评委按照专本研学位等级进行综合打分 --- 第6页 --- 2. 颁奖典礼 颁奖典礼日举行全国总决赛颁奖典礼公布两个赛道决赛最终成绩和获奖名单 3.",
+    "metadata": {
+      "source": "2025-OS全国赛-章程-终-盖章.pdf",
+      "chunk_id": 6,
+      "total_chunks": 11,
+      "file_type": ".pdf",
+      "chunk_size": 475,
+      "source_name": "2025-OS全国赛-章程-终-盖章.pdf",
+      "doc_id": 60
+    }
+  },
+  {
+    "text": "作品开源时间 操作系统设计赛决赛结束后参赛队最终版本作品含源代码设计方案文档演示视 频等开发资料答辩过程视频需开源并可公开访问 注决赛期间内核实现赛道功能挑战赛道各环节的具体时间和安排以及颁奖 典礼的具体时间和安排以操作系统设计赛技术委员会的通知为准 五 参赛费用 1.操作系统设计赛不收取报名费参赛费评审费技术平台购买费等任何费用 2.参赛队员及指导老师在全国赛决赛阶段和颁奖典礼期间产生的交通住宿用餐等费用 自理 六奖项设置 全国决赛设团队奖指导教师奖优秀组织奖技术贡献奖等奖项 6.1 团队奖 1. 内核实现赛道 一等奖含MVP奖颁发团队奖金及获奖证书 二等奖颁发团队奖金及获奖证书 三等奖颁发团队奖金及获奖证书 2. 功能挑战赛道 一等奖含MVP奖颁发团队奖金及获奖证书 二等奖颁发团队奖金及获奖证书 三等奖颁发团队奖金及获奖证书 3. 奖金说明 各级奖项根据作品质量均可能空缺团队奖金均按国家要求扣除相应税费后发放 6.2 指导教师奖 在全国决赛中获奖的团队的指导教师高校教师或企业技术专家均可获得优秀指导教 师奖(证书) --- 第7页 --- 6.",
+    "metadata": {
+      "source": "2025-OS全国赛-章程-终-盖章.pdf",
+      "chunk_id": 7,
+      "total_chunks": 11,
+      "file_type": ".pdf",
+      "chunk_size": 481,
+      "source_name": "2025-OS全国赛-章程-终-盖章.pdf",
+      "doc_id": 61
+    }
+  },
+  {
+    "text": "3 优秀组织奖 对操作系统设计赛组织工作做出突出贡献的单位及赞助企业颁发优秀组织奖证书 6.4 技术贡献奖 对操作系统设计赛技术工作做出突出贡献的个人颁发技术贡献奖证书 6.5 其他奖 在功能挑战赛道下设置的面向操作系统的应用实践类等专项奖以全国赛技术委员 会的通知为准 七知识产权与学术诚信 1. 参赛队必须遵循技术方案1.1节中的规定参赛作品含源代码设计方案文档和演 示视频等开发资料答辩过程视频等在决赛结束后保持开源开放并可访问 2. 参赛队必须遵循技术方案1.1节中的规定自觉遵守知识产权和各种开源协议的有关 法规和规定并在报名表中承诺确认不得侵犯他人的知识产权或其他权益如造成 不良后果相关法律责任由参赛队自行承担操作系统设计赛的主办承办和协办方 均不负任何法律责任 3.",
+    "metadata": {
+      "source": "2025-OS全国赛-章程-终-盖章.pdf",
+      "chunk_id": 8,
+      "total_chunks": 11,
+      "file_type": ".pdf",
+      "chunk_size": 341,
+      "source_name": "2025-OS全国赛-章程-终-盖章.pdf",
+      "doc_id": 62
+    }
+  },
+  {
+    "text": "名评议确认后将取消参赛队的参赛资格对于已经获得全国决赛奖项的参赛队通 报所在学校并取消和追回已获得的证书和奖金 八交流与宣传 1. 操作系统设计赛致力于推动高校计算机系统能力培养以及操作系统创新实践活动的开 展比赛期间鼓励各种形式的参赛队间交流活动并对优秀作品和参赛队进行宣传 2. 操作系统设计赛欢迎社会各界共同参与比赛的组织命题宣传赞助等工作不断 提升比赛的质量和影响力 3. 操作系统设计赛组织的技术报告交流和学术活动等如涉及视频文档源代码等 在征得著作权人同意的情况下均开源并发布 --- 第8页 --- 4. 本章程和技术方案将发至各高校教务处和相关院系希望学校制定鼓励学生和老师参 赛的相关政策 九联系方式 1.联系邮箱cscc-oshz.cmpbook.com 2.联系人唐美春 (13580340519事务咨询) 李超 18600162252 (技术咨询) 3.技术讨论 QQ 群5411421391群4628583822群 十其他 1. 操作系统设计赛指定竞赛网站 https:os.educg.",
+    "metadata": {
+      "source": "2025-OS全国赛-章程-终-盖章.pdf",
+      "chunk_id": 9,
+      "total_chunks": 11,
+      "file_type": ".pdf",
+      "chunk_size": 457,
+      "source_name": "2025-OS全国赛-章程-终-盖章.pdf",
+      "doc_id": 63
+    }
+  },
+  {
+    "text": "net 计算机系统能力培养微信公 众号为发布大赛新闻公告技术资料培训活动等的官方平台比赛的各项安排 均通过上述指定平台发布通知 2. 关于操作系统设计赛的内容评测方式等具体要求详见 2025年操作系统设计赛技 术方案文档 3. 欢迎各高校按2025年操作系统设计赛通知和章程的要求统一组织和部署参赛工作 积极参加操作系统设计赛宣传和技术培训工作 4. 获奖证书由操作系统设计赛主办方统一生成电子证书并可在操作系统设计赛网站 查询下载对于包含多个成员的参赛队证书在获奖成员列表处印制参赛队员姓 名不体现参赛队的队伍名称获奖成员列表由获奖参赛队的队员 指导教师商议确 定并书面报送操作系统设计赛邮箱若参赛队未按要求给出获奖成员列表则获奖 成员列表与报名时成员排序保持一致 5. 如因不可抗力或其他突发特殊情况等必须对比赛各环节进行调整以操作系统设 计赛技术委员会在官方平台发布的通知为准 6. 本章程的最终解释权归操作系统设计赛技术委员会所有 全国高等学校计算机教育研究会 全国大学生计算机系统能力大赛组委会 全国大学生计算机系统能力大赛操作系统设计赛技术委员会 2025年2月",
+    "metadata": {
+      "source": "2025-OS全国赛-章程-终-盖章.pdf",
+      "chunk_id": 10,
+      "total_chunks": 11,
+      "file_type": ".pdf",
+      "chunk_size": 487,
+      "source_name": "2025-OS全国赛-章程-终-盖章.pdf",
+      "doc_id": 64
+    }
+  },
+  {
+    "text": "--- 第1页 --- 银河麒麟智能问答助 v2.5 银河麒麟智能问答助 v2.5 基于 DeepSeek-R1 API 和麒麟 SDK2.5 的智能问答系统专为银河麒麟操作系统设计  功能特性 智能问答: 基于 RAG( 检索增强成 ) 技术结合本地档知识库和 AI 模型 档处理: 持 PDF  Markdown 本等多种格式档 系统集成: 深度集成麒麟 SDK2.5 获取系统信息和硬件状态 图形界: 友好的 GUI 界持档管理和实时问答 多架构持: 持 x86_64 和 ARM64 架构  系统要求 推荐环境 操作系统: 银河麒麟 V10 SP1SP2SP3 或更版本 Python 版本: Python 3.7 ( 推荐 Python 3.8) 内存: 4GB 以上 ( 推荐 8GB) 存储: 2GB 可空间 络: 需要互联连接访问 DeepSeek API 必需依赖 麒麟 SDK2.5 开发库 DeepSeek API 访问权限 Python 第三库 requirements.txt   快速安装指南 法键安装推荐 1.",
+    "metadata": {
+      "source": "银河麒麟智能问答助手 v2.5.pdf",
+      "chunk_id": 0,
+      "total_chunks": 14,
+      "file_type": ".pdf",
+      "chunk_size": 470,
+      "source_name": "银河麒麟智能问答助手 v2.5.pdf",
+      "doc_id": 65
+    }
+  },
+  {
+    "text": "下载项  使用git克隆推荐 git clone https:github.comyour-usernamekylin-qa-assistant.git cd kylin-qa-assistant  或者下载ZIP包并解压 wget https:github.comyour-usernamekylin-qa-assistantarchivemain.zip --- 第2页 --- unzip main.zip cd kylin-qa-assistant-main 2. 运安装脚本  给安装脚本执行权限 chmod x install.sh  运行安装脚本需要sudo权限 sudo .install.sh 安装脚本将动完成以下操作  检查系统兼容性  安装 Python 依赖包  配置系统服务  创建桌快捷式  设置命令快捷式 3. 配置 API 密钥  编辑配置文件 sudo nano optkylin-qa-assistantconfig.",
+    "metadata": {
+      "source": "银河麒麟智能问答助手 v2.5.pdf",
+      "chunk_id": 1,
+      "total_chunks": 14,
+      "file_type": ".pdf",
+      "chunk_size": 427,
+      "source_name": "银河麒麟智能问答助手 v2.5.pdf",
+      "doc_id": 66
+    }
+  },
+  {
+    "text": "API密钥 DEEPSEEK_API_KEY  \"your-actual-api-key-here\" 4. 启动程序  方法1使用桌面快捷方式  双击桌面上的\"银河麒麟智能问答助手\"图标  方法2使用命令行 kylin-qa  方法3启动系统服务 sudo systemctl start kylin-qa 法动安装 1. 环境准备  更新系统包 sudo apt update sudo apt upgrade -y  安装Python和pip如果未安装 --- 第3页 --- sudo apt install python3 python3-pip python3-venv -y  安装系统依赖 sudo apt install python3-tk python3-dev build-essential -y  安装麒麟SDK开发包如果可用 sudo apt install libkysdk-dev -y 2. 下载项 git clone https:github.comyour-usernamekylin-qa-assistant.",
+    "metadata": {
+      "source": "银河麒麟智能问答助手 v2.5.pdf",
+      "chunk_id": 2,
+      "total_chunks": 14,
+      "file_type": ".pdf",
+      "chunk_size": 475,
+      "source_name": "银河麒麟智能问答助手 v2.5.pdf",
+      "doc_id": 67
+    }
+  },
+  {
+    "text": "git cd kylin-qa-assistant 3. 创建虚拟环境推荐  创建虚拟环境 python3 -m venv venv  激活虚拟环境 source venvbinactivate 4. 安装 Python 依赖  升级pip pip install --upgrade pip  安装项目依赖 pip install -r requirements.txt 5. 配置程序  复制配置文件 cp config.py config.py.bak  编辑配置文件 nano config.py  修改API密钥  DEEPSEEK_API_KEY  \"your-actual-api-key-here\" 6. 创建必要录 mkdir -p data docs logs assets 7. 运程序  启动图形界面 python3 main.py --- 第4页 ---  或使用启动脚本 .run.sh  获取 DeepSeek API 密钥 1. 访问 DeepSeek 官 2. 注册账号并登录 3. 进 API 管理 4. 创建新的 API 密钥 5.",
+    "metadata": {
+      "source": "银河麒麟智能问答助手 v2.5.pdf",
+      "chunk_id": 3,
+      "total_chunks": 14,
+      "file_type": ".pdf",
+      "chunk_size": 485,
+      "source_name": "银河麒麟智能问答助手 v2.5.pdf",
+      "doc_id": 68
+    }
+  },
+  {
+    "text": "复制密钥并填配置件 注意: 请妥善保管您的 API 密钥不要泄露给他  使指南 次使 1. 启动程序  命令行启动 kylin-qa  或双击桌面图标 2. 添加档 点击 \" 添加档 \" 按钮 选择您要添加的档件 持格式 PDF  Markdown  TXT  Word 等 等待档处理完成 3. 开始问答 在问题输框中输您的问题 可选择是否包含系统信息 点击 \" 提问 \" 或按回键 查看 AI 成的回答 常功能 档管理 添加档: 持批量添加多个档 查看状态: 实时显知识库中的档数量 清空知识库: 键清空所有档谨慎操作 --- 第5页 --- 智能问答 普通问答: 基于档内容回答问题 系统问答: 结合当前系统信息回答 相关档: 显回答所参考的档来源 系统信息 查看系统状态: 点击 \" 系统信息 \" 按钮 硬件信息: CPU 内存磁盘等信息 络状态: 络配置和连接状态 进程信息: 系统负载和进程统计  级配置 配置件说明 主要配置项位于 config.",
+    "metadata": {
+      "source": "银河麒麟智能问答助手 v2.5.pdf",
+      "chunk_id": 4,
+      "total_chunks": 14,
+      "file_type": ".pdf",
+      "chunk_size": 430,
+      "source_name": "银河麒麟智能问答助手 v2.5.pdf",
+      "doc_id": 69
+    }
+  },
+  {
+    "text": "EK_API_KEY  \"your-api-key\"  必须配置 DEEPSEEK_API_ENDPOINT  \"https:api.deepseek.comv1chatcompletions\"  文档路径 DOCUMENT_PATH  \".docs\"  文档存储路径 VECTOR_DB_PATH  \".datavector_db\"  向量数据库路径  RAG配置 RAG_CONFIG  { \"top_k\": 5,  检索文档数量 \"similarity_threshold\": 0.7,  相似度阈值 \"max_context_length\": 2000,  最大上下文长度 \"temperature\": 0.",
+    "metadata": {
+      "source": "银河麒麟智能问答助手 v2.5.pdf",
+      "chunk_id": 5,
+      "total_chunks": 14,
+      "file_type": ".pdf",
+      "chunk_size": 308,
+      "source_name": "银河麒麟智能问答助手 v2.5.pdf",
+      "doc_id": 70
+    }
+  },
+  {
+    "text": "atch_size\": 32  批处理大小 } 系统服务管理 --- 第6页 ---  查看服务状态 sudo systemctl status kylin-qa  启动服务 sudo systemctl start kylin-qa  停止服务 sudo systemctl stop kylin-qa  重启服务 sudo systemctl restart kylin-qa  开机自启 sudo systemctl enable kylin-qa  禁用自启 sudo systemctl disable kylin-qa  查看服务日志 journalctl -u kylin-qa -f  项结构 kylin-qa-assistant  main.py  主程序入口  config.py  配置文件  requirements.txt  Python依赖  README.md  项目说明  run.sh  Linux启动脚本  install.sh  安装脚本  uninstall.sh  卸载脚本  kylin-qa.",
+    "metadata": {
+      "source": "银河麒麟智能问答助手 v2.5.pdf",
+      "chunk_id": 6,
+      "total_chunks": 14,
+      "file_type": ".pdf",
+      "chunk_size": 469,
+      "source_name": "银河麒麟智能问答助手 v2.5.pdf",
+      "doc_id": 71
+    }
+  },
+  {
+    "text": "service  系统服务配置  src  源代码目录   ai_models.py  AI模型接口   vector_store.py  向量存储   rag_engine.py  RAG引擎   gui.py  图形界面   document_processor.py  文档处理   system_info_helper.py  系统信息  data  数据目录   vector_db  向量数据库  docs  文档目录  logs  日志目录 --- 第7页 ---   app.log  应用日志  assets  资源目录  持的档格式 格式 扩展名 说明 PDF 档 .pdf 持本提取和 OCR Markdown .md 完整的 Markdown 语法持 本档 .txt 纯本件 reStructuredText .rst 技术档格式 Word 档 .doc, .docx Microsoft Word 档 HTML 档 .html, .htm 档  故障排除 常问题及解决案 1.",
+    "metadata": {
+      "source": "银河麒麟智能问答助手 v2.5.pdf",
+      "chunk_id": 7,
+      "total_chunks": 14,
+      "file_type": ".pdf",
+      "chunk_size": 451,
+      "source_name": "银河麒麟智能问答助手 v2.5.pdf",
+      "doc_id": 72
+    }
+  },
+  {
+    "text": "程序法启动 问题: 运程序时出现错误 解决案:  检查Python版本 python3 --version  检查依赖是否安装完整 pip3 list  grep -E \"numpyscikit-learnrequests\"  重新安装依赖 pip3 install -r requirements.txt --force-reinstall  查看详细错误信息 python3 main.py --debug 2. API 调失败 问题: DeepSeek API 调失败 解决案:  检查网络连接 ping api.deepseek.com --- 第8页 ---  验证API密钥 curl -H \"Authorization: Bearer your-api-key\"  https:api.deepseek.comv1models  检查API额度  登录DeepSeek控制台查看使用情况 3. 麒麟 SDK 库加载失败 问题: 系统信息功能不可 解决案:  检查SDK库是否存在 ls -la usrliblibkysysinfo.",
+    "metadata": {
+      "source": "银河麒麟智能问答助手 v2.5.pdf",
+      "chunk_id": 8,
+      "total_chunks": 14,
+      "file_type": ".pdf",
+      "chunk_size": 473,
+      "source_name": "银河麒麟智能问答助手 v2.5.pdf",
+      "doc_id": 73
+    }
+  },
+  {
+    "text": "so  安装麒麟SDK开发包 sudo apt install libkysdk-dev  检查库文件权限 sudo chmod 755 usrliblibkysysinfo.so 4. 档处理失败 问题: 法处理某些档格式 解决案:  安装额外的文档处理库 pip3 install pdfplumber python-docx  检查文件权限 ls -la your-document.pdf  尝试转换文档格式  PDF - TXT: pdftotext document.pdf 5. GUI 界问题 问题: 图形界法显 解决案:  检查显示环境 echo DISPLAY  安装tkinter --- 第9页 --- sudo apt install python3-tk  使用X11转发SSH连接时 ssh -X usernamehostname 志查看  查看应用日志 tail -f logsapp.log  查看系统服务日志 journalctl -u kylin-qa -f  查看详细调试信息 python3 main.py --debug 性能优化建议 1.",
+    "metadata": {
+      "source": "银河麒麟智能问答助手 v2.5.pdf",
+      "chunk_id": 9,
+      "total_chunks": 14,
+      "file_type": ".pdf",
+      "chunk_size": 492,
+      "source_name": "银河麒麟智能问答助手 v2.5.pdf",
+      "doc_id": 74
+    }
+  },
+  {
+    "text": "内存优化 适当调整 PERFORMANCE_CONFIG 中的参数 定期清理向量数据库 限制同时处理的档数量 2. 络优化 使国内 API 镜像如果可 调整 API 请求超时时间 启请求缓存 3. 存储优化 定期清理志件 压缩型档 使 SSD 存储提升性能  更新升级 检查更新  检查远程更新 git fetch origin git status  查看更新内容 git log HEAD..originmain --oneline 升级程序 --- 第10页 ---  备份配置 cp config.py config.py.backup  拉取最新代码 git pull origin main  更新依赖 pip3 install -r requirements.txt --upgrade  重启服务 sudo systemctl restart kylin-qa 版本回退  查看版本历史 git log --oneline  回退到指定版本 git checkout commit-hash  恢复配置 cp config.py.backup config.",
+    "metadata": {
+      "source": "银河麒麟智能问答助手 v2.5.pdf",
+      "chunk_id": 10,
+      "total_chunks": 14,
+      "file_type": ".pdf",
+      "chunk_size": 487,
+      "source_name": "银河麒麟智能问答助手 v2.5.pdf",
+      "doc_id": 75
+    }
+  },
+  {
+    "text": "py  卸载程序  运行卸载脚本 sudo .uninstall.sh  手动清理如果需要 sudo rm -rf optkylin-qa-assistant sudo rm -f etcsystemdsystemkylin-qa.service sudo rm -f usrlocalbinkylin-qa rm -f Desktopkylin-qa.desktop  许可证 本项采 MIT 许可证 - 查看 LICENSE 件了解详情  贡献 欢迎提交 Issue 和 Pull Request 来改进项 贡献指南 1. Fork 项 2. 创建特性分 (git checkout -b featureAmazingFeature) --- 第11页 --- 3. 提交更改 (git commit -m 'Add some AmazingFeature') 4. 推送到分 (git push origin featureAmazingFeature) 5. 开启 Pull Request 开发环境搭建  克隆开发版本 git clone https:github.",
+    "metadata": {
+      "source": "银河麒麟智能问答助手 v2.5.pdf",
+      "chunk_id": 11,
+      "total_chunks": 14,
+      "file_type": ".pdf",
+      "chunk_size": 488,
+      "source_name": "银河麒麟智能问答助手 v2.5.pdf",
+      "doc_id": 76
+    }
+  },
+  {
+    "text": "comyour-usernamekylin-qa-assistant.git cd kylin-qa-assistant  创建开发环境 python3 -m venv dev-env source dev-envbinactivate  安装开发依赖 pip install -r requirements.txt pip install pytest black flake8  开发工具  运行测试 pytest tests  代码格式化 black src  代码检查 flake8 src  持与反馈 如果您在使过程中遇到问题请 1. 查看档: 先查看本 README 和相关档 2. 搜索问题: 在 Issues 搜索类似问题 3. 提交 Issue: 如果没有找到解决案请提交新的 Issue 4. 联系开发者: 通过邮件或其他式联系项维护者 Issue 提交模板 提交 Issue 时请包含以下信息 环境信息 - 操作系统: 银河麒麟 V10 SP3 - Python版本: 3.8.10 - 程序版本: v2.5.",
+    "metadata": {
+      "source": "银河麒麟智能问答助手 v2.5.pdf",
+      "chunk_id": 12,
+      "total_chunks": 14,
+      "file_type": ".pdf",
+      "chunk_size": 466,
+      "source_name": "银河麒麟智能问答助手 v2.5.pdf",
+      "doc_id": 77
+    }
+  },
+  {
+    "text": "0 --- 第12页 --- 问题描述 简要描述遇到的问题 复现步骤 1. 执行了什么操作 2. 期望的结果 3. 实际的结果 错误信息 粘贴完整的错误信息或志 截图 如果有GUI相关问题请提供截图  更新志 v2.5.0 ( 当前版本 )  集成 DeepSeek-R1 API  持麒麟 SDK2.5  优化 RAG 检索算法  改进 GUI 界体验  增强系统兼容性  添加键安装脚本  完善档和使指南  修复档处理 bug  优化内存使  改进错误处理 未来计划  持更多 AI 模型  添加语交互功能  持多语界  增加插件系统  优化性能和稳定性 银河麒麟智能问答助 - 让 AI 助您的麒麟系统使体验  如果这个项对您有帮助请给我们个 Star",
+    "metadata": {
+      "source": "银河麒麟智能问答助手 v2.5.pdf",
+      "chunk_id": 13,
+      "total_chunks": 14,
+      "file_type": ".pdf",
+      "chunk_size": 329,
+      "source_name": "银河麒麟智能问答助手 v2.5.pdf",
+      "doc_id": 78
+    }
+  },
+  {
+    "text": "--- 第1页 --- 银河麒麟智能问答助 v2.5 银河麒麟智能问答助 v2.5 基于 DeepSeek-R1 API 和麒麟 SDK2.5 的智能问答系统专为银河麒麟操作系统设计  功能特性 智能问答: 基于 RAG( 检索增强成 ) 技术结合本地档知识库和 AI 模型 档处理: 持 PDF  Markdown 本等多种格式档 系统集成: 深度集成麒麟 SDK2.5 获取系统信息和硬件状态 图形界: 友好的 GUI 界持档管理和实时问答 多架构持: 持 x86_64 和 ARM64 架构  系统要求 推荐环境 操作系统: 银河麒麟 V10 SP1SP2SP3 或更版本 Python 版本: Python 3.7 ( 推荐 Python 3.8) 内存: 4GB 以上 ( 推荐 8GB) 存储: 2GB 可空间 络: 需要互联连接访问 DeepSeek API 必需依赖 麒麟 SDK2.5 开发库 DeepSeek API 访问权限 Python 第三库 requirements.txt   快速安装指南 法键安装推荐 1.",
+    "metadata": {
+      "source": "银河麒麟智能问答助手 v2.5.pdf",
+      "chunk_id": 0,
+      "total_chunks": 14,
+      "file_type": ".pdf",
+      "chunk_size": 470,
+      "source_name": "银河麒麟智能问答助手 v2.5.pdf",
+      "doc_id": 79
+    }
+  },
+  {
+    "text": "下载项  使用git克隆推荐 git clone https:github.comyour-usernamekylin-qa-assistant.git cd kylin-qa-assistant  或者下载ZIP包并解压 wget https:github.comyour-usernamekylin-qa-assistantarchivemain.zip --- 第2页 --- unzip main.zip cd kylin-qa-assistant-main 2. 运安装脚本  给安装脚本执行权限 chmod x install.sh  运行安装脚本需要sudo权限 sudo .install.sh 安装脚本将动完成以下操作  检查系统兼容性  安装 Python 依赖包  配置系统服务  创建桌快捷式  设置命令快捷式 3. 配置 API 密钥  编辑配置文件 sudo nano optkylin-qa-assistantconfig.",
+    "metadata": {
+      "source": "银河麒麟智能问答助手 v2.5.pdf",
+      "chunk_id": 1,
+      "total_chunks": 14,
+      "file_type": ".pdf",
+      "chunk_size": 427,
+      "source_name": "银河麒麟智能问答助手 v2.5.pdf",
+      "doc_id": 80
+    }
+  },
+  {
+    "text": "API密钥 DEEPSEEK_API_KEY  \"your-actual-api-key-here\" 4. 启动程序  方法1使用桌面快捷方式  双击桌面上的\"银河麒麟智能问答助手\"图标  方法2使用命令行 kylin-qa  方法3启动系统服务 sudo systemctl start kylin-qa 法动安装 1. 环境准备  更新系统包 sudo apt update sudo apt upgrade -y  安装Python和pip如果未安装 --- 第3页 --- sudo apt install python3 python3-pip python3-venv -y  安装系统依赖 sudo apt install python3-tk python3-dev build-essential -y  安装麒麟SDK开发包如果可用 sudo apt install libkysdk-dev -y 2. 下载项 git clone https:github.comyour-usernamekylin-qa-assistant.",
+    "metadata": {
+      "source": "银河麒麟智能问答助手 v2.5.pdf",
+      "chunk_id": 2,
+      "total_chunks": 14,
+      "file_type": ".pdf",
+      "chunk_size": 475,
+      "source_name": "银河麒麟智能问答助手 v2.5.pdf",
+      "doc_id": 81
+    }
+  },
+  {
+    "text": "git cd kylin-qa-assistant 3. 创建虚拟环境推荐  创建虚拟环境 python3 -m venv venv  激活虚拟环境 source venvbinactivate 4. 安装 Python 依赖  升级pip pip install --upgrade pip  安装项目依赖 pip install -r requirements.txt 5. 配置程序  复制配置文件 cp config.py config.py.bak  编辑配置文件 nano config.py  修改API密钥  DEEPSEEK_API_KEY  \"your-actual-api-key-here\" 6. 创建必要录 mkdir -p data docs logs assets 7. 运程序  启动图形界面 python3 main.py --- 第4页 ---  或使用启动脚本 .run.sh  获取 DeepSeek API 密钥 1. 访问 DeepSeek 官 2. 注册账号并登录 3. 进 API 管理 4. 创建新的 API 密钥 5.",
+    "metadata": {
+      "source": "银河麒麟智能问答助手 v2.5.pdf",
+      "chunk_id": 3,
+      "total_chunks": 14,
+      "file_type": ".pdf",
+      "chunk_size": 485,
+      "source_name": "银河麒麟智能问答助手 v2.5.pdf",
+      "doc_id": 82
+    }
+  },
+  {
+    "text": "复制密钥并填配置件 注意: 请妥善保管您的 API 密钥不要泄露给他  使指南 次使 1. 启动程序  命令行启动 kylin-qa  或双击桌面图标 2. 添加档 点击 \" 添加档 \" 按钮 选择您要添加的档件 持格式 PDF  Markdown  TXT  Word 等 等待档处理完成 3. 开始问答 在问题输框中输您的问题 可选择是否包含系统信息 点击 \" 提问 \" 或按回键 查看 AI 成的回答 常功能 档管理 添加档: 持批量添加多个档 查看状态: 实时显知识库中的档数量 清空知识库: 键清空所有档谨慎操作 --- 第5页 --- 智能问答 普通问答: 基于档内容回答问题 系统问答: 结合当前系统信息回答 相关档: 显回答所参考的档来源 系统信息 查看系统状态: 点击 \" 系统信息 \" 按钮 硬件信息: CPU 内存磁盘等信息 络状态: 络配置和连接状态 进程信息: 系统负载和进程统计  级配置 配置件说明 主要配置项位于 config.",
+    "metadata": {
+      "source": "银河麒麟智能问答助手 v2.5.pdf",
+      "chunk_id": 4,
+      "total_chunks": 14,
+      "file_type": ".pdf",
+      "chunk_size": 430,
+      "source_name": "银河麒麟智能问答助手 v2.5.pdf",
+      "doc_id": 83
+    }
+  },
+  {
+    "text": "EK_API_KEY  \"your-api-key\"  必须配置 DEEPSEEK_API_ENDPOINT  \"https:api.deepseek.comv1chatcompletions\"  文档路径 DOCUMENT_PATH  \".docs\"  文档存储路径 VECTOR_DB_PATH  \".datavector_db\"  向量数据库路径  RAG配置 RAG_CONFIG  { \"top_k\": 5,  检索文档数量 \"similarity_threshold\": 0.7,  相似度阈值 \"max_context_length\": 2000,  最大上下文长度 \"temperature\": 0.",
+    "metadata": {
+      "source": "银河麒麟智能问答助手 v2.5.pdf",
+      "chunk_id": 5,
+      "total_chunks": 14,
+      "file_type": ".pdf",
+      "chunk_size": 308,
+      "source_name": "银河麒麟智能问答助手 v2.5.pdf",
+      "doc_id": 84
+    }
+  },
+  {
+    "text": "atch_size\": 32  批处理大小 } 系统服务管理 --- 第6页 ---  查看服务状态 sudo systemctl status kylin-qa  启动服务 sudo systemctl start kylin-qa  停止服务 sudo systemctl stop kylin-qa  重启服务 sudo systemctl restart kylin-qa  开机自启 sudo systemctl enable kylin-qa  禁用自启 sudo systemctl disable kylin-qa  查看服务日志 journalctl -u kylin-qa -f  项结构 kylin-qa-assistant  main.py  主程序入口  config.py  配置文件  requirements.txt  Python依赖  README.md  项目说明  run.sh  Linux启动脚本  install.sh  安装脚本  uninstall.sh  卸载脚本  kylin-qa.",
+    "metadata": {
+      "source": "银河麒麟智能问答助手 v2.5.pdf",
+      "chunk_id": 6,
+      "total_chunks": 14,
+      "file_type": ".pdf",
+      "chunk_size": 469,
+      "source_name": "银河麒麟智能问答助手 v2.5.pdf",
+      "doc_id": 85
+    }
+  },
+  {
+    "text": "service  系统服务配置  src  源代码目录   ai_models.py  AI模型接口   vector_store.py  向量存储   rag_engine.py  RAG引擎   gui.py  图形界面   document_processor.py  文档处理   system_info_helper.py  系统信息  data  数据目录   vector_db  向量数据库  docs  文档目录  logs  日志目录 --- 第7页 ---   app.log  应用日志  assets  资源目录  持的档格式 格式 扩展名 说明 PDF 档 .pdf 持本提取和 OCR Markdown .md 完整的 Markdown 语法持 本档 .txt 纯本件 reStructuredText .rst 技术档格式 Word 档 .doc, .docx Microsoft Word 档 HTML 档 .html, .htm 档  故障排除 常问题及解决案 1.",
+    "metadata": {
+      "source": "银河麒麟智能问答助手 v2.5.pdf",
+      "chunk_id": 7,
+      "total_chunks": 14,
+      "file_type": ".pdf",
+      "chunk_size": 451,
+      "source_name": "银河麒麟智能问答助手 v2.5.pdf",
+      "doc_id": 86
+    }
+  },
+  {
+    "text": "程序法启动 问题: 运程序时出现错误 解决案:  检查Python版本 python3 --version  检查依赖是否安装完整 pip3 list  grep -E \"numpyscikit-learnrequests\"  重新安装依赖 pip3 install -r requirements.txt --force-reinstall  查看详细错误信息 python3 main.py --debug 2. API 调失败 问题: DeepSeek API 调失败 解决案:  检查网络连接 ping api.deepseek.com --- 第8页 ---  验证API密钥 curl -H \"Authorization: Bearer your-api-key\"  https:api.deepseek.comv1models  检查API额度  登录DeepSeek控制台查看使用情况 3. 麒麟 SDK 库加载失败 问题: 系统信息功能不可 解决案:  检查SDK库是否存在 ls -la usrliblibkysysinfo.",
+    "metadata": {
+      "source": "银河麒麟智能问答助手 v2.5.pdf",
+      "chunk_id": 8,
+      "total_chunks": 14,
+      "file_type": ".pdf",
+      "chunk_size": 473,
+      "source_name": "银河麒麟智能问答助手 v2.5.pdf",
+      "doc_id": 87
+    }
+  },
+  {
+    "text": "so  安装麒麟SDK开发包 sudo apt install libkysdk-dev  检查库文件权限 sudo chmod 755 usrliblibkysysinfo.so 4. 档处理失败 问题: 法处理某些档格式 解决案:  安装额外的文档处理库 pip3 install pdfplumber python-docx  检查文件权限 ls -la your-document.pdf  尝试转换文档格式  PDF - TXT: pdftotext document.pdf 5. GUI 界问题 问题: 图形界法显 解决案:  检查显示环境 echo DISPLAY  安装tkinter --- 第9页 --- sudo apt install python3-tk  使用X11转发SSH连接时 ssh -X usernamehostname 志查看  查看应用日志 tail -f logsapp.log  查看系统服务日志 journalctl -u kylin-qa -f  查看详细调试信息 python3 main.py --debug 性能优化建议 1.",
+    "metadata": {
+      "source": "银河麒麟智能问答助手 v2.5.pdf",
+      "chunk_id": 9,
+      "total_chunks": 14,
+      "file_type": ".pdf",
+      "chunk_size": 492,
+      "source_name": "银河麒麟智能问答助手 v2.5.pdf",
+      "doc_id": 88
+    }
+  },
+  {
+    "text": "内存优化 适当调整 PERFORMANCE_CONFIG 中的参数 定期清理向量数据库 限制同时处理的档数量 2. 络优化 使国内 API 镜像如果可 调整 API 请求超时时间 启请求缓存 3. 存储优化 定期清理志件 压缩型档 使 SSD 存储提升性能  更新升级 检查更新  检查远程更新 git fetch origin git status  查看更新内容 git log HEAD..originmain --oneline 升级程序 --- 第10页 ---  备份配置 cp config.py config.py.backup  拉取最新代码 git pull origin main  更新依赖 pip3 install -r requirements.txt --upgrade  重启服务 sudo systemctl restart kylin-qa 版本回退  查看版本历史 git log --oneline  回退到指定版本 git checkout commit-hash  恢复配置 cp config.py.backup config.",
+    "metadata": {
+      "source": "银河麒麟智能问答助手 v2.5.pdf",
+      "chunk_id": 10,
+      "total_chunks": 14,
+      "file_type": ".pdf",
+      "chunk_size": 487,
+      "source_name": "银河麒麟智能问答助手 v2.5.pdf",
+      "doc_id": 89
+    }
+  },
+  {
+    "text": "py  卸载程序  运行卸载脚本 sudo .uninstall.sh  手动清理如果需要 sudo rm -rf optkylin-qa-assistant sudo rm -f etcsystemdsystemkylin-qa.service sudo rm -f usrlocalbinkylin-qa rm -f Desktopkylin-qa.desktop  许可证 本项采 MIT 许可证 - 查看 LICENSE 件了解详情  贡献 欢迎提交 Issue 和 Pull Request 来改进项 贡献指南 1. Fork 项 2. 创建特性分 (git checkout -b featureAmazingFeature) --- 第11页 --- 3. 提交更改 (git commit -m 'Add some AmazingFeature') 4. 推送到分 (git push origin featureAmazingFeature) 5. 开启 Pull Request 开发环境搭建  克隆开发版本 git clone https:github.",
+    "metadata": {
+      "source": "银河麒麟智能问答助手 v2.5.pdf",
+      "chunk_id": 11,
+      "total_chunks": 14,
+      "file_type": ".pdf",
+      "chunk_size": 488,
+      "source_name": "银河麒麟智能问答助手 v2.5.pdf",
+      "doc_id": 90
+    }
+  },
+  {
+    "text": "comyour-usernamekylin-qa-assistant.git cd kylin-qa-assistant  创建开发环境 python3 -m venv dev-env source dev-envbinactivate  安装开发依赖 pip install -r requirements.txt pip install pytest black flake8  开发工具  运行测试 pytest tests  代码格式化 black src  代码检查 flake8 src  持与反馈 如果您在使过程中遇到问题请 1. 查看档: 先查看本 README 和相关档 2. 搜索问题: 在 Issues 搜索类似问题 3. 提交 Issue: 如果没有找到解决案请提交新的 Issue 4. 联系开发者: 通过邮件或其他式联系项维护者 Issue 提交模板 提交 Issue 时请包含以下信息 环境信息 - 操作系统: 银河麒麟 V10 SP3 - Python版本: 3.8.10 - 程序版本: v2.5.",
+    "metadata": {
+      "source": "银河麒麟智能问答助手 v2.5.pdf",
+      "chunk_id": 12,
+      "total_chunks": 14,
+      "file_type": ".pdf",
+      "chunk_size": 466,
+      "source_name": "银河麒麟智能问答助手 v2.5.pdf",
+      "doc_id": 91
+    }
+  },
+  {
+    "text": "0 --- 第12页 --- 问题描述 简要描述遇到的问题 复现步骤 1. 执行了什么操作 2. 期望的结果 3. 实际的结果 错误信息 粘贴完整的错误信息或志 截图 如果有GUI相关问题请提供截图  更新志 v2.5.0 ( 当前版本 )  集成 DeepSeek-R1 API  持麒麟 SDK2.5  优化 RAG 检索算法  改进 GUI 界体验  增强系统兼容性  添加键安装脚本  完善档和使指南  修复档处理 bug  优化内存使  改进错误处理 未来计划  持更多 AI 模型  添加语交互功能  持多语界  增加插件系统  优化性能和稳定性 银河麒麟智能问答助 - 让 AI 助您的麒麟系统使体验  如果这个项对您有帮助请给我们个 Star",
+    "metadata": {
+      "source": "银河麒麟智能问答助手 v2.5.pdf",
+      "chunk_id": 13,
+      "total_chunks": 14,
+      "file_type": ".pdf",
+      "chunk_size": 329,
+      "source_name": "银河麒麟智能问答助手 v2.5.pdf",
+      "doc_id": 92
+    }
+  }
+]

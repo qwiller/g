@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>银河麒麟智能问答助手</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Microsoft YaHei', Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+
+        .main-content {
+            display: flex;
+            min-height: 600px;
+        }
+
+        .sidebar {
+            width: 350px;
+            background: #f8f9fa;
+            padding: 30px;
+            border-right: 1px solid #e9ecef;
+        }
+
+        .chat-area {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            padding: 30px;
+        }
+
+        .upload-area {
+            border: 3px dashed #3498db;
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+            margin-bottom: 30px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .upload-area:hover {
+            border-color: #2980b9;
+            background: #f8f9fa;
+        }
+
+        .upload-area.dragover {
+            border-color: #27ae60;
+            background: #d5f4e6;
+        }
+
+        .upload-icon {
+            font-size: 3em;
+            color: #3498db;
+            margin-bottom: 15px;
+        }
+
+        .file-input {
+            display: none;
+        }
+
+        .btn {
+            background: #3498db;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: all 0.3s ease;
+            margin: 5px;
+        }
+
+        .btn:hover {
+            background: #2980b9;
+            transform: translateY(-2px);
+        }
+
+        .btn-success {
+            background: #27ae60;
+        }
+
+        .btn-success:hover {
+            background: #229954;
+        }
+
+        .btn-danger {
+            background: #e74c3c;
+        }
+
+        .btn-danger:hover {
+            background: #c0392b;
+        }
+
+        .status-panel {
+            background: #e8f4f8;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .status-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+
+        .chat-messages {
+            flex: 1;
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            overflow-y: auto;
+            max-height: 400px;
+        }
+
+        .message {
+            margin-bottom: 20px;
+            padding: 15px;
+            border-radius: 10px;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .message.user {
+            background: #3498db;
+            color: white;
+            margin-left: 50px;
+        }
+
+        .message.assistant {
+            background: white;
+            border: 1px solid #e9ecef;
+            margin-right: 50px;
+        }
+
+        .message-content {
+            line-height: 1.6;
+        }
+
+        .message-sources {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid #e9ecef;
+            font-size: 0.9em;
+            color: #666;
+        }
+
+        .source-item {
+            background: #f8f9fa;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        .input-area {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .question-input {
+            flex: 1;
+            padding: 15px;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            font-size: 1em;
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+
+        .question-input:focus {
+            border-color: #3498db;
+        }
+
+        .voice-btn {
+            background: #e74c3c;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2em;
+        }
+
+        .voice-btn.recording {
+            background: #27ae60;
+            animation: pulse 1s infinite;
+        }
+
+        .loading {
+            display: none;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #3498db;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 10px;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        .confidence-bar {
+            width: 100%;
+            height: 8px;
+            background: #e9ecef;
+            border-radius: 4px;
+            overflow: hidden;
+            margin-top: 10px;
+        }
+
+        .confidence-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #e74c3c 0%, #f39c12 50%, #27ae60 100%);
+            transition: width 0.3s ease;
+        }
+
+        @media (max-width: 768px) {
+            .main-content {
+                flex-direction: column;
+            }
+            
+            .sidebar {
+                width: 100%;
+            }
+            
+            .header h1 {
+                font-size: 2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🤖 银河麒麟智能问答助手</h1>
+            <p>基于RAG技术的智能文档问答系统 | 专为麒麟操作系统优化</p>
+        </div>
+
+        <div class="main-content">
+            <div class="sidebar">
+                <div class="upload-area" id="uploadArea">
+                    <div class="upload-icon">📁</div>
+                    <h3>上传文档</h3>
+                    <p>支持PDF、Markdown、文本文件</p>
+                    <p>拖拽文件到此处或点击选择</p>
+                    <input type="file" id="fileInput" class="file-input" accept=".pdf,.md,.txt" multiple>
+                    <button class="btn" onclick="document.getElementById('fileInput').click()">选择文件</button>
+                </div>
+
+                <div class="status-panel">
+                    <h4>📊 系统状态</h4>
+                    <div class="status-item">
+                        <span>文档数量:</span>
+                        <span id="docCount">0</span>
+                    </div>
+                    <div class="status-item">
+                        <span>向量数量:</span>
+                        <span id="vectorCount">0</span>
+                    </div>
+                    <div class="status-item">
+                        <span>系统状态:</span>
+                        <span id="systemStatus">就绪</span>
+                    </div>
+                </div>
+
+                <div style="margin-top: 20px;">
+                    <button class="btn btn-success" onclick="refreshStatus()">🔄 刷新状态</button>
+                    <button class="btn btn-danger" onclick="clearAll()">🗑️ 清空数据</button>
+                </div>
+            </div>
+
+            <div class="chat-area">
+                <div class="chat-messages" id="chatMessages">
+                    <div class="message assistant">
+                        <div class="message-content">
+                            👋 您好！我是银河麒麟智能问答助手。
+                            <br><br>
+                            请先上传相关文档，然后我就可以基于文档内容回答您的问题了。
+                            <br><br>
+                            💡 <strong>使用提示：</strong>
+                            <ul style="margin-top: 10px; padding-left: 20px;">
+                                <li>支持PDF、Markdown、文本文件</li>
+                                <li>可以同时上传多个文档</li>
+                                <li>支持语音输入和语音播报</li>
+                                <li>问题越具体，回答越准确</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="loading" id="loading">
+                    <div class="spinner"></div>
+                    <p>正在处理中...</p>
+                </div>
+
+                <div class="input-area">
+                    <input type="text" id="questionInput" class="question-input" 
+                           placeholder="请输入您的问题..." onkeypress="handleKeyPress(event)">
+                    <button class="btn voice-btn" id="voiceBtn" onclick="toggleVoiceInput()" title="语音输入">🎤</button>
+                    <button class="btn" onclick="askQuestion()">发送</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 全局变量
+        let isRecording = false;
+        let recognition = null;
+
+        // 初始化
+        document.addEventListener('DOMContentLoaded', function() {
+            setupFileUpload();
+            setupVoiceRecognition();
+            refreshStatus();
+        });
+
+        // 文件上传设置
+        function setupFileUpload() {
+            const uploadArea = document.getElementById('uploadArea');
+            const fileInput = document.getElementById('fileInput');
+
+            // 拖拽上传
+            uploadArea.addEventListener('dragover', (e) => {
+                e.preventDefault();
+                uploadArea.classList.add('dragover');
+            });
+
+            uploadArea.addEventListener('dragleave', () => {
+                uploadArea.classList.remove('dragover');
+            });
+
+            uploadArea.addEventListener('drop', (e) => {
+                e.preventDefault();
+                uploadArea.classList.remove('dragover');
+                const files = e.dataTransfer.files;
+                handleFiles(files);
+            });
+
+            // 点击上传
+            uploadArea.addEventListener('click', () => {
+                fileInput.click();
+            });
+
+            fileInput.addEventListener('change', (e) => {
+                handleFiles(e.target.files);
+            });
+        }
+
+        // 处理文件上传
+        async function handleFiles(files) {
+            for (let file of files) {
+                await uploadFile(file);
+            }
+            refreshStatus();
+        }
+
+        // 上传单个文件
+        async function uploadFile(file) {
+            const formData = new FormData();
+            formData.append('file', file);
+
+            try {
+                showLoading(true);
+                const response = await fetch('/upload', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                const result = await response.json();
+                
+                if (response.ok) {
+                    addMessage('system', `✅ 文档 "${file.name}" 上传成功！共生成 ${result.chunks_count} 个文档块。`);
+                } else {
+                    addMessage('system', `❌ 文档 "${file.name}" 上传失败：${result.detail}`);
+                }
+            } catch (error) {
+                addMessage('system', `❌ 文档 "${file.name}" 上传失败：${error.message}`);
+            } finally {
+                showLoading(false);
+            }
+        }
+
+        // 提问
+        async function askQuestion() {
+            const input = document.getElementById('questionInput');
+            const question = input.value.trim();
+            
+            if (!question) return;
+
+            // 添加用户消息
+            addMessage('user', question);
+            input.value = '';
+
+            try {
+                showLoading(true);
+                const response = await fetch('/ask', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ question: question })
+                });
+
+                const result = await response.json();
+                
+                if (response.ok) {
+                    addMessage('assistant', result.answer, result.sources, result.confidence);
+                    
+                    // 语音播报
+                    if ('speechSynthesis' in window) {
+                        const utterance = new SpeechSynthesisUtterance(result.answer);
+                        utterance.lang = 'zh-CN';
+                        speechSynthesis.speak(utterance);
+                    }
+                } else {
+                    addMessage('assistant', `❌ 处理失败：${result.detail}`);
+                }
+            } catch (error) {
+                addMessage('assistant', `❌ 网络错误：${error.message}`);
+            } finally {
+                showLoading(false);
+            }
+        }
+
+        // 添加消息
+        function addMessage(type, content, sources = null, confidence = null) {
+            const messagesContainer = document.getElementById('chatMessages');
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${type}`;
+
+            let html = `<div class="message-content">${content}</div>`;
+
+            // 添加置信度
+            if (confidence !== null) {
+                html += `
+                    <div style="margin-top: 10px;">
+                        <small>置信度: ${(confidence * 100).toFixed(1)}%</small>
+                        <div class="confidence-bar">
+                            <div class="confidence-fill" style="width: ${confidence * 100}%"></div>
+                        </div>
+                    </div>
+                `;
+            }
+
+            // 添加来源信息
+            if (sources && sources.length > 0) {
+                html += '<div class="message-sources"><strong>📚 参考来源:</strong>';
+                sources.forEach((source, index) => {
+                    html += `
+                        <div class="source-item">
+                            <strong>来源 ${index + 1}:</strong> ${source.source_name} 
+                            <small>(相似度: ${(source.score * 100).toFixed(1)}%)</small>
+                            <br>
+                            <small>${source.text_preview}</small>
+                        </div>
+                    `;
+                });
+                html += '</div>';
+            }
+
+            messageDiv.innerHTML = html;
+            messagesContainer.appendChild(messageDiv);
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        }
+
+        // 语音识别设置
+        function setupVoiceRecognition() {
+            if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
+                const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+                recognition = new SpeechRecognition();
+                recognition.lang = 'zh-CN';
+                recognition.continuous = false;
+                recognition.interimResults = false;
+
+                recognition.onresult = function(event) {
+                    const transcript = event.results[0][0].transcript;
+                    document.getElementById('questionInput').value = transcript;
+                };
+
+                recognition.onend = function() {
+                    isRecording = false;
+                    document.getElementById('voiceBtn').classList.remove('recording');
+                };
+            }
+        }
+
+        // 切换语音输入
+        function toggleVoiceInput() {
+            if (!recognition) {
+                alert('您的浏览器不支持语音识别功能');
+                return;
+            }
+
+            if (isRecording) {
+                recognition.stop();
+            } else {
+                recognition.start();
+                isRecording = true;
+                document.getElementById('voiceBtn').classList.add('recording');
+            }
+        }
+
+        // 刷新状态
+        async function refreshStatus() {
+            try {
+                const response = await fetch('/status');
+                const status = await response.json();
+                
+                document.getElementById('docCount').textContent = status.documents_count;
+                document.getElementById('vectorCount').textContent = status.vector_count;
+                document.getElementById('systemStatus').textContent = status.status;
+            } catch (error) {
+                console.error('状态刷新失败:', error);
+            }
+        }
+
+        // 清空所有数据
+        async function clearAll() {
+            if (!confirm('确定要清空所有数据吗？此操作不可恢复。')) {
+                return;
+            }
+
+            try {
+                // 这里需要实现清空API
+                addMessage('system', '🗑️ 数据清空功能待实现');
+            } catch (error) {
+                addMessage('system', `❌ 清空失败：${error.message}`);
+            }
+        }
+
+        // 显示/隐藏加载状态
+        function showLoading(show) {
+            document.getElementById('loading').style.display = show ? 'block' : 'none';
+        }
+
+        // 键盘事件处理
+        function handleKeyPress(event) {
+            if (event.key === 'Enter') {
+                askQuestion();
+            }
+        }
+    </script>
+</body>
+</html>
