@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -112,6 +113,30 @@
         .upload-btn:hover {
             background: #2980b9;
             transform: translateY(-2px);
+        }
+
+        .clear-btn {
+            background: #e74c3c;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: all 0.3s ease;
+            margin-top: 15px;
+            width: 100%;
+        }
+
+        .clear-btn:hover {
+            background: #c0392b;
+            transform: translateY(-2px);
+        }
+
+        .clear-btn:disabled {
+            background: #95a5a6;
+            cursor: not-allowed;
+            transform: none;
         }
 
         .status-info {
@@ -281,9 +306,17 @@
         }
 
         @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.05);
+            }
+
+            100% {
+                transform: scale(1);
+            }
         }
 
         .sources {
@@ -316,39 +349,164 @@
             margin-left: 10px;
         }
 
-        .confidence.high { background: #d4edda; color: #155724; }
-        .confidence.medium { background: #fff3cd; color: #856404; }
-        .confidence.low { background: #f8d7da; color: #721c24; }
+        .confidence.high {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .confidence.medium {
+            background: #fff3cd;
+            color: #856404;
+        }
+
+        .confidence.low {
+            background: #f8d7da;
+            color: #721c24;
+        }
+
+        /* 模态对话框样式 */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal-content {
+            background-color: white;
+            margin: 15% auto;
+            padding: 30px;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 500px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            animation: slideIn 0.3s ease;
+        }
+
+        .modal-header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .modal-header h2 {
+            color: #e74c3c;
+            margin: 0;
+            font-size: 1.5em;
+        }
+
+        .modal-body {
+            text-align: center;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        .modal-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+        }
+
+        .modal-btn {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: all 0.3s ease;
+            min-width: 100px;
+        }
+
+        .modal-btn.confirm {
+            background: #e74c3c;
+            color: white;
+        }
+
+        .modal-btn.confirm:hover {
+            background: #c0392b;
+        }
+
+        .modal-btn.cancel {
+            background: #95a5a6;
+            color: white;
+        }
+
+        .modal-btn.cancel:hover {
+            background: #7f8c8d;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        /* 图标兼容性样式 */
+        .icon {
+            display: inline-block;
+            width: 1.2em;
+            height: 1.2em;
+            vertical-align: middle;
+            margin-right: 0.3em;
+        }
+
+        .icon-fallback {
+            font-family: "Segoe UI", "Microsoft YaHei", "SimSun", sans-serif;
+            font-size: 1.1em;
+        }
+
+
 
         @media (max-width: 768px) {
             .main-content {
                 grid-template-columns: 1fr;
             }
-            
+
             .input-area {
                 flex-direction: column;
             }
-            
+
             .question-input {
                 margin-bottom: 10px;
             }
         }
     </style>
 </head>
+
 <body>
     <div class="container">
         <div class="header">
-            <h1>🤖 银河麒麟智能问答助手</h1>
+            <h1><span class="icon-fallback">🤖</span> 银河麒麟智能问答助手</h1>
             <p>基于RAG技术的智能文档问答系统</p>
         </div>
 
         <div class="main-content">
             <div class="sidebar">
-                <div class="section-title">📁 文档管理</div>
-                
+                <div class="section-title"><span class="icon-fallback">📁</span> 文档管理</div>
+
                 <div class="upload-area" id="uploadArea">
                     <div>
-                        <p>📄 拖拽文件到此处或点击上传</p>
+                        <p><span class="icon-fallback">📄</span> 拖拽文件到此处或点击上传</p>
                         <p style="font-size: 0.9em; color: #666; margin-top: 10px;">
                             支持 PDF、Markdown、文本文件
                         </p>
@@ -359,34 +517,54 @@
                     </div>
                 </div>
 
-                <div class="section-title">📊 系统状态</div>
+                <button class="clear-btn" id="clearDataBtn" onclick="showClearDataModal()">
+                    <span class="icon-fallback">🗑️</span> 清空数据
+                </button>
+
+                <div class="section-title"><span class="icon-fallback">📊</span> 系统状态</div>
                 <div class="status-info" id="statusInfo">
                     <p>正在加载状态...</p>
                 </div>
             </div>
 
             <div class="chat-area">
-                <div class="section-title">💬 智能问答</div>
-                
+                <div class="section-title"><span class="icon-fallback">💬</span> 智能问答</div>
+
+
+
                 <div class="chat-history" id="chatHistory">
                     <div class="message system">
                         <div class="message-header">
-                            <span>🤖 系统</span>
+                            <span><span class="icon-fallback">🤖</span> 系统</span>
                         </div>
                         <div class="message-content">欢迎使用银河麒麟智能问答助手！请先上传相关文档，然后我就可以基于文档内容回答您的问题了。</div>
                     </div>
                 </div>
 
                 <div class="input-area">
-                    <textarea 
-                        id="questionInput" 
-                        class="question-input" 
-                        placeholder="请输入您的问题..."
-                        rows="2"
-                    ></textarea>
-                    <button id="voiceInputBtn" class="voice-input-btn" title="语音输入">🎤</button>
+                    <textarea id="questionInput" class="question-input" placeholder="请输入您的问题..." rows="2"></textarea>
+                    <button id="voiceInputBtn" class="voice-input-btn" title="语音输入"><span
+                            class="icon-fallback">🎤</span></button>
                     <button id="sendBtn" class="send-btn">发送</button>
                 </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 清空数据确认对话框 -->
+    <div id="clearDataModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2><span class="icon-fallback">⚠️</span> 确认清空数据</h2>
+            </div>
+            <div class="modal-body">
+                <p>您确定要清空所有已上传的文档和向量数据吗？</p>
+                <p style="color: #e74c3c; font-weight: bold;">此操作不可撤销！</p>
+                <p>清空后您需要重新上传文档才能进行问答。</p>
+            </div>
+            <div class="modal-buttons">
+                <button class="modal-btn cancel" onclick="hideClearDataModal()">取消</button>
+                <button class="modal-btn confirm" onclick="confirmClearData()">确认清空</button>
             </div>
         </div>
     </div>
@@ -399,19 +577,19 @@
         let recognition = null;
 
         // 初始化
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             initializeApp();
         });
 
         function initializeApp() {
             setupEventListeners();
             loadSystemStatus();
-            
+
             // 检查浏览器支持
             if (!('speechSynthesis' in window)) {
                 console.warn('浏览器不支持语音合成');
             }
-            
+
             if (!('webkitSpeechRecognition' in window) && !('SpeechRecognition' in window)) {
                 document.getElementById('voiceInputBtn').style.display = 'none';
                 console.warn('浏览器不支持语音识别');
@@ -422,26 +600,26 @@
             // 文件上传
             const fileInput = document.getElementById('fileInput');
             const uploadArea = document.getElementById('uploadArea');
-            
+
             fileInput.addEventListener('change', handleFileUpload);
-            
+
             // 拖拽上传
             uploadArea.addEventListener('dragover', handleDragOver);
             uploadArea.addEventListener('dragleave', handleDragLeave);
             uploadArea.addEventListener('drop', handleFileDrop);
-            
+
             // 问答
             const sendBtn = document.getElementById('sendBtn');
             const questionInput = document.getElementById('questionInput');
-            
+
             sendBtn.addEventListener('click', sendQuestion);
-            questionInput.addEventListener('keypress', function(e) {
+            questionInput.addEventListener('keypress', function (e) {
                 if (e.key === 'Enter' && !e.shiftKey) {
                     e.preventDefault();
                     sendQuestion();
                 }
             });
-            
+
             // 语音输入
             const voiceInputBtn = document.getElementById('voiceInputBtn');
             voiceInputBtn.addEventListener('click', toggleVoiceInput);
@@ -467,7 +645,7 @@
         function handleFileDrop(event) {
             event.preventDefault();
             event.currentTarget.classList.remove('dragover');
-            
+
             const files = event.dataTransfer.files;
             for (let file of files) {
                 uploadFile(file);
@@ -477,17 +655,17 @@
         async function uploadFile(file) {
             const formData = new FormData();
             formData.append('file', file);
-            
+
             addMessage('system', `正在上传文件: ${file.name}...`);
-            
+
             try {
                 const response = await fetch('/upload', {
                     method: 'POST',
                     body: formData
                 });
-                
+
                 const result = await response.json();
-                
+
                 if (response.ok) {
                     addMessage('system', `✅ 文件上传成功！\n文件名: ${result.filename}\n分块数量: ${result.chunks_count}\n文件大小: ${result.file_size} 字节`);
                     loadSystemStatus();
@@ -504,14 +682,33 @@
             try {
                 const response = await fetch('/status');
                 const status = await response.json();
-                
+
                 const statusInfo = document.getElementById('statusInfo');
+
+                // 构建已加载文档信息
+                let documentsInfo = '';
+                if (status.system_info.loaded_documents && status.system_info.loaded_documents.length > 0) {
+                    if (status.system_info.loaded_documents.length <= 3) {
+                        // 文档较少时显示完整列表
+                        const docList = status.system_info.loaded_documents.map(doc => `• ${doc}`).join('<br>');
+                        documentsInfo = `<strong>已加载文档:</strong><br><span style="font-size: 0.9em; color: #666; margin-left: 10px;">${docList}</span>`;
+                    } else {
+                        // 文档较多时显示统计和部分列表
+                        const firstThree = status.system_info.loaded_documents.slice(0, 3);
+                        const docList = firstThree.map(doc => `• ${doc}`).join('<br>');
+                        const remaining = status.system_info.loaded_documents.length - 3;
+                        documentsInfo = `<strong>已加载文档:</strong> ${status.system_info.documents_summary}<br><span style="font-size: 0.9em; color: #666; margin-left: 10px;">${docList}<br>• ... 还有${remaining}个文档</span>`;
+                    }
+                } else {
+                    documentsInfo = `<strong>已加载文档:</strong> <span style="color: #999;">${status.system_info.documents_summary}</span>`;
+                }
+
                 statusInfo.innerHTML = `
                     <p><strong>状态:</strong> ${status.status}</p>
                     <p><strong>文档数量:</strong> ${status.documents_count}</p>
                     <p><strong>向量数量:</strong> ${status.vector_count}</p>
                     <p><strong>平台:</strong> ${status.system_info.platform}</p>
-                    <p><strong>AI SDK:</strong> ${status.system_info.ai_sdk}</p>
+                    <p>${documentsInfo}</p>
                 `;
             } catch (error) {
                 const statusInfo = document.getElementById('statusInfo');
@@ -523,16 +720,16 @@
         async function sendQuestion() {
             const questionInput = document.getElementById('questionInput');
             const question = questionInput.value.trim();
-            
+
             if (!question) return;
-            
+
             questionInput.value = '';
             addMessage('user', question);
-            
+
             const sendBtn = document.getElementById('sendBtn');
             sendBtn.disabled = true;
             sendBtn.textContent = '思考中...';
-            
+
             try {
                 const response = await fetch('/ask', {
                     method: 'POST',
@@ -541,9 +738,9 @@
                     },
                     body: JSON.stringify({ question: question })
                 });
-                
+
                 const result = await response.json();
-                
+
                 if (response.ok) {
                     addMessage('assistant', result.answer, result.sources, result.confidence);
                 } else {
@@ -562,26 +759,36 @@
             const chatHistory = document.getElementById('chatHistory');
             const messageDiv = document.createElement('div');
             messageDiv.className = `message ${type}`;
-            
+
             let icon = '';
             let title = '';
+            // 使用兼容性更好的图标方案
             switch (type) {
-                case 'user': icon = '🤔'; title = '用户'; break;
-                case 'assistant': icon = '🤖'; title = '助手'; break;
-                case 'system': icon = '📢'; title = '系统'; break;
+                case 'user':
+                    icon = '<span class="icon-fallback">👤</span>';
+                    title = '用户';
+                    break;
+                case 'assistant':
+                    icon = '<span class="icon-fallback">🤖</span>';
+                    title = 'AI助手';
+                    break;
+                case 'system':
+                    icon = '<span class="icon-fallback">ℹ️</span>';
+                    title = '系统';
+                    break;
             }
-            
+
             let confidenceHtml = '';
             if (confidence !== null) {
                 const confidenceClass = confidence >= 0.7 ? 'high' : confidence >= 0.4 ? 'medium' : 'low';
                 confidenceHtml = `<span class="confidence ${confidenceClass}">置信度: ${(confidence * 100).toFixed(1)}%</span>`;
             }
-            
+
             let sourcesHtml = '';
             if (sources && sources.length > 0) {
                 sourcesHtml = `
                     <div class="sources">
-                        <h4>📚 参考来源 (${sources.length}个):</h4>
+                        <h4><span class="icon-fallback">📚</span> 参考来源 (${sources.length}个):</h4>
                         ${sources.map((source, index) => `
                             <div class="source-item">
                                 <strong>来源 ${index + 1}:</strong> ${source.source_name} 
@@ -593,7 +800,7 @@
                     </div>
                 `;
             }
-            
+
             // 语音控制按钮（仅对助手回答显示）
             let voiceControlsHtml = '';
             if (type === 'assistant') {
@@ -601,19 +808,19 @@
                 voiceControlsHtml = `
                     <div class="voice-controls">
                         <button class="voice-btn" onclick="speakText('${messageId}', this)">
-                            🔊 播放语音
+                            <span class="icon-fallback">🔊</span> 播放语音
                         </button>
                         <button class="voice-btn pause" id="pauseBtn_${messageId}" onclick="pauseSpeech('${messageId}')" style="display: none;">
-                            ⏸️ 暂停
+                            <span class="icon-fallback">⏸️</span> 暂停
                         </button>
                         <button class="voice-btn resume" id="resumeBtn_${messageId}" onclick="resumeSpeech('${messageId}')" style="display: none;">
-                            ▶️ 继续
+                            <span class="icon-fallback">▶️</span> 继续
                         </button>
                     </div>
                 `;
                 messageDiv.setAttribute('data-message-id', messageId);
             }
-            
+
             messageDiv.innerHTML = `
                 <div class="message-header">
                     <span>${icon} ${title}</span>
@@ -623,9 +830,11 @@
                 ${sourcesHtml}
                 ${voiceControlsHtml}
             `;
-            
+
             chatHistory.appendChild(messageDiv);
             chatHistory.scrollTop = chatHistory.scrollHeight;
+
+
         }
 
         // 语音播放功能
@@ -635,42 +844,42 @@
                 speechSynthesis.cancel();
                 resetAllVoiceButtons();
             }
-            
+
             const messageElement = document.querySelector(`[data-message-id="${messageId}"] .message-content`);
             if (!messageElement) return;
-            
+
             const text = messageElement.textContent;
-            
+
             if ('speechSynthesis' in window) {
                 currentSpeech = new SpeechSynthesisUtterance(text);
-                
+
                 // 设置语音参数
                 currentSpeech.lang = 'zh-CN';
                 currentSpeech.rate = 0.9;
                 currentSpeech.pitch = 1;
                 currentSpeech.volume = 1;
-                
+
                 // 语音事件处理
-                currentSpeech.onstart = function() {
+                currentSpeech.onstart = function () {
                     speechState = 'playing';
                     button.style.display = 'none';
                     document.getElementById(`pauseBtn_${messageId}`).style.display = 'inline-flex';
                     document.getElementById(`resumeBtn_${messageId}`).style.display = 'none';
                 };
-                
-                currentSpeech.onend = function() {
+
+                currentSpeech.onend = function () {
                     speechState = 'stopped';
                     resetVoiceButtons(messageId);
                     currentSpeech = null;
                 };
-                
-                currentSpeech.onerror = function(event) {
+
+                currentSpeech.onerror = function (event) {
                     console.error('语音播放错误:', event.error);
                     speechState = 'stopped';
                     resetVoiceButtons(messageId);
                     currentSpeech = null;
                 };
-                
+
                 // 开始播放
                 speechSynthesis.speak(currentSpeech);
             } else {
@@ -682,7 +891,7 @@
             if (speechSynthesis.speaking && !speechSynthesis.paused) {
                 speechSynthesis.pause();
                 speechState = 'paused';
-                
+
                 document.getElementById(`pauseBtn_${messageId}`).style.display = 'none';
                 document.getElementById(`resumeBtn_${messageId}`).style.display = 'inline-flex';
             }
@@ -692,7 +901,7 @@
             if (speechSynthesis.paused) {
                 speechSynthesis.resume();
                 speechState = 'playing';
-                
+
                 document.getElementById(`pauseBtn_${messageId}`).style.display = 'inline-flex';
                 document.getElementById(`resumeBtn_${messageId}`).style.display = 'none';
             }
@@ -702,7 +911,7 @@
             const playBtn = document.querySelector(`[data-message-id="${messageId}"] .voice-btn:not(.pause):not(.resume)`);
             const pauseBtn = document.getElementById(`pauseBtn_${messageId}`);
             const resumeBtn = document.getElementById(`resumeBtn_${messageId}`);
-            
+
             if (playBtn) playBtn.style.display = 'inline-flex';
             if (pauseBtn) pauseBtn.style.display = 'none';
             if (resumeBtn) resumeBtn.style.display = 'none';
@@ -731,35 +940,35 @@
                 alert('您的浏览器不支持语音识别功能');
                 return;
             }
-            
+
             const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
             recognition = new SpeechRecognition();
-            
+
             recognition.lang = 'zh-CN';
             recognition.continuous = false;
             recognition.interimResults = false;
-            
-            recognition.onstart = function() {
+
+            recognition.onstart = function () {
                 isRecording = true;
                 const voiceBtn = document.getElementById('voiceInputBtn');
                 voiceBtn.classList.add('recording');
                 voiceBtn.title = '点击停止录音';
             };
-            
-            recognition.onresult = function(event) {
+
+            recognition.onresult = function (event) {
                 const transcript = event.results[0][0].transcript;
                 document.getElementById('questionInput').value = transcript;
             };
-            
-            recognition.onerror = function(event) {
+
+            recognition.onerror = function (event) {
                 console.error('语音识别错误:', event.error);
                 stopVoiceInput();
             };
-            
-            recognition.onend = function() {
+
+            recognition.onend = function () {
                 stopVoiceInput();
             };
-            
+
             recognition.start();
         }
 
@@ -767,15 +976,78 @@
             if (recognition) {
                 recognition.stop();
             }
-            
+
             isRecording = false;
             const voiceBtn = document.getElementById('voiceInputBtn');
             voiceBtn.classList.remove('recording');
             voiceBtn.title = '语音输入';
         }
 
+        // 清空数据功能
+        function showClearDataModal() {
+            document.getElementById('clearDataModal').style.display = 'block';
+        }
+
+        function hideClearDataModal() {
+            document.getElementById('clearDataModal').style.display = 'none';
+        }
+
+        async function confirmClearData() {
+            const clearBtn = document.getElementById('clearDataBtn');
+            const modal = document.getElementById('clearDataModal');
+
+            // 禁用按钮防止重复点击
+            clearBtn.disabled = true;
+            clearBtn.textContent = '清空中...';
+
+            try {
+                const response = await fetch('/clear-data', {
+                    method: 'DELETE'
+                });
+
+                const result = await response.json();
+
+                if (response.ok) {
+                    addMessage('system', `✅ 数据清空成功！\n清空文件: ${result.cleared_files} 个\n清空向量: ${result.cleared_vectors} 个`);
+                    loadSystemStatus(); // 刷新状态
+
+                    // 清空聊天历史（保留欢迎消息）
+                    const chatHistory = document.getElementById('chatHistory');
+                    chatHistory.innerHTML = `
+                        <div class="message system">
+                            <div class="message-header">
+                                <span><span class="icon-fallback">🤖</span> 系统</span>
+                            </div>
+                            <div class="message-content">欢迎使用银河麒麟智能问答助手！请先上传相关文档，然后我就可以基于文档内容回答您的问题了。</div>
+                        </div>
+                    `;
+                } else {
+                    addMessage('system', `❌ 数据清空失败: ${result.detail}`);
+                }
+            } catch (error) {
+                addMessage('system', `❌ 清空异常: ${error.message}`);
+            } finally {
+                clearBtn.disabled = false;
+                clearBtn.textContent = '🗑️ 清空数据';
+                hideClearDataModal();
+            }
+        }
+
+        // 点击模态框外部关闭
+        window.onclick = function (event) {
+            const modal = document.getElementById('clearDataModal');
+            if (event.target === modal) {
+                hideClearDataModal();
+            }
+        }
+
+
+
+
+
         // 定期更新系统状态
         setInterval(loadSystemStatus, 30000);
     </script>
 </body>
+
 </html>

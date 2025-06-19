@@ -12,6 +12,7 @@ from pydantic import BaseModel
 import os
 import json
 import logging
+import shutil
 from typing import List, Dict, Any
 
 from document_processor import DocumentProcessor
@@ -59,6 +60,13 @@ class StatusResponse(BaseModel):
     vector_count: int
     system_info: Dict[str, Any]
 
+class ClearDataResponse(BaseModel):
+    message: str
+    cleared_files: int
+    cleared_vectors: int
+
+
+
 # 确保上传目录存在
 UPLOAD_DIR = "uploads"
 os.makedirs(UPLOAD_DIR, exist_ok=True)
@@ -66,7 +74,10 @@ os.makedirs(UPLOAD_DIR, exist_ok=True)
 @app.get("/")
 async def root():
     """根路径，返回前端页面"""
-    return FileResponse("../frontend/index.html")
+    # 获取当前文件的目录，然后构建前端文件的绝对路径
+    current_dir = os.path.dirname(os.path.abspath(__file__))
+    frontend_path = os.path.join(os.path.dirname(current_dir), "frontend", "index.html")
+    return FileResponse(frontend_path)
 
 @app.post("/upload")
 async def upload_document(file: UploadFile = File(...)):
@@ -133,7 +144,14 @@ async def get_status():
     try:
         docs_count = len(os.listdir(UPLOAD_DIR)) if os.path.exists(UPLOAD_DIR) else 0
         vector_count = vector_store.get_vector_count()
-        
+
+        # 获取已加载文档列表
+        loaded_documents = []
+        if os.path.exists(UPLOAD_DIR):
+            for filename in os.listdir(UPLOAD_DIR):
+                if os.path.isfile(os.path.join(UPLOAD_DIR, filename)):
+                    loaded_documents.append(filename)
+
         return StatusResponse(
             status="运行中",
             documents_count=docs_count,
@@ -141,13 +159,46 @@ async def get_status():
             system_info={
                 "python_version": "3.8+",
                 "platform": "银河麒麟操作系统",
-                "ai_sdk": "硅基流动API"
+                "loaded_documents": loaded_documents,
+                "documents_summary": f"{len(loaded_documents)}个文档" if loaded_documents else "暂无文档"
             }
         )
         
     except Exception as e:
         logger.error(f"状态查询失败: {str(e)}")
         raise HTTPException(status_code=500, detail=f"状态查询失败: {str(e)}")
+
+@app.delete("/clear-data", response_model=ClearDataResponse)
+async def clear_all_data():
+    """清空所有数据"""
+    try:
+        logger.info("开始清空所有数据...")
+
+        # 统计清空前的数据
+        files_count = len(os.listdir(UPLOAD_DIR)) if os.path.exists(UPLOAD_DIR) else 0
+        vectors_count = vector_store.get_vector_count()
+
+        # 清空向量存储
+        vector_store.clear_all()
+        logger.info("向量数据已清空")
+
+        # 清空上传文件目录
+        if os.path.exists(UPLOAD_DIR):
+            shutil.rmtree(UPLOAD_DIR)
+            os.makedirs(UPLOAD_DIR, exist_ok=True)
+            logger.info("上传文件已清空")
+
+        logger.info(f"数据清空完成，清空了 {files_count} 个文件和 {vectors_count} 个向量")
+
+        return ClearDataResponse(
+            message="所有数据已成功清空",
+            cleared_files=files_count,
+            cleared_vectors=vectors_count
+        )
+
+    except Exception as e:
+        logger.error(f"数据清空失败: {str(e)}")
+        raise HTTPException(status_code=500, detail=f"数据清空失败: {str(e)}")
 
 if __name__ == "__main__":
     import uvicorn

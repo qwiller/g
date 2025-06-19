@@ -18,12 +18,12 @@ class RAGEngine:
     def __init__(self, vector_store: VectorStore):
         """
         初始化RAG引擎
-        
+
         Args:
             vector_store: 向量存储实例
         """
         self.vector_store = vector_store
-        
+
         # 硅基流动API配置
         self.api_key = "sk-owsayozifrzvaxuxvyvywmyzcceokwatdbolevdnfnbwlurp"
         self.api_base = "https://api.siliconflow.cn/v1"
@@ -110,7 +110,7 @@ class RAGEngine:
             context_parts.append(f"文档片段 {i} (来源: {source}):\n{text}\n")
         
         return "\n".join(context_parts)
-    
+
     def _generate_with_llm(self, question: str, context: str) -> str:
         """使用大语言模型生成回答"""
         try:

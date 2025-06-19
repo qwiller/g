@@ -1,18 +1,212 @@
-INFO:vector_store:文档加载成功，共 103 个文档
+INFO:vector_store:文档加载成功，共 10 个文档
 INFO:     Will watch for changes in these directories: ['/home/a/kylin-qa-assistant/rag-assistant']
 INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
-INFO:     Started reloader process [36650] using StatReload
+INFO:     Started reloader process [31778] using StatReload
 🚀 启动银河麒麟智能问答助手...
 📖 访问地址: http://localhost:8000
 📚 API文档: http://localhost:8000/docs
-INFO:vector_store:文档加载成功，共 103 个文档
-INFO:vector_store:文档加载成功，共 103 个文档
-INFO:     Started server process [36659]
+INFO:vector_store:文档加载成功，共 10 个文档
+INFO:vector_store:文档加载成功，共 10 个文档
+INFO:     Started server process [31784]
 INFO:     Waiting for application startup.
 INFO:     Application startup complete.
-INFO:     127.0.0.1:49004 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:43206 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:43206 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:43230 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:43206 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:35364 - "GET /status HTTP/1.1" 200 OK
+INFO:main:开始清空所有数据...
+INFO:vector_store:所有数据已清空
+INFO:main:向量数据已清空
+INFO:main:上传文件已清空
+INFO:main:数据清空完成，清空了 1 个文件和 10 个向量
+INFO:     127.0.0.1:43208 - "DELETE /clear-data HTTP/1.1" 200 OK
+INFO:     127.0.0.1:43208 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47986 - "GET / HTTP/1.1" 200 OK
+INFO:main:文件已保存: uploads/银河麒麟智能问答助手 v2.5.pdf
+INFO:document_processor:PDF共有 12 页
+INFO:document_processor:PDF文本提取成功，共提取 7323 个字符
+INFO:document_processor:文档处理完成: uploads/银河麒麟智能问答助手 v2.5.pdf, 共 14 个块
+INFO:main:文档分块完成，共 14 个块
+INFO:vector_store:开始存储文档: 银河麒麟智能问答助手 v2.5.pdf, 共 14 个块
+INFO:vector_store:文档保存成功
+INFO:vector_store:文档存储完成: 银河麒麟智能问答助手 v2.5.pdf
+INFO:main:向量化完成，已添加到存储
+INFO:     127.0.0.1:43216 - "POST /upload HTTP/1.1" 200 OK
+INFO:     127.0.0.1:43216 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60294 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60302 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60312 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60314 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60322 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60330 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60332 - "GET /docs HTTP/1.1" 200 OK
+INFO:main:收到问题: 主要功能是什么
+INFO:rag_engine:开始处理问题: 主要功能是什么
+INFO:vector_store:搜索完成，返回 3 个结果
+INFO:rag_engine:调用LLM API...
+INFO:rag_engine:LLM回答生成成功
+INFO:rag_engine:问题处理完成
+INFO:main:回答生成完成
+INFO:     127.0.0.1:60344 - "POST /ask HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60350 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60356 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56810 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56812 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56812 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56636 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56828 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50572 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55214 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56098 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56114 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56114 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55680 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56124 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57408 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:35624 - "GET /status HTTP/1.1" 200 OK
+INFO:main:收到问题: 可以处理PDF文档吗？
+INFO:rag_engine:开始处理问题: 可以处理PDF文档吗？
+INFO:vector_store:搜索完成，返回 3 个结果
+INFO:rag_engine:调用LLM API...
+INFO:rag_engine:LLM回答生成成功
+INFO:rag_engine:问题处理完成
+INFO:main:回答生成完成
+INFO:     127.0.0.1:49154 - "POST /ask HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49168 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54754 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56528 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49154 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51584 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51588 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47024 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51596 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48916 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51596 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36802 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50824 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50840 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44644 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50846 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46606 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50846 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58876 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58876 - "GET /?id=8eabe17a-749e-4ce1-976a-ed627bdefff1&vscodeBrowserReqId=1750308483139 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58876 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45686 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:40170 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55424 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:40184 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:35030 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47300 - "GET /status HTTP/1.1" 200 OK
+INFO:main:文件已保存: uploads/第十五届大赛获奖名单-20250604.pdf
+INFO:document_processor:PDF共有 69 页
+INFO:document_processor:PDF文本提取成功，共提取 58906 个字符
+INFO:document_processor:文档处理完成: uploads/第十五届大赛获奖名单-20250604.pdf, 共 117 个块
+INFO:main:文档分块完成，共 117 个块
+INFO:vector_store:开始存储文档: 第十五届大赛获奖名单-20250604.pdf, 共 117 个块
+INFO:vector_store:文档保存成功
+INFO:vector_store:文档存储完成: 第十五届大赛获奖名单-20250604.pdf
+INFO:main:向量化完成，已添加到存储
+INFO:     127.0.0.1:47306 - "POST /upload HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47306 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42766 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54530 - "GET /status HTTP/1.1" 200 OK
+INFO:main:收到问题: 天津商务职业学院的获奖情况
+INFO:rag_engine:开始处理问题: 天津商务职业学院的获奖情况
+INFO:vector_store:搜索完成，返回 3 个结果
+INFO:rag_engine:调用LLM API...
+INFO:rag_engine:LLM回答生成成功
+INFO:rag_engine:问题处理完成
+INFO:main:回答生成完成
+INFO:     127.0.0.1:54532 - "POST /ask HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38382 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52004 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59752 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:35784 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51214 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:35790 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36392 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36392 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:33434 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36678 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36386 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49350 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36692 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36406 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:35852 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47324 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46202 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49210 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47340 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46208 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:40812 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44696 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51376 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49166 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44710 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51392 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42194 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48194 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47902 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60630 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48204 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47912 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41476 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60536 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49726 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60544 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:37048 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42824 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42842 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53346 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42846 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:34260 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42826 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59332 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50626 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59344 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:43316 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41520 - "GET /status HTTP/1.1" 200 OK
+WARNING:  StatReload detected changes in 'backend/main.py'. Reloading...
 INFO:     Shutting down
 INFO:     Waiting for application shutdown.
 INFO:     Application shutdown complete.
-INFO:     Finished server process [36659]
-INFO:     Stopping reloader process [36650]
+INFO:     Finished server process [31784]
+INFO:vector_store:文档加载成功，共 131 个文档
+INFO:vector_store:文档加载成功，共 131 个文档
+INFO:     Started server process [38771]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     127.0.0.1:41536 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:33138 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41540 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51280 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42100 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42118 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49416 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42128 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39778 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42116 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58444 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44754 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58452 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36566 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47574 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47596 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45106 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47602 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39958 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47588 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59262 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54520 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59268 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59666 - "GET /?id=8eabe17a-749e-4ce1-976a-ed627bdefff1&vscodeBrowserReqId=1750309424054 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59666 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47484 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55226 - "GET /status HTTP/1.1" 200 OK
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [38771]
+INFO:     Stopping reloader process [31778]

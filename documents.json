@@ -1,1238 +1,1574 @@
 [
   {
-    "text": "银河麒麟操作系统简介 概述 银河麒麟操作系统是中国自主研发的操作系统基于Linux内核开发专为国产化信息系统设计该系统具有高安全性高可靠性和良好的兼容性广泛应用于政府军队金融电信等重要领域 主要特点 1. 安全性 强制访问控制采用多级安全策略确保系统资源的安全访问 安全审计完整的操作日志记录和审计功能 入侵检测实时监控系统异常行为 病毒防护内置防病毒引擎提供实时保护 2. 稳定性 内核优化针对国产硬件平台进行深度优化 容错机制完善的错误处理和恢复机制 负载均衡智能的资源调度和负载分配 高可用性支持集群部署和故障转移 3. 兼容性 硬件兼容支持多种国产CPU架构 龙芯Loongson 飞腾Phytium 海光Hygon 兆芯Zhaoxin 软件兼容兼容主流Linux应用程序 标准支持遵循国际和国内相关标准 系统架构 内核层 基于Linux内核版本4.",
+    "text": "--- 第1页 --- 银河麒麟智能问答助 v2.5 银河麒麟智能问答助 v2.5 基于 DeepSeek-R1 API 和麒麟 SDK2.5 的智能问答系统专为银河麒麟操作系统设计  功能特性 智能问答: 基于 RAG( 检索增强成 ) 技术结合本地档知识库和 AI 模型 档处理: 持 PDF  Markdown 本等多种格式档 系统集成: 深度集成麒麟 SDK2.5 获取系统信息和硬件状态 图形界: 友好的 GUI 界持档管理和实时问答 多架构持: 持 x86_64 和 ARM64 架构  系统要求 推荐环境 操作系统: 银河麒麟 V10 SP1SP2SP3 或更版本 Python 版本: Python 3.7 ( 推荐 Python 3.8) 内存: 4GB 以上 ( 推荐 8GB) 存储: 2GB 可空间 络: 需要互联连接访问 DeepSeek API 必需依赖 麒麟 SDK2.5 开发库 DeepSeek API 访问权限 Python 第三库 requirements.txt   快速安装指南 法键安装推荐 1.",
     "metadata": {
-      "source": "kylin_system_intro.md",
+      "source": "银河麒麟智能问答助手 v2.5.pdf",
       "chunk_id": 0,
-      "total_chunks": 5,
-      "file_type": ".md",
-      "chunk_size": 379,
-      "source_name": "kylin_system_intro.md",
+      "total_chunks": 14,
+      "file_type": ".pdf",
+      "chunk_size": 470,
+      "source_name": "银河麒麟智能问答助手 v2.5.pdf",
       "doc_id": 0
     }
   },
   {
-    "text": "程序接口 开发工具链 运行时环境 应用层 办公软件套件 开发工具 系统管理工具 第三方应用 安装要求 最低硬件要求 CPU1GHz以上处理器 内存2GB RAM 存储20GB可用磁盘空间 显卡支持1024x768分辨率 推荐硬件配置 CPU双核2GHz以上处理器 内存4GB RAM或更多 存储50GB可用磁盘空间 显卡独立显卡支持硬件加速 安装步骤 1. 准备安装介质 下载官方ISO镜像文件 制作启动U盘或刻录安装光盘 验证镜像文件完整性 2. 系统安装 从安装介质启动计算机 选择安装语言和键盘布局 配置网络连接可选 分区和格式化硬盘 选择安装组件 设置用户账户和密码 完成安装并重启 3.",
+    "text": "下载项  使用git克隆推荐 git clone https:github.comyour-usernamekylin-qa-assistant.git cd kylin-qa-assistant  或者下载ZIP包并解压 wget https:github.comyour-usernamekylin-qa-assistantarchivemain.zip --- 第2页 --- unzip main.zip cd kylin-qa-assistant-main 2. 运安装脚本  给安装脚本执行权限 chmod x install.sh  运行安装脚本需要sudo权限 sudo .install.sh 安装脚本将动完成以下操作  检查系统兼容性  安装 Python 依赖包  配置系统服务  创建桌快捷式  设置命令快捷式 3. 配置 API 密钥  编辑配置文件 sudo nano optkylin-qa-assistantconfig.",
     "metadata": {
-      "source": "kylin_system_intro.md",
+      "source": "银河麒麟智能问答助手 v2.5.pdf",
       "chunk_id": 1,
-      "total_chunks": 5,
-      "file_type": ".md",
-      "chunk_size": 298,
-      "source_name": "kylin_system_intro.md",
+      "total_chunks": 14,
+      "file_type": ".pdf",
+      "chunk_size": 427,
+      "source_name": "银河麒麟智能问答助手 v2.5.pdf",
       "doc_id": 1
     }
   },
   {
-    "text": "sudo apt update 安装软件包 sudo apt install package-name 卸载软件包 sudo apt remove package-name 系统升级 sudo apt upgrade  服务管理 bash 启动服务 sudo systemctl start service-name 停止服务 sudo systemctl stop service-name 重启服务 sudo systemctl restart service-name 查看服务状态 sudo systemctl status service-name  网络配置 有线网络 打开网络设置 选择有线连接 配置IP地址自动或手动 设置DNS服务器 应用配置 无线网络 启用无线网卡 扫描可用网络 选择目标网络 输入密码 连接网络 安全配置 防火墙设置 bash 启用防火墙 sudo ufw enable 允许特定端口 sudo ufw allow 22tcp 拒绝特定端口 sudo ufw deny 23tcp 查看防火墙状态 sudo ufw status  用户权限管理 使用sudo进",
+    "text": "API密钥 DEEPSEEK_API_KEY  \"your-actual-api-key-here\" 4. 启动程序  方法1使用桌面快捷方式  双击桌面上的\"银河麒麟智能问答助手\"图标  方法2使用命令行 kylin-qa  方法3启动系统服务 sudo systemctl start kylin-qa 法动安装 1. 环境准备  更新系统包 sudo apt update sudo apt upgrade -y  安装Python和pip如果未安装 --- 第3页 --- sudo apt install python3 python3-pip python3-venv -y  安装系统依赖 sudo apt install python3-tk python3-dev build-essential -y  安装麒麟SDK开发包如果可用 sudo apt install libkysdk-dev -y 2. 下载项 git clone https:github.comyour-usernamekylin-qa-assistant.",
     "metadata": {
-      "source": "kylin_system_intro.md",
+      "source": "银河麒麟智能问答助手 v2.5.pdf",
       "chunk_id": 2,
-      "total_chunks": 5,
-      "file_type": ".md",
-      "chunk_size": 499,
-      "source_name": "kylin_system_intro.md",
+      "total_chunks": 14,
+      "file_type": ".pdf",
+      "chunk_size": 475,
+      "source_name": "银河麒麟智能问答助手 v2.5.pdf",
       "doc_id": 2
     }
   },
   {
-    "text": "行权限提升 配置用户组权限 设置文件和目录权限 定期审查用户权限 常见问题 Q: 如何重置root密码 A: 在GRUB启动菜单中选择恢复模式进入单用户模式后使用passwd命令重置密码 Q: 系统启动缓慢怎么办 A: 检查启动服务禁用不必要的自启动程序清理系统缓存 Q: 如何安装第三方软件 A: 可以通过软件包管理器源码编译或使用AppImage等方式安装 Q: 网络连接不稳定如何解决 A: 检查网络驱动程序更新网卡固件调整网络配置参数 技术支持 官方资源 官方网站http:www.kylinos.cn 技术文档http:docs.kylinos.cn 社区论坛http:forum.kylinos.cn 联系方式 技术支持热线400-xxx-xxxx 邮箱支持supportkylinos.cn 在线客服工作日9:00-18:00 版本历史 V10.0 (最新版本) 内核升级至5.4 LTS 增强安全特性 改进硬件兼容性 优化用户界面 V4.0.2 修复已知安全漏洞 提升系统稳定性 增加新硬件支持 V4.",
+    "text": "git cd kylin-qa-assistant 3. 创建虚拟环境推荐  创建虚拟环境 python3 -m venv venv  激活虚拟环境 source venvbinactivate 4. 安装 Python 依赖  升级pip pip install --upgrade pip  安装项目依赖 pip install -r requirements.txt 5. 配置程序  复制配置文件 cp config.py config.py.bak  编辑配置文件 nano config.py  修改API密钥  DEEPSEEK_API_KEY  \"your-actual-api-key-here\" 6. 创建必要录 mkdir -p data docs logs assets 7. 运程序  启动图形界面 python3 main.py --- 第4页 ---  或使用启动脚本 .run.sh  获取 DeepSeek API 密钥 1. 访问 DeepSeek 官 2. 注册账号并登录 3. 进 API 管理 4. 创建新的 API 密钥 5.",
     "metadata": {
-      "source": "kylin_system_intro.md",
+      "source": "银河麒麟智能问答助手 v2.5.pdf",
       "chunk_id": 3,
-      "total_chunks": 5,
-      "file_type": ".md",
-      "chunk_size": 459,
-      "source_name": "kylin_system_intro.md",
+      "total_chunks": 14,
+      "file_type": ".pdf",
+      "chunk_size": 485,
+      "source_name": "银河麒麟智能问答助手 v2.5.pdf",
       "doc_id": 3
     }
   },
   {
-    "text": "0 全新的桌面环境 增强的安全机制 改进的软件包管理 银河麒麟操作系统致力于为用户提供安全稳定易用的国产操作系统解决方案",
+    "text": "复制密钥并填配置件 注意: 请妥善保管您的 API 密钥不要泄露给他  使指南 次使 1. 启动程序  命令行启动 kylin-qa  或双击桌面图标 2. 添加档 点击 \" 添加档 \" 按钮 选择您要添加的档件 持格式 PDF  Markdown  TXT  Word 等 等待档处理完成 3. 开始问答 在问题输框中输您的问题 可选择是否包含系统信息 点击 \" 提问 \" 或按回键 查看 AI 成的回答 常功能 档管理 添加档: 持批量添加多个档 查看状态: 实时显知识库中的档数量 清空知识库: 键清空所有档谨慎操作 --- 第5页 --- 智能问答 普通问答: 基于档内容回答问题 系统问答: 结合当前系统信息回答 相关档: 显回答所参考的档来源 系统信息 查看系统状态: 点击 \" 系统信息 \" 按钮 硬件信息: CPU 内存磁盘等信息 络状态: 络配置和连接状态 进程信息: 系统负载和进程统计  级配置 配置件说明 主要配置项位于 config.",
     "metadata": {
-      "source": "kylin_system_intro.md",
+      "source": "银河麒麟智能问答助手 v2.5.pdf",
       "chunk_id": 4,
-      "total_chunks": 5,
-      "file_type": ".md",
-      "chunk_size": 60,
-      "source_name": "kylin_system_intro.md",
+      "total_chunks": 14,
+      "file_type": ".pdf",
+      "chunk_size": 430,
+      "source_name": "银河麒麟智能问答助手 v2.5.pdf",
       "doc_id": 4
     }
   },
   {
-    "text": "银河麒麟操作系统简介 概述 银河麒麟操作系统是中国自主研发的操作系统基于Linux内核开发专为国产化信息系统设计该系统具有高安全性高可靠性和良好的兼容性广泛应用于政府军队金融电信等重要领域 主要特点 1. 安全性 强制访问控制采用多级安全策略确保系统资源的安全访问 安全审计完整的操作日志记录和审计功能 入侵检测实时监控系统异常行为 病毒防护内置防病毒引擎提供实时保护 2. 稳定性 内核优化针对国产硬件平台进行深度优化 容错机制完善的错误处理和恢复机制 负载均衡智能的资源调度和负载分配 高可用性支持集群部署和故障转移 3. 兼容性 硬件兼容支持多种国产CPU架构 龙芯Loongson 飞腾Phytium 海光Hygon 兆芯Zhaoxin 软件兼容兼容主流Linux应用程序 标准支持遵循国际和国内相关标准 系统架构 内核层 基于Linux内核版本4.",
+    "text": "EK_API_KEY  \"your-api-key\"  必须配置 DEEPSEEK_API_ENDPOINT  \"https:api.deepseek.comv1chatcompletions\"  文档路径 DOCUMENT_PATH  \".docs\"  文档存储路径 VECTOR_DB_PATH  \".datavector_db\"  向量数据库路径  RAG配置 RAG_CONFIG  { \"top_k\": 5,  检索文档数量 \"similarity_threshold\": 0.7,  相似度阈值 \"max_context_length\": 2000,  最大上下文长度 \"temperature\": 0.",
     "metadata": {
-      "source": "kylin_system_intro.md",
-      "chunk_id": 0,
-      "total_chunks": 5,
-      "file_type": ".md",
-      "chunk_size": 379,
-      "source_name": "kylin_system_intro.md",
+      "source": "银河麒麟智能问答助手 v2.5.pdf",
+      "chunk_id": 5,
+      "total_chunks": 14,
+      "file_type": ".pdf",
+      "chunk_size": 308,
+      "source_name": "银河麒麟智能问答助手 v2.5.pdf",
       "doc_id": 5
     }
   },
   {
-    "text": "程序接口 开发工具链 运行时环境 应用层 办公软件套件 开发工具 系统管理工具 第三方应用 安装要求 最低硬件要求 CPU1GHz以上处理器 内存2GB RAM 存储20GB可用磁盘空间 显卡支持1024x768分辨率 推荐硬件配置 CPU双核2GHz以上处理器 内存4GB RAM或更多 存储50GB可用磁盘空间 显卡独立显卡支持硬件加速 安装步骤 1. 准备安装介质 下载官方ISO镜像文件 制作启动U盘或刻录安装光盘 验证镜像文件完整性 2. 系统安装 从安装介质启动计算机 选择安装语言和键盘布局 配置网络连接可选 分区和格式化硬盘 选择安装组件 设置用户账户和密码 完成安装并重启 3.",
+    "text": "atch_size\": 32  批处理大小 } 系统服务管理 --- 第6页 ---  查看服务状态 sudo systemctl status kylin-qa  启动服务 sudo systemctl start kylin-qa  停止服务 sudo systemctl stop kylin-qa  重启服务 sudo systemctl restart kylin-qa  开机自启 sudo systemctl enable kylin-qa  禁用自启 sudo systemctl disable kylin-qa  查看服务日志 journalctl -u kylin-qa -f  项结构 kylin-qa-assistant  main.py  主程序入口  config.py  配置文件  requirements.txt  Python依赖  README.md  项目说明  run.sh  Linux启动脚本  install.sh  安装脚本  uninstall.sh  卸载脚本  kylin-qa.",
     "metadata": {
-      "source": "kylin_system_intro.md",
-      "chunk_id": 1,
-      "total_chunks": 5,
-      "file_type": ".md",
-      "chunk_size": 298,
-      "source_name": "kylin_system_intro.md",
+      "source": "银河麒麟智能问答助手 v2.5.pdf",
+      "chunk_id": 6,
+      "total_chunks": 14,
+      "file_type": ".pdf",
+      "chunk_size": 469,
+      "source_name": "银河麒麟智能问答助手 v2.5.pdf",
       "doc_id": 6
     }
   },
   {
-    "text": "sudo apt update 安装软件包 sudo apt install package-name 卸载软件包 sudo apt remove package-name 系统升级 sudo apt upgrade  服务管理 bash 启动服务 sudo systemctl start service-name 停止服务 sudo systemctl stop service-name 重启服务 sudo systemctl restart service-name 查看服务状态 sudo systemctl status service-name  网络配置 有线网络 打开网络设置 选择有线连接 配置IP地址自动或手动 设置DNS服务器 应用配置 无线网络 启用无线网卡 扫描可用网络 选择目标网络 输入密码 连接网络 安全配置 防火墙设置 bash 启用防火墙 sudo ufw enable 允许特定端口 sudo ufw allow 22tcp 拒绝特定端口 sudo ufw deny 23tcp 查看防火墙状态 sudo ufw status  用户权限管理 使用sudo进",
+    "text": "service  系统服务配置  src  源代码目录   ai_models.py  AI模型接口   vector_store.py  向量存储   rag_engine.py  RAG引擎   gui.py  图形界面   document_processor.py  文档处理   system_info_helper.py  系统信息  data  数据目录   vector_db  向量数据库  docs  文档目录  logs  日志目录 --- 第7页 ---   app.log  应用日志  assets  资源目录  持的档格式 格式 扩展名 说明 PDF 档 .pdf 持本提取和 OCR Markdown .md 完整的 Markdown 语法持 本档 .txt 纯本件 reStructuredText .rst 技术档格式 Word 档 .doc, .docx Microsoft Word 档 HTML 档 .html, .htm 档  故障排除 常问题及解决案 1.",
     "metadata": {
-      "source": "kylin_system_intro.md",
-      "chunk_id": 2,
-      "total_chunks": 5,
-      "file_type": ".md",
-      "chunk_size": 499,
-      "source_name": "kylin_system_intro.md",
+      "source": "银河麒麟智能问答助手 v2.5.pdf",
+      "chunk_id": 7,
+      "total_chunks": 14,
+      "file_type": ".pdf",
+      "chunk_size": 451,
+      "source_name": "银河麒麟智能问答助手 v2.5.pdf",
       "doc_id": 7
     }
   },
   {
-    "text": "行权限提升 配置用户组权限 设置文件和目录权限 定期审查用户权限 常见问题 Q: 如何重置root密码 A: 在GRUB启动菜单中选择恢复模式进入单用户模式后使用passwd命令重置密码 Q: 系统启动缓慢怎么办 A: 检查启动服务禁用不必要的自启动程序清理系统缓存 Q: 如何安装第三方软件 A: 可以通过软件包管理器源码编译或使用AppImage等方式安装 Q: 网络连接不稳定如何解决 A: 检查网络驱动程序更新网卡固件调整网络配置参数 技术支持 官方资源 官方网站http:www.kylinos.cn 技术文档http:docs.kylinos.cn 社区论坛http:forum.kylinos.cn 联系方式 技术支持热线400-xxx-xxxx 邮箱支持supportkylinos.cn 在线客服工作日9:00-18:00 版本历史 V10.0 (最新版本) 内核升级至5.4 LTS 增强安全特性 改进硬件兼容性 优化用户界面 V4.0.2 修复已知安全漏洞 提升系统稳定性 增加新硬件支持 V4.",
+    "text": "程序法启动 问题: 运程序时出现错误 解决案:  检查Python版本 python3 --version  检查依赖是否安装完整 pip3 list  grep -E \"numpyscikit-learnrequests\"  重新安装依赖 pip3 install -r requirements.txt --force-reinstall  查看详细错误信息 python3 main.py --debug 2. API 调失败 问题: DeepSeek API 调失败 解决案:  检查网络连接 ping api.deepseek.com --- 第8页 ---  验证API密钥 curl -H \"Authorization: Bearer your-api-key\"  https:api.deepseek.comv1models  检查API额度  登录DeepSeek控制台查看使用情况 3. 麒麟 SDK 库加载失败 问题: 系统信息功能不可 解决案:  检查SDK库是否存在 ls -la usrliblibkysysinfo.",
     "metadata": {
-      "source": "kylin_system_intro.md",
-      "chunk_id": 3,
-      "total_chunks": 5,
-      "file_type": ".md",
-      "chunk_size": 459,
-      "source_name": "kylin_system_intro.md",
+      "source": "银河麒麟智能问答助手 v2.5.pdf",
+      "chunk_id": 8,
+      "total_chunks": 14,
+      "file_type": ".pdf",
+      "chunk_size": 473,
+      "source_name": "银河麒麟智能问答助手 v2.5.pdf",
       "doc_id": 8
     }
   },
   {
-    "text": "0 全新的桌面环境 增强的安全机制 改进的软件包管理 银河麒麟操作系统致力于为用户提供安全稳定易用的国产操作系统解决方案",
+    "text": "so  安装麒麟SDK开发包 sudo apt install libkysdk-dev  检查库文件权限 sudo chmod 755 usrliblibkysysinfo.so 4. 档处理失败 问题: 法处理某些档格式 解决案:  安装额外的文档处理库 pip3 install pdfplumber python-docx  检查文件权限 ls -la your-document.pdf  尝试转换文档格式  PDF - TXT: pdftotext document.pdf 5. GUI 界问题 问题: 图形界法显 解决案:  检查显示环境 echo DISPLAY  安装tkinter --- 第9页 --- sudo apt install python3-tk  使用X11转发SSH连接时 ssh -X usernamehostname 志查看  查看应用日志 tail -f logsapp.log  查看系统服务日志 journalctl -u kylin-qa -f  查看详细调试信息 python3 main.py --debug 性能优化建议 1.",
     "metadata": {
-      "source": "kylin_system_intro.md",
-      "chunk_id": 4,
-      "total_chunks": 5,
-      "file_type": ".md",
-      "chunk_size": 60,
-      "source_name": "kylin_system_intro.md",
+      "source": "银河麒麟智能问答助手 v2.5.pdf",
+      "chunk_id": 9,
+      "total_chunks": 14,
+      "file_type": ".pdf",
+      "chunk_size": 492,
+      "source_name": "银河麒麟智能问答助手 v2.5.pdf",
       "doc_id": 9
     }
   },
   {
-    "text": "银河麒麟操作系统简介 概述 银河麒麟操作系统是中国自主研发的操作系统基于Linux内核开发专为国产化信息系统设计该系统具有高安全性高可靠性和良好的兼容性广泛应用于政府军队金融电信等重要领域 主要特点 1. 安全性 强制访问控制采用多级安全策略确保系统资源的安全访问 安全审计完整的操作日志记录和审计功能 入侵检测实时监控系统异常行为 病毒防护内置防病毒引擎提供实时保护 2. 稳定性 内核优化针对国产硬件平台进行深度优化 容错机制完善的错误处理和恢复机制 负载均衡智能的资源调度和负载分配 高可用性支持集群部署和故障转移 3. 兼容性 硬件兼容支持多种国产CPU架构 龙芯Loongson 飞腾Phytium 海光Hygon 兆芯Zhaoxin 软件兼容兼容主流Linux应用程序 标准支持遵循国际和国内相关标准 系统架构 内核层 基于Linux内核版本4.",
+    "text": "内存优化 适当调整 PERFORMANCE_CONFIG 中的参数 定期清理向量数据库 限制同时处理的档数量 2. 络优化 使国内 API 镜像如果可 调整 API 请求超时时间 启请求缓存 3. 存储优化 定期清理志件 压缩型档 使 SSD 存储提升性能  更新升级 检查更新  检查远程更新 git fetch origin git status  查看更新内容 git log HEAD..originmain --oneline 升级程序 --- 第10页 ---  备份配置 cp config.py config.py.backup  拉取最新代码 git pull origin main  更新依赖 pip3 install -r requirements.txt --upgrade  重启服务 sudo systemctl restart kylin-qa 版本回退  查看版本历史 git log --oneline  回退到指定版本 git checkout commit-hash  恢复配置 cp config.py.backup config.",
     "metadata": {
-      "source": "kylin_system_intro.md",
-      "chunk_id": 0,
-      "total_chunks": 5,
-      "file_type": ".md",
-      "chunk_size": 379,
-      "source_name": "kylin_system_intro.md",
+      "source": "银河麒麟智能问答助手 v2.5.pdf",
+      "chunk_id": 10,
+      "total_chunks": 14,
+      "file_type": ".pdf",
+      "chunk_size": 487,
+      "source_name": "银河麒麟智能问答助手 v2.5.pdf",
       "doc_id": 10
     }
   },
   {
-    "text": "程序接口 开发工具链 运行时环境 应用层 办公软件套件 开发工具 系统管理工具 第三方应用 安装要求 最低硬件要求 CPU1GHz以上处理器 内存2GB RAM 存储20GB可用磁盘空间 显卡支持1024x768分辨率 推荐硬件配置 CPU双核2GHz以上处理器 内存4GB RAM或更多 存储50GB可用磁盘空间 显卡独立显卡支持硬件加速 安装步骤 1. 准备安装介质 下载官方ISO镜像文件 制作启动U盘或刻录安装光盘 验证镜像文件完整性 2. 系统安装 从安装介质启动计算机 选择安装语言和键盘布局 配置网络连接可选 分区和格式化硬盘 选择安装组件 设置用户账户和密码 完成安装并重启 3.",
+    "text": "py  卸载程序  运行卸载脚本 sudo .uninstall.sh  手动清理如果需要 sudo rm -rf optkylin-qa-assistant sudo rm -f etcsystemdsystemkylin-qa.service sudo rm -f usrlocalbinkylin-qa rm -f Desktopkylin-qa.desktop  许可证 本项采 MIT 许可证 - 查看 LICENSE 件了解详情  贡献 欢迎提交 Issue 和 Pull Request 来改进项 贡献指南 1. Fork 项 2. 创建特性分 (git checkout -b featureAmazingFeature) --- 第11页 --- 3. 提交更改 (git commit -m 'Add some AmazingFeature') 4. 推送到分 (git push origin featureAmazingFeature) 5. 开启 Pull Request 开发环境搭建  克隆开发版本 git clone https:github.",
     "metadata": {
-      "source": "kylin_system_intro.md",
-      "chunk_id": 1,
-      "total_chunks": 5,
-      "file_type": ".md",
-      "chunk_size": 298,
-      "source_name": "kylin_system_intro.md",
+      "source": "银河麒麟智能问答助手 v2.5.pdf",
+      "chunk_id": 11,
+      "total_chunks": 14,
+      "file_type": ".pdf",
+      "chunk_size": 488,
+      "source_name": "银河麒麟智能问答助手 v2.5.pdf",
       "doc_id": 11
     }
   },
   {
-    "text": "sudo apt update 安装软件包 sudo apt install package-name 卸载软件包 sudo apt remove package-name 系统升级 sudo apt upgrade  服务管理 bash 启动服务 sudo systemctl start service-name 停止服务 sudo systemctl stop service-name 重启服务 sudo systemctl restart service-name 查看服务状态 sudo systemctl status service-name  网络配置 有线网络 打开网络设置 选择有线连接 配置IP地址自动或手动 设置DNS服务器 应用配置 无线网络 启用无线网卡 扫描可用网络 选择目标网络 输入密码 连接网络 安全配置 防火墙设置 bash 启用防火墙 sudo ufw enable 允许特定端口 sudo ufw allow 22tcp 拒绝特定端口 sudo ufw deny 23tcp 查看防火墙状态 sudo ufw status  用户权限管理 使用sudo进",
+    "text": "comyour-usernamekylin-qa-assistant.git cd kylin-qa-assistant  创建开发环境 python3 -m venv dev-env source dev-envbinactivate  安装开发依赖 pip install -r requirements.txt pip install pytest black flake8  开发工具  运行测试 pytest tests  代码格式化 black src  代码检查 flake8 src  持与反馈 如果您在使过程中遇到问题请 1. 查看档: 先查看本 README 和相关档 2. 搜索问题: 在 Issues 搜索类似问题 3. 提交 Issue: 如果没有找到解决案请提交新的 Issue 4. 联系开发者: 通过邮件或其他式联系项维护者 Issue 提交模板 提交 Issue 时请包含以下信息 环境信息 - 操作系统: 银河麒麟 V10 SP3 - Python版本: 3.8.10 - 程序版本: v2.5.",
     "metadata": {
-      "source": "kylin_system_intro.md",
-      "chunk_id": 2,
-      "total_chunks": 5,
-      "file_type": ".md",
-      "chunk_size": 499,
-      "source_name": "kylin_system_intro.md",
+      "source": "银河麒麟智能问答助手 v2.5.pdf",
+      "chunk_id": 12,
+      "total_chunks": 14,
+      "file_type": ".pdf",
+      "chunk_size": 466,
+      "source_name": "银河麒麟智能问答助手 v2.5.pdf",
       "doc_id": 12
     }
   },
   {
-    "text": "行权限提升 配置用户组权限 设置文件和目录权限 定期审查用户权限 常见问题 Q: 如何重置root密码 A: 在GRUB启动菜单中选择恢复模式进入单用户模式后使用passwd命令重置密码 Q: 系统启动缓慢怎么办 A: 检查启动服务禁用不必要的自启动程序清理系统缓存 Q: 如何安装第三方软件 A: 可以通过软件包管理器源码编译或使用AppImage等方式安装 Q: 网络连接不稳定如何解决 A: 检查网络驱动程序更新网卡固件调整网络配置参数 技术支持 官方资源 官方网站http:www.kylinos.cn 技术文档http:docs.kylinos.cn 社区论坛http:forum.kylinos.cn 联系方式 技术支持热线400-xxx-xxxx 邮箱支持supportkylinos.cn 在线客服工作日9:00-18:00 版本历史 V10.0 (最新版本) 内核升级至5.4 LTS 增强安全特性 改进硬件兼容性 优化用户界面 V4.0.2 修复已知安全漏洞 提升系统稳定性 增加新硬件支持 V4.",
+    "text": "0 --- 第12页 --- 问题描述 简要描述遇到的问题 复现步骤 1. 执行了什么操作 2. 期望的结果 3. 实际的结果 错误信息 粘贴完整的错误信息或志 截图 如果有GUI相关问题请提供截图  更新志 v2.5.0 ( 当前版本 )  集成 DeepSeek-R1 API  持麒麟 SDK2.5  优化 RAG 检索算法  改进 GUI 界体验  增强系统兼容性  添加键安装脚本  完善档和使指南  修复档处理 bug  优化内存使  改进错误处理 未来计划  持更多 AI 模型  添加语交互功能  持多语界  增加插件系统  优化性能和稳定性 银河麒麟智能问答助 - 让 AI 助您的麒麟系统使体验  如果这个项对您有帮助请给我们个 Star",
     "metadata": {
-      "source": "kylin_system_intro.md",
-      "chunk_id": 3,
-      "total_chunks": 5,
-      "file_type": ".md",
-      "chunk_size": 459,
-      "source_name": "kylin_system_intro.md",
+      "source": "银河麒麟智能问答助手 v2.5.pdf",
+      "chunk_id": 13,
+      "total_chunks": 14,
+      "file_type": ".pdf",
+      "chunk_size": 329,
+      "source_name": "银河麒麟智能问答助手 v2.5.pdf",
       "doc_id": 13
     }
   },
   {
-    "text": "0 全新的桌面环境 增强的安全机制 改进的软件包管理 银河麒麟操作系统致力于为用户提供安全稳定易用的国产操作系统解决方案",
+    "text": "--- 第1页 --- 第十五届全国大学生计算机应用能力与数字素养大赛信息技术基础赛道获奖名单 1  69 第十五届全国大学生计算机应用能力与数字素养大赛 信息技术基础赛道 获 奖 名 单 第十五届全国大学生计算机应用能力与数字素养大赛信息技术基础赛道共分为 6 个赛项每个赛项分本科组和高职组两个组别本届比赛共有 200 多所院校组织初赛 最终有 159 所院校 2191 位参赛选手参加决赛 参赛人数统计如下表 参赛赛项 本科组 高职组 合计 信息技术与素养赛项 240 170 410 WPS AI 智能办公赛项 395 231 626 Microsoft Office 智能办公赛项 373 277 650 数据分析与可视化赛项 131 49 180 人工智能应用基础赛项 171 100 271 计算机行业技术用语赛项 23 31 54 合计 1333 858 2191 个人获奖名单以学校名称首字母和获项由高到低排序并非按成绩排序点击上表赛项 名称可直接跳转到名单 全国大学生计算机应用能力与数字素养大赛组委会 北京金芥子国际教育咨询有限公司承办单位代章 2025-6-4 --- 第2页",
     "metadata": {
-      "source": "kylin_system_intro.md",
-      "chunk_id": 4,
-      "total_chunks": 5,
-      "file_type": ".md",
-      "chunk_size": 60,
-      "source_name": "kylin_system_intro.md",
+      "source": "第十五届大赛获奖名单-20250604.pdf",
+      "chunk_id": 0,
+      "total_chunks": 117,
+      "file_type": ".pdf",
+      "chunk_size": 500,
+      "source_name": "第十五届大赛获奖名单-20250604.pdf",
       "doc_id": 14
     }
   },
   {
-    "text": "银河麒麟操作系统简介 概述 银河麒麟操作系统是中国自主研发的操作系统基于Linux内核开发专为国产化信息系统设计该系统具有高安全性高可靠性和良好的兼容性广泛应用于政府军队金融电信等重要领域 主要特点 1. 安全性 强制访问控制采用多级安全策略确保系统资源的安全访问 安全审计完整的操作日志记录和审计功能 入侵检测实时监控系统异常行为 病毒防护内置防病毒引擎提供实时保护 2. 稳定性 内核优化针对国产硬件平台进行深度优化 容错机制完善的错误处理和恢复机制 负载均衡智能的资源调度和负载分配 高可用性支持集群部署和故障转移 3. 兼容性 硬件兼容支持多种国产CPU架构 龙芯Loongson 飞腾Phytium 海光Hygon 兆芯Zhaoxin 软件兼容兼容主流Linux应用程序 标准支持遵循国际和国内相关标准 系统架构 内核层 基于Linux内核版本4.",
+    "text": "--- 第十五届全国大学生计算机应用能力与数字素养大赛信息技术基础赛道获奖名单 2  69 优秀组织奖 广州体育职业技术学院 安徽信息工程学院 西南交通大学希望学院 天津商务职业学院 河南机电职业学院 湖北汽车工业学院 重庆科技大学 大连东软信息学院 长江大学 北华航天工业学院 宁夏医科大学 陆军工程大学通信士官学校 辽宁石油化工大学 金华职业技术大学 四川旅游学院 云南民族大学 中国人民警察大学 上海出版印刷高等专科学校 重庆文理学院 盐城工学院 --- 第3页 --- 第十五届全国大学生计算机应用能力与数字素养大赛信息技术基础赛道获奖名单 3  69 团 体 奖 赛项 组别 学校 奖项 Microsoft Office 智能办公赛项 本科组 成都东软学院 一等奖 Microsoft Office 智能办公赛项 本科组 厦门理工学院 一等奖 Microsoft Office 智能办公赛项 本科组 浙江师范大学 一等奖 Microsoft Office 智能办公赛项 本科组 湖北汽车工业学院科技学院 一等奖 Microsoft Office 智能办公赛项 本科组 承德医学院 一等奖",
     "metadata": {
-      "source": "kylin_system_intro.md",
-      "chunk_id": 0,
-      "total_chunks": 5,
-      "file_type": ".md",
-      "chunk_size": 379,
-      "source_name": "kylin_system_intro.md",
+      "source": "第十五届大赛获奖名单-20250604.pdf",
+      "chunk_id": 1,
+      "total_chunks": 117,
+      "file_type": ".pdf",
+      "chunk_size": 498,
+      "source_name": "第十五届大赛获奖名单-20250604.pdf",
       "doc_id": 15
     }
   },
   {
-    "text": "程序接口 开发工具链 运行时环境 应用层 办公软件套件 开发工具 系统管理工具 第三方应用 安装要求 最低硬件要求 CPU1GHz以上处理器 内存2GB RAM 存储20GB可用磁盘空间 显卡支持1024x768分辨率 推荐硬件配置 CPU双核2GHz以上处理器 内存4GB RAM或更多 存储50GB可用磁盘空间 显卡独立显卡支持硬件加速 安装步骤 1. 准备安装介质 下载官方ISO镜像文件 制作启动U盘或刻录安装光盘 验证镜像文件完整性 2. 系统安装 从安装介质启动计算机 选择安装语言和键盘布局 配置网络连接可选 分区和格式化硬盘 选择安装组件 设置用户账户和密码 完成安装并重启 3.",
+    "text": "Microsoft Office 智能办公赛项 本科组 首都经济贸易大学 一等奖 Microsoft Office 智能办公赛项 本科组 广东金融学院 二等奖 Microsoft Office 智能办公赛项 本科组 北京语言大学 二等奖 Microsoft Office 智能办公赛项 本科组 上海中侨职业技术大学 二等奖 Microsoft Office 智能办公赛项 本科组 湖北汽车工业学院 二等奖 Microsoft Office 智能办公赛项 本科组 北京城市学院 二等奖 Microsoft Office 智能办公赛项 本科组 中国人民警察大学 二等奖 Microsoft Office 智能办公赛项 本科组 盐城工学院 二等奖 Microsoft Office 智能办公赛项 本科组 北华航天工业学院 二等奖 Microsoft Office 智能办公赛项 本科组 莆田学院 二等奖 Microsoft Office 智能办公赛项 本科组 重庆文理学院 二等奖 Microsoft Office 智能办公赛项 本科组 齐鲁医药学院 二等奖 Microsoft Office 智能办公赛项",
     "metadata": {
-      "source": "kylin_system_intro.md",
-      "chunk_id": 1,
-      "total_chunks": 5,
-      "file_type": ".md",
-      "chunk_size": 298,
-      "source_name": "kylin_system_intro.md",
+      "source": "第十五届大赛获奖名单-20250604.pdf",
+      "chunk_id": 2,
+      "total_chunks": 117,
+      "file_type": ".pdf",
+      "chunk_size": 500,
+      "source_name": "第十五届大赛获奖名单-20250604.pdf",
       "doc_id": 16
     }
   },
   {
-    "text": "sudo apt update 安装软件包 sudo apt install package-name 卸载软件包 sudo apt remove package-name 系统升级 sudo apt upgrade  服务管理 bash 启动服务 sudo systemctl start service-name 停止服务 sudo systemctl stop service-name 重启服务 sudo systemctl restart service-name 查看服务状态 sudo systemctl status service-name  网络配置 有线网络 打开网络设置 选择有线连接 配置IP地址自动或手动 设置DNS服务器 应用配置 无线网络 启用无线网卡 扫描可用网络 选择目标网络 输入密码 连接网络 安全配置 防火墙设置 bash 启用防火墙 sudo ufw enable 允许特定端口 sudo ufw allow 22tcp 拒绝特定端口 sudo ufw deny 23tcp 查看防火墙状态 sudo ufw status  用户权限管理 使用sudo进",
+    "text": "本科组 山东现代学院 三等奖 Microsoft Office 智能办公赛项 本科组 安徽大学 三等奖 Microsoft Office 智能办公赛项 本科组 宁夏医科大学 三等奖 Microsoft Office 智能办公赛项 本科组 长江大学地球科学学院 三等奖 Microsoft Office 智能办公赛项 本科组 陆军步兵学院 三等奖 Microsoft Office 智能办公赛项 本科组 四川旅游学院 三等奖 Microsoft Office 智能办公赛项 本科组 民政职业大学 三等奖 Microsoft Office 智能办公赛项 本科组 湖南信息学院 三等奖 Microsoft Office 智能办公赛项 本科组 宁夏师范大学 三等奖 Microsoft Office 智能办公赛项 本科组 内蒙古大学创业学院 三等奖 Microsoft Office 智能办公赛项 本科组 大连东软信息学院 三等奖 Microsoft Office 智能办公赛项 本科组 哈尔滨广厦学院 三等奖 Microsoft Office 智能办公赛项 本科组 北京服装学院 三等奖 Microsof",
     "metadata": {
-      "source": "kylin_system_intro.md",
-      "chunk_id": 2,
-      "total_chunks": 5,
-      "file_type": ".md",
+      "source": "第十五届大赛获奖名单-20250604.pdf",
+      "chunk_id": 3,
+      "total_chunks": 117,
+      "file_type": ".pdf",
       "chunk_size": 499,
-      "source_name": "kylin_system_intro.md",
+      "source_name": "第十五届大赛获奖名单-20250604.pdf",
       "doc_id": 17
     }
   },
   {
-    "text": "行权限提升 配置用户组权限 设置文件和目录权限 定期审查用户权限 常见问题 Q: 如何重置root密码 A: 在GRUB启动菜单中选择恢复模式进入单用户模式后使用passwd命令重置密码 Q: 系统启动缓慢怎么办 A: 检查启动服务禁用不必要的自启动程序清理系统缓存 Q: 如何安装第三方软件 A: 可以通过软件包管理器源码编译或使用AppImage等方式安装 Q: 网络连接不稳定如何解决 A: 检查网络驱动程序更新网卡固件调整网络配置参数 技术支持 官方资源 官方网站http:www.kylinos.cn 技术文档http:docs.kylinos.cn 社区论坛http:forum.kylinos.cn 联系方式 技术支持热线400-xxx-xxxx 邮箱支持supportkylinos.cn 在线客服工作日9:00-18:00 版本历史 V10.0 (最新版本) 内核升级至5.4 LTS 增强安全特性 改进硬件兼容性 优化用户界面 V4.0.2 修复已知安全漏洞 提升系统稳定性 增加新硬件支持 V4.",
+    "text": "t Office 智能办公赛项 本科组 山东政法学院 三等奖 Microsoft Office 智能办公赛项 本科组 长江大学经济与管理学院 三等奖 Microsoft Office 智能办公赛项 本科组 天津外国语大学 三等奖 Microsoft Office 智能办公赛项 本科组 辽宁石油化工大学 三等奖 Microsoft Office 智能办公赛项 高职组 空军工程大学航空机务士官学校 一等奖 Microsoft Office 智能办公赛项 高职组 浙江育英职业技术学院 一等奖 Microsoft Office 智能办公赛项 高职组 江西生物科技职业学院 一等奖 Microsoft Office 智能办公赛项 高职组 江苏医药职业学院 一等奖 --- 第4页 --- 第十五届全国大学生计算机应用能力与数字素养大赛信息技术基础赛道获奖名单 4  69 赛项 组别 学校 奖项 Microsoft Office 智能办公赛项 高职组 四川铁道职业学院 一等奖 Microsoft Office 智能办公赛项 高职组 北京京北职业技术学院 二等奖 Microsoft Office 智能办",
     "metadata": {
-      "source": "kylin_system_intro.md",
-      "chunk_id": 3,
-      "total_chunks": 5,
-      "file_type": ".md",
-      "chunk_size": 459,
-      "source_name": "kylin_system_intro.md",
+      "source": "第十五届大赛获奖名单-20250604.pdf",
+      "chunk_id": 4,
+      "total_chunks": 117,
+      "file_type": ".pdf",
+      "chunk_size": 500,
+      "source_name": "第十五届大赛获奖名单-20250604.pdf",
       "doc_id": 18
     }
   },
   {
-    "text": "0 全新的桌面环境 增强的安全机制 改进的软件包管理 银河麒麟操作系统致力于为用户提供安全稳定易用的国产操作系统解决方案",
+    "text": "公赛项 高职组 金华职业技术大学 二等奖 Microsoft Office 智能办公赛项 高职组 南京新华电脑专修学校 二等奖 Microsoft Office 智能办公赛项 高职组 浙江艺术职业学院 二等奖 Microsoft Office 智能办公赛项 高职组 上海出版印刷高等专科学校 二等奖 Microsoft Office 智能办公赛项 高职组 江苏食品药品职业技术学院 二等奖 Microsoft Office 智能办公赛项 高职组 西南交通大学希望学院 二等奖 Microsoft Office 智能办公赛项 高职组 大连东软信息学院 二等奖 Microsoft Office 智能办公赛项 高职组 柳州铁道职业技术学院 二等奖 Microsoft Office 智能办公赛项 高职组 长江工程职业技术学院 二等奖 Microsoft Office 智能办公赛项 高职组 河南机电职业学院 二等奖 Microsoft Office 智能办公赛项 高职组 通信士官学校 三等奖 Microsoft Office 智能办公赛项 高职组 南宁职业技术大学 三等奖 Microsoft Offi",
     "metadata": {
-      "source": "kylin_system_intro.md",
-      "chunk_id": 4,
-      "total_chunks": 5,
-      "file_type": ".md",
-      "chunk_size": 60,
-      "source_name": "kylin_system_intro.md",
+      "source": "第十五届大赛获奖名单-20250604.pdf",
+      "chunk_id": 5,
+      "total_chunks": 117,
+      "file_type": ".pdf",
+      "chunk_size": 500,
+      "source_name": "第十五届大赛获奖名单-20250604.pdf",
       "doc_id": 19
     }
   },
   {
-    "text": "银河麒麟操作系统简介 概述 银河麒麟操作系统是中国自主研发的操作系统基于Linux内核开发专为国产化信息系统设计该系统具有高安全性高可靠性和良好的兼容性广泛应用于政府军队金融电信等重要领域 主要特点 1. 安全性 强制访问控制采用多级安全策略确保系统资源的安全访问 安全审计完整的操作日志记录和审计功能 入侵检测实时监控系统异常行为 病毒防护内置防病毒引擎提供实时保护 2. 稳定性 内核优化针对国产硬件平台进行深度优化 容错机制完善的错误处理和恢复机制 负载均衡智能的资源调度和负载分配 高可用性支持集群部署和故障转移 3. 兼容性 硬件兼容支持多种国产CPU架构 龙芯Loongson 飞腾Phytium 海光Hygon 兆芯Zhaoxin 软件兼容兼容主流Linux应用程序 标准支持遵循国际和国内相关标准 系统架构 内核层 基于Linux内核版本4.",
+    "text": "ce 智能办公赛项 高职组 河南医学高等专科学校 三等奖 Microsoft Office 智能办公赛项 高职组 深圳城市职业学院 三等奖 Microsoft Office 智能办公赛项 高职组 天津商务职业学院 三等奖 Microsoft Office 智能办公赛项 高职组 北京工业职业技术学院 三等奖 Microsoft Office 智能办公赛项 高职组 天津生物工程职业技术学院 三等奖 Microsoft Office 智能办公赛项 高职组 西安海棠职业学院 三等奖 Microsoft Office 智能办公赛项 高职组 苏州高博职业学院 三等奖 Microsoft Office 智能办公赛项 高职组 郑州智能科技职业学院 三等奖 Microsoft Office 智能办公赛项 高职组 江苏联合职业技术学院陶都中专 办学点 三等奖 Microsoft Office 智能办公赛项 高职组 渤海船舶职业学院 三等奖 Microsoft Office 智能办公赛项 高职组 商丘医学高等专科学校 三等奖 Microsoft Office 智能办公赛项 高职组 南阳医学高等专科学校 三等",
     "metadata": {
-      "source": "kylin_system_intro.md",
-      "chunk_id": 0,
-      "total_chunks": 5,
-      "file_type": ".md",
-      "chunk_size": 379,
-      "source_name": "kylin_system_intro.md",
+      "source": "第十五届大赛获奖名单-20250604.pdf",
+      "chunk_id": 6,
+      "total_chunks": 117,
+      "file_type": ".pdf",
+      "chunk_size": 500,
+      "source_name": "第十五届大赛获奖名单-20250604.pdf",
       "doc_id": 20
     }
   },
   {
-    "text": "程序接口 开发工具链 运行时环境 应用层 办公软件套件 开发工具 系统管理工具 第三方应用 安装要求 最低硬件要求 CPU1GHz以上处理器 内存2GB RAM 存储20GB可用磁盘空间 显卡支持1024x768分辨率 推荐硬件配置 CPU双核2GHz以上处理器 内存4GB RAM或更多 存储50GB可用磁盘空间 显卡独立显卡支持硬件加速 安装步骤 1. 准备安装介质 下载官方ISO镜像文件 制作启动U盘或刻录安装光盘 验证镜像文件完整性 2. 系统安装 从安装介质启动计算机 选择安装语言和键盘布局 配置网络连接可选 分区和格式化硬盘 选择安装组件 设置用户账户和密码 完成安装并重启 3.",
+    "text": "奖 Microsoft Office 智能办公赛项 高职组 辽宁医药职业学院 三等奖 Microsoft Office 智能办公赛项 高职组 乌鲁木齐经济技术开发区头屯河区新 华智原互联网职业培训学校有限公司 三等奖 WPS AI 智能办公赛项 本科组 辽宁石油化工大学 一等奖 WPS AI 智能办公赛项 本科组 厦门理工学院 一等奖 WPS AI 智能办公赛项 本科组 中央民族大学 一等奖 WPS AI 智能办公赛项 本科组 安徽大学 一等奖 WPS AI 智能办公赛项 本科组 浙江师范大学 一等奖 WPS AI 智能办公赛项 本科组 火箭军士官学校 二等奖 WPS AI 智能办公赛项 本科组 首都经济贸易大学 二等奖 WPS AI 智能办公赛项 本科组 中国人民警察大学 二等奖 WPS AI 智能办公赛项 本科组 宁夏医科大学 二等奖 WPS AI 智能办公赛项 本科组 长江大学经济与管理学院 二等奖 WPS AI 智能办公赛项 本科组 广东金融学院 二等奖 --- 第5页 --- 第十五届全国大学生计算机应用能力与数字素养大赛信息技术基础赛道获奖名单 5  69 赛项 组别 学校",
     "metadata": {
-      "source": "kylin_system_intro.md",
-      "chunk_id": 1,
-      "total_chunks": 5,
-      "file_type": ".md",
-      "chunk_size": 298,
-      "source_name": "kylin_system_intro.md",
+      "source": "第十五届大赛获奖名单-20250604.pdf",
+      "chunk_id": 7,
+      "total_chunks": 117,
+      "file_type": ".pdf",
+      "chunk_size": 500,
+      "source_name": "第十五届大赛获奖名单-20250604.pdf",
       "doc_id": 21
     }
   },
   {
-    "text": "sudo apt update 安装软件包 sudo apt install package-name 卸载软件包 sudo apt remove package-name 系统升级 sudo apt upgrade  服务管理 bash 启动服务 sudo systemctl start service-name 停止服务 sudo systemctl stop service-name 重启服务 sudo systemctl restart service-name 查看服务状态 sudo systemctl status service-name  网络配置 有线网络 打开网络设置 选择有线连接 配置IP地址自动或手动 设置DNS服务器 应用配置 无线网络 启用无线网卡 扫描可用网络 选择目标网络 输入密码 连接网络 安全配置 防火墙设置 bash 启用防火墙 sudo ufw enable 允许特定端口 sudo ufw allow 22tcp 拒绝特定端口 sudo ufw deny 23tcp 查看防火墙状态 sudo ufw status  用户权限管理 使用sudo进",
+    "text": "奖项 WPS AI 智能办公赛项 本科组 湖南信息学院 二等奖 WPS AI 智能办公赛项 本科组 湖北汽车工业学院 二等奖 WPS AI 智能办公赛项 本科组 重庆文理学院 二等奖 WPS AI 智能办公赛项 本科组 西安邮电大学 二等奖 WPS AI 智能办公赛项 本科组 中国人民解放军空军勤务学院 二等奖 WPS AI 智能办公赛项 本科组 西南交通大学希望学院 三等奖 WPS AI 智能办公赛项 本科组 山东政法学院 三等奖 WPS AI 智能办公赛项 本科组 山东现代学院 三等奖 WPS AI 智能办公赛项 本科组 大连东软信息学院 三等奖 WPS AI 智能办公赛项 本科组 北华航天工业学院 三等奖 WPS AI 智能办公赛项 本科组 南昌交通学院 三等奖 WPS AI 智能办公赛项 本科组 长江大学地球科学学院 三等奖 WPS AI 智能办公赛项 本科组 南京航空航天大学金城学院 三等奖 WPS AI 智能办公赛项 本科组 安徽信息工程学院 三等奖 WPS AI 智能办公赛项 本科组 北京工业大学耿丹学院 三等奖 WPS AI 智能办公赛项 本科组 盐城工学院 三等奖",
     "metadata": {
-      "source": "kylin_system_intro.md",
-      "chunk_id": 2,
-      "total_chunks": 5,
-      "file_type": ".md",
-      "chunk_size": 499,
-      "source_name": "kylin_system_intro.md",
+      "source": "第十五届大赛获奖名单-20250604.pdf",
+      "chunk_id": 8,
+      "total_chunks": 117,
+      "file_type": ".pdf",
+      "chunk_size": 498,
+      "source_name": "第十五届大赛获奖名单-20250604.pdf",
       "doc_id": 22
     }
   },
   {
-    "text": "行权限提升 配置用户组权限 设置文件和目录权限 定期审查用户权限 常见问题 Q: 如何重置root密码 A: 在GRUB启动菜单中选择恢复模式进入单用户模式后使用passwd命令重置密码 Q: 系统启动缓慢怎么办 A: 检查启动服务禁用不必要的自启动程序清理系统缓存 Q: 如何安装第三方软件 A: 可以通过软件包管理器源码编译或使用AppImage等方式安装 Q: 网络连接不稳定如何解决 A: 检查网络驱动程序更新网卡固件调整网络配置参数 技术支持 官方资源 官方网站http:www.kylinos.cn 技术文档http:docs.kylinos.cn 社区论坛http:forum.kylinos.cn 联系方式 技术支持热线400-xxx-xxxx 邮箱支持supportkylinos.cn 在线客服工作日9:00-18:00 版本历史 V10.0 (最新版本) 内核升级至5.4 LTS 增强安全特性 改进硬件兼容性 优化用户界面 V4.0.2 修复已知安全漏洞 提升系统稳定性 增加新硬件支持 V4.",
+    "text": "WPS AI 智能办公赛项 本科组 湖北汽车工业学院科技学院 三等奖 WPS AI 智能办公赛项 本科组 电子科技大学成都学院 三等奖 WPS AI 智能办公赛项 本科组 内蒙古大学创业学院 三等奖 WPS AI 智能办公赛项 本科组 天津外国语大学 三等奖 WPS AI 智能办公赛项 高职组 空军工程大学航空机务士官学校 一等奖 WPS AI 智能办公赛项 高职组 石家庄信息工程职业学院 一等奖 WPS AI 智能办公赛项 高职组 保定职业技术学院 一等奖 WPS AI 智能办公赛项 高职组 陆军军医大学士官学校 一等奖 WPS AI 智能办公赛项 高职组 四川铁道职业学院 一等奖 WPS AI 智能办公赛项 高职组 武汉船舶职业技术学院 二等奖 WPS AI 智能办公赛项 高职组 重庆工商职业学院 二等奖 WPS AI 智能办公赛项 高职组 火箭军士官学校 二等奖 WPS AI 智能办公赛项 高职组 东莞职业技术学院 二等奖 WPS AI 智能办公赛项 高职组 浙江艺术职业学院 二等奖 WPS AI 智能办公赛项 高职组 上海出版印刷高等专科学校 二等奖 WPS AI 智能办公赛项",
     "metadata": {
-      "source": "kylin_system_intro.md",
-      "chunk_id": 3,
-      "total_chunks": 5,
-      "file_type": ".md",
-      "chunk_size": 459,
-      "source_name": "kylin_system_intro.md",
+      "source": "第十五届大赛获奖名单-20250604.pdf",
+      "chunk_id": 9,
+      "total_chunks": 117,
+      "file_type": ".pdf",
+      "chunk_size": 500,
+      "source_name": "第十五届大赛获奖名单-20250604.pdf",
       "doc_id": 23
     }
   },
   {
-    "text": "0 全新的桌面环境 增强的安全机制 改进的软件包管理 银河麒麟操作系统致力于为用户提供安全稳定易用的国产操作系统解决方案",
+    "text": "高职组 科尔沁艺术职业学院 二等奖 WPS AI 智能办公赛项 高职组 通信士官学校 二等奖 WPS AI 智能办公赛项 高职组 嵩山少林武术职业学院 二等奖 WPS AI 智能办公赛项 高职组 江苏联合职业技术学院灌南中专 办学点 三等奖 WPS AI 智能办公赛项 高职组 湖北中医药高等专科学校 三等奖 WPS AI 智能办公赛项 高职组 北京工业职业技术学院 三等奖 WPS AI 智能办公赛项 高职组 江苏省连云港中医药高等职业技 术学校 三等奖 WPS AI 智能办公赛项 高职组 烟台文化旅游职业学院 三等奖 --- 第6页 --- 第十五届全国大学生计算机应用能力与数字素养大赛信息技术基础赛道获奖名单 6  69 赛项 组别 学校 奖项 WPS AI 智能办公赛项 高职组 武汉市智工职业技术学校 三等奖 WPS AI 智能办公赛项 高职组 河南机电职业学院 三等奖 WPS AI 智能办公赛项 高职组 天津滨海职业学院 三等奖 WPS AI 智能办公赛项 高职组 新疆农业职业技术大学 三等奖 WPS AI 智能办公赛项 高职组 重庆医药高等专科学校 三等奖 WPS AI 智能",
     "metadata": {
-      "source": "kylin_system_intro.md",
-      "chunk_id": 4,
-      "total_chunks": 5,
-      "file_type": ".md",
-      "chunk_size": 60,
-      "source_name": "kylin_system_intro.md",
+      "source": "第十五届大赛获奖名单-20250604.pdf",
+      "chunk_id": 10,
+      "total_chunks": 117,
+      "file_type": ".pdf",
+      "chunk_size": 499,
+      "source_name": "第十五届大赛获奖名单-20250604.pdf",
       "doc_id": 24
     }
   },
   {
-    "text": "银河麒麟操作系统简介 概述 银河麒麟操作系统是中国自主研发的操作系统基于Linux内核开发专为国产化信息系统设计该系统具有高安全性高可靠性和良好的兼容性广泛应用于政府军队金融电信等重要领域 主要特点 1. 安全性 强制访问控制采用多级安全策略确保系统资源的安全访问 安全审计完整的操作日志记录和审计功能 入侵检测实时监控系统异常行为 病毒防护内置防病毒引擎提供实时保护 2. 稳定性 内核优化针对国产硬件平台进行深度优化 容错机制完善的错误处理和恢复机制 负载均衡智能的资源调度和负载分配 高可用性支持集群部署和故障转移 3. 兼容性 硬件兼容支持多种国产CPU架构 龙芯Loongson 飞腾Phytium 海光Hygon 兆芯Zhaoxin 软件兼容兼容主流Linux应用程序 标准支持遵循国际和国内相关标准 系统架构 内核层 基于Linux内核版本4.",
+    "text": "办公赛项 高职组 郑州智能科技职业学院 三等奖 WPS AI 智能办公赛项 高职组 徐州工业职业技术学院 三等奖 WPS AI 智能办公赛项 高职组 大连东软信息学院 三等奖 WPS AI 智能办公赛项 高职组 渤海船舶职业学院 三等奖 WPS AI 智能办公赛项 高职组 南阳医学高等专科学校 三等奖 计算机行业技术用语赛项 本科组 烟台大学 一等奖 计算机行业技术用语赛项 本科组 北华航天工业学院 三等奖 计算机行业技术用语赛项 本科组 湖北汽车工业学院 三等奖 计算机行业技术用语赛项 高职组 山东商务职业学院 一等奖 计算机行业技术用语赛项 高职组 山西职业技术学院 二等奖 计算机行业技术用语赛项 高职组 武汉软件工程职业学院 二等奖 计算机行业技术用语赛项 高职组 烟台幼儿师范高等专科学校 三等奖 计算机行业技术用语赛项 高职组 上海出版印刷高等专科学校 三等奖 人工智能应用基础赛项 本科组 安徽大学 一等奖 人工智能应用基础赛项 本科组 南京传媒学院 一等奖 人工智能应用基础赛项 本科组 北方工业大学 一等奖 人工智能应用基础赛项 本科组 上海中侨职业技术大学 一等奖 人工智能",
     "metadata": {
-      "source": "kylin_system_intro.md",
-      "chunk_id": 0,
-      "total_chunks": 5,
-      "file_type": ".md",
-      "chunk_size": 379,
-      "source_name": "kylin_system_intro.md",
+      "source": "第十五届大赛获奖名单-20250604.pdf",
+      "chunk_id": 11,
+      "total_chunks": 117,
+      "file_type": ".pdf",
+      "chunk_size": 500,
+      "source_name": "第十五届大赛获奖名单-20250604.pdf",
       "doc_id": 25
     }
   },
   {
-    "text": "程序接口 开发工具链 运行时环境 应用层 办公软件套件 开发工具 系统管理工具 第三方应用 安装要求 最低硬件要求 CPU1GHz以上处理器 内存2GB RAM 存储20GB可用磁盘空间 显卡支持1024x768分辨率 推荐硬件配置 CPU双核2GHz以上处理器 内存4GB RAM或更多 存储50GB可用磁盘空间 显卡独立显卡支持硬件加速 安装步骤 1. 准备安装介质 下载官方ISO镜像文件 制作启动U盘或刻录安装光盘 验证镜像文件完整性 2. 系统安装 从安装介质启动计算机 选择安装语言和键盘布局 配置网络连接可选 分区和格式化硬盘 选择安装组件 设置用户账户和密码 完成安装并重启 3.",
+    "text": "应用基础赛项 本科组 山东现代学院 二等奖 人工智能应用基础赛项 本科组 中国人民解放军空军勤务学院 二等奖 人工智能应用基础赛项 本科组 大连东软信息学院 二等奖 人工智能应用基础赛项 本科组 浙江师范大学 二等奖 人工智能应用基础赛项 本科组 盐城工学院 二等奖 人工智能应用基础赛项 本科组 首都经济贸易大学 二等奖 人工智能应用基础赛项 本科组 北京工业大学耿丹学院 二等奖 人工智能应用基础赛项 本科组 首都医科大学 二等奖 人工智能应用基础赛项 本科组 湖南信息学院 二等奖 人工智能应用基础赛项 本科组 四川旅游学院 三等奖 人工智能应用基础赛项 本科组 广东金融学院 三等奖 人工智能应用基础赛项 本科组 湖北汽车工业学院科技学院 三等奖 人工智能应用基础赛项 本科组 长江大学计算机学院 三等奖 人工智能应用基础赛项 本科组 长江大学经济与管理学院 三等奖 人工智能应用基础赛项 本科组 安徽信息工程学院 三等奖 人工智能应用基础赛项 本科组 长江大学地球科学学院 三等奖 人工智能应用基础赛项 本科组 北华航天工业学院 三等奖 人工智能应用基础赛项 本科组 西南交通大学希望学院",
     "metadata": {
-      "source": "kylin_system_intro.md",
-      "chunk_id": 1,
-      "total_chunks": 5,
-      "file_type": ".md",
-      "chunk_size": 298,
-      "source_name": "kylin_system_intro.md",
+      "source": "第十五届大赛获奖名单-20250604.pdf",
+      "chunk_id": 12,
+      "total_chunks": 117,
+      "file_type": ".pdf",
+      "chunk_size": 499,
+      "source_name": "第十五届大赛获奖名单-20250604.pdf",
       "doc_id": 26
     }
   },
   {
-    "text": "sudo apt update 安装软件包 sudo apt install package-name 卸载软件包 sudo apt remove package-name 系统升级 sudo apt upgrade  服务管理 bash 启动服务 sudo systemctl start service-name 停止服务 sudo systemctl stop service-name 重启服务 sudo systemctl restart service-name 查看服务状态 sudo systemctl status service-name  网络配置 有线网络 打开网络设置 选择有线连接 配置IP地址自动或手动 设置DNS服务器 应用配置 无线网络 启用无线网卡 扫描可用网络 选择目标网络 输入密码 连接网络 安全配置 防火墙设置 bash 启用防火墙 sudo ufw enable 允许特定端口 sudo ufw allow 22tcp 拒绝特定端口 sudo ufw deny 23tcp 查看防火墙状态 sudo ufw status  用户权限管理 使用sudo进",
+    "text": "三等奖 人工智能应用基础赛项 本科组 重庆文理学院 三等奖 --- 第7页 --- 第十五届全国大学生计算机应用能力与数字素养大赛信息技术基础赛道获奖名单 7  69 赛项 组别 学校 奖项 人工智能应用基础赛项 本科组 宁夏师范大学 三等奖 人工智能应用基础赛项 本科组 天津外国语大学 三等奖 人工智能应用基础赛项 高职组 上海商学院高等技术学院交通路院区 一等奖 人工智能应用基础赛项 高职组 上海出版印刷高等专科学校 一等奖 人工智能应用基础赛项 高职组 天津城市建设管理职业技术学院 一等奖 人工智能应用基础赛项 高职组 北京工业职业技术学院 二等奖 人工智能应用基础赛项 高职组 西昌民族幼儿师范高等专科学校 二等奖 人工智能应用基础赛项 高职组 通信士官学校 二等奖 人工智能应用基础赛项 高职组 郑州智能科技职业学院 二等奖 人工智能应用基础赛项 高职组 天津商务职业学院 二等奖 人工智能应用基础赛项 高职组 徐州工业职业技术学院 二等奖 人工智能应用基础赛项 高职组 内蒙古建筑职业技术学院 三等奖 数据分析与可视化赛项 本科组 宁夏医科大学 一等奖 数据分析与可视化赛项 本科组",
     "metadata": {
-      "source": "kylin_system_intro.md",
-      "chunk_id": 2,
-      "total_chunks": 5,
-      "file_type": ".md",
-      "chunk_size": 499,
-      "source_name": "kylin_system_intro.md",
+      "source": "第十五届大赛获奖名单-20250604.pdf",
+      "chunk_id": 13,
+      "total_chunks": 117,
+      "file_type": ".pdf",
+      "chunk_size": 500,
+      "source_name": "第十五届大赛获奖名单-20250604.pdf",
       "doc_id": 27
     }
   },
   {
-    "text": "行权限提升 配置用户组权限 设置文件和目录权限 定期审查用户权限 常见问题 Q: 如何重置root密码 A: 在GRUB启动菜单中选择恢复模式进入单用户模式后使用passwd命令重置密码 Q: 系统启动缓慢怎么办 A: 检查启动服务禁用不必要的自启动程序清理系统缓存 Q: 如何安装第三方软件 A: 可以通过软件包管理器源码编译或使用AppImage等方式安装 Q: 网络连接不稳定如何解决 A: 检查网络驱动程序更新网卡固件调整网络配置参数 技术支持 官方资源 官方网站http:www.kylinos.cn 技术文档http:docs.kylinos.cn 社区论坛http:forum.kylinos.cn 联系方式 技术支持热线400-xxx-xxxx 邮箱支持supportkylinos.cn 在线客服工作日9:00-18:00 版本历史 V10.0 (最新版本) 内核升级至5.4 LTS 增强安全特性 改进硬件兼容性 优化用户界面 V4.0.2 修复已知安全漏洞 提升系统稳定性 增加新硬件支持 V4.",
+    "text": "长江大学计算机学院 一等奖 数据分析与可视化赛项 本科组 浙江师范大学 一等奖 数据分析与可视化赛项 本科组 重庆文理学院 一等奖 数据分析与可视化赛项 本科组 北京城市学院 二等奖 数据分析与可视化赛项 本科组 长江大学经济与管理学院 二等奖 数据分析与可视化赛项 本科组 莆田学院新工科 二等奖 数据分析与可视化赛项 本科组 武汉晴川学院 二等奖 数据分析与可视化赛项 本科组 南阳理工学院 二等奖 数据分析与可视化赛项 本科组 湖南信息学院 二等奖 数据分析与可视化赛项 本科组 宁夏师范大学 二等奖 数据分析与可视化赛项 本科组 重庆文理学院数学与人工智能学院 三等奖 数据分析与可视化赛项 本科组 广东金融学院 三等奖 数据分析与可视化赛项 本科组 大连东软信息学院 三等奖 数据分析与可视化赛项 本科组 安徽大学 三等奖 数据分析与可视化赛项 本科组 长江大学地球科学学院 三等奖 数据分析与可视化赛项 高职组 徐州工业职业技术学院 一等奖 数据分析与可视化赛项 高职组 通信士官学校 一等奖 数据分析与可视化赛项 高职组 山西职业技术学院 二等奖 数据分析与可视化赛项 高职组 随州职",
     "metadata": {
-      "source": "kylin_system_intro.md",
-      "chunk_id": 3,
-      "total_chunks": 5,
-      "file_type": ".md",
-      "chunk_size": 459,
-      "source_name": "kylin_system_intro.md",
+      "source": "第十五届大赛获奖名单-20250604.pdf",
+      "chunk_id": 14,
+      "total_chunks": 117,
+      "file_type": ".pdf",
+      "chunk_size": 499,
+      "source_name": "第十五届大赛获奖名单-20250604.pdf",
       "doc_id": 28
     }
   },
   {
-    "text": "0 全新的桌面环境 增强的安全机制 改进的软件包管理 银河麒麟操作系统致力于为用户提供安全稳定易用的国产操作系统解决方案",
+    "text": "业技术学院 二等奖 数据分析与可视化赛项 高职组 南宁职业技术大学 二等奖 数据分析与可视化赛项 高职组 重庆医药高等专科学校 三等奖 数据分析与可视化赛项 高职组 河南机电职业学院 三等奖 信息技术与素养赛项 本科组 长江大学经济与管理学院 一等奖 信息技术与素养赛项 本科组 安徽文达信息工程学院 一等奖 信息技术与素养赛项 本科组 宁夏师范大学 一等奖 信息技术与素养赛项 本科组 西南交通大学希望学院 一等奖 信息技术与素养赛项 本科组 黑龙江科技大学 一等奖 信息技术与素养赛项 本科组 承德医学院 二等奖 --- 第8页 --- 第十五届全国大学生计算机应用能力与数字素养大赛信息技术基础赛道获奖名单 8  69 赛项 组别 学校 奖项 信息技术与素养赛项 本科组 重庆文理学院 二等奖 信息技术与素养赛项 本科组 山东现代学院 二等奖 信息技术与素养赛项 本科组 南阳理工学院 二等奖 信息技术与素养赛项 本科组 中国人民解放军空军勤务学院 二等奖 信息技术与素养赛项 本科组 浙江师范大学 二等奖 信息技术与素养赛项 本科组 湖北汽车工业学院 二等奖 信息技术与素养赛项 本科组 电子",
     "metadata": {
-      "source": "kylin_system_intro.md",
-      "chunk_id": 4,
-      "total_chunks": 5,
-      "file_type": ".md",
-      "chunk_size": 60,
-      "source_name": "kylin_system_intro.md",
+      "source": "第十五届大赛获奖名单-20250604.pdf",
+      "chunk_id": 15,
+      "total_chunks": 117,
+      "file_type": ".pdf",
+      "chunk_size": 500,
+      "source_name": "第十五届大赛获奖名单-20250604.pdf",
       "doc_id": 29
     }
   },
   {
-    "text": "银河麒麟操作系统简介 概述 银河麒麟操作系统是中国自主研发的操作系统基于Linux内核开发专为国产化信息系统设计该系统具有高安全性高可靠性和良好的兼容性广泛应用于政府军队金融电信等重要领域 主要特点 1. 安全性 强制访问控制采用多级安全策略确保系统资源的安全访问 安全审计完整的操作日志记录和审计功能 入侵检测实时监控系统异常行为 病毒防护内置防病毒引擎提供实时保护 2. 稳定性 内核优化针对国产硬件平台进行深度优化 容错机制完善的错误处理和恢复机制 负载均衡智能的资源调度和负载分配 高可用性支持集群部署和故障转移 3. 兼容性 硬件兼容支持多种国产CPU架构 龙芯Loongson 飞腾Phytium 海光Hygon 兆芯Zhaoxin 软件兼容兼容主流Linux应用程序 标准支持遵循国际和国内相关标准 系统架构 内核层 基于Linux内核版本4.",
+    "text": "科技大学成都学院 二等奖 信息技术与素养赛项 本科组 西安航空学院 二等奖 信息技术与素养赛项 本科组 宁夏医科大学 三等奖 信息技术与素养赛项 本科组 长江大学地球科学学院 三等奖 信息技术与素养赛项 本科组 西安邮电大学 三等奖 信息技术与素养赛项 本科组 盐城工学院 三等奖 信息技术与素养赛项 本科组 重庆科技大学 三等奖 信息技术与素养赛项 本科组 天津外国语大学 三等奖 信息技术与素养赛项 本科组 四川旅游学院 三等奖 信息技术与素养赛项 本科组 厦门医学院 三等奖 信息技术与素养赛项 本科组 北京工业大学耿丹学院 三等奖 信息技术与素养赛项 本科组 大连东软信息学院 三等奖 信息技术与素养赛项 本科组 安徽大学 三等奖 信息技术与素养赛项 本科组 辽宁石油化工大学 三等奖 信息技术与素养赛项 高职组 郑州智能科技职业学院 一等奖 信息技术与素养赛项 高职组 北京工业职业技术学院 一等奖 信息技术与素养赛项 高职组 湖北工业职业技术学院 一等奖 信息技术与素养赛项 高职组 金华职业技术大学 一等奖 信息技术与素养赛项 高职组 天津商务职业学院 二等奖 信息技术与素养赛项 高职",
     "metadata": {
-      "source": "kylin_system_intro.md",
-      "chunk_id": 0,
-      "total_chunks": 5,
-      "file_type": ".md",
-      "chunk_size": 379,
-      "source_name": "kylin_system_intro.md",
+      "source": "第十五届大赛获奖名单-20250604.pdf",
+      "chunk_id": 16,
+      "total_chunks": 117,
+      "file_type": ".pdf",
+      "chunk_size": 500,
+      "source_name": "第十五届大赛获奖名单-20250604.pdf",
       "doc_id": 30
     }
   },
   {
-    "text": "程序接口 开发工具链 运行时环境 应用层 办公软件套件 开发工具 系统管理工具 第三方应用 安装要求 最低硬件要求 CPU1GHz以上处理器 内存2GB RAM 存储20GB可用磁盘空间 显卡支持1024x768分辨率 推荐硬件配置 CPU双核2GHz以上处理器 内存4GB RAM或更多 存储50GB可用磁盘空间 显卡独立显卡支持硬件加速 安装步骤 1. 准备安装介质 下载官方ISO镜像文件 制作启动U盘或刻录安装光盘 验证镜像文件完整性 2. 系统安装 从安装介质启动计算机 选择安装语言和键盘布局 配置网络连接可选 分区和格式化硬盘 选择安装组件 设置用户账户和密码 完成安装并重启 3.",
+    "text": "组 大连东软信息学院 二等奖 信息技术与素养赛项 高职组 苏州高博职业学院 二等奖 信息技术与素养赛项 高职组 天津海运职业学院 二等奖 信息技术与素养赛项 高职组 上海出版印刷高等专科学校 二等奖 信息技术与素养赛项 高职组 徐州工业职业技术学院 二等奖 信息技术与素养赛项 高职组 通信士官学校 二等奖 信息技术与素养赛项 高职组 江苏食品药品职业技术学院 二等奖 信息技术与素养赛项 高职组 空军工程大学航空机务士官学校 二等奖 信息技术与素养赛项 高职组 火箭军士官学校 三等奖 信息技术与素养赛项 高职组 广州体育职业技术学院 三等奖 信息技术与素养赛项 高职组 浙江育英职业技术学院 三等奖 信息技术与素养赛项 高职组 云南民族大学 三等奖 信息技术与素养赛项 高职组 天津医学高等专科学校 三等奖 信息技术与素养赛项 高职组 内蒙古建筑职业技术学院 三等奖 信息技术与素养赛项 高职组 锡林郭勒职业学院 三等奖 --- 第9页 --- 第十五届全国大学生计算机应用能力与数字素养大赛信息技术基础赛道获奖名单 9  69 个 人 奖 信息技术与素养赛项 本科组 序号 学校名称 姓名 奖项",
     "metadata": {
-      "source": "kylin_system_intro.md",
-      "chunk_id": 1,
-      "total_chunks": 5,
-      "file_type": ".md",
-      "chunk_size": 298,
-      "source_name": "kylin_system_intro.md",
+      "source": "第十五届大赛获奖名单-20250604.pdf",
+      "chunk_id": 17,
+      "total_chunks": 117,
+      "file_type": ".pdf",
+      "chunk_size": 500,
+      "source_name": "第十五届大赛获奖名单-20250604.pdf",
       "doc_id": 31
     }
   },
   {
-    "text": "sudo apt update 安装软件包 sudo apt install package-name 卸载软件包 sudo apt remove package-name 系统升级 sudo apt upgrade  服务管理 bash 启动服务 sudo systemctl start service-name 停止服务 sudo systemctl stop service-name 重启服务 sudo systemctl restart service-name 查看服务状态 sudo systemctl status service-name  网络配置 有线网络 打开网络设置 选择有线连接 配置IP地址自动或手动 设置DNS服务器 应用配置 无线网络 启用无线网卡 扫描可用网络 选择目标网络 输入密码 连接网络 安全配置 防火墙设置 bash 启用防火墙 sudo ufw enable 允许特定端口 sudo ufw allow 22tcp 拒绝特定端口 sudo ufw deny 23tcp 查看防火墙状态 sudo ufw status  用户权限管理 使用sudo进",
+    "text": "1 安徽大学 陈宗业 一等奖 2 安徽文达信息工程学院 王晓雅 一等奖 3 北京工业大学耿丹学院 杜大为 一等奖 4 北京工业大学耿丹学院 崔恩熙 一等奖 5 成都中医药大学 陈天赐 一等奖 6 承德医学院 麻思佳 一等奖 7 电子科技大学成都学院 谢振帆 一等奖 8 电子科技大学成都学院 赵茂森 一等奖 9 陆军防化学院 林德森 一等奖 10 民政职业大学 杨炳辰 一等奖 11 南阳理工学院 葛磊 一等奖 12 南阳理工学院 张兢 一等奖 13 南阳理工学院 金云龙 一等奖 14 宁夏师范大学 杨晓艳 一等奖 15 宁夏师范大学 王娜 一等奖 16 厦门医学院 苏海燕 一等奖 17 山东现代学院 董焱慷 一等奖 18 四川旅游学院 白乙茹 一等奖 19 四川旅游学院 刘晴 一等奖 20 天津外国语大学 邢祺正 一等奖 21 西安航空学院 王坤平 一等奖 22 盐城工学院 马瑜雯 一等奖 23 盐城工学院 余春莹 一等奖 24 盐城工学院 刘梓阳 一等奖 25 盐城工学院 徐凯杰 一等奖 26 长江大学地球科学学院 王彩蓓 一等奖 27 长江大学地球科学学院 孟伟鹏 一等奖 28 长",
     "metadata": {
-      "source": "kylin_system_intro.md",
-      "chunk_id": 2,
-      "total_chunks": 5,
-      "file_type": ".md",
+      "source": "第十五届大赛获奖名单-20250604.pdf",
+      "chunk_id": 18,
+      "total_chunks": 117,
+      "file_type": ".pdf",
       "chunk_size": 499,
-      "source_name": "kylin_system_intro.md",
+      "source_name": "第十五届大赛获奖名单-20250604.pdf",
       "doc_id": 32
     }
   },
   {
-    "text": "行权限提升 配置用户组权限 设置文件和目录权限 定期审查用户权限 常见问题 Q: 如何重置root密码 A: 在GRUB启动菜单中选择恢复模式进入单用户模式后使用passwd命令重置密码 Q: 系统启动缓慢怎么办 A: 检查启动服务禁用不必要的自启动程序清理系统缓存 Q: 如何安装第三方软件 A: 可以通过软件包管理器源码编译或使用AppImage等方式安装 Q: 网络连接不稳定如何解决 A: 检查网络驱动程序更新网卡固件调整网络配置参数 技术支持 官方资源 官方网站http:www.kylinos.cn 技术文档http:docs.kylinos.cn 社区论坛http:forum.kylinos.cn 联系方式 技术支持热线400-xxx-xxxx 邮箱支持supportkylinos.cn 在线客服工作日9:00-18:00 版本历史 V10.0 (最新版本) 内核升级至5.4 LTS 增强安全特性 改进硬件兼容性 优化用户界面 V4.0.2 修复已知安全漏洞 提升系统稳定性 增加新硬件支持 V4.",
+    "text": "江大学地球科学学院 倪浩然 一等奖 29 长江大学地球科学学院 胡熠恒 一等奖 30 长江大学计算机学院 郭怡 一等奖 31 长江大学经济与管理学院 任鹏 一等奖 32 长江大学经济与管理学院 刘沁萍 一等奖 33 浙江师范大学 楼昊 一等奖 34 浙江越秀外国语学院 王梓淼 一等奖 35 中国人民解放军空军勤务学院 鲍云辰 一等奖 --- 第10页 --- 第十五届全国大学生计算机应用能力与数字素养大赛信息技术基础赛道获奖名单 10  69 序号 学校名称 姓名 奖项 36 中国人民解放军空军勤务学院 樊少龙 一等奖 37 中国人民警察大学 农伊凡 一等奖 38 重庆科技大学 黄体权 一等奖 39 重庆文理学院 陈玉蓉 一等奖 40 重庆文理学院 唐垚鑫 一等奖 41 安徽大学 黄侨 二等奖 42 安徽文达信息工程学院 耿冰心 二等奖 43 安徽文达信息工程学院 李靖 二等奖 44 北京工业大学耿丹学院 徐志娇 二等奖 45 承德医学院 高希熙 二等奖 46 承德医学院 张钊铠 二等奖 47 大连东软信息学院 汪尚明 二等奖 48 大连东软信息学院 于天浩 二等奖 49 大连东软信息",
     "metadata": {
-      "source": "kylin_system_intro.md",
-      "chunk_id": 3,
-      "total_chunks": 5,
-      "file_type": ".md",
-      "chunk_size": 459,
-      "source_name": "kylin_system_intro.md",
+      "source": "第十五届大赛获奖名单-20250604.pdf",
+      "chunk_id": 19,
+      "total_chunks": 117,
+      "file_type": ".pdf",
+      "chunk_size": 500,
+      "source_name": "第十五届大赛获奖名单-20250604.pdf",
       "doc_id": 33
     }
   },
   {
-    "text": "0 全新的桌面环境 增强的安全机制 改进的软件包管理 银河麒麟操作系统致力于为用户提供安全稳定易用的国产操作系统解决方案",
+    "text": "学院 张艺潼 二等奖 50 大连东软信息学院 白建美 二等奖 51 大连东软信息学院 袁诗淇 二等奖 52 大连东软信息学院 胡月 二等奖 53 电子科技大学成都学院 邹雯敏 二等奖 54 电子科技大学成都学院 马思怡 二等奖 55 电子科技大学成都学院 杨杰 二等奖 56 广东金融学院 张子豪 二等奖 57 广东金融学院 丁钰涓 二等奖 58 杭州师范大学 崔宇轩 二等奖 59 合肥大学 刘思源 二等奖 60 合肥大学 左思茹 二等奖 61 黑龙江科技大学 刘思彤 二等奖 62 黑龙江科技大学 孙乐儒 二等奖 63 黑龙江科技大学 李岩松 二等奖 64 黑龙江科技大学 张乾均 二等奖 65 湖北汽车工业学院 李婷婷 二等奖 66 湖北汽车工业学院科技学院 田雨 二等奖 67 火箭军士官学校 刘旋 二等奖 68 南阳理工学院 邱新 二等奖 69 南阳理工学院 娄晴晴 二等奖 70 南阳理工学院 何思思 二等奖 71 宁夏师范大学 马阳炀 二等奖 72 宁夏师范大学 李亚鑫 二等奖 73 宁夏师范大学 王乐乐 二等奖 74 宁夏师范大学 韩鹏 二等奖 75 宁夏师范大学 张娅昭 二等奖",
     "metadata": {
-      "source": "kylin_system_intro.md",
-      "chunk_id": 4,
-      "total_chunks": 5,
-      "file_type": ".md",
-      "chunk_size": 60,
-      "source_name": "kylin_system_intro.md",
+      "source": "第十五届大赛获奖名单-20250604.pdf",
+      "chunk_id": 20,
+      "total_chunks": 117,
+      "file_type": ".pdf",
+      "chunk_size": 499,
+      "source_name": "第十五届大赛获奖名单-20250604.pdf",
       "doc_id": 34
     }
   },
   {
-    "text": "--- 第1页 --- 银河麒麟智能问答助 v2.5 银河麒麟智能问答助 v2.5 基于 DeepSeek-R1 API 和麒麟 SDK2.5 的智能问答系统专为银河麒麟操作系统设计  功能特性 智能问答: 基于 RAG( 检索增强成 ) 技术结合本地档知识库和 AI 模型 档处理: 持 PDF  Markdown 本等多种格式档 系统集成: 深度集成麒麟 SDK2.5 获取系统信息和硬件状态 图形界: 友好的 GUI 界持档管理和实时问答 多架构持: 持 x86_64 和 ARM64 架构  系统要求 推荐环境 操作系统: 银河麒麟 V10 SP1SP2SP3 或更版本 Python 版本: Python 3.7 ( 推荐 Python 3.8) 内存: 4GB 以上 ( 推荐 8GB) 存储: 2GB 可空间 络: 需要互联连接访问 DeepSeek API 必需依赖 麒麟 SDK2.5 开发库 DeepSeek API 访问权限 Python 第三库 requirements.txt   快速安装指南 法键安装推荐 1.",
+    "text": "76 宁夏师范大学 金佳慧 二等奖 --- 第11页 --- 第十五届全国大学生计算机应用能力与数字素养大赛信息技术基础赛道获奖名单 11  69 序号 学校名称 姓名 奖项 77 宁夏师范大学 潘飞燕 二等奖 78 宁夏医科大学 马贞 二等奖 79 宁夏医科大学 王莲馨 二等奖 80 宁夏医科大学 吴金霞 二等奖 81 厦门医学院 林丹丹 二等奖 82 山东现代学院 徐欣悦 二等奖 83 山东现代学院 孟紫琦 二等奖 84 山东现代学院 张玄珑 二等奖 85 四川旅游学院 张颖 二等奖 86 四川旅游学院 郭成 二等奖 87 天津外国语大学 周紫玉 二等奖 88 天津外国语大学 梅源张 二等奖 89 天津外国语大学 孙晨博 二等奖 90 西安航空学院 申甲田 二等奖 91 西安航空学院 李树好 二等奖 92 西安航空学院 张佳怡 二等奖 93 西安航空学院 孙丁伟 二等奖 94 西安航空学院 彭才洪 二等奖 95 西安邮电大学 余金玉 二等奖 96 西安邮电大学 徐志豪 二等奖 97 西南交通大学希望学院 石文海 二等奖 98 西南交通大学希望学院 肖乐 二等奖 99 西南交通大学希",
     "metadata": {
-      "source": "银河麒麟智能问答助手 v2.5.pdf",
-      "chunk_id": 0,
-      "total_chunks": 14,
+      "source": "第十五届大赛获奖名单-20250604.pdf",
+      "chunk_id": 21,
+      "total_chunks": 117,
       "file_type": ".pdf",
-      "chunk_size": 470,
-      "source_name": "银河麒麟智能问答助手 v2.5.pdf",
+      "chunk_size": 500,
+      "source_name": "第十五届大赛获奖名单-20250604.pdf",
       "doc_id": 35
     }
   },
   {
-    "text": "下载项  使用git克隆推荐 git clone https:github.comyour-usernamekylin-qa-assistant.git cd kylin-qa-assistant  或者下载ZIP包并解压 wget https:github.comyour-usernamekylin-qa-assistantarchivemain.zip --- 第2页 --- unzip main.zip cd kylin-qa-assistant-main 2. 运安装脚本  给安装脚本执行权限 chmod x install.sh  运行安装脚本需要sudo权限 sudo .install.sh 安装脚本将动完成以下操作  检查系统兼容性  安装 Python 依赖包  配置系统服务  创建桌快捷式  设置命令快捷式 3. 配置 API 密钥  编辑配置文件 sudo nano optkylin-qa-assistantconfig.",
+    "text": "望学院 蔡思琴 二等奖 100 西南交通大学希望学院 吴茵茵 二等奖 101 烟台理工学院 孔智敏 二等奖 102 盐城工学院 陈道杰 二等奖 103 盐城工学院 高静 二等奖 104 盐城工学院 仲志成 二等奖 105 盐城工学院 陈鹏 二等奖 106 盐城工学院 董立博 二等奖 107 盐城工学院 耿添漪 二等奖 108 盐城工学院 陆苏雯 二等奖 109 盐城工学院 夏昱 二等奖 110 盐城工学院 张金文 二等奖 111 盐城工学院 付梦佳 二等奖 112 盐城工学院 李心悦 二等奖 113 盐城工学院 李欣雅 二等奖 114 盐城工学院 连奕男 二等奖 115 长江大学地球科学学院 李舒涵 二等奖 116 长江大学地球科学学院 张诗琪 二等奖 117 长江大学地球科学学院 唐泽宇 二等奖 --- 第12页 --- 第十五届全国大学生计算机应用能力与数字素养大赛信息技术基础赛道获奖名单 12  69 序号 学校名称 姓名 奖项 118 长江大学计算机学院 杨傢涵 二等奖 119 长江大学经济与管理学院 李凤 二等奖 120 浙江师范大学 许芷轩 二等奖 121 中国人民解放军空",
     "metadata": {
-      "source": "银河麒麟智能问答助手 v2.5.pdf",
-      "chunk_id": 1,
-      "total_chunks": 14,
+      "source": "第十五届大赛获奖名单-20250604.pdf",
+      "chunk_id": 22,
+      "total_chunks": 117,
       "file_type": ".pdf",
-      "chunk_size": 427,
-      "source_name": "银河麒麟智能问答助手 v2.5.pdf",
+      "chunk_size": 500,
+      "source_name": "第十五届大赛获奖名单-20250604.pdf",
       "doc_id": 36
     }
   },
   {
-    "text": "API密钥 DEEPSEEK_API_KEY  \"your-actual-api-key-here\" 4. 启动程序  方法1使用桌面快捷方式  双击桌面上的\"银河麒麟智能问答助手\"图标  方法2使用命令行 kylin-qa  方法3启动系统服务 sudo systemctl start kylin-qa 法动安装 1. 环境准备  更新系统包 sudo apt update sudo apt upgrade -y  安装Python和pip如果未安装 --- 第3页 --- sudo apt install python3 python3-pip python3-venv -y  安装系统依赖 sudo apt install python3-tk python3-dev build-essential -y  安装麒麟SDK开发包如果可用 sudo apt install libkysdk-dev -y 2. 下载项 git clone https:github.comyour-usernamekylin-qa-assistant.",
+    "text": "军勤务学院 沈冉 二等奖 122 中国人民解放军空军勤务学院 万洋 二等奖 123 中国人民解放军空军勤务学院 杨栋臣 二等奖 124 中国石油大学北京克拉玛依校区 刘凯 二等奖 125 中央民族大学 王跃翔 二等奖 126 重庆文理学院 林芝 二等奖 127 重庆文理学院 任雪瑞 二等奖 128 重庆文理学院 张自怡 二等奖 129 重庆文理学院 高佳盈 二等奖 130 重庆文理学院数学与人工智能学院 邹佳婷 二等奖 131 安徽大学 张万里 三等奖 132 北华航天工业学院 李思敏 三等奖 133 北华航天工业学院 刁嘉豪 三等奖 134 北京工业大学耿丹学院 刘佳怡 三等奖 135 北京工业大学耿丹学院 李崇震 三等奖 136 北京工业大学耿丹学院 吴佳禧 三等奖 137 北京工业大学耿丹学院 郑舒予 三等奖 138 北京工业大学耿丹学院 李雨璇 三等奖 139 承德医学院 张同乐 三等奖 140 承德医学院 李雯 三等奖 141 大连东软信息学院 高振博 三等奖 142 大连东软信息学院 何冠桥 三等奖 143 大连东软信息学院 徐若婷 三等奖 144 大连东软信息学院 李俊颉",
     "metadata": {
-      "source": "银河麒麟智能问答助手 v2.5.pdf",
-      "chunk_id": 2,
-      "total_chunks": 14,
+      "source": "第十五届大赛获奖名单-20250604.pdf",
+      "chunk_id": 23,
+      "total_chunks": 117,
       "file_type": ".pdf",
-      "chunk_size": 475,
-      "source_name": "银河麒麟智能问答助手 v2.5.pdf",
+      "chunk_size": 500,
+      "source_name": "第十五届大赛获奖名单-20250604.pdf",
       "doc_id": 37
     }
   },
   {
-    "text": "git cd kylin-qa-assistant 3. 创建虚拟环境推荐  创建虚拟环境 python3 -m venv venv  激活虚拟环境 source venvbinactivate 4. 安装 Python 依赖  升级pip pip install --upgrade pip  安装项目依赖 pip install -r requirements.txt 5. 配置程序  复制配置文件 cp config.py config.py.bak  编辑配置文件 nano config.py  修改API密钥  DEEPSEEK_API_KEY  \"your-actual-api-key-here\" 6. 创建必要录 mkdir -p data docs logs assets 7. 运程序  启动图形界面 python3 main.py --- 第4页 ---  或使用启动脚本 .run.sh  获取 DeepSeek API 密钥 1. 访问 DeepSeek 官 2. 注册账号并登录 3. 进 API 管理 4. 创建新的 API 密钥 5.",
+    "text": "三等奖 145 大连东软信息学院 汪铭哲 三等奖 146 滇西科技师范学院 苑晓玲 三等奖 147 电子科技大学成都学院 荆艳坤 三等奖 148 电子科技大学成都学院 陈良燚 三等奖 149 电子科技大学成都学院 杨思悦 三等奖 150 电子科技大学成都学院 焦世济 三等奖 151 电子科技大学成都学院 雷佳薇 三等奖 152 电子科技大学成都学院 赖雯静 三等奖 153 电子科技大学成都学院 俞小天 三等奖 154 黑龙江科技大学 刘恺琪 三等奖 155 湖北汽车工业学院 何国平 三等奖 156 湖北汽车工业学院 余皓云 三等奖 157 湖南信息学院 石婉湘 三等奖 158 湖南信息学院 李洋冰 三等奖 --- 第13页 --- 第十五届全国大学生计算机应用能力与数字素养大赛信息技术基础赛道获奖名单 13  69 序号 学校名称 姓名 奖项 159 辽宁石油化工大学 康珈硕 三等奖 160 辽宁石油化工大学 韩天奕 三等奖 161 辽宁石油化工大学 李欣 三等奖 162 辽宁石油化工大学 李文宣 三等奖 163 辽宁石油化工大学 黄睿颖 三等奖 164 辽宁石油化工大学 许越 三等",
     "metadata": {
-      "source": "银河麒麟智能问答助手 v2.5.pdf",
-      "chunk_id": 3,
-      "total_chunks": 14,
+      "source": "第十五届大赛获奖名单-20250604.pdf",
+      "chunk_id": 24,
+      "total_chunks": 117,
       "file_type": ".pdf",
-      "chunk_size": 485,
-      "source_name": "银河麒麟智能问答助手 v2.5.pdf",
+      "chunk_size": 499,
+      "source_name": "第十五届大赛获奖名单-20250604.pdf",
       "doc_id": 38
     }
   },
   {
-    "text": "复制密钥并填配置件 注意: 请妥善保管您的 API 密钥不要泄露给他  使指南 次使 1. 启动程序  命令行启动 kylin-qa  或双击桌面图标 2. 添加档 点击 \" 添加档 \" 按钮 选择您要添加的档件 持格式 PDF  Markdown  TXT  Word 等 等待档处理完成 3. 开始问答 在问题输框中输您的问题 可选择是否包含系统信息 点击 \" 提问 \" 或按回键 查看 AI 成的回答 常功能 档管理 添加档: 持批量添加多个档 查看状态: 实时显知识库中的档数量 清空知识库: 键清空所有档谨慎操作 --- 第5页 --- 智能问答 普通问答: 基于档内容回答问题 系统问答: 结合当前系统信息回答 相关档: 显回答所参考的档来源 系统信息 查看系统状态: 点击 \" 系统信息 \" 按钮 硬件信息: CPU 内存磁盘等信息 络状态: 络配置和连接状态 进程信息: 系统负载和进程统计  级配置 配置件说明 主要配置项位于 config.",
+    "text": "奖 165 陆军防化学院 李盛豪 三等奖 166 南京航空航天大学金城学院 王双晴 三等奖 167 南阳理工学院 罗玉洁 三等奖 168 南阳理工学院 付梦圆 三等奖 169 南阳理工学院 姜子鹏 三等奖 170 宁夏师范大学 李莹 三等奖 171 宁夏师范大学 李丽莎 三等奖 172 宁夏师范大学 李芙玲 三等奖 173 宁夏医科大学 房韬明 三等奖 174 宁夏医科大学 罗雅缤 三等奖 175 宁夏医科大学 王嘉蕾 三等奖 176 宁夏医科大学 何小花 三等奖 177 宁夏医科大学 郑东振 三等奖 178 宁夏医科大学 郑乐平 三等奖 179 宁夏医科大学 郝彬然 三等奖 180 宁夏医科大学 马元昇 三等奖 181 厦门理工学院 周雨彤 三等奖 182 厦门医学院 吴芯洁 三等奖 183 山东现代学院 范伟杰 三等奖 184 山东现代学院 王钰 三等奖 185 山东现代学院 卓忠伟 三等奖 186 上海中侨职业技术大学 吴维政 三等奖 187 四川旅游学院 李京雪 三等奖 188 四川旅游学院 张爽 三等奖 189 四川旅游学院 李斓竹 三等奖 190 四川旅游学院 杨雨琪 三等",
     "metadata": {
-      "source": "银河麒麟智能问答助手 v2.5.pdf",
-      "chunk_id": 4,
-      "total_chunks": 14,
+      "source": "第十五届大赛获奖名单-20250604.pdf",
+      "chunk_id": 25,
+      "total_chunks": 117,
       "file_type": ".pdf",
-      "chunk_size": 430,
-      "source_name": "银河麒麟智能问答助手 v2.5.pdf",
+      "chunk_size": 500,
+      "source_name": "第十五届大赛获奖名单-20250604.pdf",
       "doc_id": 39
     }
   },
   {
-    "text": "EK_API_KEY  \"your-api-key\"  必须配置 DEEPSEEK_API_ENDPOINT  \"https:api.deepseek.comv1chatcompletions\"  文档路径 DOCUMENT_PATH  \".docs\"  文档存储路径 VECTOR_DB_PATH  \".datavector_db\"  向量数据库路径  RAG配置 RAG_CONFIG  { \"top_k\": 5,  检索文档数量 \"similarity_threshold\": 0.7,  相似度阈值 \"max_context_length\": 2000,  最大上下文长度 \"temperature\": 0.",
+    "text": "奖 191 四川旅游学院 刘歆扬 三等奖 192 天津外国语大学 李佩珂 三等奖 193 天津外国语大学 魏楚妍 三等奖 194 天津外国语大学 孙雨辰 三等奖 195 天津外国语大学 陈旭然 三等奖 196 西安航空学院 何泽伟 三等奖 197 西安航空学院 赖烨炜 三等奖 198 西安航空学院 叶雨晴 三等奖 199 西安航空学院 李彦博 三等奖 --- 第14页 --- 第十五届全国大学生计算机应用能力与数字素养大赛信息技术基础赛道获奖名单 14  69 序号 学校名称 姓名 奖项 200 西安航空学院 刘晨曦 三等奖 201 西安航空学院 闫义超 三等奖 202 西安航空学院 李龙涛 三等奖 203 西安航空学院 董明旭 三等奖 204 西安航空学院 李泽煊 三等奖 205 西安航空学院 张晨 三等奖 206 西安邮电大学 王力扬 三等奖 207 西安邮电大学 于维一 三等奖 208 西安邮电大学 孙仪杰 三等奖 209 西安邮电大学 范子琪 三等奖 210 西安邮电大学 吴霖 三等奖 211 盐城工学院 王舒 三等奖 212 盐城工学院 严年 三等奖 213 盐城工学院 李一",
     "metadata": {
-      "source": "银河麒麟智能问答助手 v2.5.pdf",
-      "chunk_id": 5,
-      "total_chunks": 14,
+      "source": "第十五届大赛获奖名单-20250604.pdf",
+      "chunk_id": 26,
+      "total_chunks": 117,
       "file_type": ".pdf",
-      "chunk_size": 308,
-      "source_name": "银河麒麟智能问答助手 v2.5.pdf",
+      "chunk_size": 500,
+      "source_name": "第十五届大赛获奖名单-20250604.pdf",
       "doc_id": 40
     }
   },
   {
-    "text": "atch_size\": 32  批处理大小 } 系统服务管理 --- 第6页 ---  查看服务状态 sudo systemctl status kylin-qa  启动服务 sudo systemctl start kylin-qa  停止服务 sudo systemctl stop kylin-qa  重启服务 sudo systemctl restart kylin-qa  开机自启 sudo systemctl enable kylin-qa  禁用自启 sudo systemctl disable kylin-qa  查看服务日志 journalctl -u kylin-qa -f  项结构 kylin-qa-assistant  main.py  主程序入口  config.py  配置文件  requirements.txt  Python依赖  README.md  项目说明  run.sh  Linux启动脚本  install.sh  安装脚本  uninstall.sh  卸载脚本  kylin-qa.",
+    "text": "轩 三等奖 214 盐城工学院 吴思阳 三等奖 215 盐城工学院 徐雨格 三等奖 216 盐城工学院 孙陈昊 三等奖 217 盐城工学院 尹成杰 三等奖 218 盐城工学院 魏辰昊 三等奖 219 盐城工学院 刘雨欣 三等奖 220 盐城工学院 沈海星 三等奖 221 长江大学地球科学学院 张博南 三等奖 222 长江大学地球科学学院 郝伟宸 三等奖 223 长江大学地球科学学院 秦政 三等奖 224 长江大学地球科学学院 黄麟淇 三等奖 225 长江大学地球科学学院 任斌 三等奖 226 长江大学地球科学学院 魏研 三等奖 227 长江大学经济与管理学院 罗皓泰 三等奖 228 浙江师范大学 王舒语 三等奖 229 浙江越秀外国语学院 李思涵 三等奖 230 中国人民解放军空军勤务学院 郑文韬 三等奖 231 中国人民解放军空军勤务学院 张庆祎 三等奖 232 中国石油大学北京克拉玛依校区 庞新宇 三等奖 233 中央民族大学 熊韵涵 三等奖 234 重庆财经学院 兰兴义 三等奖 235 重庆科技大学 王馨玥 三等奖 236 重庆科技大学 刘聪宁 三等奖 237 重庆科技大学 冯所",
     "metadata": {
-      "source": "银河麒麟智能问答助手 v2.5.pdf",
-      "chunk_id": 6,
-      "total_chunks": 14,
+      "source": "第十五届大赛获奖名单-20250604.pdf",
+      "chunk_id": 27,
+      "total_chunks": 117,
       "file_type": ".pdf",
-      "chunk_size": 469,
-      "source_name": "银河麒麟智能问答助手 v2.5.pdf",
+      "chunk_size": 500,
+      "source_name": "第十五届大赛获奖名单-20250604.pdf",
       "doc_id": 41
     }
   },
   {
-    "text": "service  系统服务配置  src  源代码目录   ai_models.py  AI模型接口   vector_store.py  向量存储   rag_engine.py  RAG引擎   gui.py  图形界面   document_processor.py  文档处理   system_info_helper.py  系统信息  data  数据目录   vector_db  向量数据库  docs  文档目录  logs  日志目录 --- 第7页 ---   app.log  应用日志  assets  资源目录  持的档格式 格式 扩展名 说明 PDF 档 .pdf 持本提取和 OCR Markdown .md 完整的 Markdown 语法持 本档 .txt 纯本件 reStructuredText .rst 技术档格式 Word 档 .doc, .docx Microsoft Word 档 HTML 档 .html, .htm 档  故障排除 常问题及解决案 1.",
+    "text": "彬 三等奖 238 重庆文理学院 李思瑾 三等奖 239 重庆文理学院 魏薇 三等奖 240 重庆文理学院数学与人工智能学院 杨欣悦 三等奖 --- 第15页 --- 第十五届全国大学生计算机应用能力与数字素养大赛信息技术基础赛道获奖名单 15  69 信息技术与素养赛项 高职组 序号 学校名称 姓名 奖项 1 北京工业职业技术学院 蔡炜 一等奖 2 广州体育职业技术学院 廖彬宏 一等奖 3 黑龙江司法警官职业学院 迟博文 一等奖 4 江苏联合职业技术学院陶都中专办学点 沈慧涓 一等奖 5 空军工程大学航空机务士官学校 尹武龙 一等奖 6 民政职业大学 易锦菲 一等奖 7 南京科技职业学院 陈佳敏 一等奖 8 苏州高博职业学院 王梦缘 一等奖 9 天津海运职业学院 王钟誉 一等奖 10 天津商务职业学院 杨紫绮 一等奖 11 天津医学高等专科学校 胡若涵 一等奖 12 天津医学高等专科学校 陈欣雨 一等奖 13 天津医学高等专科学校 吴兴亮 一等奖 14 通信士官学校 刘锦澎 一等奖 15 通信士官学校 胡陶亮 一等奖 16 通信士官学校 刘宁 一等奖 17 锡林郭勒职业学院 郭盛 一",
     "metadata": {
-      "source": "银河麒麟智能问答助手 v2.5.pdf",
-      "chunk_id": 7,
-      "total_chunks": 14,
+      "source": "第十五届大赛获奖名单-20250604.pdf",
+      "chunk_id": 28,
+      "total_chunks": 117,
       "file_type": ".pdf",
-      "chunk_size": 451,
-      "source_name": "银河麒麟智能问答助手 v2.5.pdf",
+      "chunk_size": 500,
+      "source_name": "第十五届大赛获奖名单-20250604.pdf",
       "doc_id": 42
     }
   },
   {
-    "text": "程序法启动 问题: 运程序时出现错误 解决案:  检查Python版本 python3 --version  检查依赖是否安装完整 pip3 list  grep -E \"numpyscikit-learnrequests\"  重新安装依赖 pip3 install -r requirements.txt --force-reinstall  查看详细错误信息 python3 main.py --debug 2. API 调失败 问题: DeepSeek API 调失败 解决案:  检查网络连接 ping api.deepseek.com --- 第8页 ---  验证API密钥 curl -H \"Authorization: Bearer your-api-key\"  https:api.deepseek.comv1models  检查API额度  登录DeepSeek控制台查看使用情况 3. 麒麟 SDK 库加载失败 问题: 系统信息功能不可 解决案:  检查SDK库是否存在 ls -la usrliblibkysysinfo.",
+    "text": "等奖 18 锡林郭勒职业学院 杨玉杰 一等奖 19 锡林郭勒职业学院 李赵星 一等奖 20 锡林郭勒职业学院 张慧成 一等奖 21 徐州工业职业技术学院 葛依凡 一等奖 22 云南民族大学 李博奥 一等奖 23 云南民族大学 张发秀 一等奖 24 浙江育英职业技术学院 倪森君 一等奖 25 浙江育英职业技术学院 吴浩哲 一等奖 26 郑州智能科技职业学院 李思诺 一等奖 27 中山火炬职业技术学院 黄来凤 一等奖 28 重庆医药高等专科学校 陈志颖 一等奖 29 北京工业职业技术学院 房晓彤 二等奖 30 北京工业职业技术学院 申恪 二等奖 31 北京工业职业技术学院 朱仪 二等奖 32 北京工业职业技术学院 贾梦泽 二等奖 33 北京工业职业技术学院 宋禹宏 二等奖 34 大连东软信息学院 王梦颜 二等奖 35 电子科技大学成都学院 班光源 二等奖 36 广州体育职业技术学院 朱子芮 二等奖 37 黑龙江司法警官职业学院 李亚洲 二等奖 38 湖北工业职业技术学院 陈幸宇 二等奖 --- 第16页 --- 第十五届全国大学生计算机应用能力与数字素养大赛信息技术基础赛道获奖名单 16",
     "metadata": {
-      "source": "银河麒麟智能问答助手 v2.5.pdf",
-      "chunk_id": 8,
-      "total_chunks": 14,
+      "source": "第十五届大赛获奖名单-20250604.pdf",
+      "chunk_id": 29,
+      "total_chunks": 117,
       "file_type": ".pdf",
-      "chunk_size": 473,
-      "source_name": "银河麒麟智能问答助手 v2.5.pdf",
+      "chunk_size": 499,
+      "source_name": "第十五届大赛获奖名单-20250604.pdf",
       "doc_id": 43
     }
   },
   {
-    "text": "so  安装麒麟SDK开发包 sudo apt install libkysdk-dev  检查库文件权限 sudo chmod 755 usrliblibkysysinfo.so 4. 档处理失败 问题: 法处理某些档格式 解决案:  安装额外的文档处理库 pip3 install pdfplumber python-docx  检查文件权限 ls -la your-document.pdf  尝试转换文档格式  PDF - TXT: pdftotext document.pdf 5. GUI 界问题 问题: 图形界法显 解决案:  检查显示环境 echo DISPLAY  安装tkinter --- 第9页 --- sudo apt install python3-tk  使用X11转发SSH连接时 ssh -X usernamehostname 志查看  查看应用日志 tail -f logsapp.log  查看系统服务日志 journalctl -u kylin-qa -f  查看详细调试信息 python3 main.py --debug 性能优化建议 1.",
+    "text": "69 序号 学校名称 姓名 奖项 39 湖北工业职业技术学院 杨航 二等奖 40 湖北中医药高等专科学校 任梦琦 二等奖 41 火箭军士官学校 蒋利亚 二等奖 42 火箭军士官学校 王翊翔 二等奖 43 火箭军士官学校 王政康 二等奖 44 江苏联合职业技术学院灌南中专办学点 周舟 二等奖 45 江苏食品药品职业技术学院 许莲珍 二等奖 46 江苏食品药品职业技术学院 朱娜娜 二等奖 47 金华职业技术大学 李豫聪 二等奖 48 金华职业技术大学 毛婧 二等奖 49 金华职业技术大学 陈浩宇 二等奖 50 金华职业技术大学 刘冰彦 二等奖 51 空军工程大学航空机务士官学校 赵青伦 二等奖 52 空军工程大学航空机务士官学校 郑金泉 二等奖 53 南京新华电脑专修学校 杜文杰 二等奖 54 南京新华电脑专修学校 纪子祥 二等奖 55 南宁职业技术大学 陈思伊 二等奖 56 内蒙古建筑职业技术学院 渠文佳 二等奖 57 山东现代学院 包士钰 二等奖 58 上海出版印刷高等专科学校 李王毅 二等奖 59 上海出版印刷高等专科学校 刘怡雯 二等奖 60 上海出版印刷高等专科学校 卢芯怡 二",
     "metadata": {
-      "source": "银河麒麟智能问答助手 v2.5.pdf",
-      "chunk_id": 9,
-      "total_chunks": 14,
+      "source": "第十五届大赛获奖名单-20250604.pdf",
+      "chunk_id": 30,
+      "total_chunks": 117,
       "file_type": ".pdf",
-      "chunk_size": 492,
-      "source_name": "银河麒麟智能问答助手 v2.5.pdf",
+      "chunk_size": 499,
+      "source_name": "第十五届大赛获奖名单-20250604.pdf",
       "doc_id": 44
     }
   },
   {
-    "text": "内存优化 适当调整 PERFORMANCE_CONFIG 中的参数 定期清理向量数据库 限制同时处理的档数量 2. 络优化 使国内 API 镜像如果可 调整 API 请求超时时间 启请求缓存 3. 存储优化 定期清理志件 压缩型档 使 SSD 存储提升性能  更新升级 检查更新  检查远程更新 git fetch origin git status  查看更新内容 git log HEAD..originmain --oneline 升级程序 --- 第10页 ---  备份配置 cp config.py config.py.backup  拉取最新代码 git pull origin main  更新依赖 pip3 install -r requirements.txt --upgrade  重启服务 sudo systemctl restart kylin-qa 版本回退  查看版本历史 git log --oneline  回退到指定版本 git checkout commit-hash  恢复配置 cp config.py.backup config.",
+    "text": "等奖 61 四川铁道职业学院 尹昊鹏 二等奖 62 苏州高博职业学院 邹妍 二等奖 63 天津滨海职业学院 王加丽 二等奖 64 天津海运职业学院 王佳瑞 二等奖 65 天津商务职业学院 范学科 二等奖 66 天津商务职业学院 董翊琳 二等奖 67 天津商务职业学院 宫晨瑶 二等奖 68 天津医学高等专科学校 苏一 二等奖 69 天津医学高等专科学校 荣凯丽 二等奖 70 通信士官学校 黄佳艺 二等奖 71 通信士官学校 陈海炫 二等奖 72 通信士官学校 刘益博 二等奖 73 通信士官学校 潘震宇 二等奖 74 通信士官学校 熊佳 二等奖 75 通信士官学校 许芳 二等奖 76 通信士官学校 姚子豪 二等奖 77 武汉软件工程职业学院 张晴珍 二等奖 78 锡林郭勒职业学院 史佳伟 二等奖 79 锡林郭勒职业学院 王佳垚 二等奖 --- 第17页 --- 第十五届全国大学生计算机应用能力与数字素养大赛信息技术基础赛道获奖名单 17  69 序号 学校名称 姓名 奖项 80 徐州工业职业技术学院 毛立征 二等奖 81 徐州工业职业技术学院 张忆萱 二等奖 82 徐州工业职业技术学院 高",
     "metadata": {
-      "source": "银河麒麟智能问答助手 v2.5.pdf",
-      "chunk_id": 10,
-      "total_chunks": 14,
+      "source": "第十五届大赛获奖名单-20250604.pdf",
+      "chunk_id": 31,
+      "total_chunks": 117,
       "file_type": ".pdf",
-      "chunk_size": 487,
-      "source_name": "银河麒麟智能问答助手 v2.5.pdf",
+      "chunk_size": 500,
+      "source_name": "第十五届大赛获奖名单-20250604.pdf",
       "doc_id": 45
     }
   },
   {
-    "text": "py  卸载程序  运行卸载脚本 sudo .uninstall.sh  手动清理如果需要 sudo rm -rf optkylin-qa-assistant sudo rm -f etcsystemdsystemkylin-qa.service sudo rm -f usrlocalbinkylin-qa rm -f Desktopkylin-qa.desktop  许可证 本项采 MIT 许可证 - 查看 LICENSE 件了解详情  贡献 欢迎提交 Issue 和 Pull Request 来改进项 贡献指南 1. Fork 项 2. 创建特性分 (git checkout -b featureAmazingFeature) --- 第11页 --- 3. 提交更改 (git commit -m 'Add some AmazingFeature') 4. 推送到分 (git push origin featureAmazingFeature) 5. 开启 Pull Request 开发环境搭建  克隆开发版本 git clone https:github.",
+    "text": "梦婷 二等奖 83 徐州工业职业技术学院 王婧 二等奖 84 烟台理工学院 吕紫仪 二等奖 85 云南民族大学 欧文平 二等奖 86 云南民族大学 赵世泽 二等奖 87 浙江育英职业技术学院 陈浩南 二等奖 88 浙江育英职业技术学院 李嘉峰 二等奖 89 郑州智能科技职业学院 陈佳顺 二等奖 90 郑州智能科技职业学院 刘莹俐 二等奖 91 北京工业职业技术学院 唱焕林 三等奖 92 北京工业职业技术学院 禹晨阳 三等奖 93 大连东软信息学院 方妍 三等奖 94 大连东软信息学院 国雅超 三等奖 95 鄂尔多斯职业学院 杨欣哲 三等奖 96 广州体育职业技术学院 蔡文锋 三等奖 97 广州体育职业技术学院 刘佩霖 三等奖 98 湖北工业职业技术学院 宋紫伦 三等奖 99 火箭军士官学校 田世龙 三等奖 100 火箭军士官学校 刘立坤 三等奖 101 火箭军士官学校 李传棂 三等奖 102 火箭军士官学校 何荣华 三等奖 103 火箭军士官学校 杨式曾 三等奖 104 火箭军士官学校 于智明 三等奖 105 火箭军士官学校 张 旭 三等奖 106 火箭军士官学校 刘祥睦 三等奖 10",
     "metadata": {
-      "source": "银河麒麟智能问答助手 v2.5.pdf",
-      "chunk_id": 11,
-      "total_chunks": 14,
+      "source": "第十五届大赛获奖名单-20250604.pdf",
+      "chunk_id": 32,
+      "total_chunks": 117,
       "file_type": ".pdf",
-      "chunk_size": 488,
-      "source_name": "银河麒麟智能问答助手 v2.5.pdf",
+      "chunk_size": 500,
+      "source_name": "第十五届大赛获奖名单-20250604.pdf",
       "doc_id": 46
     }
   },
   {
-    "text": "comyour-usernamekylin-qa-assistant.git cd kylin-qa-assistant  创建开发环境 python3 -m venv dev-env source dev-envbinactivate  安装开发依赖 pip install -r requirements.txt pip install pytest black flake8  开发工具  运行测试 pytest tests  代码格式化 black src  代码检查 flake8 src  持与反馈 如果您在使过程中遇到问题请 1. 查看档: 先查看本 README 和相关档 2. 搜索问题: 在 Issues 搜索类似问题 3. 提交 Issue: 如果没有找到解决案请提交新的 Issue 4. 联系开发者: 通过邮件或其他式联系项维护者 Issue 提交模板 提交 Issue 时请包含以下信息 环境信息 - 操作系统: 银河麒麟 V10 SP3 - Python版本: 3.8.10 - 程序版本: v2.5.",
+    "text": "7 江门职业技术学院 宗淑霞 三等奖 108 江苏省连云港中医药高等职业技术学校 王婷婷 三等奖 109 江苏食品药品职业技术学院 姜欣平 三等奖 110 江苏食品药品职业技术学院 俞轩 三等奖 111 江苏食品药品职业技术学院 赵健 三等奖 112 江苏食品药品职业技术学院 周芷怡 三等奖 113 江西生物科技职业学院 杨诗筱 三等奖 114 金华职业技术大学 曾维梁 三等奖 115 空军工程大学航空机务士官学校 戴如意 三等奖 116 空军工程大学航空机务士官学校 朱奕珺 三等奖 117 空军工程大学航空机务士官学校 武江超 三等奖 118 辽宁医药职业学院 闵菲雨 三等奖 119 南京金陵高等职业技术学校 张铭宇 三等奖 120 南京科技职业学院 陈佳祺 三等奖 --- 第18页 --- 第十五届全国大学生计算机应用能力与数字素养大赛信息技术基础赛道获奖名单 18  69 序号 学校名称 姓名 奖项 121 南宁职业技术大学 覃超 三等奖 122 内蒙古建筑职业技术学院 张坤娇 三等奖 123 内蒙古建筑职业技术学院 丛冉冉 三等奖 124 内蒙古建筑职业技术学院 史可 三等奖",
     "metadata": {
-      "source": "银河麒麟智能问答助手 v2.5.pdf",
-      "chunk_id": 12,
-      "total_chunks": 14,
+      "source": "第十五届大赛获奖名单-20250604.pdf",
+      "chunk_id": 33,
+      "total_chunks": 117,
       "file_type": ".pdf",
-      "chunk_size": 466,
-      "source_name": "银河麒麟智能问答助手 v2.5.pdf",
+      "chunk_size": 499,
+      "source_name": "第十五届大赛获奖名单-20250604.pdf",
       "doc_id": 47
     }
   },
   {
-    "text": "0 --- 第12页 --- 问题描述 简要描述遇到的问题 复现步骤 1. 执行了什么操作 2. 期望的结果 3. 实际的结果 错误信息 粘贴完整的错误信息或志 截图 如果有GUI相关问题请提供截图  更新志 v2.5.0 ( 当前版本 )  集成 DeepSeek-R1 API  持麒麟 SDK2.5  优化 RAG 检索算法  改进 GUI 界体验  增强系统兼容性  添加键安装脚本  完善档和使指南  修复档处理 bug  优化内存使  改进错误处理 未来计划  持更多 AI 模型  添加语交互功能  持多语界  增加插件系统  优化性能和稳定性 银河麒麟智能问答助 - 让 AI 助您的麒麟系统使体验  如果这个项对您有帮助请给我们个 Star",
+    "text": "125 上海出版印刷高等专科学校 胡雨榛 三等奖 126 上海出版印刷高等专科学校 路涛涛 三等奖 127 上海出版印刷高等专科学校 杜泽华 三等奖 128 上海中侨职业技术大学 冷佳妍 三等奖 129 苏州高博职业学院 高园园 三等奖 130 苏州高博职业学院 武晗璐 三等奖 131 天津海运职业学院 尹梓伊 三等奖 132 天津商务职业学院 吴宇彤 三等奖 133 天津医学高等专科学校 王慧芳 三等奖 134 天津医学高等专科学校 杨静 三等奖 135 天津医学高等专科学校 章雪莹 三等奖 136 天津医学高等专科学校 于欣睿 三等奖 137 天津医学高等专科学校 吴建明 三等奖 138 天津医学高等专科学校 杨楠楠 三等奖 139 天津医学高等专科学校 贺佳杰 三等奖 140 天津医学高等专科学校 刘梦瑶 三等奖 141 天津医学高等专科学校 潘香卉 三等奖 142 天津医学高等专科学校 刘灿 三等奖 143 通信士官学校 沈威淳 三等奖 144 通信士官学校 任建桥 三等奖 145 通信士官学校 杨琳琳 三等奖 146 通信士官学校 岳小鹏 三等奖 147 通信士官学校 王韦权",
     "metadata": {
-      "source": "银河麒麟智能问答助手 v2.5.pdf",
-      "chunk_id": 13,
-      "total_chunks": 14,
+      "source": "第十五届大赛获奖名单-20250604.pdf",
+      "chunk_id": 34,
+      "total_chunks": 117,
       "file_type": ".pdf",
-      "chunk_size": 329,
-      "source_name": "银河麒麟智能问答助手 v2.5.pdf",
+      "chunk_size": 500,
+      "source_name": "第十五届大赛获奖名单-20250604.pdf",
       "doc_id": 48
     }
   },
   {
-    "text": "银河麒麟操作系统简介 概述 银河麒麟操作系统是中国自主研发的操作系统基于Linux内核开发专为国产化信息系统设计该系统具有高安全性高可靠性和良好的兼容性广泛应用于政府军队金融电信等重要领域 主要特点 1. 安全性 强制访问控制采用多级安全策略确保系统资源的安全访问 安全审计完整的操作日志记录和审计功能 入侵检测实时监控系统异常行为 病毒防护内置防病毒引擎提供实时保护 2. 稳定性 内核优化针对国产硬件平台进行深度优化 容错机制完善的错误处理和恢复机制 负载均衡智能的资源调度和负载分配 高可用性支持集群部署和故障转移 3. 兼容性 硬件兼容支持多种国产CPU架构 龙芯Loongson 飞腾Phytium 海光Hygon 兆芯Zhaoxin 软件兼容兼容主流Linux应用程序 标准支持遵循国际和国内相关标准 系统架构 内核层 基于Linux内核版本4.",
+    "text": "三等奖 148 通信士官学校 张立扬 三等奖 149 锡林郭勒职业学院 李欣悦 三等奖 150 锡林郭勒职业学院 郝建辉 三等奖 151 锡林郭勒职业学院 刘录毅 三等奖 152 锡林郭勒职业学院 张郁莹 三等奖 153 锡林郭勒职业学院 刘晨煜 三等奖 154 锡林郭勒职业学院 刘晓萱 三等奖 155 锡林郭勒职业学院 王瑾琼 三等奖 156 锡林郭勒职业学院 王泰昂 三等奖 157 锡林郭勒职业学院 单艺川 三等奖 158 锡林郭勒职业学院 赵佳琦 三等奖 159 锡林郭勒职业学院 王宁 三等奖 160 徐州工业职业技术学院 慎雪晴 三等奖 161 徐州工业职业技术学院 张梦玲 三等奖 --- 第19页 --- 第十五届全国大学生计算机应用能力与数字素养大赛信息技术基础赛道获奖名单 19  69 序号 学校名称 姓名 奖项 162 徐州工业职业技术学院 倪艺函 三等奖 163 徐州工业职业技术学院 王舒冉 三等奖 164 云南民族大学 宋骑君 三等奖 165 云南民族大学 赵成发 三等奖 166 浙江育英职业技术学院 乐峰 三等奖 167 浙江育英职业技术学院 葛晨帅 三等奖 1",
     "metadata": {
-      "source": "kylin_system_intro.md",
-      "chunk_id": 0,
-      "total_chunks": 5,
-      "file_type": ".md",
-      "chunk_size": 379,
-      "source_name": "kylin_system_intro.md",
+      "source": "第十五届大赛获奖名单-20250604.pdf",
+      "chunk_id": 35,
+      "total_chunks": 117,
+      "file_type": ".pdf",
+      "chunk_size": 499,
+      "source_name": "第十五届大赛获奖名单-20250604.pdf",
       "doc_id": 49
     }
   },
   {
-    "text": "程序接口 开发工具链 运行时环境 应用层 办公软件套件 开发工具 系统管理工具 第三方应用 安装要求 最低硬件要求 CPU1GHz以上处理器 内存2GB RAM 存储20GB可用磁盘空间 显卡支持1024x768分辨率 推荐硬件配置 CPU双核2GHz以上处理器 内存4GB RAM或更多 存储50GB可用磁盘空间 显卡独立显卡支持硬件加速 安装步骤 1. 准备安装介质 下载官方ISO镜像文件 制作启动U盘或刻录安装光盘 验证镜像文件完整性 2. 系统安装 从安装介质启动计算机 选择安装语言和键盘布局 配置网络连接可选 分区和格式化硬盘 选择安装组件 设置用户账户和密码 完成安装并重启 3.",
+    "text": "68 浙江育英职业技术学院 冯浩毅 三等奖 169 浙江育英职业技术学院 雷涛 三等奖 170 重庆城市管理职业学院 张焯欣 三等奖 --- 第20页 --- 第十五届全国大学生计算机应用能力与数字素养大赛信息技术基础赛道获奖名单 20  69 WPS AI 智能办公赛项 本科组 序号 学校名称 姓名 奖项 1 安徽大学 付以恒 一等奖 2 安徽信息工程学院 徐蕊 一等奖 3 大连东软信息学院 胡月 一等奖 4 广东金融学院 李兰 一等奖 5 河南机电职业学院 朱芮曼 一等奖 6 湖北汽车工业学院 常艺馨 一等奖 7 湖南信息学院 刘雨泉 一等奖 8 湖南信息学院 唐妍 一等奖 9 湖南信息学院 张颖 一等奖 10 火箭军士官学校 陈 琦 一等奖 11 辽宁石油化工大学 左明洋 一等奖 12 辽宁石油化工大学 曲晓琦 一等奖 13 辽宁石油化工大学 许越 一等奖 14 南昌交通学院 赖豫明 一等奖 15 内蒙古大学创业学院 李艺 一等奖 16 内蒙古大学创业学院 李梓鑫 一等奖 17 宁夏医科大学 郭航宇 一等奖 18 宁夏医科大学 刘娜 一等奖 19 厦门理工学院 吴禹竣 一等奖 2",
     "metadata": {
-      "source": "kylin_system_intro.md",
-      "chunk_id": 1,
-      "total_chunks": 5,
-      "file_type": ".md",
-      "chunk_size": 298,
-      "source_name": "kylin_system_intro.md",
+      "source": "第十五届大赛获奖名单-20250604.pdf",
+      "chunk_id": 36,
+      "total_chunks": 117,
+      "file_type": ".pdf",
+      "chunk_size": 500,
+      "source_name": "第十五届大赛获奖名单-20250604.pdf",
       "doc_id": 50
     }
   },
   {
-    "text": "sudo apt update 安装软件包 sudo apt install package-name 卸载软件包 sudo apt remove package-name 系统升级 sudo apt upgrade  服务管理 bash 启动服务 sudo systemctl start service-name 停止服务 sudo systemctl stop service-name 重启服务 sudo systemctl restart service-name 查看服务状态 sudo systemctl status service-name  网络配置 有线网络 打开网络设置 选择有线连接 配置IP地址自动或手动 设置DNS服务器 应用配置 无线网络 启用无线网卡 扫描可用网络 选择目标网络 输入密码 连接网络 安全配置 防火墙设置 bash 启用防火墙 sudo ufw enable 允许特定端口 sudo ufw allow 22tcp 拒绝特定端口 sudo ufw deny 23tcp 查看防火墙状态 sudo ufw status  用户权限管理 使用sudo进",
+    "text": "0 厦门理工学院 林湘 一等奖 21 山东政法学院 姜惠媛 一等奖 22 上海中侨职业技术大学 沈天爱 一等奖 23 首都经济贸易大学 边琪 一等奖 24 首都经济贸易大学 熊乐迪 一等奖 25 首都经济贸易大学 孙畅 一等奖 26 西安邮电大学 徐志豪 一等奖 27 西南交通大学希望学院 吴茵茵 一等奖 28 西南交通大学希望学院 何语 一等奖 29 长江大学地球科学学院 赵荣荣 一等奖 30 长江大学计算机学院 李涵聪 一等奖 31 长江大学经济与管理学院 余晓东 一等奖 32 长江大学经济与管理学院 朱思彤 一等奖 33 长江大学经济与管理学院 纪奇 一等奖 34 浙江师范大学 张玮宸 一等奖 35 浙江师范大学 毛丝丝 一等奖 36 浙江师范大学 蒋思杭 一等奖 37 浙江师范大学 王晶琳 一等奖 --- 第21页 --- 第十五届全国大学生计算机应用能力与数字素养大赛信息技术基础赛道获奖名单 21  69 序号 学校名称 姓名 奖项 38 中国人民解放军空军勤务学院 余波 一等奖 39 中国人民解放军空军勤务学院 张浩毅 一等奖 40 中国人民警察大学 桂亦轩 一等奖 41",
     "metadata": {
-      "source": "kylin_system_intro.md",
-      "chunk_id": 2,
-      "total_chunks": 5,
-      "file_type": ".md",
+      "source": "第十五届大赛获奖名单-20250604.pdf",
+      "chunk_id": 37,
+      "total_chunks": 117,
+      "file_type": ".pdf",
       "chunk_size": 499,
-      "source_name": "kylin_system_intro.md",
+      "source_name": "第十五届大赛获奖名单-20250604.pdf",
       "doc_id": 51
     }
   },
   {
-    "text": "行权限提升 配置用户组权限 设置文件和目录权限 定期审查用户权限 常见问题 Q: 如何重置root密码 A: 在GRUB启动菜单中选择恢复模式进入单用户模式后使用passwd命令重置密码 Q: 系统启动缓慢怎么办 A: 检查启动服务禁用不必要的自启动程序清理系统缓存 Q: 如何安装第三方软件 A: 可以通过软件包管理器源码编译或使用AppImage等方式安装 Q: 网络连接不稳定如何解决 A: 检查网络驱动程序更新网卡固件调整网络配置参数 技术支持 官方资源 官方网站http:www.kylinos.cn 技术文档http:docs.kylinos.cn 社区论坛http:forum.kylinos.cn 联系方式 技术支持热线400-xxx-xxxx 邮箱支持supportkylinos.cn 在线客服工作日9:00-18:00 版本历史 V10.0 (最新版本) 内核升级至5.4 LTS 增强安全特性 改进硬件兼容性 优化用户界面 V4.0.2 修复已知安全漏洞 提升系统稳定性 增加新硬件支持 V4.",
+    "text": "中国人民警察大学 宋涛旭 一等奖 42 中国人民警察大学 陈文梁 一等奖 43 中国人民警察大学 程厚哲 一等奖 44 中国人民警察大学 罗楚媚 一等奖 45 中国人民警察大学 杨春虎 一等奖 46 中国人民警察大学 于书章 一等奖 47 中国人民警察大学 陶馨来 一等奖 48 中国人民警察大学 连骏华 一等奖 49 中国人民警察大学 农伊凡 一等奖 50 中国人民警察大学 王淇淇 一等奖 51 中国人民警察大学 赵志鹏 一等奖 52 中国人民警察大学 郑大鸿 一等奖 53 中国人民警察大学 赵雨晴 一等奖 54 中国人民警察大学 刘玮 一等奖 55 中国人民警察大学 孙雯 一等奖 56 中国人民警察大学 杜雨欣 一等奖 57 中国人民警察大学 廖旭凯 一等奖 58 中央民族大学 刘韵涵 一等奖 59 中央民族大学 叶卓源 一等奖 60 中央民族大学 史昕睿 一等奖 61 重庆财经学院 杨悦 一等奖 62 重庆文理学院 熊茜茜 一等奖 63 重庆文理学院 黄子暄 一等奖 64 安徽大学 徐涛 二等奖 65 安徽大学 马明慧 二等奖 66 安徽信息工程学院 尹雪敏 二等奖 67 安徽信息",
     "metadata": {
-      "source": "kylin_system_intro.md",
-      "chunk_id": 3,
-      "total_chunks": 5,
-      "file_type": ".md",
-      "chunk_size": 459,
-      "source_name": "kylin_system_intro.md",
+      "source": "第十五届大赛获奖名单-20250604.pdf",
+      "chunk_id": 38,
+      "total_chunks": 117,
+      "file_type": ".pdf",
+      "chunk_size": 500,
+      "source_name": "第十五届大赛获奖名单-20250604.pdf",
       "doc_id": 52
     }
   },
   {
-    "text": "0 全新的桌面环境 增强的安全机制 改进的软件包管理 银河麒麟操作系统致力于为用户提供安全稳定易用的国产操作系统解决方案",
+    "text": "工程学院 吕志成 二等奖 68 北华航天工业学院 仇常慧 二等奖 69 北华航天工业学院 潘彦伊 二等奖 70 北京工业大学耿丹学院 鲍巧黎 二等奖 71 大连东软信息学院 张志翔 二等奖 72 滇西科技师范学院 黄浩洋 二等奖 73 广东金融学院 凌小婷 二等奖 74 广东金融学院 陈泽雯 二等奖 75 广东金融学院 胡晨轩 二等奖 76 广东金融学院 李静柔 二等奖 77 广东金融学院 李儒峰 二等奖 78 广东金融学院 黄可悦 二等奖 --- 第22页 --- 第十五届全国大学生计算机应用能力与数字素养大赛信息技术基础赛道获奖名单 22  69 序号 学校名称 姓名 奖项 79 黑龙江外国语学院 陈璐萍 二等奖 80 湖北汽车工业学院 关伟元 二等奖 81 湖北汽车工业学院科技学院 潘红进 二等奖 82 湖南信息学院 唐紫婷 二等奖 83 湖南信息学院 王慧敏 二等奖 84 湖南信息学院 彭文晓 二等奖 85 湖南信息学院 黄欣怡 二等奖 86 湖南信息学院 刘定贵 二等奖 87 湖南信息学院 卢志佳 二等奖 88 火箭军士官学校 汤子俊 二等奖 89 火箭军士官学校 闫智男 二",
     "metadata": {
-      "source": "kylin_system_intro.md",
-      "chunk_id": 4,
-      "total_chunks": 5,
-      "file_type": ".md",
-      "chunk_size": 60,
-      "source_name": "kylin_system_intro.md",
+      "source": "第十五届大赛获奖名单-20250604.pdf",
+      "chunk_id": 39,
+      "total_chunks": 117,
+      "file_type": ".pdf",
+      "chunk_size": 500,
+      "source_name": "第十五届大赛获奖名单-20250604.pdf",
       "doc_id": 53
     }
   },
   {
-    "text": "--- 第1页 --- 全国高校计算机教育研究会 全国大学生计算机系统能力大赛组委会 2025年全国大学生计算机系统能力大赛 操作系统设计赛章程 一竞赛总则 全国大学生计算机系统能力大赛是由系统能力培养研究专家组发起全国高等学校计 算机教育研究会系统能力培养研究专家组系统能力培养研究项目发起高校主办的面向 高校大学生的全国性大赛其目标是以学科竞赛推动专业建设和计算机领域创新人才培养 体系改革培育我国高端芯片关键基础软件后备人才大赛遵循国家人才培养战略以 赛促学以赛促教鼓励学生设计实现综合性的计算机系统培养学生系统级的设计 分析优化与应用能力提升学生的技术创新工程实践团队协作能力并为高水平计 算机人才成长搭建交流与合作的开放平台 全国大学生计算机系统能力大赛操作系统设计赛以下简称操作系统设计赛以 培养操作系统领域创新型人才推动高校操作系统相关课程改革加强操作系统领域产学 研合作为宗旨倡导开源办赛理念为我国操作系统产业发展贡献力量 2025年操作系统设计赛设全国赛和区域赛参加全国赛无须经过区域赛选拔二者相 对独立参赛者可同时报名区域赛和全国赛2024年获各区域赛一等奖的队伍由各区域 赛技术",
+    "text": "等奖 90 辽宁石油化工大学 李一涵 二等奖 91 辽宁石油化工大学 郑汉达 二等奖 92 南昌工程学院 赖文辉 二等奖 93 南昌交通学院 黄思思 二等奖 94 南昌交通学院 范兆宋 二等奖 95 南昌交通学院 刘倩 二等奖 96 南京航空航天大学金城学院 冯淼 二等奖 97 南京航空航天大学金城学院 刘佳澍 二等奖 98 南阳理工学院 刘国通 二等奖 99 内蒙古大学创业学院 高建峰 二等奖 100 宁夏医科大学 宋佳 二等奖 101 宁夏医科大学 刘姿颍 二等奖 102 宁夏医科大学 张阳 二等奖 103 宁夏医科大学 蒋璐红 二等奖 104 宁夏医科大学 黄诗韵 二等奖 105 宁夏医科大学 郑乐平 二等奖 106 宁夏医科大学 罗雅缤 二等奖 107 宁夏医科大学 王恪 二等奖 108 宁夏医科大学 张芮雪 二等奖 109 宁夏医科大学 李亚苹 二等奖 110 齐鲁医药学院 郭明慧 二等奖 111 厦门理工学院 陈嘉炜 二等奖 112 厦门理工学院 曾晴晴 二等奖 113 山东现代学院 范伟杰 二等奖 114 山东现代学院 焉子文 二等奖 115 山东现代学院 杨洁 二等奖",
     "metadata": {
-      "source": "2025-OS全国赛-章程-终-盖章.pdf",
-      "chunk_id": 0,
-      "total_chunks": 11,
+      "source": "第十五届大赛获奖名单-20250604.pdf",
+      "chunk_id": 40,
+      "total_chunks": 117,
       "file_type": ".pdf",
-      "chunk_size": 500,
-      "source_name": "2025-OS全国赛-章程-终-盖章.pdf",
+      "chunk_size": 499,
+      "source_name": "第十五届大赛获奖名单-20250604.pdf",
       "doc_id": 54
     }
   },
   {
-    "text": "委员会推荐经全国赛技术委员会审核批准后可获得全国赛决赛入围资格获得 全国赛决赛入围资格的参赛队需报名全国赛并参加从初赛到决赛各阶段比赛和答辩 本章程为操作系统设计赛全国赛章程区域赛章程将在举办时另行发布 二比赛组织 主办单位全国高等学校计算机教育研究会 系统能力培养研究专家组 系统能力培养研究项目发起高校 承办单位华中科技大学 协办单位中国计算机学会系统软件专委会 --- 第2页 --- 北京市计算机学会 101计划操作系统课程虚拟教研室 机械工业出版社 为保证操作系统设计赛顺利进行在机械工业出版社设立秘书处由操作系统设计赛技 术委员会负责推进各项工作 三赛道设置与参赛对象 3.1 赛道设置 操作系统设计赛设内核实现和功能挑战两个赛道 3.2 参赛对象 1.内核实现赛道的参赛对象为普通高等学校含本科院校高职专科院校的 全日制在校本科生和专科生 2.功能挑战赛道的参赛对象为普通高等学校含本科院校高职专科院校的 全日制在校本科生专科生和研究生含硕士博士生 3.",
+    "text": "116 山东现代学院 徐欣悦 二等奖 117 山东政法学院 郭华远 二等奖 118 首都经济贸易大学 江昕璇 二等奖 119 首都经济贸易大学 李奕涵 二等奖 --- 第23页 --- 第十五届全国大学生计算机应用能力与数字素养大赛信息技术基础赛道获奖名单 23  69 序号 学校名称 姓名 奖项 120 首都经济贸易大学 兰宇鸿 二等奖 121 天津外国语大学 王陈钰 二等奖 122 西安邮电大学 王佳 二等奖 123 西安邮电大学 罗豪 二等奖 124 西南交通大学希望学院 岳文利 二等奖 125 西南交通大学希望学院 张金鑫 二等奖 126 西南交通大学希望学院 王艺文 二等奖 127 西南交通大学希望学院 杨晓芳 二等奖 128 烟台理工学院 王子菡 二等奖 129 盐城工学院 陈子豪 二等奖 130 盐城工学院 徐凯杰 二等奖 131 盐城工学院 黄雅萱 二等奖 132 盐城工学院 耿添漪 二等奖 133 盐城工学院 夏昱 二等奖 134 盐城工学院 李心悦 二等奖 135 长江大学地球科学学院 李舒涵 二等奖 136 长江大学地球科学学院 张博南 二等奖 137 长江大学地",
     "metadata": {
-      "source": "2025-OS全国赛-章程-终-盖章.pdf",
-      "chunk_id": 1,
-      "total_chunks": 11,
+      "source": "第十五届大赛获奖名单-20250604.pdf",
+      "chunk_id": 41,
+      "total_chunks": 117,
       "file_type": ".pdf",
-      "chunk_size": 434,
-      "source_name": "2025-OS全国赛-章程-终-盖章.pdf",
+      "chunk_size": 500,
+      "source_name": "第十五届大赛获奖名单-20250604.pdf",
       "doc_id": 55
     }
   },
   {
-    "text": "为准 四比赛流程 操作系统设计赛内核实现和功能挑战两个赛道均设报名初赛和决赛三个阶段 内核实现赛道还有现场赛总体时间表如下所示 重要时间点 比赛流程 2025年2月28日 参赛报名启动内核实现赛道初赛测例和评测指 标发布功能挑战赛道题目发布启动 2025年4月28日 功能挑战赛道题目发布截止 2025年5月1日 内核实现赛道决赛测例和评测指标发布 2025年5月28日 参赛报名截止 2025年6月30日 两个赛道的初赛作品提交截止 2025年7月12日 两个赛道的决赛入围名单公布 2025年8月12日 两个赛道的阶段性决赛作品提交截止 决赛作品提交截止日 两个赛道决赛作品提交截止 内核实现赛道现场赛题目发布日 内核实现赛道现场赛测例和评测指标发布 内核实现赛道现场赛截止日 内核实现赛道决赛现场赛作品提交截止 --- 第3页 --- 内核实现赛道现场答辩日 内核实现赛道决赛作品现场答辩 功能挑战赛道现场答辩日 功能挑战赛道决赛作品现场答辩 颁奖典礼日 两个赛道的获奖名单公布 注8月12日之后的决赛期间赛道各环节以及颁奖典礼的具体时间和安排以操作系统设计 赛技术委员会发布的通知为准 4.",
+    "text": "球科学学院 罗竣豪 二等奖 138 长江大学地球科学学院 郭嘉栋 二等奖 139 长江大学地球科学学院 袁诗茵 二等奖 140 长江大学地球科学学院 许康旺 二等奖 141 长江大学计算机学院 汤博文 二等奖 142 长江大学经济与管理学院 周琳欣 二等奖 143 长江大学经济与管理学院 邓晓青 二等奖 144 浙江师范大学 许芷轩 二等奖 145 浙江师范大学 谢湘悦 二等奖 146 浙江师范大学 庄萱莺 二等奖 147 浙江师范大学 刘雯丽 二等奖 148 浙江师范大学 王舒语 二等奖 149 浙江越秀外国语学院 潘昱婷 二等奖 150 中国人民警察大学 马淦炟 二等奖 151 中国人民警察大学 许淏哲 二等奖 152 中国人民警察大学 孙桓 二等奖 153 中国人民警察大学 白羽溪 二等奖 154 中国人民警察大学 杨卓菲 二等奖 155 中国人民警察大学 余洋 二等奖 156 中国人民警察大学 仇萌 二等奖 157 中国人民警察大学 刘灏天 二等奖 158 中国人民警察大学 周夺 二等奖 159 中国人民警察大学 胡鑫辉 二等奖 160 中国人民警察大学 纪晶颖 二等奖 ---",
     "metadata": {
-      "source": "2025-OS全国赛-章程-终-盖章.pdf",
-      "chunk_id": 2,
-      "total_chunks": 11,
+      "source": "第十五届大赛获奖名单-20250604.pdf",
+      "chunk_id": 42,
+      "total_chunks": 117,
       "file_type": ".pdf",
-      "chunk_size": 499,
-      "source_name": "2025-OS全国赛-章程-终-盖章.pdf",
+      "chunk_size": 500,
+      "source_name": "第十五届大赛获奖名单-20250604.pdf",
       "doc_id": 56
     }
   },
   {
-    "text": "1 报名时间和报名要求 1.报名时间 报名启动日期2025年2月28日 报名截止日期2025年5月28日 2.报名名额 1参赛队是报名参赛的基本单位,每支参赛队的人数为13人同一所高校的参赛队 数量没有限制但来自不同高校的学生不能联合组队参赛 2报名时参赛队只可选择内核实现或功能挑战其中一个赛道参赛并选定参 赛题目每位参赛学生也只能参加一支参赛队不可跨队重复报名 3每支参赛队最多可有两位指导教师在初赛阶段可没有指导教师但在决赛阶段要 求至少有一位指导教师指导教师可以是高校教师或企业技术专家每位指导教师可同 时指导本校或外校多支参赛队指导教师负责指导参赛队选题组织学生参加赛前技术 培训并鼓励学生根据选定的赛题进行作品的创新设计与实现同时负责在操作系统设 计赛期间与学校及组委会之间的信息沟通 4在2025年5月28日报名截止前每支参赛队均有机会调整人数可增加或减少和 更换队员在2025年6月30日初赛作品提交截止前每支参赛队均有机会调整人数只可 减少不可增加和更换队员不可更换所有参赛队员初赛作品提交截止后不能再调 整人数和更换队员 5每支参赛队在报名截止和初赛提交截止日之前调整的人数和更换",
+    "text": "第24页 --- 第十五届全国大学生计算机应用能力与数字素养大赛信息技术基础赛道获奖名单 24  69 序号 学校名称 姓名 奖项 161 中国人民警察大学 姚蓝 二等奖 162 中国人民警察大学 袁文涛 二等奖 163 中国人民警察大学 范智豪 二等奖 164 中国人民警察大学 兰铭涵 二等奖 165 中国人民警察大学 王紫红 二等奖 166 中国人民警察大学 王靖凯 二等奖 167 中国人民警察大学 孙永康 二等奖 168 中国人民警察大学 廖立夫 二等奖 169 中国人民警察大学 杨灿霖 二等奖 170 中国人民警察大学 王德琛 二等奖 171 中国人民警察大学 杨冠湘 二等奖 172 中国人民警察大学 李泽光 二等奖 173 中国人民警察大学 王禹霖 二等奖 174 中国人民警察大学 徐韵翔 二等奖 175 中国人民警察大学 周家钰 二等奖 176 中国人民警察大学 胡金海 二等奖 177 中国人民警察大学 李鸿宇 二等奖 178 中国人民警察大学 张铭蕙 二等奖 179 中国人民警察大学 陈艺 二等奖 180 中国人民警察大学 林骏 二等奖 181 中国人民警察大学 王志云",
     "metadata": {
-      "source": "2025-OS全国赛-章程-终-盖章.pdf",
-      "chunk_id": 3,
-      "total_chunks": 11,
+      "source": "第十五届大赛获奖名单-20250604.pdf",
+      "chunk_id": 43,
+      "total_chunks": 117,
       "file_type": ".pdf",
-      "chunk_size": 500,
-      "source_name": "2025-OS全国赛-章程-终-盖章.pdf",
+      "chunk_size": 499,
+      "source_name": "第十五届大赛获奖名单-20250604.pdf",
       "doc_id": 57
     }
   },
   {
-    "text": "队员名单须经指 导教师审核后发送队员调整申请邮件至比赛邮箱秘书处对调整申请进行审核后更 新相应赛队在比赛网站的队员名单最终以比赛网站系统中的队员名单为准 3. 报名方法 1登录操作系统设计赛网站https:os.educg.net填写相关信息并按要求提供相 关材料进行在线报名 --- 第4页 --- 2每支参赛队的报名者需提供能证明本人身份的学生证指导教师工作证或其他证明 在校身份和所在单位信息的材料将上述报名材料扫描打包为单个文件上传至在线报 名页面收到秘书处邮件或短信确认后报名工作完成 4.2 初赛阶段 1. 初赛赛题发布 内核实现赛道2025年2月28日前发布初赛测例和初赛阶段评测技术指标 功能挑战赛道分批次发布赛题2025年4月28日前完成全部赛题的发布 2. 初赛作品提交 内核实现赛道和功能挑战赛道的初赛作品提交截止日2025年6月30日 初赛作品应包括源代码设计方案文档进展汇报幻灯片和作品演示视频参赛队应根 据2025年操作系统设计赛技术方案以下简称技术方案中的比赛要求对实现的 初赛作品迭代改进并及时将历次改进版本提交到本赛指定托管平台需展现出完整的 开发过程 3.",
+    "text": "二等奖 182 中国人民警察大学 郑雨桉 二等奖 183 中国人民警察大学 邓思凡 二等奖 184 中国人民警察大学 丁相宇 二等奖 185 中国人民警察大学 李明尚 二等奖 186 中国人民警察大学 柳佳敏 二等奖 187 中国人民警察大学 陈子怡 二等奖 188 中国人民警察大学 鲁建坪 二等奖 189 中央民族大学 刘瑞嘉 二等奖 190 中央民族大学 周麟宁 二等奖 191 中央民族大学 卢怡 二等奖 192 中央民族大学 张悦 二等奖 193 重庆财经学院 何芋璇 二等奖 194 重庆文理学院 刘旭颖 二等奖 195 重庆文理学院 李思瑾 二等奖 196 重庆文理学院 戴雨薇 二等奖 197 重庆文理学院 杨子龙 二等奖 198 重庆文理学院 刘美 二等奖 199 重庆文理学院 缪娟 二等奖 200 重庆文理学院 夏天爱 二等奖 201 重庆文理学院 张齐敏 二等奖 --- 第25页 --- 第十五届全国大学生计算机应用能力与数字素养大赛信息技术基础赛道获奖名单 25  69 序号 学校名称 姓名 奖项 202 安徽信息工程学院 王昕宇 三等奖 203 安徽信息工程学院 徐",
     "metadata": {
-      "source": "2025-OS全国赛-章程-终-盖章.pdf",
-      "chunk_id": 4,
-      "total_chunks": 11,
+      "source": "第十五届大赛获奖名单-20250604.pdf",
+      "chunk_id": 44,
+      "total_chunks": 117,
       "file_type": ".pdf",
-      "chunk_size": 496,
-      "source_name": "2025-OS全国赛-章程-终-盖章.pdf",
+      "chunk_size": 499,
+      "source_name": "第十五届大赛获奖名单-20250604.pdf",
       "doc_id": 58
     }
   },
   {
-    "text": "初赛评审与成绩公布 2025年7月1日  7月11日两个赛道进行初赛作品评审初赛成绩按比例计入决赛总 成绩对于功能挑战赛道评委按照专本研学位等级进行综合打分 2025年7月12日公布两个赛道的决赛入围名单 4. 技术培训 初赛期间操作系统设计赛技术委员会将安排相关技术培训 4.3 决赛阶段和颁奖典礼 1. 内核实现赛道 1决赛赛题发布 2025年5月1日前发布决赛测例和评测技术指标 2决赛作品提交 阶段性决赛作品提交截止日2025年8月12日 参赛队按技术方案的要求完成并提交该阶段作品应包括源代码设计方案文档 进展汇报幻灯片和演示视频到本赛指定托管平台 --- 第5页 --- 评委不对该阶段作品进行评分提交的作品用于评委有充足时间熟悉了解决赛作 品的过程性推进情况参赛队可在这之后继续对作品进行完善和提交 决赛作品提交截止日 参赛队按技术方案的要求完成并提交决赛作品到本赛指定托管平台提交内容应 包括源代码设计方案文档进展汇报幻灯片和演示视频自动评测系统对提交到 指定托管平台的决赛作品进行自动评测,对应成绩按比例计入决赛总成绩参赛队可 在此之后继续对作品进行完善和提交 3现场赛和现场答辩",
+    "text": "金金 三等奖 204 安徽信息工程学院 余梦桐 三等奖 205 安徽信息工程学院 黄庆烨 三等奖 206 安徽信息工程学院 李婷 三等奖 207 安徽信息工程学院 李宇宁 三等奖 208 安徽信息工程学院 向阳 三等奖 209 安徽信息工程学院 程安圆 三等奖 210 安徽信息工程学院 韩鲜柱 三等奖 211 安徽信息工程学院 张日月 三等奖 212 北华航天工业学院 石若晗 三等奖 213 北京城市学院 侯增相 三等奖 214 北京服装学院 张雨蝶 三等奖 215 北京工业大学耿丹学院 尤一凡 三等奖 216 北京工业大学耿丹学院 臧延栋 三等奖 217 承德医学院 刘泽瑶 三等奖 218 大连东软信息学院 王浚雅 三等奖 219 大连东软信息学院 段冠希 三等奖 220 大连东软信息学院 李金名 三等奖 221 大连东软信息学院 凡旖慧 三等奖 222 大连东软信息学院 杨绍楠 三等奖 223 大连东软信息学院 单韵诗 三等奖 224 大连东软信息学院 王婕 三等奖 225 滇西科技师范学院 徐世松 三等奖 226 电子科技大学成都学院 唐玲 三等奖 227 电子科技大学成都学院",
     "metadata": {
-      "source": "2025-OS全国赛-章程-终-盖章.pdf",
-      "chunk_id": 5,
-      "total_chunks": 11,
+      "source": "第十五届大赛获奖名单-20250604.pdf",
+      "chunk_id": 45,
+      "total_chunks": 117,
       "file_type": ".pdf",
       "chunk_size": 499,
-      "source_name": "2025-OS全国赛-章程-终-盖章.pdf",
+      "source_name": "第十五届大赛获奖名单-20250604.pdf",
       "doc_id": 59
     }
   },
   {
-    "text": "现场赛题目发布日发布现场赛测例和评测指标 现场赛的比赛日参赛队按技术方案的要求和决赛通知的安排参加现场比赛 参赛队在规定截止时间内提交现场赛作品到本赛指定托管平台提交内容应包括源代 码和设计方案文档 现场答辩日参赛队参加现场答辩 2.功能挑战赛道 1决赛作品提交 阶段性决赛作品提交截止日2025年8月12日 参赛队按技术方案的要求完成并提交该阶段作品到本赛指定托管平台提交内容 应包括源代码设计方案文档进展汇报幻灯片和演示视频 评委不对该阶段作品进行评分提交的作品用于评委有充足时间熟悉了解决赛作 品的过程性推进情况参赛队可在此之后继续对作品进行完善和提交 决赛作品提交截止日 参赛队按技术方案的要求完成并提交该阶段作品到本赛指定托管平台提交内容 应包括源代码设计方案文档进展汇报幻灯片和演示视频该作品是比赛最终作 品参赛队在此之后的提交不计入评委的评审范围 2现场答辩 现场答辩日参赛队参加现场答辩评委按照专本研学位等级进行综合打分 --- 第6页 --- 2. 颁奖典礼 颁奖典礼日举行全国总决赛颁奖典礼公布两个赛道决赛最终成绩和获奖名单 3.",
+    "text": "邹丽华 三等奖 228 电子科技大学成都学院 陈蔓林 三等奖 229 电子科技大学成都学院 梁兴民 三等奖 230 电子科技大学成都学院 曾鑫颜 三等奖 231 电子科技大学成都学院 赵苗 三等奖 232 电子科技大学成都学院 吴佳羽 三等奖 233 广东金融学院 丁钰涓 三等奖 234 广东金融学院 李函真 三等奖 235 广东金融学院 陈俞冰 三等奖 236 哈尔滨信息工程学院 孙钰轩 三等奖 237 黑龙江外国语学院 李岫昕 三等奖 238 湖北汽车工业学院 何锐 三等奖 239 湖北汽车工业学院科技学院 陈永桓 三等奖 240 湖北汽车工业学院科技学院 张志兴 三等奖 241 湖北汽车工业学院科技学院 李汉城 三等奖 242 湖北汽车工业学院科技学院 宋先郴 三等奖 --- 第26页 --- 第十五届全国大学生计算机应用能力与数字素养大赛信息技术基础赛道获奖名单 26  69 序号 学校名称 姓名 奖项 243 湖北汽车工业学院科技学院 姜宏宇 三等奖 244 湖南信息学院 宋春燕 三等奖 245 湖南信息学院 孔威威 三等奖 246 湖南信息学院 程钰凡 三等奖 247 湖南",
     "metadata": {
-      "source": "2025-OS全国赛-章程-终-盖章.pdf",
-      "chunk_id": 6,
-      "total_chunks": 11,
+      "source": "第十五届大赛获奖名单-20250604.pdf",
+      "chunk_id": 46,
+      "total_chunks": 117,
       "file_type": ".pdf",
-      "chunk_size": 475,
-      "source_name": "2025-OS全国赛-章程-终-盖章.pdf",
+      "chunk_size": 500,
+      "source_name": "第十五届大赛获奖名单-20250604.pdf",
       "doc_id": 60
     }
   },
   {
-    "text": "作品开源时间 操作系统设计赛决赛结束后参赛队最终版本作品含源代码设计方案文档演示视 频等开发资料答辩过程视频需开源并可公开访问 注决赛期间内核实现赛道功能挑战赛道各环节的具体时间和安排以及颁奖 典礼的具体时间和安排以操作系统设计赛技术委员会的通知为准 五 参赛费用 1.操作系统设计赛不收取报名费参赛费评审费技术平台购买费等任何费用 2.参赛队员及指导老师在全国赛决赛阶段和颁奖典礼期间产生的交通住宿用餐等费用 自理 六奖项设置 全国决赛设团队奖指导教师奖优秀组织奖技术贡献奖等奖项 6.1 团队奖 1. 内核实现赛道 一等奖含MVP奖颁发团队奖金及获奖证书 二等奖颁发团队奖金及获奖证书 三等奖颁发团队奖金及获奖证书 2. 功能挑战赛道 一等奖含MVP奖颁发团队奖金及获奖证书 二等奖颁发团队奖金及获奖证书 三等奖颁发团队奖金及获奖证书 3. 奖金说明 各级奖项根据作品质量均可能空缺团队奖金均按国家要求扣除相应税费后发放 6.2 指导教师奖 在全国决赛中获奖的团队的指导教师高校教师或企业技术专家均可获得优秀指导教 师奖(证书) --- 第7页 --- 6.",
+    "text": "信息学院 陈玉沣 三等奖 248 湖南信息学院 舒豪 三等奖 249 湖南信息学院 唐南婷 三等奖 250 火箭军士官学校 刘 宇 三等奖 251 辽宁石油化工大学 辛文 三等奖 252 民政职业大学 戴霖健 三等奖 253 闽南理工学院 邱欣悦 三等奖 254 南昌交通学院 潘嘉馨 三等奖 255 南昌交通学院 俞雯思 三等奖 256 南昌交通学院 郑妍平 三等奖 257 南昌交通学院 吴志珍 三等奖 258 南昌交通学院 刘天煜 三等奖 259 南昌交通学院 周佩琪 三等奖 260 南京传媒学院 曹振宇 三等奖 261 南京航空航天大学金城学院 尚圣博 三等奖 262 南京航空航天大学金城学院 孟子涵 三等奖 263 南京航空航天大学金城学院 梁佳宇 三等奖 264 南京航空航天大学金城学院 刘翔 三等奖 265 南京航空航天大学金城学院 冯灿 三等奖 266 南宁职业技术大学 梁丽仙 三等奖 267 南宁职业技术大学 黄依婷 三等奖 268 南宁职业技术大学 贾丽云 三等奖 269 南宁职业技术大学 陈宇亭 三等奖 270 南阳理工学院 李程浩 三等奖 271 内蒙古大学创业学院",
     "metadata": {
-      "source": "2025-OS全国赛-章程-终-盖章.pdf",
-      "chunk_id": 7,
-      "total_chunks": 11,
+      "source": "第十五届大赛获奖名单-20250604.pdf",
+      "chunk_id": 47,
+      "total_chunks": 117,
       "file_type": ".pdf",
-      "chunk_size": 481,
-      "source_name": "2025-OS全国赛-章程-终-盖章.pdf",
+      "chunk_size": 500,
+      "source_name": "第十五届大赛获奖名单-20250604.pdf",
       "doc_id": 61
     }
   },
   {
-    "text": "3 优秀组织奖 对操作系统设计赛组织工作做出突出贡献的单位及赞助企业颁发优秀组织奖证书 6.4 技术贡献奖 对操作系统设计赛技术工作做出突出贡献的个人颁发技术贡献奖证书 6.5 其他奖 在功能挑战赛道下设置的面向操作系统的应用实践类等专项奖以全国赛技术委员 会的通知为准 七知识产权与学术诚信 1. 参赛队必须遵循技术方案1.1节中的规定参赛作品含源代码设计方案文档和演 示视频等开发资料答辩过程视频等在决赛结束后保持开源开放并可访问 2. 参赛队必须遵循技术方案1.1节中的规定自觉遵守知识产权和各种开源协议的有关 法规和规定并在报名表中承诺确认不得侵犯他人的知识产权或其他权益如造成 不良后果相关法律责任由参赛队自行承担操作系统设计赛的主办承办和协办方 均不负任何法律责任 3.",
+    "text": "孔德鑫 三等奖 272 内蒙古大学创业学院 赵敏 三等奖 273 内蒙古大学创业学院 卜凡磊 三等奖 274 内蒙古大学创业学院 张芷瑗 三等奖 275 内蒙古大学创业学院 关慧 三等奖 276 内蒙古大学创业学院 郭佳瑶 三等奖 277 内蒙古大学创业学院 刘璐 三等奖 278 内蒙古大学创业学院 郭雅琴 三等奖 279 内蒙古大学创业学院 陈天盈 三等奖 280 内蒙古大学创业学院 杨梅 三等奖 281 内蒙古大学创业学院 李梦娇 三等奖 282 内蒙古大学创业学院 董宇峰 三等奖 283 内蒙古大学创业学院 王裕杰 三等奖 --- 第27页 --- 第十五届全国大学生计算机应用能力与数字素养大赛信息技术基础赛道获奖名单 27  69 序号 学校名称 姓名 奖项 284 内蒙古大学创业学院 刘琪 三等奖 285 内蒙古大学创业学院 张文清 三等奖 286 内蒙古大学创业学院 周虹余 三等奖 287 内蒙古大学创业学院 张敏 三等奖 288 内蒙古大学创业学院 郝琳华 三等奖 289 内蒙古大学创业学院 吴顺南 三等奖 290 宁夏师范大学 李国兰 三等奖 291 宁夏医科大学 张",
     "metadata": {
-      "source": "2025-OS全国赛-章程-终-盖章.pdf",
-      "chunk_id": 8,
-      "total_chunks": 11,
+      "source": "第十五届大赛获奖名单-20250604.pdf",
+      "chunk_id": 48,
+      "total_chunks": 117,
       "file_type": ".pdf",
-      "chunk_size": 341,
-      "source_name": "2025-OS全国赛-章程-终-盖章.pdf",
+      "chunk_size": 499,
+      "source_name": "第十五届大赛获奖名单-20250604.pdf",
       "doc_id": 62
     }
   },
   {
-    "text": "名评议确认后将取消参赛队的参赛资格对于已经获得全国决赛奖项的参赛队通 报所在学校并取消和追回已获得的证书和奖金 八交流与宣传 1. 操作系统设计赛致力于推动高校计算机系统能力培养以及操作系统创新实践活动的开 展比赛期间鼓励各种形式的参赛队间交流活动并对优秀作品和参赛队进行宣传 2. 操作系统设计赛欢迎社会各界共同参与比赛的组织命题宣传赞助等工作不断 提升比赛的质量和影响力 3. 操作系统设计赛组织的技术报告交流和学术活动等如涉及视频文档源代码等 在征得著作权人同意的情况下均开源并发布 --- 第8页 --- 4. 本章程和技术方案将发至各高校教务处和相关院系希望学校制定鼓励学生和老师参 赛的相关政策 九联系方式 1.联系邮箱cscc-oshz.cmpbook.com 2.联系人唐美春 (13580340519事务咨询) 李超 18600162252 (技术咨询) 3.技术讨论 QQ 群5411421391群4628583822群 十其他 1. 操作系统设计赛指定竞赛网站 https:os.educg.",
+    "text": "彦芳 三等奖 292 宁夏医科大学 梁军利 三等奖 293 宁夏医科大学 王学冰 三等奖 294 宁夏医科大学 吕秒秒 三等奖 295 宁夏医科大学 马步琴 三等奖 296 宁夏医科大学 马小燕 三等奖 297 宁夏医科大学 马娟 三等奖 298 宁夏医科大学 王星然 三等奖 299 宁夏医科大学 殷子言 三等奖 300 齐鲁医药学院 陈怡冰 三等奖 301 山东现代学院 王越 三等奖 302 山东现代学院 孟紫琦 三等奖 303 山东现代学院 宋雨靖 三等奖 304 山东政法学院 雷欣 三等奖 305 山东政法学院 罗昌祥 三等奖 306 山东政法学院 马霄 三等奖 307 山东政法学院 林青宜 三等奖 308 首都经济贸易大学 梁钰珮 三等奖 309 首都经济贸易大学 宋嘉馨 三等奖 310 首都经济贸易大学 张茗涵 三等奖 311 天津外国语大学 黄嘉琪 三等奖 312 天津外国语大学 王刘蕊 三等奖 313 西安邮电大学 高嘉琪 三等奖 314 西安邮电大学 王和谐 三等奖 315 西安邮电大学 姜云凤 三等奖 316 西南交通大学希望学院 杨丽琪 三等奖 317 西南交通大学",
     "metadata": {
-      "source": "2025-OS全国赛-章程-终-盖章.pdf",
-      "chunk_id": 9,
-      "total_chunks": 11,
+      "source": "第十五届大赛获奖名单-20250604.pdf",
+      "chunk_id": 49,
+      "total_chunks": 117,
       "file_type": ".pdf",
-      "chunk_size": 457,
-      "source_name": "2025-OS全国赛-章程-终-盖章.pdf",
+      "chunk_size": 500,
+      "source_name": "第十五届大赛获奖名单-20250604.pdf",
       "doc_id": 63
     }
   },
   {
-    "text": "net 计算机系统能力培养微信公 众号为发布大赛新闻公告技术资料培训活动等的官方平台比赛的各项安排 均通过上述指定平台发布通知 2. 关于操作系统设计赛的内容评测方式等具体要求详见 2025年操作系统设计赛技 术方案文档 3. 欢迎各高校按2025年操作系统设计赛通知和章程的要求统一组织和部署参赛工作 积极参加操作系统设计赛宣传和技术培训工作 4. 获奖证书由操作系统设计赛主办方统一生成电子证书并可在操作系统设计赛网站 查询下载对于包含多个成员的参赛队证书在获奖成员列表处印制参赛队员姓 名不体现参赛队的队伍名称获奖成员列表由获奖参赛队的队员 指导教师商议确 定并书面报送操作系统设计赛邮箱若参赛队未按要求给出获奖成员列表则获奖 成员列表与报名时成员排序保持一致 5. 如因不可抗力或其他突发特殊情况等必须对比赛各环节进行调整以操作系统设 计赛技术委员会在官方平台发布的通知为准 6. 本章程的最终解释权归操作系统设计赛技术委员会所有 全国高等学校计算机教育研究会 全国大学生计算机系统能力大赛组委会 全国大学生计算机系统能力大赛操作系统设计赛技术委员会 2025年2月",
+    "text": "希望学院 张宇 三等奖 318 西南交通大学希望学院 付莉洁 三等奖 319 西南交通大学希望学院 朱妍霏 三等奖 320 西南交通大学希望学院 邱召阳 三等奖 321 西南交通大学希望学院 邓紫薇 三等奖 322 西南交通大学希望学院 杨柳 三等奖 323 西南交通大学希望学院 唐百阳 三等奖 324 烟台理工学院 朱文杰 三等奖 --- 第28页 --- 第十五届全国大学生计算机应用能力与数字素养大赛信息技术基础赛道获奖名单 28  69 序号 学校名称 姓名 奖项 325 盐城工学院 王业宽 三等奖 326 盐城工学院 叶与枫 三等奖 327 盐城工学院 覃斌 三等奖 328 盐城工学院 张宸宇 三等奖 329 盐城工学院 刘梓阳 三等奖 330 盐城工学院 吴思阳 三等奖 331 盐城工学院 王舒 三等奖 332 长江大学地球科学学院 张瑾 三等奖 333 长江大学地球科学学院 王彩蓓 三等奖 334 长江大学地球科学学院 刘美唐君 三等奖 335 长江大学地球科学学院 秦政 三等奖 336 长江大学地球科学学院 丁子顺 三等奖 337 长江大学地球科学学院 吴越 三等奖 33",
     "metadata": {
-      "source": "2025-OS全国赛-章程-终-盖章.pdf",
-      "chunk_id": 10,
-      "total_chunks": 11,
+      "source": "第十五届大赛获奖名单-20250604.pdf",
+      "chunk_id": 50,
+      "total_chunks": 117,
       "file_type": ".pdf",
-      "chunk_size": 487,
-      "source_name": "2025-OS全国赛-章程-终-盖章.pdf",
+      "chunk_size": 500,
+      "source_name": "第十五届大赛获奖名单-20250604.pdf",
       "doc_id": 64
     }
   },
   {
-    "text": "--- 第1页 --- 银河麒麟智能问答助 v2.5 银河麒麟智能问答助 v2.5 基于 DeepSeek-R1 API 和麒麟 SDK2.5 的智能问答系统专为银河麒麟操作系统设计  功能特性 智能问答: 基于 RAG( 检索增强成 ) 技术结合本地档知识库和 AI 模型 档处理: 持 PDF  Markdown 本等多种格式档 系统集成: 深度集成麒麟 SDK2.5 获取系统信息和硬件状态 图形界: 友好的 GUI 界持档管理和实时问答 多架构持: 持 x86_64 和 ARM64 架构  系统要求 推荐环境 操作系统: 银河麒麟 V10 SP1SP2SP3 或更版本 Python 版本: Python 3.7 ( 推荐 Python 3.8) 内存: 4GB 以上 ( 推荐 8GB) 存储: 2GB 可空间 络: 需要互联连接访问 DeepSeek API 必需依赖 麒麟 SDK2.5 开发库 DeepSeek API 访问权限 Python 第三库 requirements.txt   快速安装指南 法键安装推荐 1.",
+    "text": "8 长江大学地球科学学院 任斌 三等奖 339 长江大学经济与管理学院 徐玉卓 三等奖 340 长江大学经济与管理学院 陆煜婷 三等奖 341 长江大学经济与管理学院 相湘 三等奖 342 长江大学经济与管理学院 汪亮 三等奖 343 浙江师范大学 李欣 三等奖 344 浙江师范大学 楼昊 三等奖 345 浙江越秀外国语学院 曹诗韵 三等奖 346 中国人民解放军空军勤务学院 刘延波 三等奖 347 中国人民解放军空军勤务学院 刘胜己 三等奖 348 中国人民警察大学 兰博 三等奖 349 中国人民警察大学 李洁 三等奖 350 中国人民警察大学 李心怡 三等奖 351 中国人民警察大学 刘馨悦 三等奖 352 中国人民警察大学 周海东 三等奖 353 中国人民警察大学 胡佳祺 三等奖 354 中国人民警察大学 马跃阳 三等奖 355 中国人民警察大学 杨云松 三等奖 356 中国人民警察大学 杨昕 三等奖 357 中国人民警察大学 段皓天 三等奖 358 中国人民警察大学 蔡知润 三等奖 359 中国人民警察大学 路力伟 三等奖 360 中国人民警察大学 韩姝璇 三等奖 361 中国",
     "metadata": {
-      "source": "银河麒麟智能问答助手 v2.5.pdf",
-      "chunk_id": 0,
-      "total_chunks": 14,
+      "source": "第十五届大赛获奖名单-20250604.pdf",
+      "chunk_id": 51,
+      "total_chunks": 117,
       "file_type": ".pdf",
-      "chunk_size": 470,
-      "source_name": "银河麒麟智能问答助手 v2.5.pdf",
+      "chunk_size": 500,
+      "source_name": "第十五届大赛获奖名单-20250604.pdf",
       "doc_id": 65
     }
   },
   {
-    "text": "下载项  使用git克隆推荐 git clone https:github.comyour-usernamekylin-qa-assistant.git cd kylin-qa-assistant  或者下载ZIP包并解压 wget https:github.comyour-usernamekylin-qa-assistantarchivemain.zip --- 第2页 --- unzip main.zip cd kylin-qa-assistant-main 2. 运安装脚本  给安装脚本执行权限 chmod x install.sh  运行安装脚本需要sudo权限 sudo .install.sh 安装脚本将动完成以下操作  检查系统兼容性  安装 Python 依赖包  配置系统服务  创建桌快捷式  设置命令快捷式 3. 配置 API 密钥  编辑配置文件 sudo nano optkylin-qa-assistantconfig.",
+    "text": "人民警察大学 王宇婷 三等奖 362 中国人民警察大学 张学伟 三等奖 363 中国人民警察大学 唐宇浩 三等奖 364 中国人民警察大学 张墨涵 三等奖 365 中国人民警察大学 赵俊杰 三等奖 --- 第29页 --- 第十五届全国大学生计算机应用能力与数字素养大赛信息技术基础赛道获奖名单 29  69 序号 学校名称 姓名 奖项 366 中国人民警察大学 黄贻炅 三等奖 367 中国人民警察大学 邓羿 三等奖 368 中国人民警察大学 全欣 三等奖 369 中国人民警察大学 谭楚沿 三等奖 370 中国人民警察大学 王英源 三等奖 371 中国人民警察大学 彭淑媛 三等奖 372 中国人民警察大学 姚彩虹 三等奖 373 中国人民警察大学 张润璐 三等奖 374 中国人民警察大学 董俊辰 三等奖 375 中国人民警察大学 梁振海 三等奖 376 中国人民警察大学 王浩宇 三等奖 377 中国人民警察大学 吴一鸣 三等奖 378 中国人民警察大学 付君琳 三等奖 379 中国人民警察大学 邵竟然 三等奖 380 中国人民警察大学 丹增达色 三等奖 381 中国人民警察大学 成烨明",
     "metadata": {
-      "source": "银河麒麟智能问答助手 v2.5.pdf",
-      "chunk_id": 1,
-      "total_chunks": 14,
+      "source": "第十五届大赛获奖名单-20250604.pdf",
+      "chunk_id": 52,
+      "total_chunks": 117,
       "file_type": ".pdf",
-      "chunk_size": 427,
-      "source_name": "银河麒麟智能问答助手 v2.5.pdf",
+      "chunk_size": 499,
+      "source_name": "第十五届大赛获奖名单-20250604.pdf",
       "doc_id": 66
     }
   },
   {
-    "text": "API密钥 DEEPSEEK_API_KEY  \"your-actual-api-key-here\" 4. 启动程序  方法1使用桌面快捷方式  双击桌面上的\"银河麒麟智能问答助手\"图标  方法2使用命令行 kylin-qa  方法3启动系统服务 sudo systemctl start kylin-qa 法动安装 1. 环境准备  更新系统包 sudo apt update sudo apt upgrade -y  安装Python和pip如果未安装 --- 第3页 --- sudo apt install python3 python3-pip python3-venv -y  安装系统依赖 sudo apt install python3-tk python3-dev build-essential -y  安装麒麟SDK开发包如果可用 sudo apt install libkysdk-dev -y 2. 下载项 git clone https:github.comyour-usernamekylin-qa-assistant.",
+    "text": "三等奖 382 中国人民警察大学 刘紫怡 三等奖 383 中央民族大学 张雅雯 三等奖 384 重庆科技大学 杨铠荣 三等奖 385 重庆科技大学 傅晨 三等奖 386 重庆科技大学 郑妤桐 三等奖 387 重庆文理学院 梁坤 三等奖 388 重庆文理学院 杨淋淇 三等奖 389 重庆文理学院 谭莤 三等奖 390 重庆文理学院 冯靖媛 三等奖 391 重庆文理学院 王飞鸿 三等奖 392 重庆文理学院 兰华胜 三等奖 393 重庆文理学院 陈娜 三等奖 394 重庆文理学院 唐垚鑫 三等奖 395 重庆文理学院 赵粟涵 三等奖 --- 第30页 --- 第十五届全国大学生计算机应用能力与数字素养大赛信息技术基础赛道获奖名单 30  69 WPS AI 智能办公赛项 高职组 序号 学校名称 姓名 奖项 1 保定职业技术学院 吴明旺 一等奖 2 保定职业技术学院 刘禹萱 一等奖 3 保定职业技术学院 杨满玉 一等奖 4 北京工业职业技术学院 贾梦泽 一等奖 5 湖北中医药高等专科学校 单佳仪 一等奖 6 火箭军士官学校 方修治 一等奖 7 火箭军士官学校 于海航 一等奖 8 江苏联合职业",
     "metadata": {
-      "source": "银河麒麟智能问答助手 v2.5.pdf",
-      "chunk_id": 2,
-      "total_chunks": 14,
+      "source": "第十五届大赛获奖名单-20250604.pdf",
+      "chunk_id": 53,
+      "total_chunks": 117,
       "file_type": ".pdf",
-      "chunk_size": 475,
-      "source_name": "银河麒麟智能问答助手 v2.5.pdf",
+      "chunk_size": 500,
+      "source_name": "第十五届大赛获奖名单-20250604.pdf",
       "doc_id": 67
     }
   },
   {
-    "text": "git cd kylin-qa-assistant 3. 创建虚拟环境推荐  创建虚拟环境 python3 -m venv venv  激活虚拟环境 source venvbinactivate 4. 安装 Python 依赖  升级pip pip install --upgrade pip  安装项目依赖 pip install -r requirements.txt 5. 配置程序  复制配置文件 cp config.py config.py.bak  编辑配置文件 nano config.py  修改API密钥  DEEPSEEK_API_KEY  \"your-actual-api-key-here\" 6. 创建必要录 mkdir -p data docs logs assets 7. 运程序  启动图形界面 python3 main.py --- 第4页 ---  或使用启动脚本 .run.sh  获取 DeepSeek API 密钥 1. 访问 DeepSeek 官 2. 注册账号并登录 3. 进 API 管理 4. 创建新的 API 密钥 5.",
+    "text": "技术学院灌南中专办学点 徐智麒 一等奖 9 江苏省连云港中医药高等职业技术学校 张文妍 一等奖 10 江西生物科技职业学院 邱诗倩 一等奖 11 科尔沁艺术职业学院 刘倡硕 一等奖 12 空军工程大学航空机务士官学校 曹朕瑄 一等奖 13 空军工程大学航空机务士官学校 康海栓 一等奖 14 空军工程大学航空机务士官学校 汪家奇 一等奖 15 空军工程大学航空机务士官学校 周行武 一等奖 16 陆军军医大学士官学校 邱译湘 一等奖 17 陆军军医大学士官学校 徐国栋 一等奖 18 陆军军医大学士官学校 罗云彤 一等奖 19 陆军军医大学士官学校 俞璐璐 一等奖 20 陆军军医大学士官学校 韩鑫汇 一等奖 21 陆军军医大学士官学校 田懋盛 一等奖 22 内蒙古建筑职业技术学院 渠文佳 一等奖 23 石家庄信息工程职业学院 牛帅博 一等奖 24 石家庄信息工程职业学院 白倩晴 一等奖 25 石家庄信息工程职业学院 秦嗣岩 一等奖 26 四川铁道职业学院 罗亮 一等奖 27 四川铁道职业学院 龚奕畅 一等奖 28 天津滨海职业学院 毛诗雨 一等奖 29 武汉船舶职业技术学院 邹一樊 一等奖",
     "metadata": {
-      "source": "银河麒麟智能问答助手 v2.5.pdf",
-      "chunk_id": 3,
-      "total_chunks": 14,
+      "source": "第十五届大赛获奖名单-20250604.pdf",
+      "chunk_id": 54,
+      "total_chunks": 117,
       "file_type": ".pdf",
-      "chunk_size": 485,
-      "source_name": "银河麒麟智能问答助手 v2.5.pdf",
+      "chunk_size": 499,
+      "source_name": "第十五届大赛获奖名单-20250604.pdf",
       "doc_id": 68
     }
   },
   {
-    "text": "复制密钥并填配置件 注意: 请妥善保管您的 API 密钥不要泄露给他  使指南 次使 1. 启动程序  命令行启动 kylin-qa  或双击桌面图标 2. 添加档 点击 \" 添加档 \" 按钮 选择您要添加的档件 持格式 PDF  Markdown  TXT  Word 等 等待档处理完成 3. 开始问答 在问题输框中输您的问题 可选择是否包含系统信息 点击 \" 提问 \" 或按回键 查看 AI 成的回答 常功能 档管理 添加档: 持批量添加多个档 查看状态: 实时显知识库中的档数量 清空知识库: 键清空所有档谨慎操作 --- 第5页 --- 智能问答 普通问答: 基于档内容回答问题 系统问答: 结合当前系统信息回答 相关档: 显回答所参考的档来源 系统信息 查看系统状态: 点击 \" 系统信息 \" 按钮 硬件信息: CPU 内存磁盘等信息 络状态: 络配置和连接状态 进程信息: 系统负载和进程统计  级配置 配置件说明 主要配置项位于 config.",
+    "text": "30 武汉软件工程职业学院 谢智天 一等奖 31 武汉市智工职业技术学校 刘子奥 一等奖 32 烟台工程职业技术学院 李成真 一等奖 33 浙江艺术职业学院 黄萌姚 一等奖 34 重庆工商职业学院 李雨婷 一等奖 35 重庆工商职业学院 庞清凤 一等奖 36 保定职业技术学院 代盛同 二等奖 37 北京工业职业技术学院 宗浩宇 二等奖 38 北京工业职业技术学院 谭瑀晴 二等奖 --- 第31页 --- 第十五届全国大学生计算机应用能力与数字素养大赛信息技术基础赛道获奖名单 31  69 序号 学校名称 姓名 奖项 39 北京工业职业技术学院 王佳瑶 二等奖 40 渤海船舶职业学院 于磊 二等奖 41 大连东软信息学院 徐子雯 二等奖 42 大连东软信息学院 宫欣宇 二等奖 43 东莞职业技术学院 邓千慧 二等奖 44 东莞职业技术学院 黄琳钧 二等奖 45 东莞职业技术学院 邝晓茹 二等奖 46 鄂尔多斯职业学院 王智奇 二等奖 47 河北青年管理干部学院 田晶晶 二等奖 48 河北青年管理干部学院 范梦冉 二等奖 49 河南机电职业学院 张义 二等奖 50 河南机电职业学院 张豪爽",
     "metadata": {
-      "source": "银河麒麟智能问答助手 v2.5.pdf",
-      "chunk_id": 4,
-      "total_chunks": 14,
+      "source": "第十五届大赛获奖名单-20250604.pdf",
+      "chunk_id": 55,
+      "total_chunks": 117,
       "file_type": ".pdf",
-      "chunk_size": 430,
-      "source_name": "银河麒麟智能问答助手 v2.5.pdf",
+      "chunk_size": 500,
+      "source_name": "第十五届大赛获奖名单-20250604.pdf",
       "doc_id": 69
     }
   },
   {
-    "text": "EK_API_KEY  \"your-api-key\"  必须配置 DEEPSEEK_API_ENDPOINT  \"https:api.deepseek.comv1chatcompletions\"  文档路径 DOCUMENT_PATH  \".docs\"  文档存储路径 VECTOR_DB_PATH  \".datavector_db\"  向量数据库路径  RAG配置 RAG_CONFIG  { \"top_k\": 5,  检索文档数量 \"similarity_threshold\": 0.7,  相似度阈值 \"max_context_length\": 2000,  最大上下文长度 \"temperature\": 0.",
+    "text": "二等奖 51 河南机电职业学院 殷雪亮 二等奖 52 河南机电职业学院 黎宜豪 二等奖 53 河南机电职业学院 李自豪 二等奖 54 河南机电职业学院 田智博 二等奖 55 河南机电职业学院 张颂扬 二等奖 56 火箭军士官学校 金少坤 二等奖 57 火箭军士官学校 张涵俊 二等奖 58 火箭军士官学校 方金龙 二等奖 59 江苏联合职业技术学院灌南中专办学点 封雨泽 二等奖 60 江苏联合职业技术学院灌南中专办学点 李凯峰 二等奖 61 江苏联合职业技术学院灌南中专办学点 陈尚峰 二等奖 62 江苏食品药品职业技术学院 王璐瑶 二等奖 63 江苏食品药品职业技术学院 马颢天 二等奖 64 江西生物科技职业学院 纪梦缘 二等奖 65 空军工程大学航空机务士官学校 喻斌 二等奖 66 空军工程大学航空机务士官学校 付强 二等奖 67 空军工程大学航空机务士官学校 邢浩雨 二等奖 68 辽宁医药职业学院 郭晓晓 二等奖 69 陆军军医大学士官学校 金琪 二等奖 70 陆军军医大学士官学校 马兆兵 二等奖 71 陆军军医大学士官学校 王爱蕊 二等奖 72 陆军军医大学士官学校 张清瑞 二等",
     "metadata": {
-      "source": "银河麒麟智能问答助手 v2.5.pdf",
-      "chunk_id": 5,
-      "total_chunks": 14,
+      "source": "第十五届大赛获奖名单-20250604.pdf",
+      "chunk_id": 56,
+      "total_chunks": 117,
       "file_type": ".pdf",
-      "chunk_size": 308,
-      "source_name": "银河麒麟智能问答助手 v2.5.pdf",
+      "chunk_size": 499,
+      "source_name": "第十五届大赛获奖名单-20250604.pdf",
       "doc_id": 70
     }
   },
   {
-    "text": "atch_size\": 32  批处理大小 } 系统服务管理 --- 第6页 ---  查看服务状态 sudo systemctl status kylin-qa  启动服务 sudo systemctl start kylin-qa  停止服务 sudo systemctl stop kylin-qa  重启服务 sudo systemctl restart kylin-qa  开机自启 sudo systemctl enable kylin-qa  禁用自启 sudo systemctl disable kylin-qa  查看服务日志 journalctl -u kylin-qa -f  项结构 kylin-qa-assistant  main.py  主程序入口  config.py  配置文件  requirements.txt  Python依赖  README.md  项目说明  run.sh  Linux启动脚本  install.sh  安装脚本  uninstall.sh  卸载脚本  kylin-qa.",
+    "text": "奖 73 陆军军医大学士官学校 王玉莹 二等奖 74 陆军军医大学士官学校 李爽 二等奖 75 陆军军医大学士官学校 王星乙 二等奖 76 陆军军医大学士官学校 薛心蕊 二等奖 77 陆军军医大学士官学校 郭浩楠 二等奖 78 上海出版印刷高等专科学校 龚丽莎 二等奖 79 石家庄信息工程职业学院 石明智 二等奖 --- 第32页 --- 第十五届全国大学生计算机应用能力与数字素养大赛信息技术基础赛道获奖名单 32  69 序号 学校名称 姓名 奖项 80 石家庄信息工程职业学院 王翊名 二等奖 81 石家庄信息工程职业学院 冀佳豪 二等奖 82 四川铁道职业学院 赵雷 二等奖 83 四川铁道职业学院 杨小华 二等奖 84 四川铁道职业学院 李京豪 二等奖 85 嵩山少林武术职业学院 李昱璨 二等奖 86 嵩山少林武术职业学院 高美静 二等奖 87 天津滨海职业学院 苟美玲 二等奖 88 天津滨海职业学院 林京京 二等奖 89 天津滨海职业学院 郭一瑶 二等奖 90 通信士官学校 武佳兆 二等奖 91 通信士官学校 徐铭 二等奖 92 通信士官学校 李宗浩 二等奖 93 通信士官学校",
     "metadata": {
-      "source": "银河麒麟智能问答助手 v2.5.pdf",
-      "chunk_id": 6,
-      "total_chunks": 14,
+      "source": "第十五届大赛获奖名单-20250604.pdf",
+      "chunk_id": 57,
+      "total_chunks": 117,
       "file_type": ".pdf",
-      "chunk_size": 469,
-      "source_name": "银河麒麟智能问答助手 v2.5.pdf",
+      "chunk_size": 499,
+      "source_name": "第十五届大赛获奖名单-20250604.pdf",
       "doc_id": 71
     }
   },
   {
-    "text": "service  系统服务配置  src  源代码目录   ai_models.py  AI模型接口   vector_store.py  向量存储   rag_engine.py  RAG引擎   gui.py  图形界面   document_processor.py  文档处理   system_info_helper.py  系统信息  data  数据目录   vector_db  向量数据库  docs  文档目录  logs  日志目录 --- 第7页 ---   app.log  应用日志  assets  资源目录  持的档格式 格式 扩展名 说明 PDF 档 .pdf 持本提取和 OCR Markdown .md 完整的 Markdown 语法持 本档 .txt 纯本件 reStructuredText .rst 技术档格式 Word 档 .doc, .docx Microsoft Word 档 HTML 档 .html, .htm 档  故障排除 常问题及解决案 1.",
+    "text": "王晓倩 二等奖 94 通信士官学校 王珂欣 二等奖 95 通信士官学校 肖云春 二等奖 96 通信士官学校 李嘉欣 二等奖 97 武汉船舶职业技术学院 王魏 二等奖 98 武汉船舶职业技术学院 任宇森 二等奖 99 武汉船舶职业技术学院 易光宇 二等奖 100 武汉市智工职业技术学校 刘嘉琦 二等奖 101 武汉市智工职业技术学校 熊梦瑶 二等奖 102 武汉市智工职业技术学校 曾天艳 二等奖 103 西安海棠职业学院 刘小玉 二等奖 104 新疆农业职业技术大学 廖兰兰 二等奖 105 烟台工程职业技术学院 文淑雅 二等奖 106 烟台文化旅游职业学院 王子玄 二等奖 107 浙江艺术职业学院 潘思静 二等奖 108 浙江艺术职业学院 程歆晨艺 二等奖 109 重庆工商职业学院 周怡雯 二等奖 110 重庆工商职业学院 李俊烯 二等奖 111 重庆工商职业学院 余鑫怡 二等奖 112 重庆工商职业学院 张春 二等奖 113 重庆工商职业学院 刘明强 二等奖 114 重庆医药高等专科学校 李梦媛 二等奖 115 重庆医药高等专科学校 田永胜 二等奖 116 重庆医药高等专科学校 黄湘",
     "metadata": {
-      "source": "银河麒麟智能问答助手 v2.5.pdf",
-      "chunk_id": 7,
-      "total_chunks": 14,
+      "source": "第十五届大赛获奖名单-20250604.pdf",
+      "chunk_id": 58,
+      "total_chunks": 117,
       "file_type": ".pdf",
-      "chunk_size": 451,
-      "source_name": "银河麒麟智能问答助手 v2.5.pdf",
+      "chunk_size": 499,
+      "source_name": "第十五届大赛获奖名单-20250604.pdf",
       "doc_id": 72
     }
   },
   {
-    "text": "程序法启动 问题: 运程序时出现错误 解决案:  检查Python版本 python3 --version  检查依赖是否安装完整 pip3 list  grep -E \"numpyscikit-learnrequests\"  重新安装依赖 pip3 install -r requirements.txt --force-reinstall  查看详细错误信息 python3 main.py --debug 2. API 调失败 问题: DeepSeek API 调失败 解决案:  检查网络连接 ping api.deepseek.com --- 第8页 ---  验证API密钥 curl -H \"Authorization: Bearer your-api-key\"  https:api.deepseek.comv1models  检查API额度  登录DeepSeek控制台查看使用情况 3. 麒麟 SDK 库加载失败 问题: 系统信息功能不可 解决案:  检查SDK库是否存在 ls -la usrliblibkysysinfo.",
+    "text": "二等奖 117 北京工业职业技术学院 朱仪 三等奖 118 北京工业职业技术学院 鲍语馨 三等奖 119 北京工业职业技术学院 宋伊诺 三等奖 120 北京工业职业技术学院 李鑫 三等奖 --- 第33页 --- 第十五届全国大学生计算机应用能力与数字素养大赛信息技术基础赛道获奖名单 33  69 序号 学校名称 姓名 奖项 121 渤海船舶职业学院 叶得辉 三等奖 122 渤海船舶职业学院 顾玉胜 三等奖 123 渤海船舶职业学院 高萌萌 三等奖 124 渤海船舶职业学院 尹潇琪 三等奖 125 大连东软信息学院 王春莹 三等奖 126 大连东软信息学院 李彦慧 三等奖 127 大连东软信息学院 王皓 三等奖 128 大连东软信息学院 陈旭阳 三等奖 129 大连东软信息学院 孟宪尧 三等奖 130 电子科技大学成都学院 李金华 三等奖 131 河南机电职业学院 常馨悦 三等奖 132 河南机电职业学院 朱丰田 三等奖 133 河南机电职业学院 潘丹丹 三等奖 134 河南机电职业学院 郭岚欣 三等奖 135 河南机电职业学院 乔明磊 三等奖 136 河南机电职业学院 王毅博 三等奖",
     "metadata": {
-      "source": "银河麒麟智能问答助手 v2.5.pdf",
-      "chunk_id": 8,
-      "total_chunks": 14,
+      "source": "第十五届大赛获奖名单-20250604.pdf",
+      "chunk_id": 59,
+      "total_chunks": 117,
       "file_type": ".pdf",
-      "chunk_size": 473,
-      "source_name": "银河麒麟智能问答助手 v2.5.pdf",
+      "chunk_size": 500,
+      "source_name": "第十五届大赛获奖名单-20250604.pdf",
       "doc_id": 73
     }
   },
   {
-    "text": "so  安装麒麟SDK开发包 sudo apt install libkysdk-dev  检查库文件权限 sudo chmod 755 usrliblibkysysinfo.so 4. 档处理失败 问题: 法处理某些档格式 解决案:  安装额外的文档处理库 pip3 install pdfplumber python-docx  检查文件权限 ls -la your-document.pdf  尝试转换文档格式  PDF - TXT: pdftotext document.pdf 5. GUI 界问题 问题: 图形界法显 解决案:  检查显示环境 echo DISPLAY  安装tkinter --- 第9页 --- sudo apt install python3-tk  使用X11转发SSH连接时 ssh -X usernamehostname 志查看  查看应用日志 tail -f logsapp.log  查看系统服务日志 journalctl -u kylin-qa -f  查看详细调试信息 python3 main.py --debug 性能优化建议 1.",
+    "text": "137 河南机电职业学院 任子豪 三等奖 138 河南机电职业学院 张夏欣 三等奖 139 河南机电职业学院 赵硕 三等奖 140 河南机电职业学院 谢佳润 三等奖 141 河南机电职业学院 李富豪 三等奖 142 河南机电职业学院 谭岩冲 三等奖 143 湖北中医药高等专科学校 张冰霞 三等奖 144 湖北中医药高等专科学校 张圆圆 三等奖 145 湖北中医药高等专科学校 宋锦涵 三等奖 146 湖北中医药高等专科学校 陈凤玲 三等奖 147 火箭军士官学校 徐晨兵 三等奖 148 江门职业技术学院 曾俊龙 三等奖 149 江门职业技术学院 陈玉莹 三等奖 150 江门职业技术学院 谢蓝宜 三等奖 151 江苏联合职业技术学院灌南中专办学点 陈思宇 三等奖 152 江苏联合职业技术学院灌南中专办学点 马群智 三等奖 153 江苏联合职业技术学院灌南中专办学点 朱子瑞 三等奖 154 江苏联合职业技术学院陶都中专办学点 慕昱旭 三等奖 155 江苏省连云港中医药高等职业技术学校 刘紫彤 三等奖 156 江苏省连云港中医药高等职业技术学校 王婷婷 三等奖 157 江苏省连云港中医药高等",
     "metadata": {
-      "source": "银河麒麟智能问答助手 v2.5.pdf",
-      "chunk_id": 9,
-      "total_chunks": 14,
+      "source": "第十五届大赛获奖名单-20250604.pdf",
+      "chunk_id": 60,
+      "total_chunks": 117,
       "file_type": ".pdf",
-      "chunk_size": 492,
-      "source_name": "银河麒麟智能问答助手 v2.5.pdf",
+      "chunk_size": 499,
+      "source_name": "第十五届大赛获奖名单-20250604.pdf",
       "doc_id": 74
     }
   },
   {
-    "text": "内存优化 适当调整 PERFORMANCE_CONFIG 中的参数 定期清理向量数据库 限制同时处理的档数量 2. 络优化 使国内 API 镜像如果可 调整 API 请求超时时间 启请求缓存 3. 存储优化 定期清理志件 压缩型档 使 SSD 存储提升性能  更新升级 检查更新  检查远程更新 git fetch origin git status  查看更新内容 git log HEAD..originmain --oneline 升级程序 --- 第10页 ---  备份配置 cp config.py config.py.backup  拉取最新代码 git pull origin main  更新依赖 pip3 install -r requirements.txt --upgrade  重启服务 sudo systemctl restart kylin-qa 版本回退  查看版本历史 git log --oneline  回退到指定版本 git checkout commit-hash  恢复配置 cp config.py.backup config.",
+    "text": "职业技术学校 王亦涵 三等奖 158 科尔沁艺术职业学院 徐雅楠 三等奖 159 科尔沁艺术职业学院 吴燕林 三等奖 160 南宁职业技术大学 黄崇伟 三等奖 161 南宁职业技术大学 廖接莲 三等奖 --- 第34页 --- 第十五届全国大学生计算机应用能力与数字素养大赛信息技术基础赛道获奖名单 34  69 序号 学校名称 姓名 奖项 162 南阳医学高等专科学校 陈茹 三等奖 163 南阳医学高等专科学校 尼亚婷 三等奖 164 南阳医学高等专科学校 黄晓寒 三等奖 165 山东现代学院 殷璇 三等奖 166 上海出版印刷高等专科学校 王宸彦 三等奖 167 上海出版印刷高等专科学校 郭岚欣 三等奖 168 嵩山少林武术职业学院 徐晨皓 三等奖 169 嵩山少林武术职业学院 曹振恒 三等奖 170 天津滨海职业学院 宋梦晗 三等奖 171 天津滨海职业学院 林惠忠 三等奖 172 天津滨海职业学院 郝靖怡 三等奖 173 天津滨海职业学院 郭文静 三等奖 174 通信士官学校 王莹 三等奖 175 通信士官学校 朱雨茜 三等奖 176 通信士官学校 陈明长 三等奖 177 通信士",
     "metadata": {
-      "source": "银河麒麟智能问答助手 v2.5.pdf",
-      "chunk_id": 10,
-      "total_chunks": 14,
+      "source": "第十五届大赛获奖名单-20250604.pdf",
+      "chunk_id": 61,
+      "total_chunks": 117,
       "file_type": ".pdf",
-      "chunk_size": 487,
-      "source_name": "银河麒麟智能问答助手 v2.5.pdf",
+      "chunk_size": 500,
+      "source_name": "第十五届大赛获奖名单-20250604.pdf",
       "doc_id": 75
     }
   },
   {
-    "text": "py  卸载程序  运行卸载脚本 sudo .uninstall.sh  手动清理如果需要 sudo rm -rf optkylin-qa-assistant sudo rm -f etcsystemdsystemkylin-qa.service sudo rm -f usrlocalbinkylin-qa rm -f Desktopkylin-qa.desktop  许可证 本项采 MIT 许可证 - 查看 LICENSE 件了解详情  贡献 欢迎提交 Issue 和 Pull Request 来改进项 贡献指南 1. Fork 项 2. 创建特性分 (git checkout -b featureAmazingFeature) --- 第11页 --- 3. 提交更改 (git commit -m 'Add some AmazingFeature') 4. 推送到分 (git push origin featureAmazingFeature) 5. 开启 Pull Request 开发环境搭建  克隆开发版本 git clone https:github.",
+    "text": "官学校 谭顺 三等奖 178 通信士官学校 魏帝升 三等奖 179 通信士官学校 马国策 三等奖 180 通信士官学校 陈子仪 三等奖 181 通信士官学校 郭健洋 三等奖 182 通信士官学校 林宁宁 三等奖 183 通信士官学校 周宇 三等奖 184 乌鲁木齐经济技术开发区头屯河区新华 智原互联网职业培训学校有限公司 张靖茹 三等奖 185 武汉市智工职业技术学校 代雨摇 三等奖 186 武汉市智工职业技术学校 甘清阳 三等奖 187 武汉市智工职业技术学校 潘思雨 三等奖 188 武汉市智工职业技术学校 翁紫嫣 三等奖 189 武汉市智工职业技术学校 柳庆秋 三等奖 190 武汉市智工职业技术学校 袁圣杰 三等奖 191 武汉市智工职业技术学校 张余浩 三等奖 192 武汉市智工职业技术学校 彭静婷 三等奖 193 武汉市智工职业技术学校 魏炎 三等奖 194 锡林郭勒职业学院 郝建辉 三等奖 195 新疆农业职业技术大学 杨美菱 三等奖 196 新疆农业职业技术大学 唐努尔沙 恩得克 三等奖 197 新疆农业职业技术大学 地丽努尔阿 布都克热木 三等奖 198 徐州工业职业技术",
     "metadata": {
-      "source": "银河麒麟智能问答助手 v2.5.pdf",
-      "chunk_id": 11,
-      "total_chunks": 14,
+      "source": "第十五届大赛获奖名单-20250604.pdf",
+      "chunk_id": 62,
+      "total_chunks": 117,
       "file_type": ".pdf",
-      "chunk_size": 488,
-      "source_name": "银河麒麟智能问答助手 v2.5.pdf",
+      "chunk_size": 500,
+      "source_name": "第十五届大赛获奖名单-20250604.pdf",
       "doc_id": 76
     }
   },
   {
-    "text": "comyour-usernamekylin-qa-assistant.git cd kylin-qa-assistant  创建开发环境 python3 -m venv dev-env source dev-envbinactivate  安装开发依赖 pip install -r requirements.txt pip install pytest black flake8  开发工具  运行测试 pytest tests  代码格式化 black src  代码检查 flake8 src  持与反馈 如果您在使过程中遇到问题请 1. 查看档: 先查看本 README 和相关档 2. 搜索问题: 在 Issues 搜索类似问题 3. 提交 Issue: 如果没有找到解决案请提交新的 Issue 4. 联系开发者: 通过邮件或其他式联系项维护者 Issue 提交模板 提交 Issue 时请包含以下信息 环境信息 - 操作系统: 银河麒麟 V10 SP3 - Python版本: 3.8.10 - 程序版本: v2.5.",
+    "text": "学院 崇欣悦 三等奖 199 徐州工业职业技术学院 竺于蓝 三等奖 --- 第35页 --- 第十五届全国大学生计算机应用能力与数字素养大赛信息技术基础赛道获奖名单 35  69 序号 学校名称 姓名 奖项 200 徐州工业职业技术学院 王婷婷 三等奖 201 徐州工业职业技术学院 林杉杉 三等奖 202 徐州工业职业技术学院 陆梦琳 三等奖 203 烟台文化旅游职业学院 孙健连 三等奖 204 烟台文化旅游职业学院 魏梦慧 三等奖 205 烟台文化旅游职业学院 杨妍 三等奖 206 烟台文化旅游职业学院 孟舒怡 三等奖 207 烟台文化旅游职业学院 王凤聪 三等奖 208 烟台文化旅游职业学院 刘子慧 三等奖 209 烟台文化旅游职业学院 周俐彤 三等奖 210 云南民族大学 王奕瑾 三等奖 211 长江职业学院 周盛 三等奖 212 长江职业学院 何闻胜 三等奖 213 浙江艺术职业学院 萧晗妍 三等奖 214 浙江艺术职业学院 温庆宝 三等奖 215 郑州智能科技职业学院 张悦悦 三等奖 216 郑州智能科技职业学院 许煜涵 三等奖 217 郑州智能科技职业学院 李迦南 三等奖",
     "metadata": {
-      "source": "银河麒麟智能问答助手 v2.5.pdf",
-      "chunk_id": 12,
-      "total_chunks": 14,
+      "source": "第十五届大赛获奖名单-20250604.pdf",
+      "chunk_id": 63,
+      "total_chunks": 117,
       "file_type": ".pdf",
-      "chunk_size": 466,
-      "source_name": "银河麒麟智能问答助手 v2.5.pdf",
+      "chunk_size": 499,
+      "source_name": "第十五届大赛获奖名单-20250604.pdf",
       "doc_id": 77
     }
   },
   {
-    "text": "0 --- 第12页 --- 问题描述 简要描述遇到的问题 复现步骤 1. 执行了什么操作 2. 期望的结果 3. 实际的结果 错误信息 粘贴完整的错误信息或志 截图 如果有GUI相关问题请提供截图  更新志 v2.5.0 ( 当前版本 )  集成 DeepSeek-R1 API  持麒麟 SDK2.5  优化 RAG 检索算法  改进 GUI 界体验  增强系统兼容性  添加键安装脚本  完善档和使指南  修复档处理 bug  优化内存使  改进错误处理 未来计划  持更多 AI 模型  添加语交互功能  持多语界  增加插件系统  优化性能和稳定性 银河麒麟智能问答助 - 让 AI 助您的麒麟系统使体验  如果这个项对您有帮助请给我们个 Star",
+    "text": "218 郑州智能科技职业学院 朱镁洁 三等奖 219 重庆城市管理职业学院 赖晓琴 三等奖 220 重庆城市管理职业学院 龚小芸 三等奖 221 重庆工商职业学院 田雨菲 三等奖 222 重庆医药高等专科学校 刘子涵 三等奖 223 重庆医药高等专科学校 张洪琴 三等奖 224 重庆医药高等专科学校 刘佳伶 三等奖 225 重庆医药高等专科学校 蔡玲 三等奖 226 重庆医药高等专科学校 冯徐 三等奖 227 重庆医药高等专科学校 刘雨 三等奖 228 重庆医药高等专科学校 尹佩雯 三等奖 229 重庆医药高等专科学校 柯贤婷 三等奖 230 重庆医药高等专科学校 肖梦黎 三等奖 231 重庆医药高等专科学校 谭莉霄 三等奖 --- 第36页 --- 第十五届全国大学生计算机应用能力与数字素养大赛信息技术基础赛道获奖名单 36  69 Microsoft Office 智能办公赛项 本科组 序号 学校名称 姓名 奖项 1 北华航天工业学院 王盼 一等奖 2 北京语言大学 卢玥蓥 一等奖 3 北京语言大学 李天艺 一等奖 4 北京语言大学 官秀玲 一等奖 5 北京语言大学 张珅 一等奖",
     "metadata": {
-      "source": "银河麒麟智能问答助手 v2.5.pdf",
-      "chunk_id": 13,
-      "total_chunks": 14,
+      "source": "第十五届大赛获奖名单-20250604.pdf",
+      "chunk_id": 64,
+      "total_chunks": 117,
       "file_type": ".pdf",
-      "chunk_size": 329,
-      "source_name": "银河麒麟智能问答助手 v2.5.pdf",
+      "chunk_size": 499,
+      "source_name": "第十五届大赛获奖名单-20250604.pdf",
       "doc_id": 78
     }
   },
   {
-    "text": "--- 第1页 --- 银河麒麟智能问答助 v2.5 银河麒麟智能问答助 v2.5 基于 DeepSeek-R1 API 和麒麟 SDK2.5 的智能问答系统专为银河麒麟操作系统设计  功能特性 智能问答: 基于 RAG( 检索增强成 ) 技术结合本地档知识库和 AI 模型 档处理: 持 PDF  Markdown 本等多种格式档 系统集成: 深度集成麒麟 SDK2.5 获取系统信息和硬件状态 图形界: 友好的 GUI 界持档管理和实时问答 多架构持: 持 x86_64 和 ARM64 架构  系统要求 推荐环境 操作系统: 银河麒麟 V10 SP1SP2SP3 或更版本 Python 版本: Python 3.7 ( 推荐 Python 3.8) 内存: 4GB 以上 ( 推荐 8GB) 存储: 2GB 可空间 络: 需要互联连接访问 DeepSeek API 必需依赖 麒麟 SDK2.5 开发库 DeepSeek API 访问权限 Python 第三库 requirements.txt   快速安装指南 法键安装推荐 1.",
+    "text": "6 成都东软学院 毛春生 一等奖 7 成都东软学院 唐克钦 一等奖 8 成都东软学院 王振炎 一等奖 9 成都东软学院 官海霞 一等奖 10 成都东软学院 袁佳欣 一等奖 11 成都东软学院 陈泰旭 一等奖 12 成都东软学院 何金梅 一等奖 13 成都东软学院 陶书荣 一等奖 14 成都东软学院 窦子扬 一等奖 15 承德医学院 武月静 一等奖 16 承德医学院 李雯 一等奖 17 广东金融学院 陈泽雯 一等奖 18 哈尔滨广厦学院 董恩宁 一等奖 19 哈尔滨广厦学院 陈雨 一等奖 20 哈尔滨广厦学院 杨雨婷 一等奖 21 哈尔滨广厦学院 蒋汶彤 一等奖 22 杭州师范大学 施涵 一等奖 23 湖北汽车工业学院 杨杏杏 一等奖 24 湖北汽车工业学院科技学院 宋先郴 一等奖 25 湖北汽车工业学院科技学院 潘红进 一等奖 26 辽宁石油化工大学 姜欣坤 一等奖 27 陆军步兵学院 陈康平 一等奖 28 闽南理工学院 邱欣悦 一等奖 29 南阳理工学院 安家 一等奖 30 内蒙古大学创业学院 欧阳绍炜 一等奖 31 宁夏师范大学 杨婷婷 一等奖 32 宁夏医科大学 宋俊苇 一等奖",
     "metadata": {
-      "source": "银河麒麟智能问答助手 v2.5.pdf",
-      "chunk_id": 0,
-      "total_chunks": 14,
+      "source": "第十五届大赛获奖名单-20250604.pdf",
+      "chunk_id": 65,
+      "total_chunks": 117,
       "file_type": ".pdf",
-      "chunk_size": 470,
-      "source_name": "银河麒麟智能问答助手 v2.5.pdf",
+      "chunk_size": 499,
+      "source_name": "第十五届大赛获奖名单-20250604.pdf",
       "doc_id": 79
     }
   },
   {
-    "text": "下载项  使用git克隆推荐 git clone https:github.comyour-usernamekylin-qa-assistant.git cd kylin-qa-assistant  或者下载ZIP包并解压 wget https:github.comyour-usernamekylin-qa-assistantarchivemain.zip --- 第2页 --- unzip main.zip cd kylin-qa-assistant-main 2. 运安装脚本  给安装脚本执行权限 chmod x install.sh  运行安装脚本需要sudo权限 sudo .install.sh 安装脚本将动完成以下操作  检查系统兼容性  安装 Python 依赖包  配置系统服务  创建桌快捷式  设置命令快捷式 3. 配置 API 密钥  编辑配置文件 sudo nano optkylin-qa-assistantconfig.",
+    "text": "33 宁夏医科大学 连嘉灿 一等奖 34 莆田学院 郑钰蕊 一等奖 35 莆田学院 蔡承凌 一等奖 36 莆田学院 陈方文 一等奖 37 莆田学院 洪晓辉 一等奖 38 厦门理工学院 陈嘉福 一等奖 --- 第37页 --- 第十五届全国大学生计算机应用能力与数字素养大赛信息技术基础赛道获奖名单 37  69 序号 学校名称 姓名 奖项 39 厦门理工学院 潘嘉磊 一等奖 40 首都经济贸易大学 吴思思 一等奖 41 首都经济贸易大学 刘珺辄 一等奖 42 首都经济贸易大学 王敏瑄 一等奖 43 四川旅游学院 刘方琴 一等奖 44 西南交通大学希望学院 陈曦 一等奖 45 西南交通大学希望学院 吴茵茵 一等奖 46 盐城工学院 余春莹 一等奖 47 盐城工学院 王舒 一等奖 48 浙江师范大学 蒋思杭 一等奖 49 浙江师范大学 张玮宸 一等奖 50 浙江师范大学 陈佳怡 一等奖 51 浙江师范大学 王晶琳 一等奖 52 浙江师范大学 毛丝丝 一等奖 53 浙江师范大学 王舒语 一等奖 54 中国石油大学北京克拉玛依校区 华镜博 一等奖 55 重庆文理学院 张齐敏 一等奖 56 重庆文",
     "metadata": {
-      "source": "银河麒麟智能问答助手 v2.5.pdf",
-      "chunk_id": 1,
-      "total_chunks": 14,
+      "source": "第十五届大赛获奖名单-20250604.pdf",
+      "chunk_id": 66,
+      "total_chunks": 117,
       "file_type": ".pdf",
-      "chunk_size": 427,
-      "source_name": "银河麒麟智能问答助手 v2.5.pdf",
+      "chunk_size": 500,
+      "source_name": "第十五届大赛获奖名单-20250604.pdf",
       "doc_id": 80
     }
   },
   {
-    "text": "API密钥 DEEPSEEK_API_KEY  \"your-actual-api-key-here\" 4. 启动程序  方法1使用桌面快捷方式  双击桌面上的\"银河麒麟智能问答助手\"图标  方法2使用命令行 kylin-qa  方法3启动系统服务 sudo systemctl start kylin-qa 法动安装 1. 环境准备  更新系统包 sudo apt update sudo apt upgrade -y  安装Python和pip如果未安装 --- 第3页 --- sudo apt install python3 python3-pip python3-venv -y  安装系统依赖 sudo apt install python3-tk python3-dev build-essential -y  安装麒麟SDK开发包如果可用 sudo apt install libkysdk-dev -y 2. 下载项 git clone https:github.comyour-usernamekylin-qa-assistant.",
+    "text": "理学院 蔡双双 一等奖 57 重庆文理学院 邓智法 一等奖 58 安徽大学 张恒华 二等奖 59 安徽大学 洪瀚博 二等奖 60 北华航天工业学院 周裕泰 二等奖 61 北华航天工业学院 孙浩男 二等奖 62 北华航天工业学院 俞费儿 二等奖 63 北华航天工业学院 王月萌 二等奖 64 北京城市学院 赵欣宇 二等奖 65 北京城市学院 何昕泽 二等奖 66 北京城市学院 张梦琪 二等奖 67 北京服装学院 吴巴图 二等奖 68 北京服装学院 陈子芊 二等奖 69 北京语言大学 唐卓琳 二等奖 70 北京语言大学 胡静珊 二等奖 71 北京语言大学 张一敏 二等奖 72 北京语言大学 康佳欣 二等奖 73 北京语言大学 汪卓妍 二等奖 74 北京语言大学 林津臣 二等奖 75 北京语言大学 王政霖 二等奖 76 北京语言大学 罗梓彤 二等奖 77 北京语言大学 沈妍 二等奖 78 北京语言大学 冯焱 二等奖 79 成都东软学院 肖辰钰 二等奖 --- 第38页 --- 第十五届全国大学生计算机应用能力与数字素养大赛信息技术基础赛道获奖名单 38  69 序号 学校名称 姓名 奖项 80",
     "metadata": {
-      "source": "银河麒麟智能问答助手 v2.5.pdf",
-      "chunk_id": 2,
-      "total_chunks": 14,
+      "source": "第十五届大赛获奖名单-20250604.pdf",
+      "chunk_id": 67,
+      "total_chunks": 117,
       "file_type": ".pdf",
-      "chunk_size": 475,
-      "source_name": "银河麒麟智能问答助手 v2.5.pdf",
+      "chunk_size": 500,
+      "source_name": "第十五届大赛获奖名单-20250604.pdf",
       "doc_id": 81
     }
   },
   {
-    "text": "git cd kylin-qa-assistant 3. 创建虚拟环境推荐  创建虚拟环境 python3 -m venv venv  激活虚拟环境 source venvbinactivate 4. 安装 Python 依赖  升级pip pip install --upgrade pip  安装项目依赖 pip install -r requirements.txt 5. 配置程序  复制配置文件 cp config.py config.py.bak  编辑配置文件 nano config.py  修改API密钥  DEEPSEEK_API_KEY  \"your-actual-api-key-here\" 6. 创建必要录 mkdir -p data docs logs assets 7. 运程序  启动图形界面 python3 main.py --- 第4页 ---  或使用启动脚本 .run.sh  获取 DeepSeek API 密钥 1. 访问 DeepSeek 官 2. 注册账号并登录 3. 进 API 管理 4. 创建新的 API 密钥 5.",
+    "text": "成都东软学院 李嘉媛 二等奖 81 成都东软学院 郑玉婷 二等奖 82 成都东软学院 罗鑫 二等奖 83 成都东软学院 王澳 二等奖 84 承德医学院 于子洋 二等奖 85 承德医学院 高希熙 二等奖 86 承德医学院 张丹阳 二等奖 87 大连东软信息学院 马禹彤 二等奖 88 大连东软信息学院 胡喆子 二等奖 89 电子科技大学成都学院 万怡然 二等奖 90 广东金融学院 纪思彤 二等奖 91 广东金融学院 李儒峰 二等奖 92 哈尔滨广厦学院 伍宪昀 二等奖 93 哈尔滨广厦学院 李锦赫 二等奖 94 哈尔滨广厦学院 李雪 二等奖 95 哈尔滨广厦学院 战勃源 二等奖 96 黑龙江财经学院 杨昊 二等奖 97 湖北汽车工业学院 金俊杰 二等奖 98 湖北汽车工业学院科技学院 梁素银 二等奖 99 湖北汽车工业学院科技学院 郝梓萌 二等奖 100 湖南信息学院 郑嵛心 二等奖 101 湖南信息学院 李再根 二等奖 102 湖南信息学院 文海清 二等奖 103 湖南信息学院 肖金容 二等奖 104 辽宁石油化工大学 许越 二等奖 105 陆军防化学院 王洪岳 二等奖 106 民政职",
     "metadata": {
-      "source": "银河麒麟智能问答助手 v2.5.pdf",
-      "chunk_id": 3,
-      "total_chunks": 14,
+      "source": "第十五届大赛获奖名单-20250604.pdf",
+      "chunk_id": 68,
+      "total_chunks": 117,
       "file_type": ".pdf",
-      "chunk_size": 485,
-      "source_name": "银河麒麟智能问答助手 v2.5.pdf",
+      "chunk_size": 499,
+      "source_name": "第十五届大赛获奖名单-20250604.pdf",
       "doc_id": 82
     }
   },
   {
-    "text": "复制密钥并填配置件 注意: 请妥善保管您的 API 密钥不要泄露给他  使指南 次使 1. 启动程序  命令行启动 kylin-qa  或双击桌面图标 2. 添加档 点击 \" 添加档 \" 按钮 选择您要添加的档件 持格式 PDF  Markdown  TXT  Word 等 等待档处理完成 3. 开始问答 在问题输框中输您的问题 可选择是否包含系统信息 点击 \" 提问 \" 或按回键 查看 AI 成的回答 常功能 档管理 添加档: 持批量添加多个档 查看状态: 实时显知识库中的档数量 清空知识库: 键清空所有档谨慎操作 --- 第5页 --- 智能问答 普通问答: 基于档内容回答问题 系统问答: 结合当前系统信息回答 相关档: 显回答所参考的档来源 系统信息 查看系统状态: 点击 \" 系统信息 \" 按钮 硬件信息: CPU 内存磁盘等信息 络状态: 络配置和连接状态 进程信息: 系统负载和进程统计  级配置 配置件说明 主要配置项位于 config.",
+    "text": "业大学 杨子怡 二等奖 107 民政职业大学 李科皓 二等奖 108 内蒙古大学创业学院 李艺 二等奖 109 宁夏师范大学 马晓刚 二等奖 110 宁夏师范大学 刘顺 二等奖 111 宁夏医科大学 韦诗彤 二等奖 112 宁夏医科大学 马金凤 二等奖 113 宁夏医科大学 桂冠钰 二等奖 114 宁夏医科大学 王怀琴 二等奖 115 宁夏医科大学 王佳和 二等奖 116 莆田学院 苏丹丹 二等奖 117 莆田学院 庄子谦 二等奖 118 莆田学院 江俊杰 二等奖 119 莆田学院 陈建钦 二等奖 120 莆田学院 袁祥华 二等奖 --- 第39页 --- 第十五届全国大学生计算机应用能力与数字素养大赛信息技术基础赛道获奖名单 39  69 序号 学校名称 姓名 奖项 121 莆田学院 张景杰 二等奖 122 莆田学院 张明志 二等奖 123 莆田学院 陈熙言 二等奖 124 莆田学院 吴琦鹏 二等奖 125 莆田学院 许伟东 二等奖 126 莆田学院 方曦洁 二等奖 127 莆田学院 杨佳威 二等奖 128 莆田学院 林锶萍 二等奖 129 莆田学院 周依璇 二等奖 130 莆田学院",
     "metadata": {
-      "source": "银河麒麟智能问答助手 v2.5.pdf",
-      "chunk_id": 4,
-      "total_chunks": 14,
+      "source": "第十五届大赛获奖名单-20250604.pdf",
+      "chunk_id": 69,
+      "total_chunks": 117,
       "file_type": ".pdf",
-      "chunk_size": 430,
-      "source_name": "银河麒麟智能问答助手 v2.5.pdf",
+      "chunk_size": 500,
+      "source_name": "第十五届大赛获奖名单-20250604.pdf",
       "doc_id": 83
     }
   },
   {
-    "text": "EK_API_KEY  \"your-api-key\"  必须配置 DEEPSEEK_API_ENDPOINT  \"https:api.deepseek.comv1chatcompletions\"  文档路径 DOCUMENT_PATH  \".docs\"  文档存储路径 VECTOR_DB_PATH  \".datavector_db\"  向量数据库路径  RAG配置 RAG_CONFIG  { \"top_k\": 5,  检索文档数量 \"similarity_threshold\": 0.7,  相似度阈值 \"max_context_length\": 2000,  最大上下文长度 \"temperature\": 0.",
+    "text": "张雄森 二等奖 131 莆田学院 林诗妍 二等奖 132 莆田学院 林铭月 二等奖 133 莆田学院 陈舒晴 二等奖 134 莆田学院 庄博涵 二等奖 135 莆田学院 戴增锴 二等奖 136 莆田学院 林嘉鸿 二等奖 137 齐鲁医药学院 王鑫怡 二等奖 138 齐鲁医药学院 屈至成 二等奖 139 齐鲁医药学院 谢书腾 二等奖 140 厦门理工学院 韩晨阳 二等奖 141 厦门理工学院 黄芮 二等奖 142 山东现代学院 伍则宇 二等奖 143 山东现代学院 李臣廷 二等奖 144 上海中侨职业技术大学 郑浩麟 二等奖 145 上海中侨职业技术大学 孙凡 二等奖 146 首都经济贸易大学 黄泓君 二等奖 147 首都经济贸易大学 刘迎奇 二等奖 148 四川旅游学院 康芮菡 二等奖 149 四川旅游学院 陈硕 二等奖 150 四川旅游学院 刘晴 二等奖 151 四川旅游学院 杨彩宏 二等奖 152 四川旅游学院 雷天坤 二等奖 153 四川旅游学院 吴思霖 二等奖 154 四川旅游学院 唐鹏 二等奖 155 四川旅游学院 何佳栩 二等奖 156 四川旅游学院 郭成 二等奖 157",
     "metadata": {
-      "source": "银河麒麟智能问答助手 v2.5.pdf",
-      "chunk_id": 5,
-      "total_chunks": 14,
+      "source": "第十五届大赛获奖名单-20250604.pdf",
+      "chunk_id": 70,
+      "total_chunks": 117,
       "file_type": ".pdf",
-      "chunk_size": 308,
-      "source_name": "银河麒麟智能问答助手 v2.5.pdf",
+      "chunk_size": 499,
+      "source_name": "第十五届大赛获奖名单-20250604.pdf",
       "doc_id": 84
     }
   },
   {
-    "text": "atch_size\": 32  批处理大小 } 系统服务管理 --- 第6页 ---  查看服务状态 sudo systemctl status kylin-qa  启动服务 sudo systemctl start kylin-qa  停止服务 sudo systemctl stop kylin-qa  重启服务 sudo systemctl restart kylin-qa  开机自启 sudo systemctl enable kylin-qa  禁用自启 sudo systemctl disable kylin-qa  查看服务日志 journalctl -u kylin-qa -f  项结构 kylin-qa-assistant  main.py  主程序入口  config.py  配置文件  requirements.txt  Python依赖  README.md  项目说明  run.sh  Linux启动脚本  install.sh  安装脚本  uninstall.sh  卸载脚本  kylin-qa.",
+    "text": "四川旅游学院 陈怀钦 二等奖 158 四川文理学院 吴玉 二等奖 159 天津外国语大学 夏芮佳 二等奖 160 天津外国语大学 田淑慧 二等奖 161 西南交通大学希望学院 徐珑睿 二等奖 --- 第40页 --- 第十五届全国大学生计算机应用能力与数字素养大赛信息技术基础赛道获奖名单 40  69 序号 学校名称 姓名 奖项 162 西南交通大学希望学院 肖蕊 二等奖 163 烟台理工学院 黄美格 二等奖 164 盐城工学院 陈子豪 二等奖 165 盐城工学院 陈新想 二等奖 166 盐城工学院 王豪杰 二等奖 167 盐城工学院 刘培丁 二等奖 168 盐城工学院 李佩琦 二等奖 169 盐城工学院 潘梦伟 二等奖 170 长江大学地球科学学院 孟伟鹏 二等奖 171 长江大学地球科学学院 张博南 二等奖 172 长江大学地球科学学院 刘美唐君 二等奖 173 长江大学地球科学学院 许康旺 二等奖 174 长江大学经济与管理学院 王煜欣 二等奖 175 浙江师范大学 刘荣策 二等奖 176 中国人民警察大学 罗贤哲 二等奖 177 中国人民警察大学 姚彩虹 二等奖 178 重庆",
     "metadata": {
-      "source": "银河麒麟智能问答助手 v2.5.pdf",
-      "chunk_id": 6,
-      "total_chunks": 14,
+      "source": "第十五届大赛获奖名单-20250604.pdf",
+      "chunk_id": 71,
+      "total_chunks": 117,
       "file_type": ".pdf",
-      "chunk_size": 469,
-      "source_name": "银河麒麟智能问答助手 v2.5.pdf",
+      "chunk_size": 499,
+      "source_name": "第十五届大赛获奖名单-20250604.pdf",
       "doc_id": 85
     }
   },
   {
-    "text": "service  系统服务配置  src  源代码目录   ai_models.py  AI模型接口   vector_store.py  向量存储   rag_engine.py  RAG引擎   gui.py  图形界面   document_processor.py  文档处理   system_info_helper.py  系统信息  data  数据目录   vector_db  向量数据库  docs  文档目录  logs  日志目录 --- 第7页 ---   app.log  应用日志  assets  资源目录  持的档格式 格式 扩展名 说明 PDF 档 .pdf 持本提取和 OCR Markdown .md 完整的 Markdown 语法持 本档 .txt 纯本件 reStructuredText .rst 技术档格式 Word 档 .doc, .docx Microsoft Word 档 HTML 档 .html, .htm 档  故障排除 常问题及解决案 1.",
+    "text": "文理学院 李炅 二等奖 179 重庆文理学院 周欣 二等奖 180 重庆文理学院 唐垚鑫 二等奖 181 重庆文理学院 段美伶 二等奖 182 重庆文理学院 李思瑾 二等奖 183 重庆文理学院 章智涵 二等奖 184 重庆文理学院 湛峰 二等奖 185 重庆文理学院 李炜璐 二等奖 186 重庆文理学院 李威 二等奖 187 重庆文理学院 刘美 二等奖 188 重庆文理学院数学与人工智能学院 谭春花 二等奖 189 安徽大学 刘佳明 三等奖 190 北华航天工业学院 郝佳佳 三等奖 191 北华航天工业学院 刘庆旭 三等奖 192 北华航天工业学院 李文业 三等奖 193 北京城市学院 张馨田 三等奖 194 北京服装学院 刘鑫雨 三等奖 195 北京服装学院 卢婧妤 三等奖 196 北京服装学院 冯志博 三等奖 197 北京服装学院 李涵 三等奖 198 北京服装学院 李皓凌 三等奖 199 北京工业大学耿丹学院 肖子盛 三等奖 200 北京工业大学耿丹学院 刘昕露 三等奖 201 北京语言大学 李涵 三等奖 202 北京语言大学 张芮 三等奖 --- 第41页 --- 第十五届全",
     "metadata": {
-      "source": "银河麒麟智能问答助手 v2.5.pdf",
-      "chunk_id": 7,
-      "total_chunks": 14,
+      "source": "第十五届大赛获奖名单-20250604.pdf",
+      "chunk_id": 72,
+      "total_chunks": 117,
       "file_type": ".pdf",
-      "chunk_size": 451,
-      "source_name": "银河麒麟智能问答助手 v2.5.pdf",
+      "chunk_size": 500,
+      "source_name": "第十五届大赛获奖名单-20250604.pdf",
       "doc_id": 86
     }
   },
   {
-    "text": "程序法启动 问题: 运程序时出现错误 解决案:  检查Python版本 python3 --version  检查依赖是否安装完整 pip3 list  grep -E \"numpyscikit-learnrequests\"  重新安装依赖 pip3 install -r requirements.txt --force-reinstall  查看详细错误信息 python3 main.py --debug 2. API 调失败 问题: DeepSeek API 调失败 解决案:  检查网络连接 ping api.deepseek.com --- 第8页 ---  验证API密钥 curl -H \"Authorization: Bearer your-api-key\"  https:api.deepseek.comv1models  检查API额度  登录DeepSeek控制台查看使用情况 3. 麒麟 SDK 库加载失败 问题: 系统信息功能不可 解决案:  检查SDK库是否存在 ls -la usrliblibkysysinfo.",
+    "text": "国大学生计算机应用能力与数字素养大赛信息技术基础赛道获奖名单 41  69 序号 学校名称 姓名 奖项 203 北京语言大学 孙怡婷 三等奖 204 北京语言大学 郭雨荷 三等奖 205 大连东软信息学院 王智超 三等奖 206 大连东软信息学院 王子信 三等奖 207 大连东软信息学院 何青青 三等奖 208 大连东软信息学院 汪铭哲 三等奖 209 滇西科技师范学院 吴贵秋 三等奖 210 广东金融学院 李文杰 三等奖 211 哈尔滨广厦学院 田雨冰 三等奖 212 哈尔滨广厦学院 许雨涵 三等奖 213 哈尔滨广厦学院 陈蕊 三等奖 214 哈尔滨广厦学院 张爱佳 三等奖 215 哈尔滨广厦学院 李轩 三等奖 216 哈尔滨广厦学院 薛丹娜 三等奖 217 哈尔滨广厦学院 姬瑞雪 三等奖 218 哈尔滨广厦学院 孔令钰 三等奖 219 哈尔滨广厦学院 刘梦真 三等奖 220 哈尔滨广厦学院 张月 三等奖 221 哈尔滨广厦学院 丁雨 三等奖 222 哈尔滨广厦学院 汪欣宇 三等奖 223 哈尔滨广厦学院 李卫夷 三等奖 224 哈尔滨广厦学院 魏羽 三等奖 225 哈尔滨广厦学院",
     "metadata": {
-      "source": "银河麒麟智能问答助手 v2.5.pdf",
-      "chunk_id": 8,
-      "total_chunks": 14,
+      "source": "第十五届大赛获奖名单-20250604.pdf",
+      "chunk_id": 73,
+      "total_chunks": 117,
       "file_type": ".pdf",
-      "chunk_size": 473,
-      "source_name": "银河麒麟智能问答助手 v2.5.pdf",
+      "chunk_size": 500,
+      "source_name": "第十五届大赛获奖名单-20250604.pdf",
       "doc_id": 87
     }
   },
   {
-    "text": "so  安装麒麟SDK开发包 sudo apt install libkysdk-dev  检查库文件权限 sudo chmod 755 usrliblibkysysinfo.so 4. 档处理失败 问题: 法处理某些档格式 解决案:  安装额外的文档处理库 pip3 install pdfplumber python-docx  检查文件权限 ls -la your-document.pdf  尝试转换文档格式  PDF - TXT: pdftotext document.pdf 5. GUI 界问题 问题: 图形界法显 解决案:  检查显示环境 echo DISPLAY  安装tkinter --- 第9页 --- sudo apt install python3-tk  使用X11转发SSH连接时 ssh -X usernamehostname 志查看  查看应用日志 tail -f logsapp.log  查看系统服务日志 journalctl -u kylin-qa -f  查看详细调试信息 python3 main.py --debug 性能优化建议 1.",
+    "text": "董新萍 三等奖 226 哈尔滨广厦学院 徐喆 三等奖 227 哈尔滨广厦学院 藏涵 三等奖 228 哈尔滨广厦学院 于澜訢 三等奖 229 哈尔滨广厦学院 严欣瑶 三等奖 230 哈尔滨体育学院 张丽 三等奖 231 哈尔滨体育学院 黎桂萍 三等奖 232 哈尔滨信息工程学院 张英茹 三等奖 233 黑龙江财经学院 曹婷婷 三等奖 234 黑龙江外国语学院 王丽杰 三等奖 235 湖北汽车工业学院 孙宇 三等奖 236 湖南信息学院 谢雨欣 三等奖 237 湖南信息学院 彭旺德 三等奖 238 华北理工大学冀唐学院 解忱 三等奖 239 江苏食品药品职业技术学院 董灿灿 三等奖 240 江苏食品药品职业技术学院 杨梦 三等奖 241 辽宁石油化工大学 常珈辅 三等奖 242 辽宁石油化工大学 赵雨薇 三等奖 243 陆军步兵学院 唐果 三等奖 --- 第42页 --- 第十五届全国大学生计算机应用能力与数字素养大赛信息技术基础赛道获奖名单 42  69 序号 学校名称 姓名 奖项 244 陆军步兵学院 曹正宇 三等奖 245 陆军步兵学院 李刚 三等奖 246 民政职业大学 苏宇韩",
     "metadata": {
-      "source": "银河麒麟智能问答助手 v2.5.pdf",
-      "chunk_id": 9,
-      "total_chunks": 14,
+      "source": "第十五届大赛获奖名单-20250604.pdf",
+      "chunk_id": 74,
+      "total_chunks": 117,
       "file_type": ".pdf",
-      "chunk_size": 492,
-      "source_name": "银河麒麟智能问答助手 v2.5.pdf",
+      "chunk_size": 498,
+      "source_name": "第十五届大赛获奖名单-20250604.pdf",
       "doc_id": 88
     }
   },
   {
-    "text": "内存优化 适当调整 PERFORMANCE_CONFIG 中的参数 定期清理向量数据库 限制同时处理的档数量 2. 络优化 使国内 API 镜像如果可 调整 API 请求超时时间 启请求缓存 3. 存储优化 定期清理志件 压缩型档 使 SSD 存储提升性能  更新升级 检查更新  检查远程更新 git fetch origin git status  查看更新内容 git log HEAD..originmain --oneline 升级程序 --- 第10页 ---  备份配置 cp config.py config.py.backup  拉取最新代码 git pull origin main  更新依赖 pip3 install -r requirements.txt --upgrade  重启服务 sudo systemctl restart kylin-qa 版本回退  查看版本历史 git log --oneline  回退到指定版本 git checkout commit-hash  恢复配置 cp config.py.backup config.",
+    "text": "三等奖 247 民政职业大学 赵柯鑫 三等奖 248 民政职业大学 付晓波 三等奖 249 民政职业大学 葛畅 三等奖 250 闽南理工学院 李智洵 三等奖 251 南京航空航天大学金城学院 王竞娴 三等奖 252 南阳理工学院 曹佳奇 三等奖 253 内蒙古大学创业学院 刘雨桐 三等奖 254 内蒙古大学创业学院 崔荣煊 三等奖 255 内蒙古大学创业学院 顾春明 三等奖 256 内蒙古大学创业学院 岳若璇 三等奖 257 内蒙古大学创业学院 支济洁 三等奖 258 内蒙古大学创业学院 王子怡 三等奖 259 内蒙古大学创业学院 刘玉亭 三等奖 260 宁夏师范大学 董燕舞 三等奖 261 宁夏师范大学 吴彩花 三等奖 262 宁夏师范大学 杨玲 三等奖 263 宁夏师范大学 马晓玲 三等奖 264 宁夏师范大学 杨晓艳 三等奖 265 宁夏师范大学 马婷婷 三等奖 266 宁夏医科大学 苏嘉欣 三等奖 267 宁夏医科大学 吴佳倩 三等奖 268 宁夏医科大学 马思静 三等奖 269 宁夏医科大学 王东 三等奖 270 宁夏医科大学 闫晋玮 三等奖 271 宁夏医科大学 马荣 三等",
     "metadata": {
-      "source": "银河麒麟智能问答助手 v2.5.pdf",
-      "chunk_id": 10,
-      "total_chunks": 14,
+      "source": "第十五届大赛获奖名单-20250604.pdf",
+      "chunk_id": 75,
+      "total_chunks": 117,
       "file_type": ".pdf",
-      "chunk_size": 487,
-      "source_name": "银河麒麟智能问答助手 v2.5.pdf",
+      "chunk_size": 500,
+      "source_name": "第十五届大赛获奖名单-20250604.pdf",
       "doc_id": 89
     }
   },
   {
-    "text": "py  卸载程序  运行卸载脚本 sudo .uninstall.sh  手动清理如果需要 sudo rm -rf optkylin-qa-assistant sudo rm -f etcsystemdsystemkylin-qa.service sudo rm -f usrlocalbinkylin-qa rm -f Desktopkylin-qa.desktop  许可证 本项采 MIT 许可证 - 查看 LICENSE 件了解详情  贡献 欢迎提交 Issue 和 Pull Request 来改进项 贡献指南 1. Fork 项 2. 创建特性分 (git checkout -b featureAmazingFeature) --- 第11页 --- 3. 提交更改 (git commit -m 'Add some AmazingFeature') 4. 推送到分 (git push origin featureAmazingFeature) 5. 开启 Pull Request 开发环境搭建  克隆开发版本 git clone https:github.",
+    "text": "奖 272 宁夏医科大学 马欣 三等奖 273 宁夏医科大学 郑东振 三等奖 274 莆田学院 刘伟彬 三等奖 275 莆田学院 陈雨静 三等奖 276 莆田学院 张丽彬 三等奖 277 莆田学院 林凡艳 三等奖 278 莆田学院 王卓 三等奖 279 莆田学院 宋静怡 三等奖 280 莆田学院 王靖雯 三等奖 281 莆田学院 谢尚锋 三等奖 282 莆田学院 余逸凡 三等奖 283 莆田学院 郑志锋 三等奖 284 莆田学院 陈依凡 三等奖 --- 第43页 --- 第十五届全国大学生计算机应用能力与数字素养大赛信息技术基础赛道获奖名单 43  69 序号 学校名称 姓名 奖项 285 莆田学院 刘雨涵 三等奖 286 莆田学院 王丽园 三等奖 287 莆田学院 陈书妍 三等奖 288 莆田学院 洪舒婕 三等奖 289 莆田学院 陈伊莹 三等奖 290 莆田学院 郭珊妮 三等奖 291 齐鲁医药学院 牛语童 三等奖 292 山东现代学院 陈志恒 三等奖 293 山东现代学院 冯佳晖 三等奖 294 山东现代学院 范伟杰 三等奖 295 山东现代学院 王越 三等奖 296 山东政法学",
     "metadata": {
-      "source": "银河麒麟智能问答助手 v2.5.pdf",
-      "chunk_id": 11,
-      "total_chunks": 14,
+      "source": "第十五届大赛获奖名单-20250604.pdf",
+      "chunk_id": 76,
+      "total_chunks": 117,
       "file_type": ".pdf",
-      "chunk_size": 488,
-      "source_name": "银河麒麟智能问答助手 v2.5.pdf",
+      "chunk_size": 500,
+      "source_name": "第十五届大赛获奖名单-20250604.pdf",
       "doc_id": 90
     }
   },
   {
-    "text": "comyour-usernamekylin-qa-assistant.git cd kylin-qa-assistant  创建开发环境 python3 -m venv dev-env source dev-envbinactivate  安装开发依赖 pip install -r requirements.txt pip install pytest black flake8  开发工具  运行测试 pytest tests  代码格式化 black src  代码检查 flake8 src  持与反馈 如果您在使过程中遇到问题请 1. 查看档: 先查看本 README 和相关档 2. 搜索问题: 在 Issues 搜索类似问题 3. 提交 Issue: 如果没有找到解决案请提交新的 Issue 4. 联系开发者: 通过邮件或其他式联系项维护者 Issue 提交模板 提交 Issue 时请包含以下信息 环境信息 - 操作系统: 银河麒麟 V10 SP3 - Python版本: 3.8.10 - 程序版本: v2.5.",
+    "text": "院 韩鑫瑶 三等奖 297 山东政法学院 刘晓卓 三等奖 298 山东政法学院 张子琪 三等奖 299 上海中侨职业技术大学 李慧洁 三等奖 300 首都经济贸易大学 苏婧妍 三等奖 301 首都经济贸易大学 胡志慧 三等奖 302 四川旅游学院 何晓筱 三等奖 303 四川旅游学院 张颖 三等奖 304 四川旅游学院 黄文锦 三等奖 305 四川旅游学院 梁静 三等奖 306 四川旅游学院 肖茜 三等奖 307 四川旅游学院 刘欣 三等奖 308 四川旅游学院 吉牛欣凡 三等奖 309 四川旅游学院 闵心悦 三等奖 310 四川旅游学院 邹谢娜 三等奖 311 四川旅游学院 吴林秋 三等奖 312 四川旅游学院 刘陈 三等奖 313 四川旅游学院 吕嘉诚 三等奖 314 四川旅游学院 张小强 三等奖 315 四川旅游学院 任玉 三等奖 316 天津外国语大学 王涵 三等奖 317 天津外国语大学 李析飞 三等奖 318 天津外国语大学 胡耀格 三等奖 319 西南交通大学希望学院 张渝彬 三等奖 320 西南交通大学希望学院 陈旭东 三等奖 321 西南交通大学希望学院 郭凡渝 三等",
     "metadata": {
-      "source": "银河麒麟智能问答助手 v2.5.pdf",
-      "chunk_id": 12,
-      "total_chunks": 14,
+      "source": "第十五届大赛获奖名单-20250604.pdf",
+      "chunk_id": 77,
+      "total_chunks": 117,
       "file_type": ".pdf",
-      "chunk_size": 466,
-      "source_name": "银河麒麟智能问答助手 v2.5.pdf",
+      "chunk_size": 500,
+      "source_name": "第十五届大赛获奖名单-20250604.pdf",
       "doc_id": 91
     }
   },
   {
-    "text": "0 --- 第12页 --- 问题描述 简要描述遇到的问题 复现步骤 1. 执行了什么操作 2. 期望的结果 3. 实际的结果 错误信息 粘贴完整的错误信息或志 截图 如果有GUI相关问题请提供截图  更新志 v2.5.0 ( 当前版本 )  集成 DeepSeek-R1 API  持麒麟 SDK2.5  优化 RAG 检索算法  改进 GUI 界体验  增强系统兼容性  添加键安装脚本  完善档和使指南  修复档处理 bug  优化内存使  改进错误处理 未来计划  持更多 AI 模型  添加语交互功能  持多语界  增加插件系统  优化性能和稳定性 银河麒麟智能问答助 - 让 AI 助您的麒麟系统使体验  如果这个项对您有帮助请给我们个 Star",
+    "text": "奖 322 西南交通大学希望学院 何东骏 三等奖 323 西南交通大学希望学院 付莉洁 三等奖 324 西南交通大学希望学院 孙艺月 三等奖 325 西南交通大学希望学院 杨丽琪 三等奖 --- 第44页 --- 第十五届全国大学生计算机应用能力与数字素养大赛信息技术基础赛道获奖名单 44  69 序号 学校名称 姓名 奖项 326 西南交通大学希望学院 彭露 三等奖 327 西南交通大学希望学院 范斌诚 三等奖 328 西南交通大学希望学院 经涛 三等奖 329 西南交通大学希望学院 朱旭 三等奖 330 西南交通大学希望学院 彭金美 三等奖 331 西南交通大学希望学院 赵妤丹 三等奖 332 西南交通大学希望学院 朱琪 三等奖 333 西南交通大学希望学院 张小雪 三等奖 334 西南交通大学希望学院 王静妍 三等奖 335 西南交通大学希望学院 李遥 三等奖 336 西南交通大学希望学院 胡静 三等奖 337 西南交通大学希望学院 杨晴 三等奖 338 西南交通大学希望学院 解怡然 三等奖 339 盐城工学院 许伟铭 三等奖 340 盐城工学院 韩梦飞 三等奖 341 盐城工学",
     "metadata": {
-      "source": "银河麒麟智能问答助手 v2.5.pdf",
-      "chunk_id": 13,
-      "total_chunks": 14,
+      "source": "第十五届大赛获奖名单-20250604.pdf",
+      "chunk_id": 78,
+      "total_chunks": 117,
       "file_type": ".pdf",
-      "chunk_size": 329,
-      "source_name": "银河麒麟智能问答助手 v2.5.pdf",
+      "chunk_size": 500,
+      "source_name": "第十五届大赛获奖名单-20250604.pdf",
       "doc_id": 92
     }
   },
   {
-    "text": "--- 第1页 --- 第 1 页 共 37 页 银河麒麟桌面操作系统安装手册 特别提示说明 银河麒麟桌面操作系统 V10 全面支持飞腾龙芯申威兆芯海光鲲 鹏海思麒麟等国产 CPU本手册主要面向系统管理员及相关技术人员如本 手册未能详细描述之处有需要请致电麒麟软件有限公司技术服务部门 重要 本手册中命令操作步骤等举例仅供参考命令执行的输出信息等在不同 CPU 平台或因操作系统或组件的版本升级可能有少许差异本手册尽量加以说 明如有差异之处请以银河麒麟桌面操作系统 V10 在具体 CPU 平台上实际操 作或输出信息为准 手册文字表达习惯和说明 菜单和按钮都用中文模式下的标明 --- 第2页 --- 第 2 页 共 37 页 路径使用  标识如开始菜单  设置 注受硬件设备平台架构软件版本等方面的影响本手册中的截图示例 与部分功能仅供参考具体状态以真实系统为准 技术支持 麒麟官网http:www.kylinos.cn 服务热线400-089-1870 --- 第3页 --- 第 3 页 共 37 页 系统安装 1.",
+    "text": "院 匡凯文 三等奖 342 盐城工学院 顾胜楠 三等奖 343 盐城工学院 赵婕妤 三等奖 344 盐城工学院 杜陈湘 三等奖 345 盐城工学院 冒嘉杰 三等奖 346 长江大学地球科学学院 丁子顺 三等奖 347 长江大学地球科学学院 许迪夫 三等奖 348 长江大学地球科学学院 袁诗茵 三等奖 349 长江大学地球科学学院 李舒涵 三等奖 350 长江大学经济与管理学院 涂莎莎 三等奖 351 长江大学经济与管理学院 常龙康 三等奖 352 浙江师范大学 邵林翰 三等奖 353 浙江师范大学 戈佳翔 三等奖 354 浙江越秀外国语学院 李思涵 三等奖 355 浙江越秀外国语学院 王嘉娴 三等奖 356 中国人民警察大学 林骏 三等奖 357 中国人民警察大学 潘彦妤 三等奖 358 重庆财经学院 李咏春 三等奖 359 重庆财经学院 李垚 三等奖 360 重庆科技大学 夏浩翔 三等奖 361 重庆科技大学 伍屹 三等奖 362 重庆文理学院 高佳盈 三等奖 363 重庆文理学院 唐瑞 三等奖 364 重庆文理学院 汪蕊婷 三等奖 365 重庆文理学院 詹晓丽 三等奖 366 重庆",
     "metadata": {
-      "source": "安装手册.pdf",
-      "chunk_id": 0,
-      "total_chunks": 10,
+      "source": "第十五届大赛获奖名单-20250604.pdf",
+      "chunk_id": 79,
+      "total_chunks": 117,
       "file_type": ".pdf",
-      "chunk_size": 461,
-      "source_name": "安装手册.pdf",
+      "chunk_size": 500,
+      "source_name": "第十五届大赛获奖名单-20250604.pdf",
       "doc_id": 93
     }
   },
   {
-    "text": "最低配置与推荐配置 表 1 最低配置与推荐配置 版本形态 最小内存 推荐内存 最小硬盘空间 推荐硬盘空间 桌面系统 2GB 4GB 以上 50GB 80GB 以上 2. 安装准备 1) 准备所需组件 系统镜像文件安装光盘或 U 盘启动器银河麒麟桌面操作系统 V10 安装手册 2) 检查硬件兼容性 银河麒麟桌面操作系统具有良好的硬件兼容性与近年来生产的大多 数硬件兼容由于硬件的技术规范改变频繁因此可能难以保证系统会百 分之百地兼容硬件 --- 第4页 --- 第 4 页 共 37 页 3) 备份数据 安装系统之前请将硬盘上的重要数据备份到其他存储设备中 4) 硬盘分区 一块硬盘可以被划分为多个分区分区之间是相互独立的访问不同 的分区如同访问不同的硬盘一块硬盘最多可以有四个主分区如果想在 一块硬盘上拥有多于四个分区就需要把分区类型设为逻辑分区 3.",
+    "text": "文理学院 张玉林 三等奖 --- 第45页 --- 第十五届全国大学生计算机应用能力与数字素养大赛信息技术基础赛道获奖名单 45  69 序号 学校名称 姓名 奖项 367 重庆文理学院 向时锋 三等奖 368 重庆文理学院 殷象格 三等奖 369 重庆文理学院 何子墨 三等奖 370 重庆文理学院 张怀尹 三等奖 371 重庆文理学院 陈娜 三等奖 372 重庆文理学院 熊雨灿 三等奖 373 重庆文理学院 刘子瑄 三等奖 --- 第46页 --- 第十五届全国大学生计算机应用能力与数字素养大赛信息技术基础赛道获奖名单 46  69 Microsoft Office 智能办公赛项 高职组 序号 学校名称 姓名 奖项 1 北京京北职业技术学院 张紫辰 一等奖 2 北京京北职业技术学院 任和硕 一等奖 3 北京京北职业技术学院 张秭睿 一等奖 4 大连东软信息学院 宫鑫昊 一等奖 5 河南机电职业学院 郅浩楠 一等奖 6 河南机电职业学院 卢顺燕 一等奖 7 河南机电职业学院 鲁傲飞 一等奖 8 河南机电职业学院 孔豪磊 一等奖 9 河南医学高等专科学校 梁怡平 一等奖 10 江苏联合职",
     "metadata": {
-      "source": "安装手册.pdf",
-      "chunk_id": 1,
-      "total_chunks": 10,
+      "source": "第十五届大赛获奖名单-20250604.pdf",
+      "chunk_id": 80,
+      "total_chunks": 117,
       "file_type": ".pdf",
-      "chunk_size": 377,
-      "source_name": "安装手册.pdf",
+      "chunk_size": 500,
+      "source_name": "第十五届大赛获奖名单-20250604.pdf",
       "doc_id": 94
     }
   },
   {
-    "text": "制作系统启动盘的 U 盘 --- 第5页 --- 第 5 页 共 37 页 图 1 选择系统镜像文件和 U 盘 选择好系统镜像文件和 U 盘后点击开始制作将弹出执行授权 窗口输入账户密码点击授权等待制作完成 --- 第6页 --- 第 6 页 共 37 页 图 2 授权认证 --- 第7页 --- 第 7 页 共 37 页 图 3 制作中 制作完成后应用会出现相关提示 --- 第8页 --- 第 8 页 共 37 页 图 4 制作完成 4. 安装引导 1) 安装启动 --- 第9页 --- 第 9 页 共 37 页 将安装光盘放入光驱中或将制作启动 U 盘插入设备重启机器根据 固件启动时的提醒按下相应快捷键进入固件管理界面若使用的是内置 光驱第一启动选项选择光驱若使用的是 USB 或者 USB 外置 光驱第一启动选项选择USB 本系统支持体验模式可试用一个全功能的操作系统而不安装 2) 系统安装 如选择试用银河麒麟桌面操作系统则会进入试用界面如下图 所示 --- 第10页 --- 第 10 页 共 37 页 图 5 试用银河麒麟桌面操作系统界面 双击图标安装 Kylin开始安装引导则直",
+    "text": "业技术学院陶都中专办学点 吴锦峰 一等奖 11 江苏食品药品职业技术学院 席佳蕴 一等奖 12 江苏医药职业学院 万童童 一等奖 13 江苏医药职业学院 张景密 一等奖 14 江苏医药职业学院 倪文暄 一等奖 15 江西生物科技职业学院 刘芳岚 一等奖 16 金华职业技术大学 方佳彤 一等奖 17 金华职业技术大学 金奔驰 一等奖 18 空军工程大学航空机务士官学校 赵青伦 一等奖 19 空军工程大学航空机务士官学校 朱奕珺 一等奖 20 空军工程大学航空机务士官学校 李俊川 一等奖 21 空军工程大学航空机务士官学校 张宜磊 一等奖 22 空军工程大学航空机务士官学校 戴如意 一等奖 23 柳州铁道职业技术学院 蒋文勤 一等奖 24 柳州铁道职业技术学院 李保玉 一等奖 25 南京新华电脑专修学校 汤珅豪 一等奖 26 南宁职业技术大学 周红凌 一等奖 27 内蒙古建筑职业技术学院 史可 一等奖 28 齐鲁医药学院 阎姿雯 一等奖 29 上海出版印刷高等专科学校 谭张怡 一等奖 30 上海出版印刷高等专科学校 吕刘睿 一等奖 31 上海出版印刷高等专科学校 李赟 一等奖 32 上海出",
     "metadata": {
-      "source": "安装手册.pdf",
-      "chunk_id": 2,
-      "total_chunks": 10,
+      "source": "第十五届大赛获奖名单-20250604.pdf",
+      "chunk_id": 81,
+      "total_chunks": 117,
       "file_type": ".pdf",
       "chunk_size": 500,
-      "source_name": "安装手册.pdf",
+      "source_name": "第十五届大赛获奖名单-20250604.pdf",
       "doc_id": 95
     }
   },
   {
-    "text": "接进入安装引导界面 选择系统语言单击下一步 --- 第11页 --- 第 11 页 共 37 页 图 6 选择系统语言 阅读许可协议勾选我已阅读并同意协议条款点击下一步 --- 第12页 --- 第 12 页 共 37 页 图 7 阅读许可协议 选择系统时区可以在下拉列表中选择城市切换时区或在地图中点 选城市切换时区点击下一步 --- 第13页 --- 第 13 页 共 37 页 图 8 选择时区 进入选择安装途径界面根据实际情况选择从 Live 安装或从 Ghost 安装请见第 10 部分点击下一步 --- 第14页 --- 第 14 页 共 37 页 图 9 选择从 Live 安装 选择系统的安装方式如选择全盘安装将在选择的盘符中进行 全盘安装格式化整个硬盘并进行自动分区详见第 5 部分如选择自 定义安装可根据实际需要进行分区创建和分区大小分配详见第 6 部 分 --- 第15页 --- 第 15 页 共 37 页 5.",
+    "text": "版印刷高等专科学校 路涛涛 一等奖 33 深圳城市职业学院 林子墨 一等奖 34 深圳城市职业学院 萧灿佳 一等奖 35 深圳城市职业学院 刘辉龙 一等奖 36 深圳城市职业学院 张永炫 一等奖 37 四川铁道职业学院 杨介 一等奖 38 天津滨海职业学院 乔楠 一等奖 --- 第47页 --- 第十五届全国大学生计算机应用能力与数字素养大赛信息技术基础赛道获奖名单 47  69 序号 学校名称 姓名 奖项 39 通信士官学校 王筱萌 一等奖 40 西安海棠职业学院 宋国豪 一等奖 41 浙江艺术职业学院 李哈涤 一等奖 42 浙江育英职业技术学院 曹佳丹 一等奖 43 浙江育英职业技术学院 李嘉峰 一等奖 44 郑州智能科技职业学院 陈友珊 一等奖 45 重庆城市管理职业学院 赵思洋 一等奖 46 北京工业职业技术学院 宋禹宏 二等奖 47 北京工业职业技术学院 张玉柔 二等奖 48 北京工业职业技术学院 何洋 二等奖 49 北京京北职业技术学院 吴小帅 二等奖 50 渤海船舶职业学院 鲁旭冉 二等奖 51 大连东软信息学院 徐郑璐 二等奖 52 大连东软信息学院 李彦慧 二等奖 5",
     "metadata": {
-      "source": "安装手册.pdf",
-      "chunk_id": 3,
-      "total_chunks": 10,
+      "source": "第十五届大赛获奖名单-20250604.pdf",
+      "chunk_id": 82,
+      "total_chunks": 117,
       "file_type": ".pdf",
-      "chunk_size": 418,
-      "source_name": "安装手册.pdf",
+      "chunk_size": 500,
+      "source_name": "第十五届大赛获奖名单-20250604.pdf",
       "doc_id": 96
     }
   },
   {
-    "text": "界面显示挂载硬盘的信息硬盘已安装系统若没有安装 系统将显示硬盘类型设备名硬盘空间大小及已用空间 b) 若系统读取到超过 5 个硬盘可通过左右按钮切换选择 c) 全盘安装将格式化整块硬盘需勾选确认信息防止误操作 --- 第16页 --- 第 16 页 共 37 页 图 10 全盘安装 全盘安装界面底部有其他安装选项选项因设备差异可能有所不同 a) 全盘加密选项支持对所选目标盘符进行加密若勾选全盘 加密需要设置磁盘加密的密码并确认 b) 出厂备份选项支持备份和还原系统初始状态 --- 第17页 --- 第 17 页 共 37 页 c) 逻辑卷lvm支持设置硬盘逻辑卷分区其为建立在硬盘 和分区之上的逻辑层能提高磁盘分区管理的灵活性适合于管理大存储 设备并允许动态调整文件系统的大小 d) 保护用户及其数据支持保留原系统中用户及其目录下的数 据同时也会保留 data 分区中的数据在版本匹配的情况下系统会默 认保存原系统激活信息与激活状态勾选此选项后不会提示创建新用户 需要使用原用户名和密码 按需完成上述选项勾选后点击下一步 --- 第18页 --- 第 18 页 共 37 页 图 11 全盘加密",
+    "text": "3 大连东软信息学院 李源宸 二等奖 54 大连东软信息学院 陈旭阳 二等奖 55 大连东软信息学院 于有章 二等奖 56 河南机电职业学院 姜泽宇 二等奖 57 河南机电职业学院 程佳路 二等奖 58 河南机电职业学院 高文卓 二等奖 59 河南机电职业学院 张欣欣 二等奖 60 河南机电职业学院 马杨 二等奖 61 河南机电职业学院 贾沛勋 二等奖 62 河南医学高等专科学校 孔令姝 二等奖 63 河南医学高等专科学校 介怡璁 二等奖 64 江苏联合职业技术学院灌南中专办学点 王耀文 二等奖 65 江苏食品药品职业技术学院 陈功 二等奖 66 江苏食品药品职业技术学院 赵健 二等奖 67 江苏医药职业学院 陆佳琪 二等奖 68 江苏医药职业学院 夏雪莲 二等奖 69 江苏医药职业学院 刘思彤 二等奖 70 江苏医药职业学院 王玉婷 二等奖 71 江西生物科技职业学院 秦伊果 二等奖 72 江西生物科技职业学院 杨诗筱 二等奖 73 江西生物科技职业学院 方明妹 二等奖 74 江西生物科技职业学院 谢佳丽 二等奖 75 金华职业技术大学 何雨赛 二等奖 76 空军工程大学航空机务士官",
     "metadata": {
-      "source": "安装手册.pdf",
-      "chunk_id": 4,
-      "total_chunks": 10,
+      "source": "第十五届大赛获奖名单-20250604.pdf",
+      "chunk_id": 83,
+      "total_chunks": 117,
       "file_type": ".pdf",
       "chunk_size": 500,
-      "source_name": "安装手册.pdf",
+      "source_name": "第十五届大赛获奖名单-20250604.pdf",
       "doc_id": 97
     }
   },
   {
-    "text": "--- 第19页 --- 第 19 页 共 37 页 图 12 保留用户及其数据 系统在该磁盘中自动分区并显示分区结果确认安装盘符后选中格 式化整个磁盘然后点击下一步 --- 第20页 --- 第 20 页 共 37 页 图 13 确认全盘安装 6. 自定义安装 如果对硬盘空间使用有明确要求或需要多个操作系统共存时可以选 择自动已安装自行设计各硬盘分区大小在选择安装方式界面选择自定 义安装后出现硬盘分区界面 --- 第21页 --- 第 21 页 共 37 页 图 14 自定义安装 若需要清空现有分区表点击创建分区表在弹出的提示窗口中 选择确定 若不需要清空则直接在原有分区上进行修改分区表可以编辑增加 或删除 --- 第22页 --- 第 22 页 共 37 页 图 15 创建分区表 --- 第23页 --- 第 23 页 共 37 页 图 16 修改分区表 若选择创建分区表首先选中空闲所在行选择即可 创建硬盘分区 在创建分区时新分区的类型选择主分区新分区的位置 默认为剩余空间头部 --- 第24页 --- 第 24 页 共 37 页 图 17 新建分区 首先创建 boot 分区bo",
+    "text": "学校 李文彪 二等奖 77 辽宁医药职业学院 隋鹏辉 二等奖 78 柳州铁道职业技术学院 肖岳锋 二等奖 79 柳州铁道职业技术学院 潘梓旭 二等奖 --- 第48页 --- 第十五届全国大学生计算机应用能力与数字素养大赛信息技术基础赛道获奖名单 48  69 序号 学校名称 姓名 奖项 80 柳州铁道职业技术学院 安博源 二等奖 81 民政职业大学 林乐瑶 二等奖 82 南昌大学共青学院 邓健 二等奖 83 南京金陵高等职业技术学校 兰嘉钰 二等奖 84 南京市莫愁中等专业学校 杨幸然 二等奖 85 南京新华电脑专修学校 屈盈 二等奖 86 南京新华电脑专修学校 白睿祺 二等奖 87 南京新华电脑专修学校 袁紫煊 二等奖 88 南宁职业技术大学 唐奕欢 二等奖 89 南宁职业技术大学 禤雯 二等奖 90 商丘医学高等专科学校 王姿涵 二等奖 91 上海出版印刷高等专科学校 朱亦林 二等奖 92 上海出版印刷高等专科学校 叶珂羽 二等奖 93 上海出版印刷高等专科学校 袁佳妮 二等奖 94 上海出版印刷高等专科学校 李昊 二等奖 95 上海出版印刷高等专科学校 罗辰 二等奖 96 深圳",
     "metadata": {
-      "source": "安装手册.pdf",
-      "chunk_id": 5,
-      "total_chunks": 10,
+      "source": "第十五届大赛获奖名单-20250604.pdf",
+      "chunk_id": 84,
+      "total_chunks": 117,
       "file_type": ".pdf",
-      "chunk_size": 499,
-      "source_name": "安装手册.pdf",
+      "chunk_size": 500,
+      "source_name": "第十五届大赛获奖名单-20250604.pdf",
       "doc_id": 98
     }
   },
   {
-    "text": "ot 必须是主分区中的第一个分区用于选 择etx4挂载点选择bootboot 分区建议 2GiB 以上不可小 于 2GiB 创建根分区用于选择etx4挂载点为分区大小不 可小于 15GiB华为机器要求不小于 25GiB --- 第25页 --- 第 25 页 共 37 页 创建 backup 分区用于选择etx4挂载点为backup大 小建议与分区相同backup 分区对系统备份与还原有帮助建议创 建 创建交换分区用于选择linux-swap分区大小一般设置为内 存的两倍 创建用户数据分区用于选择用户数据分区用于存放除系统文 件外的用户数据可以根据硬盘剩余空间大小分配 efi 分区根据安装引导提示选择是否创建 若是中途需要改变已创建的分区具体操作方式如下所示 a) 添加分区选中空闲分区所在行点击按钮 b) 编辑分区选中已创建的分区点击右侧的符号笔按钮 c) 删除分区选中已创建的分区点击-按钮 d) 还原分区点击还原按钮 自定义分区完成后如下图所示点击下一步 --- 第26页 --- 第 26 页 共 37 页 图 18 自定义分区完成 查看自定义安装的盘符分配结果勾选确认以上操作点击下",
+    "text": "城市职业学院 汪琰 二等奖 97 深圳城市职业学院 陈敏瑜 二等奖 98 深圳城市职业学院 叶镇 二等奖 99 深圳城市职业学院 沈忠源 二等奖 100 深圳城市职业学院 廖锦豪 二等奖 101 深圳城市职业学院 胡映帆 二等奖 102 深圳城市职业学院 叶丽娟 二等奖 103 深圳城市职业学院 郭志坚 二等奖 104 深圳城市职业学院 许思达 二等奖 105 深圳城市职业学院 黎敏怡 二等奖 106 深圳城市职业学院 欧建宏 二等奖 107 四川铁道职业学院 谢宇 二等奖 108 四川铁道职业学院 刘冰艳 二等奖 109 苏州高博职业学院 张启璇 二等奖 110 苏州高博职业学院 金佳怡 二等奖 111 天津商务职业学院 吴艳凯 二等奖 112 天津商务职业学院 乔诗婷 二等奖 113 天津商务职业学院 王雪蓉 二等奖 114 天津商务职业学院 赵圆圆 二等奖 115 天津生物工程职业技术学院 张娇 二等奖 116 天津生物工程职业技术学院 闫宇晴 二等奖 117 通信士官学校 贾浩杰 二等奖 118 通信士官学校 周李艳 二等奖 119 通信士官学校 马国策 二等奖 120 通信士",
     "metadata": {
-      "source": "安装手册.pdf",
-      "chunk_id": 6,
-      "total_chunks": 10,
+      "source": "第十五届大赛获奖名单-20250604.pdf",
+      "chunk_id": 85,
+      "total_chunks": 117,
       "file_type": ".pdf",
       "chunk_size": 500,
-      "source_name": "安装手册.pdf",
+      "source_name": "第十五届大赛获奖名单-20250604.pdf",
       "doc_id": 99
     }
   },
   {
-    "text": "一步 自定义分区完成后点击开始安装后续步骤与全盘安装一致 等待完成后重启电脑即可进入系统 --- 第27页 --- 第 27 页 共 37 页 7. 创建账户 如需要立即创建帐户可选择立即创建 图 19 创建账户 a) 输入用户名系统自动填充推荐的主机名可自定义修改 b) 设置登录密码并再次输入密码进行确认若不满足密码规则要求 --- 第28页 --- 第 28 页 共 37 页 系统将会提示 c) 若勾选开机自动登录可设置开机登录系统时不需要输入密码 全部设置完成后点击下一步 图 20 创建用户 如需要安装完成后再创建帐户可选择稍后创建系统会先开始 --- 第29页 --- 第 29 页 共 37 页 安装系统完成后再次进入系统时进行用户帐户创建 8. 软件安装 创建账户后可根据需要选择安装的软件及驱动勾选后的点击开 始安装 图 21 选择软件或驱动安装 --- 第30页 --- 第 30 页 共 37 页 9.",
+    "text": "官学校 魏帝升 二等奖 --- 第49页 --- 第十五届全国大学生计算机应用能力与数字素养大赛信息技术基础赛道获奖名单 49  69 序号 学校名称 姓名 奖项 121 通信士官学校 赵睿 二等奖 122 通信士官学校 李嘉欣 二等奖 123 通信士官学校 贺凯 二等奖 124 乌鲁木齐经济技术开发区头屯河区新华智 原互联网职业培训学校有限公司 黄鑫卓 二等奖 125 武汉软件工程职业学院 胡思婷 二等奖 126 西安海棠职业学院 陈赛佳 二等奖 127 西安海棠职业学院 阮欣 二等奖 128 西安海棠职业学院 郑鑫梅 二等奖 129 西南交通大学希望学院 冯君豪 二等奖 130 西南交通大学希望学院 刘思懿 二等奖 131 西南交通大学希望学院 谢传发 二等奖 132 烟台工程职业技术学院 魏晓蕾 二等奖 133 长江工程职业技术学院 万思怡 二等奖 134 长江工程职业技术学院 欧阳瑨 二等奖 135 长江工程职业技术学院 陈梓锡 二等奖 136 长江工程职业技术学院 张晨颖 二等奖 137 浙江艺术职业学院 周珈奕 二等奖 138 浙江艺术职业学院 施天欣 二等奖 139 浙江",
     "metadata": {
-      "source": "安装手册.pdf",
-      "chunk_id": 7,
-      "total_chunks": 10,
+      "source": "第十五届大赛获奖名单-20250604.pdf",
+      "chunk_id": 86,
+      "total_chunks": 117,
       "file_type": ".pdf",
-      "chunk_size": 413,
-      "source_name": "安装手册.pdf",
+      "chunk_size": 500,
+      "source_name": "第十五届大赛获奖名单-20250604.pdf",
       "doc_id": 100
     }
   },
   {
-    "text": "图所示 图 22 系统安装界面 --- 第31页 --- 第 31 页 共 37 页 图 23 系统安装日志 安装完成后界面如下图所示点击现在重启按钮系统重新启 动 --- 第32页 --- 第 32 页 共 37 页 图 24 系统安装完成 重启过程中系统会自动弹出光驱或提示请取出安装介质然后按 ENTER 键 --- 第33页 --- 第 33 页 共 37 页 图 25 取出安装介质提示界面 按照提示取出光驱或 U 盘后按ENTER回车键等待扫 描文件系统后进行系统界面若创建账户时选择了稍后创建则进入 创建账户界面步骤参考立即创建部分 --- 第34页 --- 第 34 页 共 37 页 图 26 登录界面 10.",
+    "text": "育英职业技术学院 葛晨帅 二等奖 140 浙江育英职业技术学院 翁梓凯 二等奖 141 郑州智能科技职业学院 寇浩峰 二等奖 142 中山火炬职业技术学院 林惠敏 二等奖 143 北京工业职业技术学院 常敏 三等奖 144 北京工业职业技术学院 章宇博 三等奖 145 北京京北职业技术学院 侯文博 三等奖 146 北京京北职业技术学院 高祥 三等奖 147 渤海船舶职业学院 孙宗仪 三等奖 148 渤海船舶职业学院 庞欣博 三等奖 149 渤海船舶职业学院 贝博文 三等奖 150 渤海船舶职业学院 刘翔 三等奖 151 大连东软信息学院 王永玲 三等奖 152 大连东软信息学院 刘学东 三等奖 153 大连东软信息学院 陈尚宏 三等奖 154 甘肃卫生职业学院 蒋香瑰 三等奖 155 广东科学技术职业学院 张静虹 三等奖 156 广东科学技术职业学院 黄雨欣 三等奖 157 广东司法警官职业学院 陈蕙新 三等奖 158 广东司法警官职业学院 梁爱思 三等奖 159 广州体育职业技术学院 陈易 三等奖 160 广州体育职业技术学院 方鑫源 三等奖 --- 第50页 --- 第十五届全国大",
     "metadata": {
-      "source": "安装手册.pdf",
-      "chunk_id": 8,
-      "total_chunks": 10,
+      "source": "第十五届大赛获奖名单-20250604.pdf",
+      "chunk_id": 87,
+      "total_chunks": 117,
       "file_type": ".pdf",
-      "chunk_size": 314,
-      "source_name": "安装手册.pdf",
+      "chunk_size": 500,
+      "source_name": "第十五届大赛获奖名单-20250604.pdf",
       "doc_id": 101
     }
   },
   {
-    "text": "3) 通过终端手动挂载设备将设备挂载到mnt 目录下通常情况 下移动设备为devsdb1可使用命令fdisk -l查看移动设备所在位 置 手动挂载设备命令sudo mount devsdb1 mnt 4) 双击图标安装 Kylin开始安装引导进入选择安装途径界 面选择从 Ghost 安装 --- 第36页 --- 第 36 页 共 37 页 图 27 选择从 Ghost 安装 5) 点击打开文件选择mnt 目录下的 Ghost 镜像文件 --- 第37页 --- 第 37 页 共 37 页 图 28 选择 Ghost 镜像文件 6) Ghost 安装无需创建账户和选择时区后续安装步骤参见第 5 部分或第 6 部分",
+    "text": "学生计算机应用能力与数字素养大赛信息技术基础赛道获奖名单 50  69 序号 学校名称 姓名 奖项 161 河南机电职业学院 芦衍冰 三等奖 162 河南机电职业学院 徐聚源 三等奖 163 河南机电职业学院 黄钰 三等奖 164 河南机电职业学院 翟亚楠 三等奖 165 河南机电职业学院 王艺 三等奖 166 河南医学高等专科学校 海滨 三等奖 167 河南医学高等专科学校 赵梦妮 三等奖 168 河南医学高等专科学校 杜梦圆 三等奖 169 河南医学高等专科学校 郝梦瑶 三等奖 170 江门职业技术学院 宗淑霞 三等奖 171 江苏联合职业技术学院灌南中专办学点 赵前举 三等奖 172 江苏联合职业技术学院灌南中专办学点 卜峻然 三等奖 173 江苏联合职业技术学院灌南中专办学点 王广勇 三等奖 174 江苏联合职业技术学院灌南中专办学点 朱文轩 三等奖 175 江苏联合职业技术学院灌南中专办学点 赵思宁 三等奖 176 江苏联合职业技术学院灌南中专办学点 董建强 三等奖 177 江苏联合职业技术学院陶都中专办学点 徐启蒙 三等奖 178 江苏联合职业技术学院陶都中专办学点 沈慧涓",
     "metadata": {
-      "source": "安装手册.pdf",
-      "chunk_id": 9,
-      "total_chunks": 10,
+      "source": "第十五届大赛获奖名单-20250604.pdf",
+      "chunk_id": 88,
+      "total_chunks": 117,
       "file_type": ".pdf",
-      "chunk_size": 310,
-      "source_name": "安装手册.pdf",
+      "chunk_size": 500,
+      "source_name": "第十五届大赛获奖名单-20250604.pdf",
       "doc_id": 102
+    }
+  },
+  {
+    "text": "三等奖 179 江苏联合职业技术学院陶都中专办学点 宋孝祖 三等奖 180 江苏联合职业技术学院陶都中专办学点 左琳韩 三等奖 181 江苏联合职业技术学院陶都中专办学点 姚悦 三等奖 182 江苏食品药品职业技术学院 陈婷婷 三等奖 183 江苏医药职业学院 周锦玉 三等奖 184 江苏医药职业学院 李林蔚 三等奖 185 江苏医药职业学院 王嘉婷 三等奖 186 江苏医药职业学院 全思荧 三等奖 187 金华职业技术大学 雷颖 三等奖 188 空军工程大学航空机务士官学校 黄庆玮 三等奖 189 辽宁医药职业学院 励思宇 三等奖 190 辽宁医药职业学院 广心如 三等奖 191 辽宁医药职业学院 韩佳人 三等奖 192 辽宁医药职业学院 张馨丹 三等奖 193 辽宁医药职业学院 胡静 三等奖 194 柳州铁道职业技术学院 刘新宇 三等奖 195 柳州铁道职业技术学院 刘振祖 三等奖 196 柳州铁道职业技术学院 江心谊 三等奖 197 柳州铁道职业技术学院 覃鸿杰 三等奖 198 柳州铁道职业技术学院 蒙炳崇 三等奖 199 南京金陵高等职业技术学校 李宇宸 三等奖 200 南京",
+    "metadata": {
+      "source": "第十五届大赛获奖名单-20250604.pdf",
+      "chunk_id": 89,
+      "total_chunks": 117,
+      "file_type": ".pdf",
+      "chunk_size": 499,
+      "source_name": "第十五届大赛获奖名单-20250604.pdf",
+      "doc_id": 103
+    }
+  },
+  {
+    "text": "新华电脑专修学校 王宇昂 三等奖 201 南宁职业技术大学 刘洁萍 三等奖 --- 第51页 --- 第十五届全国大学生计算机应用能力与数字素养大赛信息技术基础赛道获奖名单 51  69 序号 学校名称 姓名 奖项 202 南宁职业技术大学 张晓玉 三等奖 203 南阳医学高等专科学校 李金桂 三等奖 204 南阳医学高等专科学校 戴雨浩 三等奖 205 南阳医学高等专科学校 孟欣 三等奖 206 内蒙古建筑职业技术学院 梁佳琦 三等奖 207 山东现代学院 殷璇 三等奖 208 商丘医学高等专科学校 刘熠瑶 三等奖 209 商丘医学高等专科学校 申佩玉 三等奖 210 商丘医学高等专科学校 王培林 三等奖 211 上海出版印刷高等专科学校 何文静 三等奖 212 上海出版印刷高等专科学校 牛翠翠 三等奖 213 上海出版印刷高等专科学校 尚诗怡 三等奖 214 上海出版印刷高等专科学校 龙亚军 三等奖 215 上海出版印刷高等专科学校 谢梦君 三等奖 216 上海出版印刷高等专科学校 史润泽 三等奖 217 深圳城市职业学院 吴嘉豪 三等奖 218 深圳城市职业学院 刘孝贤 三等奖",
+    "metadata": {
+      "source": "第十五届大赛获奖名单-20250604.pdf",
+      "chunk_id": 90,
+      "total_chunks": 117,
+      "file_type": ".pdf",
+      "chunk_size": 499,
+      "source_name": "第十五届大赛获奖名单-20250604.pdf",
+      "doc_id": 104
+    }
+  },
+  {
+    "text": "219 深圳城市职业学院 吴沛怡 三等奖 220 深圳城市职业学院 杨霖 三等奖 221 深圳城市职业学院 黄思娴 三等奖 222 深圳城市职业学院 蔡镕全 三等奖 223 深圳城市职业学院 邝慧莹 三等奖 224 深圳城市职业学院 郭海锋 三等奖 225 深圳城市职业学院 董祥欢 三等奖 226 深圳城市职业学院 李丽娴 三等奖 227 深圳城市职业学院 韦寿汕 三等奖 228 深圳城市职业学院 童惠如 三等奖 229 深圳城市职业学院 林妙珊 三等奖 230 深圳城市职业学院 卓永鸿 三等奖 231 深圳城市职业学院 吕妙欣 三等奖 232 四川铁道职业学院 罗紫林 三等奖 233 苏州高博职业学院 王美琪 三等奖 234 苏州高博职业学院 张译丹 三等奖 235 天津滨海职业学院 冀嘉伟 三等奖 236 天津商务职业学院 齐悦轶 三等奖 237 天津商务职业学院 夏新宇 三等奖 238 天津商务职业学院 雷晓倩 三等奖 239 天津商务职业学院 李颖异 三等奖 240 天津生物工程职业技术学院 张晓敏 三等奖 241 天津生物工程职业技术学院 刘雨帆 三等奖 242 天津生物工程",
+    "metadata": {
+      "source": "第十五届大赛获奖名单-20250604.pdf",
+      "chunk_id": 91,
+      "total_chunks": 117,
+      "file_type": ".pdf",
+      "chunk_size": 500,
+      "source_name": "第十五届大赛获奖名单-20250604.pdf",
+      "doc_id": 105
+    }
+  },
+  {
+    "text": "职业技术学院 方睿飘 三等奖 --- 第52页 --- 第十五届全国大学生计算机应用能力与数字素养大赛信息技术基础赛道获奖名单 52  69 序号 学校名称 姓名 奖项 243 通信士官学校 叶凌杰 三等奖 244 通信士官学校 王晓倩 三等奖 245 通信士官学校 岳小鹏 三等奖 246 通信士官学校 史艺珂 三等奖 247 通信士官学校 丁福豪 三等奖 248 通信士官学校 蔡孟杰 三等奖 249 通信士官学校 朱文涛 三等奖 250 通信士官学校 张珍凤 三等奖 251 乌鲁木齐经济技术开发区头屯河区新华智 原互联网职业培训学校有限公司 马荣成 三等奖 252 乌鲁木齐经济技术开发区头屯河区新华智 原互联网职业培训学校有限公司 肖梦格 三等奖 253 乌鲁木齐经济技术开发区头屯河区新华智 原互联网职业培训学校有限公司 麦迪乃阿卜 力米提 三等奖 254 乌鲁木齐经济技术开发区头屯河区新华智 原互联网职业培训学校有限公司 曾烁天 三等奖 255 乌鲁木齐经济技术开发区头屯河区新华智 原互联网职业培训学校有限公司 木赞拜艾力 拜 三等奖 256 乌鲁木齐经济技术开发区头屯河区新华智",
+    "metadata": {
+      "source": "第十五届大赛获奖名单-20250604.pdf",
+      "chunk_id": 92,
+      "total_chunks": 117,
+      "file_type": ".pdf",
+      "chunk_size": 499,
+      "source_name": "第十五届大赛获奖名单-20250604.pdf",
+      "doc_id": 106
+    }
+  },
+  {
+    "text": "原互联网职业培训学校有限公司 丁彦方 三等奖 257 乌鲁木齐经济技术开发区头屯河区新华智 原互联网职业培训学校有限公司 冯旭阳 三等奖 258 乌鲁木齐经济技术开发区头屯河区新华智 原互联网职业培训学校有限公司 温庭民 三等奖 259 西安海棠职业学院 高蕊 三等奖 260 西安海棠职业学院 薛一硕 三等奖 261 西安海棠职业学院 孔卓磊 三等奖 262 西安海棠职业学院 张周萱 三等奖 263 西安海棠职业学院 李若彤 三等奖 264 西安海棠职业学院 李晓焱 三等奖 265 西安海棠职业学院 贺志敏 三等奖 266 西安海棠职业学院 薛格格 三等奖 267 徐州工业职业技术学院 王滔 三等奖 268 云南民族大学 邬璇 三等奖 269 长江工程职业技术学院 王榛 三等奖 270 浙江艺术职业学院 施陈华 三等奖 271 浙江艺术职业学院 魏佳怡 三等奖 272 郑州卫生健康职业学院 杨景 三等奖 273 郑州智能科技职业学院 李思诺 三等奖 274 郑州智能科技职业学院 陈子翰 三等奖 275 郑州智能科技职业学院 张璐 三等奖 276 中山火炬职业技术学院 刘雅易 三等奖 -",
+    "metadata": {
+      "source": "第十五届大赛获奖名单-20250604.pdf",
+      "chunk_id": 93,
+      "total_chunks": 117,
+      "file_type": ".pdf",
+      "chunk_size": 500,
+      "source_name": "第十五届大赛获奖名单-20250604.pdf",
+      "doc_id": 107
+    }
+  },
+  {
+    "text": "-- 第53页 --- 第十五届全国大学生计算机应用能力与数字素养大赛信息技术基础赛道获奖名单 53  69 序号 学校名称 姓名 奖项 277 重庆医药高等专科学校 胡静 三等奖 --- 第54页 --- 第十五届全国大学生计算机应用能力与数字素养大赛信息技术基础赛道获奖名单 54  69 数据分析与可视化赛项 本科组 序号 学校名称 姓名 奖项 1 北京城市学院 芦润奇 一等奖 2 大连东软信息学院 胡瑞 一等奖 3 大连东软信息学院 倪硕 一等奖 4 广东金融学院 陈元辉 一等奖 5 黑龙江科技大学 罗小宇 一等奖 6 宁夏医科大学 侯启浪 一等奖 7 莆田学院新工科 霍美玲 一等奖 8 青岛理工大学 奚传豪 一等奖 9 山东现代学院 徐欣悦 一等奖 10 四川文理学院 赵玉勤 一等奖 11 天津外国语大学 李宗帛 一等奖 12 武汉晴川学院 刘锐龙 一等奖 13 长江大学计算机学院 伍洋洋 一等奖 14 长江大学经济与管理学院 柳韶祗 一等奖 15 浙江师范大学 戈佳翔 一等奖 16 中国石油大学北京克拉玛依校区 张宇 一等奖 17 中央民族大学 苏明 一等奖 18 重庆文理学",
+    "metadata": {
+      "source": "第十五届大赛获奖名单-20250604.pdf",
+      "chunk_id": 94,
+      "total_chunks": 117,
+      "file_type": ".pdf",
+      "chunk_size": 500,
+      "source_name": "第十五届大赛获奖名单-20250604.pdf",
+      "doc_id": 108
+    }
+  },
+  {
+    "text": "院 张明洁 一等奖 19 重庆文理学院数学与人工智能学院 方长浩 一等奖 20 安徽大学 刘亚澄 二等奖 21 安徽大学 王奇睿 二等奖 22 北京城市学院 罗洋 二等奖 23 北京城市学院 苏占成 二等奖 24 北京城市学院 王惠萌 二等奖 25 北京城市学院 王宇萱 二等奖 26 北京城市学院 袁圆 二等奖 27 北京语言大学 宁可 二等奖 28 广东金融学院 谢锦城 二等奖 29 湖北汽车工业学院 何国平 二等奖 30 湖南信息学院 徐燕婷 二等奖 31 南阳理工学院 李婉溢 二等奖 32 南阳理工学院 苗玉杰 二等奖 33 宁夏师范大学 张娅昭 二等奖 34 宁夏师范大学 李正霞 二等奖 35 宁夏医科大学 褚蓄 二等奖 36 宁夏医科大学 张宵 二等奖 37 宁夏医科大学 苏锦 二等奖 38 宁夏医科大学 吴金霞 二等奖 --- 第55页 --- 第十五届全国大学生计算机应用能力与数字素养大赛信息技术基础赛道获奖名单 55  69 序号 学校名称 姓名 奖项 39 莆田学院新工科 纪杭琪 二等奖 40 莆田学院新工科 李埼 二等奖 41 莆田学院新工科 郑焓灵 二等奖 42",
+    "metadata": {
+      "source": "第十五届大赛获奖名单-20250604.pdf",
+      "chunk_id": 95,
+      "total_chunks": 117,
+      "file_type": ".pdf",
+      "chunk_size": 499,
+      "source_name": "第十五届大赛获奖名单-20250604.pdf",
+      "doc_id": 109
+    }
+  },
+  {
+    "text": "莆田学院新工科 龙秋华 二等奖 43 莆田学院新工科 文欣佳 二等奖 44 莆田学院新工科 庄莹 二等奖 45 莆田学院新工科 陈文凯 二等奖 46 厦门理工学院 严鸿锦 二等奖 47 上海中侨职业技术大学 徐艺芸 二等奖 48 四川电影电视学院 郑方元 二等奖 49 武汉晴川学院 唐超 二等奖 50 武汉晴川学院 李鑫伟 二等奖 51 武汉晴川学院 刘佳琪 二等奖 52 武汉晴川学院 田诗令 二等奖 53 西南交通大学希望学院 吴茵茵 二等奖 54 长江大学地球科学学院 李舒涵 二等奖 55 长江大学计算机学院 张慧民 二等奖 56 长江大学计算机学院 祝东萍 二等奖 57 长江大学计算机学院 胡林 二等奖 58 长江大学计算机学院 黄程锦 二等奖 59 长江大学经济与管理学院 王小飞 二等奖 60 长江大学经济与管理学院 苏佳遥 二等奖 61 浙江师范大学 李欣 二等奖 62 浙江师范大学 刘雯丽 二等奖 63 浙江师范大学 徐佳妮 二等奖 64 中国人民解放军空军勤务学院 孙陆国梁 二等奖 65 重庆文理学院 唐垚鑫 二等奖 66 安徽大学 程新亮 三等奖 67 安徽大学 方悦",
+    "metadata": {
+      "source": "第十五届大赛获奖名单-20250604.pdf",
+      "chunk_id": 96,
+      "total_chunks": 117,
+      "file_type": ".pdf",
+      "chunk_size": 499,
+      "source_name": "第十五届大赛获奖名单-20250604.pdf",
+      "doc_id": 110
+    }
+  },
+  {
+    "text": "三等奖 68 安徽文达信息工程学院 冯思豪 三等奖 69 安徽信息工程学院 操雨萌 三等奖 70 安徽信息工程学院 朱萍萍 三等奖 71 北华航天工业学院 董少伟 三等奖 72 北京城市学院 惠子桐 三等奖 73 北京城市学院 张佳慧 三等奖 74 北京城市学院 王宇欣 三等奖 75 北京工业大学耿丹学院 左杨湫泽 三等奖 76 大连东软信息学院 王淏 三等奖 77 大连东软信息学院 黄思晗 三等奖 78 大连东软信息学院 达俊儒 三等奖 79 大连东软信息学院 夏天 三等奖 --- 第56页 --- 第十五届全国大学生计算机应用能力与数字素养大赛信息技术基础赛道获奖名单 56  69 序号 学校名称 姓名 奖项 80 电子科技大学成都学院 江元鑫 三等奖 81 广东金融学院 卢金熳 三等奖 82 广东金融学院 周珈希 三等奖 83 广东金融学院 贝顺梁 三等奖 84 广东金融学院 詹子祺 三等奖 85 广东金融学院 黄颖祯 三等奖 86 广东金融学院 李卓恩 三等奖 87 黑龙江财经学院 孙欣瑜 三等奖 88 黑龙江财经学院 来辰男 三等奖 89 湖北汽车工业学院科技学院 潘红进 三",
+    "metadata": {
+      "source": "第十五届大赛获奖名单-20250604.pdf",
+      "chunk_id": 97,
+      "total_chunks": 117,
+      "file_type": ".pdf",
+      "chunk_size": 500,
+      "source_name": "第十五届大赛获奖名单-20250604.pdf",
+      "doc_id": 111
+    }
+  },
+  {
+    "text": "等奖 90 湖南信息学院 周灿缘 三等奖 91 湖南信息学院 王露 三等奖 92 南阳理工学院 吴佳意 三等奖 93 宁夏师范大学 马娟 三等奖 94 宁夏师范大学 王娜 三等奖 95 宁夏师范大学 王涵 三等奖 96 宁夏师范大学 韩鹏 三等奖 97 宁夏师范大学 杨晓艳 三等奖 98 宁夏师范大学 杜佳蓉 三等奖 99 莆田学院新工科 尧建飞 三等奖 100 莆田学院新工科 朱丹彤 三等奖 101 莆田学院新工科 陈莹莹 三等奖 102 莆田学院新工科 林琬婷 三等奖 103 莆田学院新工科 曾婷婷 三等奖 104 莆田学院新工科 姬远尘 三等奖 105 莆田学院新工科 陈钢 三等奖 106 莆田学院新工科 卢语唯 三等奖 107 青岛理工大学 吕先翔 三等奖 108 山东现代学院 冯佳晖 三等奖 109 武汉晴川学院 金伟杰 三等奖 110 武汉晴川学院 袁珺哲 三等奖 111 武汉晴川学院 杨旭 三等奖 112 西南交通大学希望学院 何志贤 三等奖 113 长江大学地球科学学院 吕孟隆 三等奖 114 长江大学地球科学学院 郝伟宸 三等奖 115 长江大学地球科学学院 许康旺",
+    "metadata": {
+      "source": "第十五届大赛获奖名单-20250604.pdf",
+      "chunk_id": 98,
+      "total_chunks": 117,
+      "file_type": ".pdf",
+      "chunk_size": 499,
+      "source_name": "第十五届大赛获奖名单-20250604.pdf",
+      "doc_id": 112
+    }
+  },
+  {
+    "text": "三等奖 116 长江大学地球科学学院 魏研 三等奖 117 长江大学地球科学学院 王彩蓓 三等奖 118 长江大学地球科学学院 孟曦 三等奖 119 长江大学地球科学学院 袁诗茵 三等奖 120 长江大学地球科学学院 张博南 三等奖 --- 第57页 --- 第十五届全国大学生计算机应用能力与数字素养大赛信息技术基础赛道获奖名单 57  69 序号 学校名称 姓名 奖项 121 长江大学地球科学学院 秦政 三等奖 122 长江大学地球科学学院 任斌 三等奖 123 长江大学地球科学学院 丁子顺 三等奖 124 长江大学经济与管理学院 程子尧 三等奖 125 长江大学经济与管理学院 余晓东 三等奖 126 浙江师范大学 王晶琳 三等奖 127 重庆财经学院 吴小红 三等奖 128 重庆文理学院 高佳盈 三等奖 129 重庆文理学院 李思瑾 三等奖 130 重庆文理学院数学与人工智能学院 龙顺华 三等奖 131 重庆文理学院数学与人工智能学院 董树群 三等奖 --- 第58页 --- 第十五届全国大学生计算机应用能力与数字素养大赛信息技术基础赛道获奖名单 58  69 数据分析与可视化赛项",
+    "metadata": {
+      "source": "第十五届大赛获奖名单-20250604.pdf",
+      "chunk_id": 99,
+      "total_chunks": 117,
+      "file_type": ".pdf",
+      "chunk_size": 500,
+      "source_name": "第十五届大赛获奖名单-20250604.pdf",
+      "doc_id": 113
+    }
+  },
+  {
+    "text": "高职组 序号 学校名称 姓名 奖项 1 海军士官学校 王彦衡 一等奖 2 山西职业技术学院 计亚彤 一等奖 3 山西职业技术学院 赵俊霖 一等奖 4 上海商学院高等技术学院交通路院区 汪心仪 一等奖 5 随州职业技术学院 宋紫怡 一等奖 6 通信士官学校 杨宏川 一等奖 7 武汉软件工程职业学院 张乐婷 一等奖 8 徐州工业职业技术学院 陈雨彤 一等奖 9 渤海船舶职业学院 张智超 二等奖 10 广东科学技术职业学院 周锦沅 二等奖 11 南宁职业技术大学 甘莉芸 二等奖 12 内蒙古建筑职业技术学院 张露艳 二等奖 13 山西职业技术学院 王夏茹 二等奖 14 上海出版印刷高等专科学校 翟雅歌 二等奖 15 上海出版印刷高等专科学校 何杏霆 二等奖 16 上海商学院高等技术学院交通路院区 蒋佳杰 二等奖 17 随州职业技术学院 尹美娇 二等奖 18 随州职业技术学院 何慧敏 二等奖 19 通信士官学校 杜泽 二等奖 20 通信士官学校 韩浩迪 二等奖 21 通信士官学校 陈明长 二等奖 22 通信士官学校 靳朋辉 二等奖 23 徐州工业职业技术学院 周爱国 二等奖 24 云南民族大",
+    "metadata": {
+      "source": "第十五届大赛获奖名单-20250604.pdf",
+      "chunk_id": 100,
+      "total_chunks": 117,
+      "file_type": ".pdf",
+      "chunk_size": 499,
+      "source_name": "第十五届大赛获奖名单-20250604.pdf",
+      "doc_id": 114
+    }
+  },
+  {
+    "text": "学 杨珊 二等奖 25 郑州智能科技职业学院 张明慧 二等奖 26 重庆医药高等专科学校 杜庆 二等奖 27 东莞职业技术学院 黄冰冰 三等奖 28 河南机电职业学院 李佳兴 三等奖 29 河南机电职业学院 杨溢哲 三等奖 30 河南机电职业学院 胡翔春 三等奖 31 河南机电职业学院 蒋佳璇 三等奖 32 河南机电职业学院 彭路恒 三等奖 33 河南机电职业学院 管振玉 三等奖 34 河南机电职业学院 宋俊桦 三等奖 35 河南机电职业学院 楚佳音 三等奖 36 江苏联合职业技术学院灌南中专办学点 潘艺 三等奖 37 南宁职业技术大学 廖接莲 三等奖 38 南宁职业技术大学 苏嘉乐 三等奖 --- 第59页 --- 第十五届全国大学生计算机应用能力与数字素养大赛信息技术基础赛道获奖名单 59  69 序号 学校名称 姓名 奖项 39 山东现代学院 殷璇 三等奖 40 山西职业技术学院 李慧欣 三等奖 41 随州职业技术学院 董相宏 三等奖 42 随州职业技术学院 黄依红 三等奖 43 通信士官学校 许芳 三等奖 44 通信士官学校 丁捷 三等奖 45 徐州工业职业技术学院 宗海森 三",
+    "metadata": {
+      "source": "第十五届大赛获奖名单-20250604.pdf",
+      "chunk_id": 101,
+      "total_chunks": 117,
+      "file_type": ".pdf",
+      "chunk_size": 500,
+      "source_name": "第十五届大赛获奖名单-20250604.pdf",
+      "doc_id": 115
+    }
+  },
+  {
+    "text": "等奖 46 郑州智能科技职业学院 李鑫源 三等奖 47 重庆医药高等专科学校 谭冬雪 三等奖 48 重庆医药高等专科学校 李好 三等奖 49 重庆医药高等专科学校 舒云珠 三等奖 --- 第60页 --- 第十五届全国大学生计算机应用能力与数字素养大赛信息技术基础赛道获奖名单 60  69 人工智能应用基础赛项 本科组 序号 学校名称 姓名 奖项 1 安徽大学 王奇睿 一等奖 2 北方工业大学 葛文轩 一等奖 3 北方工业大学 郝培源 一等奖 4 北方工业大学 陈嘉稷 一等奖 5 北方工业大学 沈泽华 一等奖 6 北方工业大学 赵佳琪 一等奖 7 承德医学院 张兴海 一等奖 8 大连东软信息学院 李童 一等奖 9 大连东软信息学院 吴晗 一等奖 10 电子科技大学成都学院 黄鹏 一等奖 11 广东金融学院 黄颖祯 一等奖 12 哈尔滨信息工程学院 胡文凯 一等奖 13 南京传媒学院 曹征鹏 一等奖 14 南京传媒学院 许智豪 一等奖 15 南京航空航天大学金城学院 吴悦悦 一等奖 16 宁夏医科大学 张宵 一等奖 17 山东现代学院 邢欣琪 一等奖 18 上海中侨职业技术大学 黄嘉晨",
+    "metadata": {
+      "source": "第十五届大赛获奖名单-20250604.pdf",
+      "chunk_id": 102,
+      "total_chunks": 117,
+      "file_type": ".pdf",
+      "chunk_size": 499,
+      "source_name": "第十五届大赛获奖名单-20250604.pdf",
+      "doc_id": 116
+    }
+  },
+  {
+    "text": "一等奖 19 首都经济贸易大学 时铭轩 一等奖 20 首都经济贸易大学 钱天鹤 一等奖 21 四川旅游学院 赵甜 一等奖 22 烟台理工学院 杜宜臻 一等奖 23 盐城工学院 朱林烨 一等奖 24 长江大学地球科学学院 张祯志 一等奖 25 长江大学地球科学学院 殷豪阳 一等奖 26 浙江师范大学 楼昊 一等奖 27 重庆科技大学 许超 一等奖 28 安徽大学 陈慧 二等奖 29 安徽大学 周瑜璇 二等奖 30 安徽信息工程学院 高宇 二等奖 31 北方工业大学 薛冠宇 二等奖 32 北方工业大学 羊以祥 二等奖 33 北方工业大学 宋昕桐 二等奖 34 北方工业大学 刘畅 二等奖 35 北方工业大学 廖利帆 二等奖 36 北方工业大学 李春雨 二等奖 37 北方工业大学 王浩然 二等奖 38 北方工业大学 付赫 二等奖 --- 第61页 --- 第十五届全国大学生计算机应用能力与数字素养大赛信息技术基础赛道获奖名单 61  69 序号 学校名称 姓名 奖项 39 北方工业大学 牛善牧 二等奖 40 北方工业大学 许博晨 二等奖 41 北方工业大学 李东洋 二等奖 42 北华航天工业学",
+    "metadata": {
+      "source": "第十五届大赛获奖名单-20250604.pdf",
+      "chunk_id": 103,
+      "total_chunks": 117,
+      "file_type": ".pdf",
+      "chunk_size": 500,
+      "source_name": "第十五届大赛获奖名单-20250604.pdf",
+      "doc_id": 117
+    }
+  },
+  {
+    "text": "院 杜政杰 二等奖 43 北京工业大学耿丹学院 张婕 二等奖 44 北京工业大学耿丹学院 李雨阳 二等奖 45 大连东软信息学院 白皓文 二等奖 46 广东金融学院 李卓恩 二等奖 47 哈尔滨信息工程学院 张洪恩 二等奖 48 杭州师范大学 施涵 二等奖 49 湖北汽车工业学院科技学院 潘红进 二等奖 50 湖南信息学院 邵鑫轩 二等奖 51 湖南信息学院 张超芳 二等奖 52 湖南信息学院 范伟琪 二等奖 53 南京传媒学院 徐戈潇 二等奖 54 南京传媒学院 缪伟成 二等奖 55 南京传媒学院 谈明焘 二等奖 56 南京航空航天大学金城学院 杭熙芃 二等奖 57 南阳理工学院 赵莹净 二等奖 58 南阳理工学院 何思思 二等奖 59 宁夏师范大学 张娅昭 二等奖 60 山东现代学院 王晓涵 二等奖 61 山东现代学院 张玄珑 二等奖 62 山东现代学院 徐欣悦 二等奖 63 山东现代学院 黄静静 二等奖 64 上海中侨职业技术大学 赵佳 二等奖 65 上海中侨职业技术大学 文家乐 二等奖 66 首都医科大学 许言之 二等奖 67 首都医科大学 钟钰 二等奖 68 四川旅游学院 周",
+    "metadata": {
+      "source": "第十五届大赛获奖名单-20250604.pdf",
+      "chunk_id": 104,
+      "total_chunks": 117,
+      "file_type": ".pdf",
+      "chunk_size": 500,
+      "source_name": "第十五届大赛获奖名单-20250604.pdf",
+      "doc_id": 118
+    }
+  },
+  {
+    "text": "欣宇 二等奖 69 四川旅游学院 洪瑞 二等奖 70 四川旅游学院 吴怡畅 二等奖 71 四川旅游学院 龚小清 二等奖 72 四川旅游学院 何鑫 二等奖 73 四川旅游学院 陈代淑 二等奖 74 武汉晴川学院 刘锐龙 二等奖 75 西安邮电大学 王佳 二等奖 76 盐城工学院 吉欣宇 二等奖 77 长江大学地球科学学院 李舒涵 二等奖 78 长江大学地球科学学院 吴越 二等奖 79 长江大学计算机学院 张瑜 二等奖 --- 第62页 --- 第十五届全国大学生计算机应用能力与数字素养大赛信息技术基础赛道获奖名单 62  69 序号 学校名称 姓名 奖项 80 长江大学经济与管理学院 杨思琦 二等奖 81 浙江师范大学 刘荣策 二等奖 82 浙江师范大学 王晶琳 二等奖 83 中国人民解放军空军勤务学院 李商铠 二等奖 84 中国人民解放军空军勤务学院 赵东旭 二等奖 85 中国人民解放军空军勤务学院 王硕 二等奖 86 重庆财经学院 唐彬贵 二等奖 87 重庆文理学院数学与人工智能学院 冉晓杰 二等奖 88 安徽信息工程学院 李晴雨 三等奖 89 安徽信息工程学院 汪文杰 三等奖 90",
+    "metadata": {
+      "source": "第十五届大赛获奖名单-20250604.pdf",
+      "chunk_id": 105,
+      "total_chunks": 117,
+      "file_type": ".pdf",
+      "chunk_size": 500,
+      "source_name": "第十五届大赛获奖名单-20250604.pdf",
+      "doc_id": 119
+    }
+  },
+  {
+    "text": "安徽信息工程学院 余梦桐 三等奖 91 安徽信息工程学院 韩梦雨 三等奖 92 安徽信息工程学院 贾乐 三等奖 93 北方工业大学 孟梓豪 三等奖 94 北方工业大学 张珊 三等奖 95 北方工业大学 朱玥雯 三等奖 96 北方工业大学 苏杰 三等奖 97 北华航天工业学院 张灿荣 三等奖 98 北华航天工业学院 李林敬 三等奖 99 北华航天工业学院 刘梦晗 三等奖 100 北京城市学院 张佳慧 三等奖 101 北京城市学院 王宇萱 三等奖 102 北京工业大学耿丹学院 王晗霄 三等奖 103 大连东软信息学院 张文祺 三等奖 104 大连东软信息学院 梁文涛 三等奖 105 大连东软信息学院 赵瑞旗 三等奖 106 大连东软信息学院 黄辰兴 三等奖 107 滇西科技师范学院 汪依雯 三等奖 108 电子科技大学成都学院 胡俊豪 三等奖 109 广东金融学院 邝波 三等奖 110 广东金融学院 吴宇涵 三等奖 111 广东金融学院 何钰漩 三等奖 112 广东金融学院 吴宇泰 三等奖 113 广东金融学院 许佳玲 三等奖 114 广东金融学院 石文杰 三等奖 115 广东金融学院",
+    "metadata": {
+      "source": "第十五届大赛获奖名单-20250604.pdf",
+      "chunk_id": 106,
+      "total_chunks": 117,
+      "file_type": ".pdf",
+      "chunk_size": 498,
+      "source_name": "第十五届大赛获奖名单-20250604.pdf",
+      "doc_id": 120
+    }
+  },
+  {
+    "text": "张子豪 三等奖 116 广东金融学院 招镇帮 三等奖 117 黑龙江外国语学院 乌婷双双 三等奖 118 湖北汽车工业学院科技学院 徐天泽 三等奖 119 湖北汽车工业学院科技学院 王子怡 三等奖 120 湖南信息学院 孙祥轩 三等奖 --- 第63页 --- 第十五届全国大学生计算机应用能力与数字素养大赛信息技术基础赛道获奖名单 63  69 序号 学校名称 姓名 奖项 121 南昌工程学院 吴佳临 三等奖 122 南京传媒学院 吴雨婷 三等奖 123 宁夏师范大学 暴福 三等奖 124 宁夏师范大学 杨玲 三等奖 125 厦门理工学院 李涵 三等奖 126 山东现代学院 石晋源 三等奖 127 首都经济贸易大学 崔蓝天 三等奖 128 首都经济贸易大学 李扬灵 三等奖 129 首都医科大学 李瑞颖 三等奖 130 首都医科大学 索晟然 三等奖 131 四川旅游学院 雷茜 三等奖 132 四川旅游学院 刘陈 三等奖 133 四川旅游学院 袁康 三等奖 134 四川旅游学院 安桔萍 三等奖 135 四川旅游学院 唐鹏 三等奖 136 四川旅游学院 熊进鑫 三等奖 137 四川旅游学院",
+    "metadata": {
+      "source": "第十五届大赛获奖名单-20250604.pdf",
+      "chunk_id": 107,
+      "total_chunks": 117,
+      "file_type": ".pdf",
+      "chunk_size": 499,
+      "source_name": "第十五届大赛获奖名单-20250604.pdf",
+      "doc_id": 121
+    }
+  },
+  {
+    "text": "韩冰倩 三等奖 138 四川旅游学院 陈晓文 三等奖 139 四川旅游学院 余韬 三等奖 140 天津外国语大学 刘晨奕 三等奖 141 天津外国语大学 董桢杉 三等奖 142 天津外国语大学 阿淑媛 三等奖 143 武汉晴川学院 任家乐 三等奖 144 西安邮电大学 寇兰心 三等奖 145 西南交通大学希望学院 吴茵茵 三等奖 146 西南交通大学希望学院 夏嘉佳 三等奖 147 西南交通大学希望学院 刘俊波 三等奖 148 盐城工学院 陆苏雯 三等奖 149 盐城工学院 覃冠亮 三等奖 150 盐城工学院 徐凯杰 三等奖 151 长江大学地球科学学院 唐磊 三等奖 152 长江大学地球科学学院 赵宝海 三等奖 153 长江大学地球科学学院 许康旺 三等奖 154 长江大学地球科学学院 丁子顺 三等奖 155 长江大学地球科学学院 秦政 三等奖 156 长江大学地球科学学院 但恒鑫 三等奖 157 长江大学地球科学学院 孟伟鹏 三等奖 158 长江大学地球科学学院 任斌 三等奖 159 长江大学地球科学学院 王梓璇 三等奖 160 长江大学计算机学院 张宇翔 三等奖 161 长江大学",
+    "metadata": {
+      "source": "第十五届大赛获奖名单-20250604.pdf",
+      "chunk_id": 108,
+      "total_chunks": 117,
+      "file_type": ".pdf",
+      "chunk_size": 500,
+      "source_name": "第十五届大赛获奖名单-20250604.pdf",
+      "doc_id": 122
+    }
+  },
+  {
+    "text": "计算机学院 黄程锦 三等奖 --- 第64页 --- 第十五届全国大学生计算机应用能力与数字素养大赛信息技术基础赛道获奖名单 64  69 序号 学校名称 姓名 奖项 162 长江大学计算机学院 林世豪 三等奖 163 长江大学经济与管理学院 王小飞 三等奖 164 长江大学经济与管理学院 苏佳遥 三等奖 165 浙江师范大学 戈佳翔 三等奖 166 浙江师范大学 许芷轩 三等奖 167 中国人民解放军空军勤务学院 冯骏 三等奖 168 中央民族大学 陈怡冰 三等奖 169 重庆文理学院 李思瑾 三等奖 170 重庆文理学院 章智涵 三等奖 171 重庆文理学院 高佳盈 三等奖 --- 第65页 --- 第十五届全国大学生计算机应用能力与数字素养大赛信息技术基础赛道获奖名单 65  69 人工智能应用基础赛项 高职组 序号 学校名称 姓名 奖项 1 鄂尔多斯职业学院 王智奇 一等奖 2 江门职业技术学院 余乘典 一等奖 3 内蒙古建筑职业技术学院 张龙 一等奖 4 上海出版印刷高等专科学校 金雨彤 一等奖 5 上海出版印刷高等专科学校 刘怡雪 一等奖 6 上海出版印刷高等专科学校 吴纪",
+    "metadata": {
+      "source": "第十五届大赛获奖名单-20250604.pdf",
+      "chunk_id": 109,
+      "total_chunks": 117,
+      "file_type": ".pdf",
+      "chunk_size": 500,
+      "source_name": "第十五届大赛获奖名单-20250604.pdf",
+      "doc_id": 123
+    }
+  },
+  {
+    "text": "哲 一等奖 7 上海商学院高等技术学院交通路院区 汪心仪 一等奖 8 天津城市建设管理职业技术学院 齐忠兴 一等奖 9 天津城市建设管理职业技术学院 田播 一等奖 10 天津商务职业学院 刘倬宁 一等奖 11 通信士官学校 王玮 一等奖 12 通信士官学校 付文杰 一等奖 13 通信士官学校 傅志财 一等奖 14 徐州工业职业技术学院 潘金旭 一等奖 15 重庆医药高等专科学校 石羿 一等奖 16 北京工业职业技术学院 赵前程 二等奖 17 北京工业职业技术学院 申恪 二等奖 18 北京工业职业技术学院 肖董玉 二等奖 19 渤海船舶职业学院 韩馨悦 二等奖 20 江西生物科技职业学院 黄玉芸 二等奖 21 南宁职业技术大学 甘燕妮 二等奖 22 南宁职业技术大学 李湘丽 二等奖 23 内蒙古建筑职业技术学院 韩廷佳 二等奖 24 山东现代学院 苏煜淇 二等奖 25 上海出版印刷高等专科学校 马烨 二等奖 26 上海出版印刷高等专科学校 贾浩宇 二等奖 27 上海出版印刷高等专科学校 张欣悦 二等奖 28 上海出版印刷高等专科学校 陈雨新 二等奖 29 上海商学院高等技术学院交通路院区",
+    "metadata": {
+      "source": "第十五届大赛获奖名单-20250604.pdf",
+      "chunk_id": 110,
+      "total_chunks": 117,
+      "file_type": ".pdf",
+      "chunk_size": 500,
+      "source_name": "第十五届大赛获奖名单-20250604.pdf",
+      "doc_id": 124
+    }
+  },
+  {
+    "text": "钱婧雯 二等奖 30 上海商学院高等技术学院交通路院区 蒋佳杰 二等奖 31 上海中侨职业技术大学 邹一娴 二等奖 32 嵩山少林武术职业学院 楚海涛 二等奖 33 天津城市建设管理职业技术学院 谢可可 二等奖 34 天津城市建设管理职业技术学院 何昕睿 二等奖 35 天津城市建设管理职业技术学院 郭彬朵 二等奖 36 天津城市建设管理职业技术学院 蔡晓 二等奖 37 天津商务职业学院 曹力玮 二等奖 38 通信士官学校 游璐嘉 二等奖 --- 第66页 --- 第十五届全国大学生计算机应用能力与数字素养大赛信息技术基础赛道获奖名单 66  69 序号 学校名称 姓名 奖项 39 通信士官学校 韩鸿兵 二等奖 40 通信士官学校 周思 二等奖 41 通信士官学校 贾浩杰 二等奖 42 通信士官学校 王春雷 二等奖 43 通信士官学校 薛冰寒 二等奖 44 武汉软件工程职业学院 潘峰 二等奖 45 西昌民族幼儿师范高等专科学校 肖幸星 二等奖 46 西昌民族幼儿师范高等专科学校 黄子然 二等奖 47 西昌民族幼儿师范高等专科学校 蓝琪 二等奖 48 云南民族大学 马权于 二等奖 49",
+    "metadata": {
+      "source": "第十五届大赛获奖名单-20250604.pdf",
+      "chunk_id": 111,
+      "total_chunks": 117,
+      "file_type": ".pdf",
+      "chunk_size": 498,
+      "source_name": "第十五届大赛获奖名单-20250604.pdf",
+      "doc_id": 125
+    }
+  },
+  {
+    "text": "郑州智能科技职业学院 刘欣雨 二等奖 50 郑州智能科技职业学院 孙华川 二等奖 51 北京工业职业技术学院 蔡炜 三等奖 52 北京工业职业技术学院 董响 三等奖 53 北京工业职业技术学院 李雨泽 三等奖 54 北京工业职业技术学院 李浩铭 三等奖 55 北京工业职业技术学院 张静萱 三等奖 56 渤海船舶职业学院 韩海锋 三等奖 57 广东科学技术职业学院 周锦沅 三等奖 58 海军士官学校 孙加萍 三等奖 59 江门职业技术学院 郑雯颖 三等奖 60 江苏联合职业技术学院灌南中专办学点 赵倩怡 三等奖 61 江苏联合职业技术学院灌南中专办学点 韩宇奥 三等奖 62 江苏联合职业技术学院陶都中专办学点 孟欣怡 三等奖 63 江苏省连云港中医药高等职业技术学校 陆琳 三等奖 64 金华职业技术大学 方程源 三等奖 65 南京金陵高等职业技术学校 李儒璠 三等奖 66 南京新华电脑专修学校 侯新成 三等奖 67 内蒙古建筑职业技术学院 宋敏慧 三等奖 68 内蒙古建筑职业技术学院 陈婧 三等奖 69 内蒙古建筑职业技术学院 张露艳 三等奖 70 上海出版印刷高等专科学校 陆姗姗 三等",
+    "metadata": {
+      "source": "第十五届大赛获奖名单-20250604.pdf",
+      "chunk_id": 112,
+      "total_chunks": 117,
+      "file_type": ".pdf",
+      "chunk_size": 500,
+      "source_name": "第十五届大赛获奖名单-20250604.pdf",
+      "doc_id": 126
+    }
+  },
+  {
+    "text": "奖 71 上海出版印刷高等专科学校 杨丽娟 三等奖 72 上海出版印刷高等专科学校 陆陈诚 三等奖 73 上海出版印刷高等专科学校 邓国豪 三等奖 74 上海出版印刷高等专科学校 董博晨 三等奖 75 嵩山少林武术职业学院 王路通 三等奖 76 天津滨海职业学院 谢林利 三等奖 77 天津城市建设管理职业技术学院 张恩妍 三等奖 78 天津城市建设管理职业技术学院 孙喆 三等奖 79 天津城市建设管理职业技术学院 王圣泽 三等奖 --- 第67页 --- 第十五届全国大学生计算机应用能力与数字素养大赛信息技术基础赛道获奖名单 67  69 序号 学校名称 姓名 奖项 80 天津城市建设管理职业技术学院 黑禹然 三等奖 81 天津商务职业学院 李玉婧 三等奖 82 天津商务职业学院 窦怡涵 三等奖 83 天津商务职业学院 李雅萱 三等奖 84 通信士官学校 杜泽 三等奖 85 通信士官学校 李鼎溢 三等奖 86 通信士官学校 王郑璐 三等奖 87 通信士官学校 吴俊凯 三等奖 88 通信士官学校 范晓宇 三等奖 89 通信士官学校 肖维康 三等奖 90 通信士官学校 李烁 三等奖 91",
+    "metadata": {
+      "source": "第十五届大赛获奖名单-20250604.pdf",
+      "chunk_id": 113,
+      "total_chunks": 117,
+      "file_type": ".pdf",
+      "chunk_size": 499,
+      "source_name": "第十五届大赛获奖名单-20250604.pdf",
+      "doc_id": 127
+    }
+  },
+  {
+    "text": "通信士官学校 李振洋 三等奖 92 通信士官学校 连延军 三等奖 93 通信士官学校 陈明长 三等奖 94 通信士官学校 任东旭 三等奖 95 武汉软件工程职业学院 唐芳灵 三等奖 96 西昌民族幼儿师范高等专科学校 王辛瑜 三等奖 97 西昌民族幼儿师范高等专科学校 宋诗华 三等奖 98 徐州工业职业技术学院 段沣恒 三等奖 99 徐州工业职业技术学院 李紫豪 三等奖 100 郑州智能科技职业学院 田冰冰 三等奖 --- 第68页 --- 第十五届全国大学生计算机应用能力与数字素养大赛信息技术基础赛道获奖名单 68  69 计算机行业技术用语赛项 本科组 序号 学校名称 姓名 奖项 1 北华航天工业学院 李乐乐 一等奖 2 北华航天工业学院 鲁佳鑫 一等奖 3 湖北汽车工业学院 孙宇 一等奖 4 青岛理工大学 奚传豪 一等奖 5 烟台大学 曹欣茹 一等奖 6 烟台大学 杨嘉璐 一等奖 7 烟台大学 陈亚珍 一等奖 8 北华航天工业学院 王海龙 二等奖 9 电子科技大学成都学院 陈嘉毅 二等奖 10 湖北汽车工业学院 秦甜 二等奖 11 青岛理工大学 吕先翔 二等奖 12 青岛理工大学",
+    "metadata": {
+      "source": "第十五届大赛获奖名单-20250604.pdf",
+      "chunk_id": 114,
+      "total_chunks": 117,
+      "file_type": ".pdf",
+      "chunk_size": 500,
+      "source_name": "第十五届大赛获奖名单-20250604.pdf",
+      "doc_id": 128
+    }
+  },
+  {
+    "text": "魏亦凡 二等奖 13 天津外国语大学 周祺玥 二等奖 14 烟台大学 李睿祺 二等奖 15 烟台大学 仝梦涵 二等奖 16 北华航天工业学院 徐正阳 三等奖 17 北华航天工业学院 杨世涛 三等奖 18 湖北汽车工业学院 谭梦若 三等奖 19 湖北汽车工业学院 樊天怡 三等奖 20 湖北汽车工业学院 袁楹烨 三等奖 21 青岛理工大学 王梦冉 三等奖 22 青岛理工大学 杜鹏程 三等奖 23 青岛理工大学 姜岩 三等奖 --- 第69页 --- 第十五届全国大学生计算机应用能力与数字素养大赛信息技术基础赛道获奖名单 69  69 计算机行业技术用语赛项 高职组 序号 学校名称 姓名 奖项 1 山东商务职业学院 尹英颖 一等奖 2 山东商务职业学院 郑棋钟 一等奖 3 山东商务职业学院 宋欣航 一等奖 4 烟台汽车工程职业学院 张芮萌 一等奖 5 烟台职业学院 CHIENGTHONG MISS NATTHARAT 一等奖 6 南京金陵高等职业技术学校 李宇宸 二等奖 7 山西职业技术学院 宋世捷 二等奖 8 山西职业技术学院 高雅茹 二等奖 9 山西职业技术学院 张锦荣 二等奖 10",
+    "metadata": {
+      "source": "第十五届大赛获奖名单-20250604.pdf",
+      "chunk_id": 115,
+      "total_chunks": 117,
+      "file_type": ".pdf",
+      "chunk_size": 498,
+      "source_name": "第十五届大赛获奖名单-20250604.pdf",
+      "doc_id": 129
+    }
+  },
+  {
+    "text": "山西职业技术学院 高荧 二等奖 11 山西职业技术学院 计亚彤 二等奖 12 山西职业技术学院 李淑贤 二等奖 13 武汉软件工程职业学院 贺崎峰 二等奖 14 武汉软件工程职业学院 郑思思 二等奖 15 武汉软件工程职业学院 陶逸然 二等奖 16 烟台汽车工程职业学院 王思彤 二等奖 17 烟台幼儿师范高等专科学校 李贻霖 二等奖 18 北京工业职业技术学院 孙静 三等奖 19 渤海船舶职业学院 张冬林 三等奖 20 南京金陵高等职业技术学校 周馨果 三等奖 21 上海出版印刷高等专科学校 许晓璐 三等奖 22 上海出版印刷高等专科学校 周怡蕊 三等奖 23 上海出版印刷高等专科学校 许士艳 三等奖 24 上海出版印刷高等专科学校 王雅 三等奖 25 苏州高博职业学院 苏炀皓 三等奖 26 武汉软件工程职业学院 李哲虎 三等奖 27 烟台幼儿师范高等专科学校 杨荟 三等奖 28 烟台幼儿师范高等专科学校 刘子杨 三等奖 29 烟台幼儿师范高等专科学校 夏文政 三等奖 30 烟台幼儿师范高等专科学校 赵雪彤 三等奖 31 烟台幼儿师范高等专科学校 韩铭钰 三等奖",
+    "metadata": {
+      "source": "第十五届大赛获奖名单-20250604.pdf",
+      "chunk_id": 116,
+      "total_chunks": 117,
+      "file_type": ".pdf",
+      "chunk_size": 488,
+      "source_name": "第十五届大赛获奖名单-20250604.pdf",
+      "doc_id": 130
     }
   }
 ]
