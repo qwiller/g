@@ -28,7 +28,7 @@
 
 ## 🚀 快速部署（推荐）
 
-### 方法一：一键自动部署
+### 方法一：完整自动部署（需要管理员权限）
 
 1. **打开终端**
    ```bash
@@ -46,8 +46,8 @@
    ```bash
    # 给部署脚本执行权限
    chmod +x deploy.sh
-   
-   # 运行一键部署脚本
+
+   # 运行一键部署脚本（需要输入密码）
    ./deploy.sh
    ```
 
@@ -57,17 +57,41 @@
    - 启动应用程序
    - 整个过程约需5-10分钟
 
-5. **验证部署**
+### 方法二：简化部署（无需管理员权限）⭐
+
+**适合没有管理员权限的用户**
+
+1. **下载项目**
    ```bash
-   # 检查服务状态
-   sudo systemctl status kylin-qa-assistant
-   
-   # 如果显示 "active (running)" 则部署成功
+   git clone https://github.com/qwiller/g.git
+   cd g/rag-assistant
    ```
 
-6. **访问应用**
+2. **执行简化部署**
+   ```bash
+   # 运行简化部署脚本（无需sudo）
+   chmod +x simple_deploy.sh
+   ./simple_deploy.sh
+   ```
+
+3. **启动服务**
+   ```bash
+   # 后台启动服务
+   ./start_background.sh
+
+   # 或前台启动（可以看到日志）
+   ./start_service.sh
+   ```
+
+4. **访问应用**
    - 打开浏览器访问：http://localhost:8000
    - 看到欢迎界面即表示部署成功
+
+5. **停止服务**
+   ```bash
+   # 停止后台服务
+   ./stop_service.sh
+   ```
 
 ## 🔧 手动部署（详细步骤）
 

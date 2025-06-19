@@ -1,0 +1,18 @@
+INFO:vector_store:文档加载成功，共 103 个文档
+INFO:     Will watch for changes in these directories: ['/home/a/kylin-qa-assistant/rag-assistant']
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+INFO:     Started reloader process [36650] using StatReload
+🚀 启动银河麒麟智能问答助手...
+📖 访问地址: http://localhost:8000
+📚 API文档: http://localhost:8000/docs
+INFO:vector_store:文档加载成功，共 103 个文档
+INFO:vector_store:文档加载成功，共 103 个文档
+INFO:     Started server process [36659]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     127.0.0.1:49004 - "GET /status HTTP/1.1" 200 OK
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [36659]
+INFO:     Stopping reloader process [36650]

@@ -116,7 +116,13 @@ fi
 print_step "创建系统服务"
 print_info "正在创建systemd服务文件..."
 
-sudo tee /etc/systemd/system/kylin-qa-assistant.service > /dev/null <<EOF
+# 检查sudo权限并提示用户
+if ! sudo -n true 2>/dev/null; then
+    print_info "需要管理员权限来创建系统服务，请输入您的密码："
+fi
+
+# 创建服务文件，如果失败则提供备选方案
+if sudo tee /etc/systemd/system/kylin-qa-assistant.service > /dev/null <<EOF
 [Unit]
 Description=银河麒麟智能问答助手
 After=network.target
@@ -135,27 +141,48 @@ StandardError=journal
 [Install]
 WantedBy=multi-user.target
 EOF
-
-# 重新加载systemd
-sudo systemctl daemon-reload
-sudo systemctl enable kylin-qa-assistant.service
-print_success "系统服务创建完成"
+then
+    # 重新加载systemd
+    sudo systemctl daemon-reload
+    sudo systemctl enable kylin-qa-assistant.service
+    print_success "系统服务创建完成"
+else
+    print_warning "系统服务创建失败，将使用手动启动方式"
+    print_info "您可以稍后手动运行: python3 backend/main.py"
+    MANUAL_START=true
+fi
 
 # 启动服务
 print_step "启动智能问答助手服务"
-if sudo systemctl start kylin-qa-assistant.service; then
-    print_success "服务启动成功"
+if [ "$MANUAL_START" = true ]; then
+    print_info "使用手动启动方式..."
+    # 后台启动服务
+    nohup python3 backend/main.py > app.log 2>&1 &
+    APP_PID=$!
+    echo $APP_PID > app.pid
     sleep 3
 
-    # 检查服务状态
-    if sudo systemctl is-active --quiet kylin-qa-assistant.service; then
-        print_success "服务运行正常"
+    if kill -0 $APP_PID 2>/dev/null; then
+        print_success "服务启动成功（手动模式）"
+        print_info "进程ID: $APP_PID"
     else
-        print_error "服务启动失败，请查看日志"
-        sudo journalctl -u kylin-qa-assistant.service -n 10 --no-pager
+        print_error "服务启动失败，请查看 app.log"
     fi
 else
-    print_error "服务启动失败"
+    if sudo systemctl start kylin-qa-assistant.service; then
+        print_success "服务启动成功"
+        sleep 3
+
+        # 检查服务状态
+        if sudo systemctl is-active --quiet kylin-qa-assistant.service; then
+            print_success "服务运行正常"
+        else
+            print_error "服务启动失败，请查看日志"
+            sudo journalctl -u kylin-qa-assistant.service -n 10 --no-pager
+        fi
+    else
+        print_error "服务启动失败"
+    fi
 fi
 
 # 测试服务
