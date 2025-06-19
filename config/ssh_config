@@ -1,0 +1,59 @@
+# SSH配置文件 - 麒麟系统远程调试专用
+# 位置: %USERPROFILE%\.ssh\config (Windows) 或 ~/.ssh/config (Linux/Mac)
+# 使用说明：复制此配置到你的SSH配置文件中
+
+# 麒麟开发服务器配置（主要配置）
+Host kylin-dev
+    HostName 192.168.100.131
+    User a
+    Port 22
+
+    # 认证方式（使用密码认证）
+    PreferredAuthentications password
+    PasswordAuthentication yes
+    PubkeyAuthentication no
+    
+    # 连接优化
+    Compression yes
+    ServerAliveInterval 60
+    ServerAliveCountMax 3
+    TCPKeepAlive yes
+    
+    # 控制连接复用（提高连接速度）
+    ControlMaster auto
+    ControlPath ~/.ssh/master-%r@%h:%p
+    ControlPersist 10m
+    
+    # 开发环境设置（跳过严格的主机密钥检查）
+    StrictHostKeyChecking no
+    UserKnownHostsFile /dev/null
+    LogLevel ERROR
+    
+    # 端口转发配置
+    # GDB调试端口
+    LocalForward 5555 localhost:5555
+    # 应用程序端口
+    LocalForward 8080 localhost:8080
+    # 可选：数据库端口
+    LocalForward 5432 localhost:5432
+    
+    # 连接超时设置
+    ConnectTimeout 10
+    
+    # X11转发（如果需要GUI）
+    ForwardX11 no
+    ForwardX11Trusted no
+
+# 备用配置（使用IP地址）
+Host kylin-dev-ip
+    HostName 192.168.100.131
+    User a
+    Port 22
+    PreferredAuthentications password
+    StrictHostKeyChecking no
+    
+# 快速连接配置（最小配置）
+Host kylin-quick
+    HostName 192.168.100.131
+    User a
+    StrictHostKeyChecking no
