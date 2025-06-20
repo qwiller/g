@@ -287,3 +287,804 @@ sudo systemctl restart kylin-qa-assistant
 tail -f app.log
 sudo journalctl -u kylin-qa-assistant -f
 ```
+
+## 📖 使用说明
+
+### 访问应用
+
+服务启动成功后，可通过以下方式访问：
+
+- **Web界面**: http://localhost:8000
+- **API文档**: http://localhost:8000/docs
+- **健康检查**: http://localhost:8000/status
+
+### Web界面使用
+
+#### 1. 文档上传和管理
+
+```
+📁 支持的文档格式：
+├── PDF文件 (.pdf)
+├── Markdown文件 (.md)
+├── 文本文件 (.txt)
+└── 图片文件 (.jpg, .png, .gif, .bmp, .tiff, .webp)
+```
+
+**上传步骤：**
+1. 点击"选择文件"按钮
+2. 选择要上传的文档
+3. 点击"上传文档"
+4. 等待处理完成（会显示处理进度）
+
+**文档处理说明：**
+- PDF文件：自动提取文本内容
+- 图片文件：使用OCR技术识别文字
+- 大文档：自动分块处理，提高检索效率
+
+#### 2. 智能问答功能
+
+**基本问答：**
+```
+用户输入：银河麒麟操作系统有什么特点？
+AI回答：根据文档内容，银河麒麟操作系统具有以下特点：
+1. 安全可靠：采用多层安全防护机制
+2. 自主可控：完全自主知识产权
+3. 兼容性强：支持多种硬件平台
+...
+来源：kylin_system_intro.md (第1-3段)
+```
+
+**高级问答技巧：**
+- 使用具体问题获得更准确答案
+- 可以追问相关细节
+- 支持多轮对话上下文
+
+#### 3. 本地文件搜索
+
+**搜索功能：**
+1. 在"本地文件搜索"区域输入关键词
+2. 点击"搜索"按钮
+3. 查看搜索结果列表
+4. 点击文件路径可查看详情
+
+**搜索示例：**
+```bash
+搜索关键词：配置文件
+搜索结果：
+├── /home/user/.bashrc
+├── /etc/nginx/nginx.conf
+├── /opt/app/config.json
+└── ...
+```
+
+#### 4. OCR文字识别
+
+**使用方法：**
+1. 上传包含文字的图片文件
+2. 系统自动调用OCR识别文字
+3. 识别结果会添加到文档库
+4. 可以基于识别的文字进行问答
+
+**支持的图片格式：**
+- JPG/JPEG
+- PNG
+- GIF
+- BMP
+- TIFF
+- WebP
+
+### API接口使用
+
+#### 核心API端点
+
+```bash
+# 上传文档
+curl -X POST "http://localhost:8000/upload" \
+  -H "Content-Type: multipart/form-data" \
+  -F "file=@document.pdf"
+
+# 智能问答
+curl -X POST "http://localhost:8000/ask" \
+  -H "Content-Type: application/json" \
+  -d '{"question": "这个文档讲了什么？", "max_results": 3}'
+
+# 系统状态
+curl -X GET "http://localhost:8000/status"
+
+# OCR识别
+curl -X POST "http://localhost:8000/ocr" \
+  -H "Content-Type: application/json" \
+  -d '{"image_path": "/path/to/image.jpg"}'
+
+# 本地搜索
+curl -X POST "http://localhost:8000/local-search" \
+  -H "Content-Type: application/json" \
+  -d '{"query": "配置", "directory": "/home", "max_results": 10}'
+
+# 播放音效
+curl -X POST "http://localhost:8000/play-sound" \
+  -H "Content-Type: application/json" \
+  -d '{"sound_type": "success"}'
+```
+
+#### API响应示例
+
+**问答接口响应：**
+```json
+{
+  "answer": "银河麒麟操作系统是一款安全可靠的国产操作系统...",
+  "sources": [
+    {
+      "content": "银河麒麟操作系统特点...",
+      "metadata": {
+        "source": "kylin_intro.md",
+        "page": 1
+      },
+      "score": 0.95
+    }
+  ],
+  "confidence": 0.92
+}
+```
+
+**状态接口响应：**
+```json
+{
+  "status": "running",
+  "documents_count": 5,
+  "vector_count": 25,
+  "system_info": {
+    "sdk_available": true,
+    "ocr_enabled": true,
+    "search_enabled": true,
+    "sound_enabled": true
+  }
+}
+```
+
+### 桌面应用使用
+
+```bash
+# 启动桌面应用
+python3 desktop_app.py
+```
+
+桌面应用提供与Web界面相同的功能，但具有：
+- 本地化界面体验
+- 更好的文件管理
+- 系统集成功能
+- 离线使用能力
+
+### 配置管理
+
+#### AI服务配置
+
+编辑 `config/ai_settings.json`：
+
+```json
+{
+  "ai_provider": "mixed",
+  "kylin_sdk": {
+    "enabled": true,
+    "ocr_enabled": true,
+    "search_enabled": true,
+    "sound_enabled": true
+  },
+  "siliconflow": {
+    "enabled": true,
+    "api_key": "your_api_key",
+    "model": "deepseek-ai/DeepSeek-V3"
+  }
+}
+```
+
+#### 环境变量配置
+
+编辑 `.env` 文件：
+
+```bash
+# SDK功能开关
+KYLIN_SDK_ENABLED=true
+OCR_ENABLED=true
+SEARCH_ENABLED=true
+SOUND_ENABLED=true
+
+# 服务配置
+APP_HOST=0.0.0.0
+APP_PORT=8000
+DEBUG=false
+
+# AI服务
+AI_PROVIDER=mixed
+SILICONFLOW_API_KEY=your_key_here
+```
+
+## ❓ 常见问题解答
+
+### 安装部署问题
+
+#### Q1: 部署脚本执行失败，提示权限不足
+**A:** 确保当前用户有sudo权限，并且脚本有执行权限：
+```bash
+# 添加执行权限
+chmod +x deploy_with_sdk.sh
+
+# 检查sudo权限
+sudo -v
+
+# 如果没有sudo权限，联系系统管理员添加
+```
+
+#### Q2: 银河麒麟SDK安装失败
+**A:** 检查系统版本和软件源配置：
+```bash
+# 检查系统版本
+cat /etc/os-release
+
+# 更新软件源
+sudo apt update
+
+# 手动安装SDK包
+sudo apt install libkysdk-ocr libkysdk-search libkysdk-soundeffects
+
+# 如果包不存在，检查是否启用了正确的软件源
+```
+
+#### Q3: Python依赖安装失败
+**A:** 尝试以下解决方案：
+```bash
+# 使用国内镜像源
+pip install -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple/
+
+# 升级pip版本
+pip install --upgrade pip
+
+# 清理pip缓存
+pip cache purge
+
+# 如果某个包安装失败，单独安装
+pip install fastapi uvicorn python-multipart
+```
+
+#### Q4: 端口8000被占用
+**A:** 更改应用端口或停止占用进程：
+```bash
+# 查看端口占用
+sudo netstat -tlnp | grep :8000
+sudo lsof -i :8000
+
+# 停止占用进程
+sudo kill -9 <PID>
+
+# 或者修改应用端口
+export APP_PORT=8001
+python3 backend/main.py
+```
+
+### 功能使用问题
+
+#### Q5: OCR识别效果不好
+**A:** 优化图片质量和格式：
+```bash
+# 支持的最佳图片格式
+- PNG: 无损压缩，文字清晰
+- JPG: 适中文件大小，质量良好
+- 分辨率: 建议300DPI以上
+- 文字大小: 12号字体以上效果更佳
+
+# 图片预处理建议
+- 确保文字清晰可见
+- 避免倾斜和模糊
+- 良好的光照条件
+- 避免复杂背景
+```
+
+#### Q6: 文档上传失败
+**A:** 检查文件格式和大小：
+```bash
+# 支持的文件格式
+PDF: .pdf
+文本: .txt, .md
+图片: .jpg, .png, .gif, .bmp, .tiff, .webp
+
+# 文件大小限制
+单个文件: 建议不超过50MB
+总存储: 根据磁盘空间而定
+
+# 检查文件权限
+ls -la your_file.pdf
+chmod 644 your_file.pdf
+```
+
+#### Q7: 问答结果不准确
+**A:** 优化文档质量和问题表述：
+```bash
+# 文档优化建议
+- 确保文档内容完整清晰
+- 避免扫描版PDF（文字不可选择）
+- 使用结构化的文档格式
+- 定期清理无关文档
+
+# 问题优化建议
+- 使用具体明确的问题
+- 避免过于宽泛的询问
+- 可以分步骤提问
+- 利用上下文信息
+```
+
+#### Q8: 本地搜索无结果
+**A:** 检查搜索路径和权限：
+```bash
+# 检查搜索目录权限
+ls -la /home/user/
+sudo find /home -name "*keyword*" -type f
+
+# 扩大搜索范围
+搜索目录设置为: /home, /opt, /usr/share/doc
+
+# 使用不同的关键词
+- 尝试文件名的一部分
+- 使用文件扩展名搜索
+- 尝试模糊匹配
+```
+
+### 性能优化问题
+
+#### Q9: 系统响应速度慢
+**A:** 优化系统资源和配置：
+```bash
+# 检查系统资源
+htop
+free -h
+df -h
+
+# 优化建议
+- 增加内存到8GB以上
+- 使用SSD存储
+- 关闭不必要的后台服务
+- 定期清理临时文件
+
+# 应用优化
+- 减少同时处理的文档数量
+- 调整AI模型参数
+- 使用本地AI减少网络延迟
+```
+
+#### Q10: 服务经常崩溃
+**A:** 检查日志和系统稳定性：
+```bash
+# 查看应用日志
+tail -f app.log
+sudo journalctl -u kylin-qa-assistant -f
+
+# 查看系统日志
+sudo dmesg | tail
+sudo journalctl -xe
+
+# 常见解决方案
+- 重启服务: sudo systemctl restart kylin-qa-assistant
+- 检查内存使用: free -h
+- 更新系统: sudo apt update && sudo apt upgrade
+- 重启系统: sudo reboot
+```
+
+### 网络和安全问题
+
+#### Q11: 无法访问远程AI服务
+**A:** 检查网络连接和API配置：
+```bash
+# 测试网络连接
+ping api.siliconflow.cn
+curl -I https://api.siliconflow.cn
+
+# 检查API配置
+cat config/ai_settings.json
+echo $SILICONFLOW_API_KEY
+
+# 使用本地AI模式
+export AI_PROVIDER=kylin_sdk
+```
+
+#### Q12: 防火墙阻止访问
+**A:** 配置防火墙规则：
+```bash
+# 检查防火墙状态
+sudo ufw status
+
+# 开放应用端口
+sudo ufw allow 8000/tcp
+
+# 或者临时关闭防火墙（不推荐）
+sudo ufw disable
+```
+
+## 🔧 故障排除
+
+### 诊断工具
+
+#### 系统诊断脚本
+```bash
+#!/bin/bash
+# 创建诊断脚本 diagnose.sh
+
+echo "=== 银河麒麟智能问答助手诊断报告 ==="
+echo "时间: $(date)"
+echo
+
+echo "1. 系统信息:"
+cat /etc/os-release | grep -E "(NAME|VERSION)"
+uname -a
+echo
+
+echo "2. Python环境:"
+python3 --version
+pip --version
+which python3
+echo
+
+echo "3. SDK库检查:"
+ls -la /usr/lib/libkysdk-* 2>/dev/null || echo "未找到SDK库文件"
+echo
+
+echo "4. 服务状态:"
+systemctl is-active kylin-qa-assistant 2>/dev/null || echo "服务未运行"
+ps aux | grep -E "(python.*main.py|uvicorn)" | grep -v grep
+echo
+
+echo "5. 端口检查:"
+netstat -tlnp | grep :8000 || echo "端口8000未被占用"
+echo
+
+echo "6. 磁盘空间:"
+df -h | grep -E "(/$|/home)"
+echo
+
+echo "7. 内存使用:"
+free -h
+echo
+
+echo "=== 诊断完成 ==="
+```
+
+#### 日志分析
+```bash
+# 查看最近的错误日志
+tail -100 app.log | grep -i error
+
+# 查看系统服务日志
+sudo journalctl -u kylin-qa-assistant --since "1 hour ago"
+
+# 查看Python错误
+python3 -c "
+import sys
+sys.path.append('backend')
+try:
+    from main import app
+    print('应用导入成功')
+except Exception as e:
+    print(f'应用导入失败: {e}')
+"
+```
+
+### 快速修复命令
+
+```bash
+# 重置服务
+sudo systemctl stop kylin-qa-assistant
+sudo systemctl start kylin-qa-assistant
+
+# 重建虚拟环境
+rm -rf venv
+python3 -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+
+# 清理缓存和临时文件
+rm -rf __pycache__/
+rm -rf backend/__pycache__/
+rm -f app.log app.pid
+
+# 重新部署
+./deploy_with_sdk.sh --force
+```
+
+## 📁 项目结构
+
+```
+g/
+├── README.md                           # 项目说明文档
+├── KYLIN_SDK_INTEGRATION_SUMMARY.md    # SDK集成总结
+├── requirements.txt                    # 根目录依赖文件
+├── rag-assistant/                      # 主应用目录
+│   ├── README.md                       # 应用说明
+│   ├── requirements.txt                # 应用依赖
+│   ├── deploy_with_sdk.sh             # SDK集成部署脚本
+│   ├── deploy.sh                      # 标准部署脚本
+│   ├── quick_start.sh                 # 快速启动脚本
+│   ├── start_service.sh               # 前台启动脚本
+│   ├── start_background.sh            # 后台启动脚本
+│   ├── stop_service.sh                # 停止服务脚本
+│   ├── backend/                       # 后端代码
+│   │   ├── main.py                    # FastAPI主程序
+│   │   ├── document_processor.py      # 文档处理模块
+│   │   ├── vector_store.py            # 向量存储模块
+│   │   ├── rag_engine.py              # RAG引擎
+│   │   └── kylin_sdk_wrapper.py       # 银河麒麟SDK封装
+│   ├── frontend/                      # 前端代码
+│   │   └── index.html                 # Web界面
+│   ├── config/                        # 配置文件
+│   │   ├── ai_config.py               # AI配置管理
+│   │   └── ai_settings.json           # AI设置文件
+│   ├── docs/                          # 文档目录
+│   ├── uploads/                       # 上传文件存储
+│   ├── desktop_app.py                 # 桌面应用
+│   └── venv/                          # Python虚拟环境
+├── backend/                           # 备用后端代码
+├── frontend/                          # 备用前端代码
+├── config/                            # 全局配置
+├── docs/                              # 项目文档
+├── scripts/                           # 部署和工具脚本
+│   ├── setup_remote_kylin_env.sh      # 远程环境设置
+│   ├── deploy_to_remote.ps1           # Windows部署脚本
+│   └── test_remote_connection.sh      # 连接测试脚本
+└── test_*.py                          # 测试文件
+```
+
+### 核心模块说明
+
+#### 后端模块 (backend/)
+- **main.py**: FastAPI应用主程序，定义所有API端点
+- **document_processor.py**: 文档处理引擎，支持PDF、Markdown、图片等格式
+- **vector_store.py**: 向量存储和检索系统
+- **rag_engine.py**: RAG（检索增强生成）核心引擎
+- **kylin_sdk_wrapper.py**: 银河麒麟AI SDK的Python封装
+
+#### 前端模块 (frontend/)
+- **index.html**: 响应式Web界面，包含所有功能模块
+
+#### 配置模块 (config/)
+- **ai_config.py**: AI服务配置管理类
+- **ai_settings.json**: AI服务配置文件
+
+#### 部署脚本
+- **deploy_with_sdk.sh**: 完整SDK集成部署
+- **deploy.sh**: 标准部署脚本
+- **quick_start.sh**: 快速体验脚本
+
+## 🤝 贡献指南
+
+我们欢迎所有形式的贡献！无论您是初学者还是专家，都可以为项目做出贡献。
+
+### 贡献方式
+
+#### 1. 报告问题 (Issues)
+- 🐛 **Bug报告**: 发现问题请创建Issue
+- 💡 **功能建议**: 提出新功能想法
+- 📖 **文档改进**: 指出文档不清楚的地方
+- ❓ **使用问题**: 遇到使用困难可以提问
+
+**Issue模板：**
+```markdown
+## 问题描述
+简要描述遇到的问题
+
+## 环境信息
+- 操作系统: 银河麒麟 V10 SP3
+- Python版本: 3.8.10
+- 项目版本: v1.0.0
+
+## 复现步骤
+1. 执行命令 xxx
+2. 点击按钮 xxx
+3. 出现错误 xxx
+
+## 期望结果
+描述期望的正确行为
+
+## 实际结果
+描述实际发生的情况
+
+## 附加信息
+- 错误日志
+- 截图
+- 其他相关信息
+```
+
+#### 2. 提交代码 (Pull Requests)
+
+**开发流程：**
+```bash
+# 1. Fork项目到您的GitHub账户
+
+# 2. 克隆您的Fork
+git clone https://github.com/YOUR_USERNAME/g.git
+cd g
+
+# 3. 创建功能分支
+git checkout -b feature/your-feature-name
+
+# 4. 进行开发
+# 编写代码、测试、文档
+
+# 5. 提交更改
+git add .
+git commit -m "feat: 添加新功能描述"
+
+# 6. 推送到您的Fork
+git push origin feature/your-feature-name
+
+# 7. 创建Pull Request
+```
+
+**代码规范：**
+- 使用Python PEP 8编码规范
+- 添加适当的注释和文档字符串
+- 编写单元测试
+- 确保所有测试通过
+- 更新相关文档
+
+#### 3. 改进文档
+- 修正错别字和语法错误
+- 添加使用示例
+- 翻译文档到其他语言
+- 改进安装和部署指南
+
+#### 4. 测试和反馈
+- 在不同环境下测试应用
+- 报告兼容性问题
+- 提供性能优化建议
+- 分享使用经验
+
+### 开发环境设置
+
+```bash
+# 1. 克隆项目
+git clone https://github.com/qwiller/g.git
+cd g/rag-assistant
+
+# 2. 创建开发环境
+python3 -m venv dev-env
+source dev-env/bin/activate
+
+# 3. 安装开发依赖
+pip install -r requirements.txt
+pip install pytest black flake8 mypy
+
+# 4. 运行测试
+python -m pytest tests/
+
+# 5. 代码格式化
+black backend/
+flake8 backend/
+
+# 6. 类型检查
+mypy backend/
+```
+
+### 提交信息规范
+
+使用约定式提交 (Conventional Commits) 格式：
+
+```
+<类型>[可选的作用域]: <描述>
+
+[可选的正文]
+
+[可选的脚注]
+```
+
+**类型说明：**
+- `feat`: 新功能
+- `fix`: 修复bug
+- `docs`: 文档更新
+- `style`: 代码格式化
+- `refactor`: 代码重构
+- `test`: 测试相关
+- `chore`: 构建过程或辅助工具的变动
+
+**示例：**
+```
+feat(ocr): 添加图片批量识别功能
+
+- 支持同时处理多张图片
+- 添加进度显示
+- 优化内存使用
+
+Closes #123
+```
+
+### 社区准则
+
+- 🤝 **友善互助**: 尊重所有贡献者，营造友好的社区氛围
+- 📚 **知识分享**: 乐于分享经验和知识，帮助他人成长
+- 🔍 **质量优先**: 注重代码质量和用户体验
+- 🌱 **持续学习**: 保持开放心态，不断学习新技术
+- 🎯 **目标导向**: 专注于解决实际问题，创造价值
+
+## 📄 许可证
+
+本项目采用 [MIT许可证](https://opensource.org/licenses/MIT) 开源。
+
+### MIT许可证条款
+
+```
+MIT License
+
+Copyright (c) 2024 银河麒麟智能问答助手项目
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+```
+
+### 许可证说明
+
+✅ **允许的使用方式：**
+- 商业使用
+- 修改代码
+- 分发软件
+- 私人使用
+- 专利使用
+
+📋 **必须遵守的条件：**
+- 包含许可证和版权声明
+- 说明对原始代码的修改
+
+❌ **不承担的责任：**
+- 不提供责任担保
+- 不提供质量保证
+
+### 第三方许可证
+
+本项目使用了以下开源软件：
+
+- **FastAPI**: MIT许可证
+- **Uvicorn**: BSD许可证
+- **NumPy**: BSD许可证
+- **Requests**: Apache 2.0许可证
+- **银河麒麟AI SDK**: 商业许可证（需要单独获取）
+
+## 🙏 致谢
+
+感谢以下项目和组织的支持：
+
+- **银河麒麟操作系统**: 提供优秀的国产操作系统平台
+- **银河麒麟AI SDK**: 提供强大的本地AI能力
+- **FastAPI**: 现代化的Python Web框架
+- **SiliconFlow**: 提供高质量的AI API服务
+- **开源社区**: 提供丰富的开源工具和库
+
+特别感谢所有为项目做出贡献的开发者和用户！
+
+## 📞 联系我们
+
+- **GitHub Issues**: [提交问题和建议](https://github.com/qwiller/g/issues)
+- **项目主页**: https://github.com/qwiller/g
+- **邮箱**: xwiller@gmail.com
+
+---
+
+<div align="center">
+
+**🌟 如果这个项目对您有帮助，请给我们一个Star！**
+
+[![GitHub stars](https://img.shields.io/github/stars/qwiller/g.svg?style=social&label=Star)](https://github.com/qwiller/g/stargazers)
+[![GitHub forks](https://img.shields.io/github/forks/qwiller/g.svg?style=social&label=Fork)](https://github.com/qwiller/g/network)
+
+**让我们一起构建更好的银河麒麟AI生态！**
+
+</div>
